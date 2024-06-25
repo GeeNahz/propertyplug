@@ -12,7 +12,7 @@ const HeroSection = () => {
           <br /> Experience
         </h1>
         <small className="text-zinc-400 text-base font-medium text-center mt-2">
-          We prioritize our clients' needs and are committed to <br />{" "}
+          We prioritize our clients&apos; needs and are committed to <br />{" "}
           delivering tangible results.
         </small>
         <DropList/>
