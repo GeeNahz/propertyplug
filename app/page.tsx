@@ -13,7 +13,9 @@ export default function Home() {
       <HeroSection />
       <div className="w-full px-20 mt-8">
         <Blog />
-        <MakeUsSpecial />
+      </div>
+      <MakeUsSpecial />
+      <div className="w-full px-20 mt-8">
         <FeatureProject />
         <OurService />
         <Testimonial />
