@@ -4,3 +4,13 @@ export type Gallery = {
     img:any,
     grid:string
   }[]
+
+  
+ export type Feature={
+    bed:number,
+    jacuzzi:boolean,
+    pool:boolean,
+    loc:string,
+    flat:number,
+    price:string
+  }[]

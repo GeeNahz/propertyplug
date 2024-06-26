@@ -19,10 +19,10 @@ export const DropList = () => {
 
 const DropDown = () => {
     return (
-      <div className="drop__fade absolute top-14 left-0 right-0 p-3 w-64 border-[2px] border-white border-solid rounded-2xl bg-gray-600 flex flex-col gap-3" onClick={(e) => e.stopPropagation()}>
+      <div className="drop__fade absolute top-16 left-0 right-0 p-3 w-64 border-[2px] border-white border-solid rounded-2xl bg-gray-600/15 flex flex-col gap-3" onClick={(e) => e.stopPropagation()}>
         {["buy property", "sell property", "rent property"].map((v: any) => {
           return (
-            <button key={v} className="text-white font-medium text-lg capitalize py-2 text-center bg-gray-500 rounded-3xl">
+            <button key={v} className="text-white font-medium text-lg capitalize py-2 text-center bg-gray-500/15 border-transparent border border-solid hover:border-white rounded-3xl">
               {v}
             </button>
           );

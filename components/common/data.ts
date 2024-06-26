@@ -1,4 +1,4 @@
-import { Gallery } from "./type";
+import { Feature, Gallery } from "./type";
 import imgs from "../Landing_Page/Blog_Post/images/ppt.jpg";
 import imgs1 from "../Landing_Page/Blog_Post/images/pp2.jpg";
 import imgs2 from "../Landing_Page/Blog_Post/images/ppt1.jpg";
@@ -44,3 +44,30 @@ export const blogGallery: Gallery = [
     grid:'big'
   },
 ];
+
+export const Features:Feature = [
+  {
+    bed:5,
+    jacuzzi:true,
+    pool:true,
+    loc:'lekki, lagos',
+    flat:2, 
+    price:'500M'
+  },
+  {
+    bed:5,
+    jacuzzi:true,
+    pool:true,
+    loc:'lekki, lagos',
+    flat:2, 
+    price:'500M'
+  },
+  {
+    bed:5,
+    jacuzzi:true,
+    pool:true,
+    loc:'lekki, lagos',
+    flat:2, 
+    price:'500M'
+  }
+]
