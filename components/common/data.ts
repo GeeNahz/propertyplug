@@ -1,10 +1,11 @@
-import { Feature, Gallery, Testimonial } from "./type";
+import { Feature, Gallery, NavLink, Social, Testimonial } from "./type";
 import imgs from "../Landing_Page/Blog_Post/images/ppt.jpg";
 import imgs1 from "../Landing_Page/Blog_Post/images/pp2.jpg";
 import imgs2 from "../Landing_Page/Blog_Post/images/ppt1.jpg";
 import imgs3 from "../Landing_Page/Blog_Post/images/ppt3.jpg";
 import imgs4 from "../Landing_Page/Blog_Post/images/ppt4.jpg";
 import imgs5 from "../Landing_Page/Blog_Post/images/ppt5.jpg";
+import { FaLinkedinIn } from "react-icons/fa";
 
 export const blogGallery: Gallery = [
   {
@@ -44,6 +45,31 @@ export const blogGallery: Gallery = [
     grid:'big'
   },
 ];
+
+
+export const Nav:NavLink = [
+  {
+    title:'home',
+    path:'/'
+  },
+  {
+    title:'blog',
+    path:'/blog'
+  },
+  {
+    title:'about Us',
+    path:'/aboutUs'
+  },
+  {
+    title:'properties',
+    path:'/properties'
+  },
+  {
+    title:'services',
+    path:'/services'
+  },
+]
+
 
 export const Features:Feature = [
   {

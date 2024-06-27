@@ -1,4 +1,5 @@
 import { StaticImageData } from "next/image"
+import { IconBaseProps, IconType } from "react-icons"
 
 export type Gallery = {
     time:string,
@@ -21,4 +22,15 @@ export type Gallery = {
     title:string,
     testimony:string,
     img:StaticImageData
+  }[]
+
+  export type NavLink={
+    title:string,
+    path:string
+  }[] 
+
+  export type Social = {
+    title: string,
+    url:string,
+    icon:React.ReactElement
   }[]

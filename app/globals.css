@@ -89,6 +89,9 @@ a:active {
 .testimony__container::-webkit-scrollbar {
   display: none; /* for Chrome, Safari, and Opera */
 }
+.ant-modal-footer button{
+display: none!important;
+}
 
 
  

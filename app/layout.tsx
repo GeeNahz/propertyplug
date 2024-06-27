@@ -3,6 +3,7 @@ import { AntdRegistry } from "@ant-design/nextjs-registry";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import { Statecontext } from "@/hook/statecontext";
+import Footer from "@/components/common/footer";
 
 export const metadata: Metadata = {
   title: "Property Plug",
@@ -16,7 +17,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth">
       <body className="overflow-x-hidden w-full">
         <AntdRegistry>
           <Statecontext>
@@ -24,7 +25,7 @@ export default function RootLayout({
               <Navbar />
             </nav>
             <div className="z-0 relative min-h-full">{children}</div>
-            <footer>footer</footer>
+            <Footer/>
           </Statecontext>
         </AntdRegistry>
       </body>

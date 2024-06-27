@@ -26,7 +26,7 @@ export const Moda = () => {
           <h4 className="font-semibold">Book Consultancy</h4>
         </div>
         <div className="flex flex-col mt-12 gap-3">
-            {['use calendly', 'schedule office meetup', 'reach out on whatsApp'].map((v, i) => <button key={i} className="bg-[#FCFCFC] text-[#0B2831] py-3 rounded-2xl border border-transparent hover:border-black capitalize font-medium">{v}</button>)}
+            {['use calendly', 'schedule office meetup', 'setup a zoom meeting', 'reach out on whatsApp'].map((v, i) => <button key={i} className="bg-[#FCFCFC] text-[#0B2831] py-3 rounded-2xl border border-transparent hover:border-black capitalize font-medium">{v}</button>)}
         </div>
       </div>
     </Modal>
