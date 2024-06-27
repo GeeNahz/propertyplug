@@ -76,3 +76,19 @@ a:active {
 .grid_wrapper .tall {
   grid-row: span 2;
 }
+.car{
+  display: flex!important;
+  justify-content: space-between;
+}
+
+.testimony__container{
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.testimony__container::-webkit-scrollbar {
+  display: none; /* for Chrome, Safari, and Opera */
+}
+
+
+ 

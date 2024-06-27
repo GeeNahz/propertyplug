@@ -16,10 +16,10 @@ const Blog = () => {
       />
 
       <div className="w-full grid_wrapper mt-4">
-        {blogGallery.map((v) => {
+        {blogGallery.map((v, i) => {
           return (
             <div
-            key={v.img}
+            key={i}
               className={`${v.grid} relative rounded-3xl h-full w-full border-white border-solid border-[2px] overflow-x-hidden`}
             >
               <Image

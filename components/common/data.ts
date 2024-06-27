@@ -1,4 +1,4 @@
-import { Feature, Gallery } from "./type";
+import { Feature, Gallery, Testimonial } from "./type";
 import imgs from "../Landing_Page/Blog_Post/images/ppt.jpg";
 import imgs1 from "../Landing_Page/Blog_Post/images/pp2.jpg";
 import imgs2 from "../Landing_Page/Blog_Post/images/ppt1.jpg";
@@ -70,4 +70,52 @@ export const Features:Feature = [
     flat:2, 
     price:'500M'
   }
+]
+
+export const Testimon:Testimonial = [
+  {
+    title:'mr. ademola johnson',
+    testimony: 'This will contain testimonials from user who have tested the product before, during or after launching Slate Publishers',
+    img: imgs1
+  },
+  {
+    title:'mr. ademola johnson',
+    testimony: 'This will contain testimonials from user who have tested the product before, during or after launching Slate Publishers',
+    img: imgs1
+  },
+  {
+    title:'mr. ademola johnson',
+    testimony: 'This will contain testimonials from user who have tested the product before, during or after launching Slate Publishers',
+    img: imgs1
+  },
+  {
+    title:'mr. ademola johnson',
+    testimony: 'This will contain testimonials from user who have tested the product before, during or after launching Slate Publishers',
+    img: imgs
+  },
+  {
+    title:'mr. ademola johnson',
+    testimony: 'This will contain testimonials from user who have tested the product before, during or after launching Slate Publishers',
+    img: imgs5
+  },
+  {
+    title:'mr. ademola johnson',
+    testimony: 'This will contain testimonials from user who have tested the product before, during or after launching Slate Publishers',
+    img: imgs1
+  },
+  {
+    title:'mr. ademola johnson',
+    testimony: 'This will contain testimonials from user who have tested the product before, during or after launching Slate Publishers',
+    img: imgs4
+  },
+  {
+    title:'mr. ademola johnson',
+    testimony: 'This will contain testimonials from user who have tested the product before, during or after launching Slate Publishers',
+    img: imgs3
+  },
+  {
+    title:'mr. ademola johnson',
+    testimony: 'This will contain testimonials from user who have tested the product before, during or after launching Slate Publishers',
+    img: imgs2
+  },
 ]

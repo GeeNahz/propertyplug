@@ -1,7 +1,9 @@
+import { StaticImageData } from "next/image"
+
 export type Gallery = {
     time:string,
     title:string,
-    img:any,
+    img:StaticImageData,
     grid:string
   }[]
 
@@ -13,4 +15,10 @@ export type Gallery = {
     loc:string,
     flat:number,
     price:string
+  }[]
+
+  export type Testimonial = {
+    title:string,
+    testimony:string,
+    img:StaticImageData
   }[]

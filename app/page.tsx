@@ -1,3 +1,4 @@
+import { Moda } from "@/components/modal";
 import {
   Blog,
   FeatureProject,
@@ -9,7 +10,7 @@ import {
 
 export default function Home() {
   return (
-    <main className="">
+    <main className="w-full">
       <HeroSection />
       <div className="w-full px-20 mt-8">
         <Blog />
@@ -20,6 +21,7 @@ export default function Home() {
         <OurService />
         <Testimonial />
       </div>
+      <Moda/>
     </main>
   );
 }

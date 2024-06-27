@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
+import { Statecontext } from "@/hook/statecontext";
 
 export const metadata: Metadata = {
   title: "Property Plug",
@@ -18,10 +19,13 @@ export default function RootLayout({
     <html lang="en">
       <body className="overflow-x-hidden w-full">
         <AntdRegistry>
-          <nav className="z-50 relative">
-            <Navbar />
-          </nav>
-          <div className="z-0">{children}</div>
+          <Statecontext>
+            <nav className="z-50 relative">
+              <Navbar />
+            </nav>
+            <div className="z-0 relative min-h-full">{children}</div>
+            <footer>footer</footer>
+          </Statecontext>
         </AntdRegistry>
       </body>
     </html>
