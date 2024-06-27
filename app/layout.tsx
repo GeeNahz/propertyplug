@@ -18,7 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className="overflow-x-hidden w-full">
+      <body className="overflow-x-hidden w-full min-h-screen flex flex-col justify-between">
         <AntdRegistry>
           <Statecontext>
             <nav className="z-50 relative">

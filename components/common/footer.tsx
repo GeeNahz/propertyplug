@@ -14,7 +14,7 @@ import {
 
 const Footer = () => {
   return (
-    <footer className="bg-[#0B2831] py-12 px-20">
+    <footer className="bg-[#0B2831] py-12 px-20 self-end w-full">
       <div className="flex justify-between items-center">
         <Link href='/'><Image src={Logo} alt="logo" /></Link>
         <div className="flex flex-col gap-4 text-white/70">

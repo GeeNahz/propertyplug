@@ -58,11 +58,11 @@ export const Nav:NavLink = [
   },
   {
     title:'about Us',
-    path:'/aboutUs'
+    path:'/about'
   },
   {
     title:'properties',
-    path:'/properties'
+    path:'/property'
   },
   {
     title:'services',

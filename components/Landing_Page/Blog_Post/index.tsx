@@ -37,7 +37,7 @@ const Blog = () => {
                     {v.title}
                   </h4>
                 </div>
-                <Button title="read more" />
+                <Button title="read more" url={`/blog/${v.title}`}/>
               </div>
             </div>
           );
