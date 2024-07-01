@@ -61,7 +61,7 @@ const FeatureProject = () => {
                     <span className="font-light text-[10px]">Price</span>
                   </h4>
                 </div>
-                <button className="py-2 px-4 rounded-xl text-white text-xs bg-red-500 hover:bg-red-500/95 w-max mx-auto">
+                <button className="py-2 px-4 rounded-full text-white text-xs bg-red-500 hover:bg-red-500/95 w-max mx-auto">
                   view
                 </button>
               </div>
