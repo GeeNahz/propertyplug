@@ -10,7 +10,7 @@ import { Nav } from "../common/data";
 const Navbar = () => {
   const path = usePathname();
   return (
-    <div className="flex bg-dark w-full py-2 px-20 justify-between items-center fixed top-0">
+    <div className="flex bg-ui-dark w-full py-2 px-20 justify-between items-center fixed top-0">
       <div className="w-4/12">
         <Link href="/">
           <Image src={logo} alt="logo" className="w-[40px]" />
