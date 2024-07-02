@@ -43,6 +43,4 @@ export type Gallery = {
     icon:React.ReactElement
   }[]
 
-export type BreadCrumbType = {
-  title: string | React.ReactNode;
-}
+export type BreadCrumbType = React.ReactNode | string;
