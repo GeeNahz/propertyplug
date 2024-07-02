@@ -1,6 +1,14 @@
 import { StaticImageData } from "next/image"
 import { IconBaseProps, IconType } from "react-icons"
 
+export type GalleryWithID = {
+  id: number | string;
+  time:string;
+  title:string;
+  img:StaticImageData;
+  grid:string;
+}
+
 export type Gallery = {
     time:string,
     title:string,
@@ -34,3 +42,7 @@ export type Gallery = {
     url:string,
     icon:React.ReactElement
   }[]
+
+export type BreadCrumbType = {
+  title: string | React.ReactNode;
+}
