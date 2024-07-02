@@ -33,7 +33,8 @@ const config = {
         "accordion-up": "accordion-up 0.2s ease-out",
       },
       colors: {
-        dark: "rgb(var(--color-dark) / <alpha-value>)",
+        "ui-dark": "rgb(var(--color-dark) / <alpha-value>)",
+        "ui-red": "rgb(var(--color-red) / <alpha-value>)",
       },
     },
   },
