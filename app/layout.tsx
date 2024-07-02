@@ -18,13 +18,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className="overflow-x-hidden w-full min-h-screen flex flex-col justify-between">
+      <body className="relative overflow-x-hidden w-full min-h-screen flex flex-col justify-between">
         <AntdRegistry>
           <Statecontext>
             <nav className="z-50 relative">
               <Navbar />
             </nav>
-            <div className="z-0 relative min-h-full">{children}</div>
+            <div className="z-0 min-h-full">{children}</div>
             <Footer/>
           </Statecontext>
         </AntdRegistry>
