@@ -10,9 +10,7 @@ type Props = {
 
 const BlogPosts = ({ post }: { post: Props }) => {
   return (
-    <div
-      className={`${post.grid} relative rounded-3xl h-full w-full border-white border-solid border-[2px] overflow-x-hidden`}
-    >
+    <>
       <Image
         src={post.img}
         alt="img"
@@ -30,7 +28,7 @@ const BlogPosts = ({ post }: { post: Props }) => {
         </div>
         <Button title="read more" url={`/blog/${post.title.replaceAll(" ", "-")}`} />
       </div>
-    </div>
+    </>
   );
 };
 
