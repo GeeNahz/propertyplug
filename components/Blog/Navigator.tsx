@@ -1,31 +1,41 @@
+"use client"
+
+import Link from "next/link";
 import { Breadcrumb } from "antd";
-import { BreadCrumbType } from "../common/type";
+import { BreadcrumbItemType, BreadcrumbSeparatorType } from "antd/es/breadcrumb/Breadcrumb";
 
 type Props = {
-  items?: BreadCrumbType[];
+  items?: Partial<BreadcrumbItemType & BreadcrumbSeparatorType>[];
 };
 
-const Navigator = ({ items }: Props) => {
-  const breadCrumbItems: { title: BreadCrumbType }[] = [{ title: <a href="/">Home</a> }];
+const BreadCrumbs = ({ items }: Props) => {
+  function itemRender(currentRoute: any, params: any, items: any, paths: any) {
+    const isLast = currentRoute?.path === items[items.length - 1]?.path;
+    const isFirst = currentRoute?.path === items[0]?.path;
 
-  if (items && items.length !== 0) { // Ensure that items array exists and it isn't empty
-    for (const item of items) {
-      if (typeof item === "string") {
-        breadCrumbItems.push({ title: <span className="text-sm text-gray-500 font-light capitalize">{item}</span> });
-      } else {
-        breadCrumbItems.push({ title: item });
-      }
-    }
+    return isLast ? (
+      <span className="text-sm text-gray-600 font-light capitalize">{currentRoute.title}</span>
+    ) : isFirst ? (
+      <Link href={`/`}>
+        {currentRoute.title}
+      </Link>
+    ) : (
+      <Link href={`${paths.join("/")}`}>
+        {currentRoute.title}
+      </Link>
+    );
   }
 
   return (
     <section className="flex justify-between items-center py-4 px-20 bg-[#FCFCFC] backdrop-blur-sm">
       <p className="font-semibold text-sm text-opacity-60 text-gray-500">Blog</p>
 
-      <Breadcrumb items={breadCrumbItems} />
+      <Breadcrumb
+        itemRender={itemRender}
+        items={items}
+      />
     </section>
   );
 };
 
-export default Navigator;
-
+export default BreadCrumbs;
