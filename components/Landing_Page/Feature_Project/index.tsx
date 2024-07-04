@@ -14,11 +14,11 @@ const FeatureProject = () => {
       </div>
 
       <div className="mt-5 flex justify-between items-center w-full gap-10">
-        {Features.map((v) => {
+        {Features.map((v, i) => {
           return (
             <div
               className="bg-[#FAFAFF] rounded-[32px]  p-2 flex flex-col gap-4 w-4/12"
-              key={v.bed}
+              key={i}
             >
               <FeatureCard feature={v} />
             </div>
