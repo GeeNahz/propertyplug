@@ -6,7 +6,7 @@ import Image from 'next/image';
 import imgs5 from "@/components/Landing_Page/Blog_Post/images/ppt5.jpg";
 import Link from 'next/link';
 import { Divider } from 'antd';
-import { BlogHeader, BlogContent, FeaturedArticle } from '@/components/Blog/BlogPost';
+import { BlogHeader, BlogContent, FeaturedArticles } from '@/components/Blog/BlogPost';
 
 
 const Page = ({ params }: { params: { id: string } }) => {
@@ -47,7 +47,7 @@ const Page = ({ params }: { params: { id: string } }) => {
           <BlogContent body={blogPost.body} />
         </div>
 
-        <FeaturedArticle />
+        <FeaturedArticles />
       </div>
     </section>
   )
