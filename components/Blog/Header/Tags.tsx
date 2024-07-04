@@ -19,10 +19,6 @@ const Tags = ({ tags, selectedTags, setSelectedTags }: Props) => {
   return (
     <ConfigProvider
       theme={{
-        components: {
-          Tag: {
-          },
-        },
         token: {
           colorBorder: "#FF1F1E",
           colorPrimary: "#FF1F1E",
