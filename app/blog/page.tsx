@@ -1,15 +1,11 @@
 import { BlogGalleries } from "@/components/common/data";
-import { Navigator, Header, BlogPosts, } from "@/components/Blog"
-import { BreadCrumbType } from "@/components/common/type";
+import { Header, BlogPosts, } from "@/components/Blog"
 
 
 const Page = () => {
-  const navigatorItems: BreadCrumbType[] = ["Blogs"]
-
   return (
     <section className="mt-[63px]">
       <div className="top-[63px] w-full sticky bg-white z-10">
-        <Navigator items={navigatorItems} />
         <Header />
       </div>
 
