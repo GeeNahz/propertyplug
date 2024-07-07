@@ -36,7 +36,7 @@ export default function Page({ params }: { params: { id: string } }) {
   };
 
   return (
-    <div className="mt-28">
+    <div className="mt-28 mb-14">
       <div className="top-[63px] w-full fixed bg-white z-10">
         <Navigator items={navigatorItems} />
       </div>
@@ -53,9 +53,9 @@ export default function Page({ params }: { params: { id: string } }) {
 
           <BlogContent body={blogPost.body} />
         </div>
-
-        <FeaturedArticles />
       </div>
+
+      <FeaturedArticles />
     </div>
   );
 }
