@@ -1,5 +1,6 @@
 import { BlogGalleries } from "@/components/common/data";
-import { Header, BlogPosts, } from "@/components/Blog"
+import { Header } from "@/components/Blog"
+import BlogPostsGrid from "@/components/Blog/BlogPostsGrid";
 
 
 const Page = () => {
@@ -9,16 +10,7 @@ const Page = () => {
         <Header />
       </div>
 
-      <div className="px-20 w-full grid_wrapper mt-4 mb-24">
-        {BlogGalleries.map((v, i) => (
-          <div
-            key={i}
-            className={`${v.grid} relative rounded-3xl h-full w-full border-white border-solid border-[2px] overflow-x-hidden`}
-          >
-            <BlogPosts post={v} />
-          </div>
-        ))}
-      </div>
+      <BlogPostsGrid posts={BlogGalleries}/>
     </section>
   )
 }
