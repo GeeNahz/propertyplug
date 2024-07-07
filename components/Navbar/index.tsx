@@ -1,19 +1,41 @@
 "use client";
 import Image from "next/image";
 import logo from "@/public/PropertPlugLogo.svg";
+import logoAlt from "@/public/PropertyPlugLogoAlt.svg";
 import Link from "next/link";
 import { Button } from "../common/button";
 import { usePathname } from "next/navigation";
 import { GoDotFill } from "react-icons/go";
 import { Nav } from "../common/data";
+import clsx from "clsx";
 
 const Navbar = () => {
   const path = usePathname();
+
+  const navbarClass = clsx(
+    "flex w-full py-2 px-20 justify-between items-center fixed top-0",
+    {
+      "bg-ui-dark": path === "/",
+      "bg-white": path !== "/",
+    },
+  );
+
+  const linkClass = clsx(
+    "text-xs flex justify-between flex-col items-center",
+    {
+      "text-white": (path === "/"),
+      "text-ui-dark": (path !== "/"),
+    },
+  );
+
   return (
-    <div className="flex bg-ui-dark w-full py-2 px-20 justify-between items-center fixed top-0">
+    <div className={navbarClass}>
       <div className="w-4/12">
         <Link href="/">
-          <Image src={logo} alt="logo" className="w-[40px]" />
+        { path === "/"
+          ? <Image src={logo} alt="logo" className="w-[40px]" />
+          : <Image src={logoAlt} alt="logo" className="w-[40px]" />
+        }
         </Link>
       </div>
 
@@ -24,9 +46,7 @@ const Navbar = () => {
               href={v.path}
               prefetch
               key={i}
-              className={`${
-                path === v.path ? "font-semibold" : "font-extralight"
-              } text-white text-xs flex justify-between flex-col items-center`}
+              className={linkClass + `${path === v.path ? " font-semibold" : " font-extralight"}`}
             >
               {v.title}
               {path === v.path && <GoDotFill size={10} />}
