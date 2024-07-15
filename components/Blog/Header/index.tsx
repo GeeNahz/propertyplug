@@ -18,7 +18,9 @@ const Header = () => {
   ]);
   return (
     <>
-      <Navigator items={navigatorItems} /> {/* brought this here to make this the client component */}
+      <div className="sticky top-[63px]">
+        <Navigator items={navigatorItems} /> {/* brought this here to make this the client component */}
+      </div>
       <section className="px-20 py-12">
         <div className="section-title flex justify-between items-start w-full mb-11">
           <Title />
