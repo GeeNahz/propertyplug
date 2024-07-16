@@ -35,6 +35,8 @@ const config = {
       colors: {
         "ui-dark": "rgb(var(--color-dark) / <alpha-value>)",
         "ui-red": "rgb(var(--color-red) / <alpha-value>)",
+        "ui-desc": "rgb(var(--color-desc-text) / <alpha-value>)",
+
       },
     },
   },
