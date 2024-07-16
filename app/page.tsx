@@ -13,11 +13,11 @@ export default function Home() {
       <HeroSection />
       <div className="w-full px-20 mt-8">
         <Blog />
+        <OurService />
+        <FeatureProject />
       </div>
       <MakeUsSpecial />
       <div className="w-full px-20 mt-8">
-        <FeatureProject />
-        <OurService />
         <Testimonial />
       </div>
     </main>
