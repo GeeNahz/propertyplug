@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import { Statecontext } from "@/hook/statecontext";
 import Footer from "@/components/common/footer";
+import { Moda } from "@/components/modal";
 
 export const metadata: Metadata = {
   title: "Property Plug",
@@ -26,6 +27,7 @@ export default function RootLayout({
             </nav>
             <div className="z-0 min-h-full">{children}</div>
             <Footer/>
+            <Moda />
           </Statecontext>
         </AntdRegistry>
       </body>
