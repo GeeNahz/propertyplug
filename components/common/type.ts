@@ -44,3 +44,18 @@ export type Gallery = {
   }[]
 
 export type BreadCrumbType = React.ReactNode | string;
+
+export type TTab = 'buy' | 'sell' | 'rent';
+
+export type TConsultancyForm =  {
+  state: string;
+  location: string;
+  propertyType: string;
+  numberOfRooms: string;
+  propertySize: number;
+  fullName: string;
+  number: string;
+  email: string;
+  min: number;
+  max: number;
+}
