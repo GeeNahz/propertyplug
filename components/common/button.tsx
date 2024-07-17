@@ -13,9 +13,9 @@ export const Button = ({ title, url }: ButtonProp) => {
   const isConsultancy = title === 'book consultancy';
 
   const handleClick = () => {
-    if (isConsultancy) {
-      setModal(true)
-    }
+    // if (isConsultancy) {
+    //   setModal(true)
+    // }
     return
   }
 

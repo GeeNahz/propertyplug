@@ -56,7 +56,7 @@ const Navbar = () => {
       </div>
 
       <div className="w-4/12 flex justify-end">
-        <Button title="book consultancy" />
+        <Button url="/consultancy" title="book consultancy" />
       </div>
     </div>
   );
