@@ -72,11 +72,10 @@ const Navbar = () => {
         content={
           <ul className="space-y-3">
             {Nav.map((v, i) => (
-              <li>
+              <li key={i}>
                 <Link
                   href={v.path}
                   prefetch
-                  key={i}
                   className={`min-w-56 text-sm flex justify-between flex-col items-center py-4 px-4 rounded-md transition-all hover:bg-ui-desc/15 text-ui-dark hover:text-ui-dark capitalize ${path === v.path ? " bg-ui-desc/15 font-semibold" : " bg-ui-desc/5 font-extralight"}`}
                 >
                   {v.title}
