@@ -80,7 +80,7 @@ const Form = ({ formData, onChange, handleSubmit }: Props) => {
         <div className="min-h-full w-0 border-r border-ui-desc"></div>
 
         <div className="right-fields space-y-10">
-          <p className="text-2xl font-medium">We'd like to get to know you better</p>
+          <p className="text-2xl font-medium">We&apos;d like to get to know you better</p>
 
           <Input
             inputType="text"
@@ -115,7 +115,7 @@ const Form = ({ formData, onChange, handleSubmit }: Props) => {
             onChange={onChange}
           />
 
-          <p className="text-2xl font-medium mt-16">What's your budget?</p>
+          <p className="text-2xl font-medium mt-16">What&apos;s your budget?</p>
           <div className="flex items-center gap-7 max-w-[490px]">
             <div>
               <label
@@ -173,7 +173,7 @@ type InputProps = {
   inputType: string;
   inputPlaceholder?: string;
   inputValue: string | number | undefined;
-  onChange: (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => any;
+  onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => any;
   options?: any[];
 }
 
@@ -201,7 +201,6 @@ const Input = ({
         <div className="border border-ui-dark rounded-[18px] bg-white overflow-hidden min-w-[490px] w-[490px]">
           <select
             name={inputName}
-            aria-placeholder={inputPlaceholder}
             id={inputId ? inputId : inputName}
             required={inputRequired}
             value={inputValue}

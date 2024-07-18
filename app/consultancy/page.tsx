@@ -1,22 +1,12 @@
-'use client'
-
-
-import { TTab } from '@/components/common/type'
-import { Header, Form } from '@/components/Consultancy'
-import { useSearchParams } from 'next/navigation'
+import { FormPage } from '@/components/Consultancy'
+import { Suspense } from 'react'
 
 const Page = () => {
-  const searchParam = useSearchParams()
-  const tab = searchParam.get('tab') as TTab || 'buy'
   return (
     <div className="min-h-screen pt-[63px]">
-      <Header tab={tab} />
-
-      <section className="px-20">
-        <p className="my-[72px] text-[40px] font-bold text-ui-dark capitalize text-start">{tab}</p>
-
-        <Form />
-      </section>
+      <Suspense fallback={<p>Please wait...</p>}>
+        <FormPage />
+      </Suspense>
     </div>
   )
 }
