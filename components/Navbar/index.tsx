@@ -68,39 +68,41 @@ const Navbar = () => {
         <Button url="/consultancy" title="book consultancy" />
       </div>
 
-      <Popover
-        content={
-          <ul className="space-y-3">
-            {Nav.map((v, i) => (
-              <li key={i}>
+      <div className="md:hidden">
+        <Popover
+          content={
+            <ul className="space-y-3">
+              {Nav.map((v, i) => (
+                <li key={i}>
+                  <Link
+                    href={v.path}
+                    prefetch
+                    className={`min-w-56 text-sm flex justify-between flex-col items-center py-4 px-4 rounded-md transition-all hover:bg-ui-desc/15 text-ui-dark hover:text-ui-dark capitalize ${path === v.path ? " bg-ui-desc/15 font-semibold" : " bg-ui-desc/5 font-extralight"}`}
+                  >
+                    {v.title}
+                  </Link>
+                </li>
+              ))}
+              <li>
                 <Link
-                  href={v.path}
+                  href={'/consultancy'}
                   prefetch
-                  className={`min-w-56 text-sm flex justify-between flex-col items-center py-4 px-4 rounded-md transition-all hover:bg-ui-desc/15 text-ui-dark hover:text-ui-dark capitalize ${path === v.path ? " bg-ui-desc/15 font-semibold" : " bg-ui-desc/5 font-extralight"}`}
+                  className={`min-w-56 text-sm flex justify-between flex-col items-center py-4 px-4 rounded-md transition-all hover:bg-ui-desc/15 text-ui-dark hover:text-ui-dark capitalize ${path.startsWith('/consultancy') ? " bg-ui-desc/15 font-semibold" : " bg-ui-desc/5 font-extralight"}`}
                 >
-                  {v.title}
+                  book consultancy
                 </Link>
               </li>
-            ))}
-            <li>
-              <Link
-                href={'/consultancy'}
-                prefetch
-                className={`min-w-56 text-sm flex justify-between flex-col items-center py-4 px-4 rounded-md transition-all hover:bg-ui-desc/15 text-ui-dark hover:text-ui-dark capitalize ${path.startsWith('/consultancy') ? " bg-ui-desc/15 font-semibold" : " bg-ui-desc/5 font-extralight"}`}
-              >
-                book consultancy
-              </Link>
-            </li>
-          </ul>
-        }
-        trigger={'click'}
-        open={openPopMenu}
-        onOpenChange={handleOpenChange}
-      >
-        <button className="size-6">
-          <FaBars className={`${path === '/' ? 'text-white' : 'text-ui-dark'} size-full`} />
-        </button>
-      </Popover>
+            </ul>
+          }
+          trigger={'click'}
+          open={openPopMenu}
+          onOpenChange={handleOpenChange}
+        >
+          <button className="size-6">
+            <FaBars className={`${path === '/' ? 'text-white' : 'text-ui-dark'} size-full`} />
+          </button>
+        </Popover>
+      </div>
     </div>
   );
 };
