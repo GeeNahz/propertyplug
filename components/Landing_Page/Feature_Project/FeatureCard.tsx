@@ -62,13 +62,13 @@ const HomepageCard = ({ feature }: { feature: Props }) => {
   )
 };
 
-const PropertiespageCard = ({ feature }: { feature: Props }) => {
+const PropertyPageCard = ({ feature }: { feature: Props }) => {
   return (
     <>
-      <Image src={imgs} alt="" className="rounded-[32px]" />
+      <Image src={imgs} alt="" className="rounded-[24px] md:rounded-[32px]" />
 
       <div className="text-ui-dark font-light">
-        <div className="grid grid-cols-2 gap-y-[23px]">
+        <div className="grid grid-cols-2 gap-y-2 md:gap-y-[23px]">
           <small className="flex text-[11px] gap-1 items-center">
             <IoIosBed /> {feature.bed}{" "}
             <span className="text-red-500">Beds</span>
@@ -88,25 +88,25 @@ const PropertiespageCard = ({ feature }: { feature: Props }) => {
           </small>
         </div>
 
-        <div className="flat-price !border-black">
-          <Divider className="!border-gray-400 !mb-3"/>
+        <div className="flat-price">
+          <Divider className="!border-gray-400 !mb-1 md:!mb-3"/>
           <div className="flex justify-between px-2">
             <div className="flex justify-between items-center gap-2">
-              <p className="flex flex-col font-light text-sm capitalize">
+              <p className="flex flex-col font-light text-xs md:text-sm capitalize">
                 {feature.flat} Bedroom Flat
               </p>
             </div>
 
-            <h4 className="font-semibold text-lg">
+            <h4 className="font-semibold text-base md:text-lg">
               <span className="flex items-center">
                 <FaNairaSign size={14} /> &nbsp; {feature.price}
               </span>
             </h4>
           </div>
-          <Divider className="!border-gray-400 !mt-3" />
+          <Divider className="!border-gray-400 !mt-1 md:!mt-3" />
         </div>
 
-        <button className="py-[15px] px-[30px] rounded-full text-white font-medium capitalize text-xs bg-red-500 hover:bg-red-500/95 w-max mx-auto">
+        <button className="py-3 md:py-[15px] px-[30px] rounded-full text-white font-medium capitalize text-xs bg-red-500 hover:bg-red-500/95 w-max mx-auto">
           view
         </button>
       </div>
@@ -115,7 +115,7 @@ const PropertiespageCard = ({ feature }: { feature: Props }) => {
 };
 
 const FeatureCard = ({ feature }: { feature: Props }) => {
-  if (feature.alignJustify) return <PropertiespageCard feature={feature} />
+  if (feature.alignJustify) return <PropertyPageCard feature={feature} />
 
   return <HomepageCard feature={feature} />
 };

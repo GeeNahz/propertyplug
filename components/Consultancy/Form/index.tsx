@@ -38,11 +38,11 @@ const FormPage = () => {
   }
 
   return (
-    <div className="mb-60">
+    <div className="mb-32 md:mb-60">
       <Header tab={tab} />
 
-      <section className="px-20">
-        <p className="my-[72px] text-[40px] font-bold text-ui-dark capitalize text-start">{tab}</p>
+      <section className="px-7 md:px-20">
+        <p className="my-10 md:my-[72px] text-2xl md:text-[40px] font-bold text-ui-dark capitalize text-start">{tab}</p>
 
         <Form formData={formData} onChange={handleChange} handleSubmit={handleSubmit} />
       </section>

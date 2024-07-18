@@ -3,7 +3,7 @@ import HeaderImage from "./components/HeaderImage"
 
 const Header = () => {
   return (
-    <section className="mb-28">
+    <section className="mb-12 md:mb-28">
       <HeaderText />
 
       <HeaderImage />

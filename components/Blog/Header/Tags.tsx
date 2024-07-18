@@ -19,15 +19,19 @@ const Tags = ({ tags, selectedTags, setSelectedTags }: Props) => {
   return (
     <ConfigProvider
       theme={{
-        token: {
-          colorBorder: "#FF1F1E",
-          colorPrimary: "#FF1F1E",
-        },
+        components: {
+          Tag: {
+            colorBorderBg: "#FF1F1E",
+            colorPrimary: "#FF1F1E",
+            colorPrimaryHover: "#FF1F1E",
+            colorPrimaryBg: "#FF1F1E",
+          },
+        }
       }}
     >
       {tags.map<React.ReactNode>((tag) => (
         <Tag.CheckableTag
-          className="capitalize !rounded-full text-sm !px-3 !py-1"
+          className="capitalize !rounded-full text-xs md:text-sm !px-3 !py-1 !mb-4 md:!mb-0"
           key={tag}
           checked={selectedTags.includes(tag)}
           onChange={(checked) => handleChange(tag, checked)}

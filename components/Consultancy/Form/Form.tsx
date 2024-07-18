@@ -14,9 +14,9 @@ const Form = ({ formData, onChange, handleSubmit }: Props) => {
 
   return (
     <form onSubmit={(e) => handleSubmit(e)}>
-      <div className="flex justify-between text-ui-dark mb-10">
-        <div className="left-fields space-y-10">
-          <p className="text-2xl font-medium">What are you looking for?</p>
+      <div className="flex flex-col md:flex-row justify-between text-ui-dark mb-5 md:mb-10">
+        <div className="left-fields space-y-5 md:space-y-10 mb-10 md:mb-0">
+          <p className="text-lg md:text-2xl font-medium">What are you looking for?</p>
 
           <Input
             inputType="select"
@@ -77,10 +77,10 @@ const Form = ({ formData, onChange, handleSubmit }: Props) => {
         </div>
 
         {/* <Divider type="vertical" className="h-full" /> */}
-        <div className="min-h-full w-0 border-r border-ui-desc"></div>
+        <div className="hidden md:block min-h-full w-0 border-r border-ui-desc"></div>
 
-        <div className="right-fields space-y-10">
-          <p className="text-2xl font-medium">We&apos;d like to get to know you better</p>
+        <div className="right-fields space-y-5 md:space-y-10">
+          <p className="text-lg md:text-2xl font-medium">We&apos;d like to get to know you better</p>
 
           <Input
             inputType="text"
@@ -115,12 +115,12 @@ const Form = ({ formData, onChange, handleSubmit }: Props) => {
             onChange={onChange}
           />
 
-          <p className="text-2xl font-medium mt-16">What&apos;s your budget?</p>
+          <p className="text-2xl font-medium mt-10 md:mt-16">What&apos;s your budget?</p>
           <div className="flex items-center gap-7 max-w-[490px]">
             <div>
               <label
                 htmlFor="min"
-                className="text-ui-desc capitalize font-medium flex items-center gap-2 mb-4"
+                className="text-ui-desc capitalize font-medium flex items-center gap-2 mb-2 md:mb-4"
               >Minimum</label>
               <div className="border border-ui-dark rounded-[18px] bg-white overflow-hidden">
                 <input
@@ -138,7 +138,7 @@ const Form = ({ formData, onChange, handleSubmit }: Props) => {
             <div>
               <label
                 htmlFor="max"
-                className="text-ui-desc capitalize font-medium flex items-center gap-2 mb-4"
+                className="text-ui-desc capitalize font-medium flex items-center gap-2 mb-2 md:mb-4"
               >Maximum</label>
               <div className="border border-ui-dark rounded-[18px] bg-white overflow-hidden">
                 <input
@@ -156,7 +156,7 @@ const Form = ({ formData, onChange, handleSubmit }: Props) => {
         </div>
       </div>
 
-      <button className="bg-ui-dark py-6 px-[32px] text-center font-medium rounded-[20px] text-white w-[490px]" type="submit">Confirm/Proceed</button>
+      <button className="bg-ui-dark py-4 md:py-6 px-4 md:px-[32px] text-center font-medium rounded-[20px] text-white w-full md:w-[490px]" type="submit">Confirm/Proceed</button>
     </form>
   )
 }

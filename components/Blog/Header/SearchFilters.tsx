@@ -11,8 +11,8 @@ const SearchFilters = () => {
   const [selectedTags, setSelectedTags] = useState<string[]>([tags[0]]);
 
   return (
-    <div className="flex justify-between items-center">
-      <div className="search">
+    <div className="flex flex-col md:flex-row gap-4 md:gap-0 justify-between items-center">
+      <div className="search w-full">
         <Search text={searchArg} setText={setSearchArg} />
       </div>
 

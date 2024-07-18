@@ -10,7 +10,7 @@ export const Card = ({title, img, testimony}:{
     testimony:string
 }) => {
   return (
-    <div className="relative overflow-x-hidden p-4 h-[300px] rounded-[32px] w-[350px] bg-black">
+    <div className="relative overflow-x-hidden p-0 md:p-4 h-[300px] rounded-[32px] w-[280px] md:w-[350px] bg-black">
       <Image
         src={img}
         alt="testomnial"

@@ -4,7 +4,7 @@ import { Suspense } from 'react'
 
 const Page = () => {
   return (
-    <div className="min-h-screen pt-[63px]">
+    <div className="min-h-screen pt-10 md:pt-[63px]">
       <Suspense fallback={<Loading />}>
         <FormPage />
       </Suspense>

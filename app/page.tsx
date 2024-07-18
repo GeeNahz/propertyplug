@@ -17,7 +17,7 @@ export default function Home() {
         <FeatureProject />
       </div>
       <MakeUsSpecial />
-      <div className="w-full px-20 mt-8">
+      <div className="w-full px-7 md:px-20 mt-8">
         <Testimonial />
       </div>
     </main>
