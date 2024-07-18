@@ -83,6 +83,15 @@ const Navbar = () => {
                 </Link>
               </li>
             ))}
+            <li>
+              <Link
+                href={'/consultancy'}
+                prefetch
+                className={`min-w-56 text-sm flex justify-between flex-col items-center py-4 px-4 rounded-md transition-all hover:bg-ui-desc/15 text-ui-dark hover:text-ui-dark capitalize ${path.startsWith('/consultancy') ? " bg-ui-desc/15 font-semibold" : " bg-ui-desc/5 font-extralight"}`}
+              >
+                book consultancy
+              </Link>
+            </li>
           </ul>
         }
         trigger={'click'}
