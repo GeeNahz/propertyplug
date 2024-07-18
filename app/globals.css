@@ -87,6 +87,18 @@ a:active {
 
 .grid_wrapper .tall {
   grid-row: span 2;
+  grid-column: span 1;
+}
+
+@media screen and (max-width: 768px) {
+  .grid_wrapper .big {
+    grid-column: span 2;
+  }
+
+  .grid_wrapper .tall {
+    grid-column: span 2;
+    grid-row: span 1;
+  }
 }
 
 .car {
