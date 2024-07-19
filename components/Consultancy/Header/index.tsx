@@ -16,7 +16,7 @@ const Header = ({ tab }: Prop) => {
 
   function linkClass(tabName: TTab) {
     return clsx(
-      "capitalize py-[10px] px-8 rounded-full hover:bg-ui-red/10 transition-colors",
+      "capitalize py-[8px] md:py-[10px] px-5 md:px-8 rounded-full hover:bg-ui-red/10 transition-colors",
       { "bg-ui-red text-white font-medium hover:bg-ui-red/100": tab === tabName }
     )
   }
