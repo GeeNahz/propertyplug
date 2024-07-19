@@ -59,3 +59,11 @@ export type TConsultancyForm =  {
   min: number;
   max: number;
 }
+
+export type TFormDataBlog = {
+  id: string | number;
+  image: string | StaticImageData;
+  title: string;
+  body: string;
+  date: string;
+}
