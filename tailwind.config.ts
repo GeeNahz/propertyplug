@@ -36,7 +36,9 @@ const config = {
         "ui-dark": "rgb(var(--color-dark) / <alpha-value>)",
         "ui-red": "rgb(var(--color-red) / <alpha-value>)",
         "ui-desc": "rgb(var(--color-desc-text) / <alpha-value>)",
-
+        "ui-dash-dark": "rgb(var(--color-dashboard-dark) / <alpha-value>)",
+        "ui-dash-dark-soft": "rgb(var(--color-dashboard-dark-soft) / <alpha-value>)",
+        "ui-dash-gray": "rgb(var(--color-dashboard-gray) / <alpha-value>)",
       },
     },
   },

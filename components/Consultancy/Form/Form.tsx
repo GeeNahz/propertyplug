@@ -2,12 +2,13 @@ import { TConsultancyForm } from "@/components/common/type"
 
 
 type Props = {
+  tab: string;
   formData: TConsultancyForm;
   onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
 }
 
-const Form = ({ formData, onChange, handleSubmit }: Props) => {
+const Form = ({ formData, tab, onChange, handleSubmit }: Props) => {
 
 
   const stateOptions = ['Abia', 'Adamawa', 'Akwa Ibom', 'Anambara', 'Bauchi', 'Bayelsa',]
@@ -16,7 +17,7 @@ const Form = ({ formData, onChange, handleSubmit }: Props) => {
     <form onSubmit={(e) => handleSubmit(e)}>
       <div className="flex flex-col md:flex-row justify-between text-ui-dark mb-5 md:mb-10">
         <div className="left-fields space-y-5 md:space-y-10 mb-10 md:mb-0">
-          <p className="text-lg md:text-2xl font-medium">What are you looking for?</p>
+          <p className="text-lg md:text-2xl font-medium">What are you looking to {tab}?</p>
 
           <Input
             inputType="select"

@@ -3,14 +3,11 @@
 
 import { useState } from "react"
 import Form from "./Form"
-import { useSearchParams } from 'next/navigation'
-import Header from "../Header"
 import { TTab } from "@/components/common/type"
 
-const FormPage = () => {
-  const searchParam = useSearchParams()
-  const tab = searchParam.get('tab') as TTab || 'buy'
+type Props = { tab: TTab }
 
+const FormPage = ({ tab }: Props) => {
   const initialValue = {
     state: '',
     location: '',
@@ -39,12 +36,11 @@ const FormPage = () => {
 
   return (
     <div className="mb-32 md:mb-60">
-      <Header tab={tab} />
 
       <section className="px-7 md:px-20">
         <p className="my-10 md:my-[72px] text-2xl md:text-[40px] font-bold text-ui-dark capitalize text-start">{tab}</p>
 
-        <Form formData={formData} onChange={handleChange} handleSubmit={handleSubmit} />
+        <Form tab={tab} formData={formData} onChange={handleChange} handleSubmit={handleSubmit} />
       </section>
     </div>
   )

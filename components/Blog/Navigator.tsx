@@ -6,9 +6,10 @@ import { BreadcrumbItemType, BreadcrumbSeparatorType } from "antd/es/breadcrumb/
 
 type Props = {
   items?: Partial<BreadcrumbItemType & BreadcrumbSeparatorType>[];
+  title?: string;
 };
 
-const BreadCrumbs = ({ items }: Props) => {
+const BreadCrumbs = ({ title, items }: Props) => {
   function itemRender(currentRoute: any, params: any, items: any, paths: any) {
     const isLast = currentRoute?.path === items[items.length - 1]?.path;
     const isFirst = currentRoute?.path === items[0]?.path;
@@ -28,7 +29,7 @@ const BreadCrumbs = ({ items }: Props) => {
 
   return (
     <section className="flex justify-between items-center py-4 px-20 bg-[#FCFCFC] backdrop-blur-sm">
-      <p className="font-semibold text-sm text-opacity-60 text-gray-500">Blog</p>
+      <p className="font-semibold text-sm text-opacity-60 text-gray-500">{title && title}</p>
 
       <Breadcrumb
         itemRender={itemRender}

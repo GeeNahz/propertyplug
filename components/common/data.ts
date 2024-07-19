@@ -193,10 +193,10 @@ export const Nav:NavLink = [
     title:'properties',
     path:'/property'
   },
-  {
-    title:'services',
-    path:'/services'
-  },
+  // {
+  //   title:'services',
+  //   path:'/services'
+  // },
 ]
 
 

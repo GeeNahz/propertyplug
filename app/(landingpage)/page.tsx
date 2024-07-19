@@ -5,7 +5,7 @@ import {
   MakeUsSpecial,
   OurService,
   Testimonial,
-} from "../components/Landing_Page";
+} from "@/components/Landing_Page";
 
 export default function Home() {
   return (
@@ -16,7 +16,9 @@ export default function Home() {
         <OurService />
         <FeatureProject />
       </div>
-      <MakeUsSpecial />
+      <div className="hidden md:block">
+        <MakeUsSpecial />
+      </div>
       <div className="w-full px-7 md:px-20 mt-8">
         <Testimonial />
       </div>
