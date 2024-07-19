@@ -6,9 +6,10 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
       <div className="bg-ui-primary-soft min-h-full h-full" style={{ flex: 1 }}>
         <Sidebar />
       </div>
-      <div className="px-5" style={{ flex: 4 }}>
+
+      <div className="px-5 h-full flex flex-col" style={{ flex: 4 }}>
         <Navbar />
-        <div className="py-5">
+        <div className="py-5 h-full overflow-y-scroll">
           {children}
         </div>
       </div>
