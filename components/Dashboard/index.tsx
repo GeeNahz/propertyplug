@@ -3,6 +3,7 @@ import Sidebar from "./sidebar/Sidebar";
 import Card from "./card/Card";
 import Header from "./blog/header";
 import Tiles from "./blog/tiles/Tiles";
+import Form from "./form/Form";
 
 
 export {
@@ -11,4 +12,5 @@ export {
   Card,
   Header,
   Tiles,
+  Form,
 }
