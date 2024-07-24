@@ -3,51 +3,51 @@ import { IconBaseProps, IconType } from "react-icons"
 
 export type GalleryWithID = {
   id: number | string;
-  time:string;
-  title:string;
-  img:StaticImageData;
-  grid:string;
+  time: string;
+  title: string;
+  img: StaticImageData;
+  grid: string;
 }
 
 export type Gallery = {
-    time:string,
-    title:string,
-    img:StaticImageData,
-    grid:string
-  }[]
+  time: string,
+  title: string,
+  img: StaticImageData,
+  grid: string
+}[]
 
-  
- export type Feature={
-    bed:number,
-    jacuzzi:boolean,
-    pool:boolean,
-    loc:string,
-    flat:number,
-    price:string
-  }[]
 
-  export type Testimonial = {
-    title:string,
-    testimony:string,
-    img:StaticImageData
-  }[]
+export type Feature = {
+  bed: number,
+  jacuzzi: boolean,
+  pool: boolean,
+  loc: string,
+  flat: number,
+  price: string
+}[]
 
-  export type NavLink={
-    title:string,
-    path:string
-  }[] 
+export type Testimonial = {
+  title: string,
+  testimony: string,
+  img: StaticImageData
+}[]
 
-  export type Social = {
-    title: string,
-    url:string,
-    icon:React.ReactElement
-  }[]
+export type NavLink = {
+  title: string,
+  path: string
+}[]
+
+export type Social = {
+  title: string,
+  url: string,
+  icon: React.ReactElement
+}[]
 
 export type BreadCrumbType = React.ReactNode | string;
 
 export type TTab = 'buy' | 'sell' | 'rent';
 
-export type TConsultancyForm =  {
+export type TConsultancyForm = {
   state: string;
   location: string;
   propertyType: string;
@@ -66,4 +66,24 @@ export type TFormDataBlog = {
   title: string;
   body: string;
   date: string;
+}
+
+type TChartData = { label: string; value: number; }
+export type TDataset = { label: string; data: TChartData[] }
+export type TChart = {
+  label: string,
+  datasets: TDataset[]
+}
+
+
+export type TBlogPost = {
+  id: string;
+  title: string;
+  backgroundImage: string;
+  blogContent: string;
+  createdBy: string;
+  createdAt: string;
+  tags: string;
+  publish: boolean;
+  thumbnail: string;
 }
