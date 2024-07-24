@@ -1,15 +1,23 @@
-import { Header, Tiles } from "@/components/Dashboard";
+import { TBlogPost } from "@/components/common/type";
+import { Tiles } from "@/components/Dashboard";
+import { BlogsHeader } from "@/components/Dashboard/blog/header";
+import { getBlogs } from "@/lib/actions";
+import { Suspense } from "react";
 
-export default function Page() {
+export default async function Page() {
+  const blogs = await getBlogs()
+
   return (
-    <div className="flex flex-col gap-8">
+    <div className="flex flex-col">
       <div className="header">
-        <Header />
+        <BlogsHeader />
       </div>
 
-      <div className="main">
-        <Tiles />
-      </div>
+      <Suspense fallback={<p>Loading...</p>}>
+        <div className="main">
+          <Tiles posts={blogs.result as TBlogPost[]} />
+        </div>
+      </Suspense>
     </div>
   )
 }

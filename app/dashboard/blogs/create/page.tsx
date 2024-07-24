@@ -1,18 +1,12 @@
-import { Form } from "@/components/Dashboard"
-import { TFormDataBlog } from "@/components/common/type"
+import { auth } from "@/auth"
+import { CreateForm } from "@/components/Dashboard"
 
-const data: Partial<TFormDataBlog> = {
-  title: '',
-  body: '',
-  image: '',
-  date: ''.toString(),
-}
+export default async function Page() {
+  const session = await auth()
 
-export default function Page() {
   return (
-    <div>
-      Create form page
-      <Form data={data} />
+    <div className="flex flex-col min-h-full">
+      <CreateForm user={session?.user?.name}/>
     </div>
   )
 }

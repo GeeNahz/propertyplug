@@ -13,7 +13,7 @@ export default function Page({ params }: { params: { id: string | number } }) {
   return (
     <div>
       Create form page
-      <Form data={data} />
+      {/* <Form data={data} /> */}
     </div>
   )
 }

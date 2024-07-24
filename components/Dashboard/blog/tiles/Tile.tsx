@@ -1,28 +1,32 @@
-import Image, { StaticImageData } from "next/image";
+import { TBlogPost } from "@/components/common/type";
+import ContentParser from "@/components/editor/content-parser";
+import Image from "next/image";
 import { MdDeleteForever, MdEditSquare } from "react-icons/md";
 
 type Props = {
-  post: { id: number | string; title: string; body: string; date: string; img: string | StaticImageData; }
+  post: TBlogPost;
 }
 
 export default function Tile({ post }: Props) {
   return (
     <div className="w-full p-4 rounded-[20px] bg-white flex gap-6 items-center">
-      <div className="rounded-[20px] overflow-hidden img min-w-max w-[220px] h-[180px]">
-        <Image src={post.img} alt="" width={200} height={200} className="size-full object-cover object-center" />
+      <div className="rounded-[20px] overflow-hidden img min-w-[288px] w-[220px] h-[180px]">
+        <Image src={post.backgroundImage} alt="" width={200} height={200} className="size-full object-cover object-center" />
       </div>
 
-      <div className="content flex flex-col gap-4">
+      <div className="content flex flex-col gap-4 flex-auto">
         <div className="title">
           <p className="font-semibold capitalize text-lg">{post.title}</p>
 
-          <small className="text-xs text-ui-desc">{post.date}</small>
+          <small className="text-xs text-ui-desc">{post.createdAt}</small>
         </div>
 
         <div className="w-2/4 border-b border-ui-dark/20"></div>
 
-        <div className="body text-xs text-ui-desc text-start w-full">
-          <p>{post.body}</p>
+        <div className="article body !text-xs text-ui-desc text-start w-full">
+          <ContentParser codeString={`${post.blogContent.substring(0, 250)}...`} />
+
+          {/* <p>{post.blogContent.substring(0, 400)}...</p> */}
         </div>
 
       </div>
