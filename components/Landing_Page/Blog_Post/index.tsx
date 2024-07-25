@@ -4,8 +4,11 @@ import imgs from "./images/pp2.jpg";
 import Image from "next/image";
 import { Button } from "@/components/common/button";
 import { blogGallery } from "@/components/common/data";
+import { getBlogs } from "@/lib/actions";
 
-const Blog = () => {
+const Blog = async () => {
+  const data = await getBlogs()
+  console.log('RES', data)
   // tall and big for grid structure
 
   return (
