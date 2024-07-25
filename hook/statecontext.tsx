@@ -13,4 +13,4 @@ export const Statecontext = ({children}:{children:React.ReactNode}) => {
   )
 }
 
-export const useStateContext = () => React.use(Context) || []
+export const useStateContext = () => React.use(Context) || null
