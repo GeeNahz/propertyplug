@@ -6,9 +6,10 @@ import Link from "next/link"
 
 type ButtonProp = {
   title: string,
-  url?: string
+  url?: string,
+  bg?: string
 }
-export const Button = ({ title, url }: ButtonProp) => {
+export const Button = ({ title, url, bg}: ButtonProp) => {
   const { setModal } = useStateContext()
   const isConsultancy = title === 'book consultancy';
 
@@ -22,11 +23,12 @@ export const Button = ({ title, url }: ButtonProp) => {
   const path = usePathname();
 
   const btnClass = clsx(
-    "py-2 px-3 md:p-3 rounded-[32px] font-medium text-xs capitalize w-max",
+    `py-2 px-3 md:p-3 rounded-[32px] font-medium text-xs capitalize w-max bg-${bg}`,
     {
       "bg-white text-ui-dark": (path === "/" && isConsultancy),
       "bg-ui-dark text-white": ((path !== "/") && isConsultancy),
       "bg-white": ((path !== "/" || path === "/") && !isConsultancy),
+      'bg-[#EF4444] text-white': ((path === "/") && bg)
     },
   );
 

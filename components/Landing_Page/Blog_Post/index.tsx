@@ -4,6 +4,7 @@ import imgs from "./images/pp2.jpg";
 import Image from "next/image";
 import { Button } from "@/components/common/button";
 import { blogGallery } from "@/components/common/data";
+import Link from "next/link";
 
 const Blog = () => {
   // tall and big for grid structure
@@ -42,6 +43,9 @@ const Blog = () => {
             </div>
           );
         })}
+      </div>
+      <div className="flex justify-center w-full mt-4">
+        <Button title="view more" url={`/blog`} bg='#EF4444'/>
       </div>
     </section>
   );
