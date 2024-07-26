@@ -14,11 +14,15 @@ import {
 
 const Footer = () => {
   return (
-    <footer className="bg-[#0B2831] py-12 px-7 md:px-20 self-end w-full">
-      <div className="flex gap-4 md:gap-0 justify-between items-start md:items-center">
-        <Link href='/'><Image src={Logo} alt="logo" /></Link>
-
-        <div className="flex flex-col gap-4 text-white/70">
+    <footer className="bg-[#0B2831] py-8 px-7 md:px-20 self-end w-full">
+      <Link href="/" className="w-[80px] max-w-max md:hidden">
+        <Image src={Logo} alt="logo" className="" />
+      </Link>
+      <div className="flex gap-4 md:gap-12  items-start md:items-center">
+        <Link href="/" className="w-[100px] max-md:hidden">
+          <Image src={Logo} alt="logo" className="" />
+        </Link>
+        {/* <div className="flex flex-col gap-4 text-white/70">
           <h5 className=" text-right">Stay Informed:</h5>
 
           <h5 className="text-right text-sm md:text-base">
@@ -33,76 +37,135 @@ const Footer = () => {
 
             <LuSendHorizonal className="absolute top-4 right-5" />
           </div>
-        </div>
-      </div>
+        </div> */}
+        <div className="w-full flex flex-col md:flex-row mt-12">
+          <div className="flex-1 flex flex-col gap-4 max-md:gap-1 w-full md:w-max mb-6 md:mb-0">
+            <h6 className="text-white font-semibold text-sm">Pages</h6>
 
-      <div className="w-full flex flex-col md:flex-row mt-12 justify-between">
-        <div className="flex-1 flex flex-col gap-4 w-full md:w-max mb-6 md:mb-0">
-          <h6 className="text-white font-semibold text-sm">Pages</h6>
-
-          <nav className="flex flex-wrap md:flex-nowrap text-white/70 capitalize text-xs gap-2 md:gap-4">
-            {Nav.map((v, i) => (
-              <Link key={i} href={v.path} className="transition-all hover:text-white/100">
-                {v.title} <span className="ml-2 md:ml-4">|</span>
+            <nav className="flex flex-col flex-wrap md:flex-nowrap text-white/70 capitalize text-xs gap-2 md:gap-4">
+              {Nav.map((v, i) => (
+                <Link
+                  key={i}
+                  href={v.path}
+                  className="transition-all hover:text-white/100"
+                >
+                  {v.title}
+                </Link>
+              ))}
+              <Link href="/" className="transition-all hover:text-white/100">
+                request
               </Link>
-            ))}
-            <Link href="/" className="transition-all hover:text-white/100">request</Link>
-          </nav>
+            </nav>
+          </div>
+
+          <div className="flex-1 flex flex-col gap-4 max-md:gap-1 w-full md:w-max mb-6 md:mb-0">
+            <h6 className="text-white font-semibold text-sm">Real Estate</h6>
+
+            <nav className="flex flex-col flex-wrap md:flex-nowrap text-white/70 capitalize text-xs gap-2 md:gap-4">
+              {Estate.map((v, i) => (
+                <Link
+                  key={i}
+                  href="#"
+                  className="transition-all hover:text-white/100"
+                >
+                  {v}
+                </Link>
+              ))}
+            </nav>
+          </div>
+
+          <div className="flex-1 flex flex-col space-y-4 max-md:space-y-1 gap-4 max-md:gap-0 md:gap-0 items-end w-full">
+            <h6 className="text-white font-semibold text-sm self-start">
+              Contact Us
+            </h6>
+
+            <nav className="flex flex-col flex-wrap md:flex-nowrap text-white/70 capitalize text-xs gap-2 md:gap-4 self-start">
+              {[
+                "+234 912 460 4075",
+                "+234 903 081 0919",
+                "info@propertyplugng.com",
+              ].map((v, i) => (
+                <Link
+                  href={`${
+                    v.includes("info") ? "mailto:info@propertyplugng.com" : "#"
+                  }`}
+                  key={i}
+                  className={`transition-all hover:text-white/100 whitespace-nowrap ${v.includes("info") && 'underline font-semibold'}`}
+                >
+                  {v}
+                </Link>
+              ))}
+            </nav>
+          </div>
         </div>
 
-        <div className="flex-1 flex flex-col gap-4 md:gap-0 items-end justify-between w-full">
+        <div className="flex flex-col items-center mt-12 self-start gap-4 max-md:gap-2">
           <h6 className="text-white font-semibold text-sm self-start">
-            Contact Us
+            Socials
           </h6>
+          <div className="flex max-md:hidden items-center gap-8">
+            {SocialLinks.map((v, i) => {
+              return (
+                <Link
+                  href={v.url}
+                  key={i}
+                  className="capitalize transition-all text-white/70 hover:text-white/100 text-xs"
+                >
+                  {v.title}
+                </Link>
+              );
+            })}
+          </div>
 
-          <nav className="flex flex-wrap md:flex-nowrap text-white/70 capitalize text-xs gap-2 md:gap-4 self-start">
-            {[
-              "+234 912 460 4075",
-              "+234 903 081 0919",
-              "info@propertyplugng.com",
-            ].map((v, i) => (
-              <Link href={"#"} key={i} className="transition-all hover:text-white/100 whitespace-nowrap">
-                {v} {i != 2 && <span className="ml-2 md:ml-4">|</span>}
-              </Link>
-            ))}
-          </nav>
+          <div className="flex items-center gap-8 self-start max-md:flex-col max-md:gap-2 max-md:items-start">
+            {SocialLinks.map((v, i) => {
+              return (
+                <Link
+                  href={v.url}
+                  key={i}
+                  className="bg-white h-8 w-8 p-2 rounded-full"
+                >
+                  {v.icon}
+                </Link>
+              );
+            })}
+          </div>
         </div>
       </div>
+      
+      {/* newletter */}
+      <div className=" w--full flex flex-col-reverse gap-4 text-white/70">
+        <h5 className="max-md:text-left text-right text-xs max-sm:text-[11px] font-extralight">
+        <span className="font-semibold">Stay Informed:</span> Subscribe to Our Newsletter for Regular Updates.
+        </h5>
 
-      <div className="flex flex-col md:flex-row items-center mt-12 justify-center gap-8">
-        <div className="flex items-center gap-8">
-          {SocialLinks.map((v, i) => {
-            return (
-              <Link href={v.url} key={i} className="capitalize transition-all text-white/70 hover:text-white/100 text-xs">
-                {v.title}
-              </Link>
-            );
-          })}
-        </div>
+        <div className="h-max w-full md:w-max max-sm:mt-6  relative self-end justify-self-end">
+          <input
+            placeholder="input your email address here"
+            className="rounded-[20px] border w-full md:w-[350px] px-4 py-3 bg-transparent placeholder:text-xs placeholder:capitalize placeholder:font-medium"
+          />
 
-        <div className="flex items-center gap-8">
-          {SocialLinks.map((v, i) => {
-            return (
-              <Link
-                href={v.url}
-                key={i}
-                className="bg-white h-8 w-8 p-2 rounded-full"
-              >
-                {v.icon}
-              </Link>
-            );
-          })}
+          <LuSendHorizonal className="absolute top-4 right-5" />
         </div>
       </div>
 
       <div className="mt-12 flex flex-col md:flex-row gap-4 md:gap-0 justify-between items-center py-3 border-t border-white/70">
-          <small className="text-xs text-white/70">&copy; {new Date().getFullYear()} Property Plug, All Rights Reserved</small>
-          <div className="flex justify-between items-center gap-7">
-            <small className="transition-all text-white/70 hover:text-white/100 text-xs capitalize">support</small>
-            <small className="transition-all text-white/70 hover:text-white/100 text-xs capitalize">privacy policy</small>
-            <small className="transition-all text-white/70 hover:text-white/100 text-xs capitalize">terms of use</small>
-          </div>
+        <small className="text-xs text-white/70">
+          &copy; {new Date().getFullYear()} Property Plug, All Rights Reserved
+        </small>
+        <div className="flex justify-between items-center gap-7">
+          <small className="transition-all text-white/70 hover:text-white/100 text-xs capitalize">
+            support
+          </small>
+          <small className="transition-all text-white/70 hover:text-white/100 text-xs capitalize">
+            privacy policy
+          </small>
+          <small className="transition-all text-white/70 hover:text-white/100 text-xs capitalize">
+            terms of use
+          </small>
+        </div>
       </div>
+
     </footer>
   );
 };
@@ -130,4 +193,12 @@ const SocialLinks: Social = [
     icon: <FaFacebookF />,
     url: "#",
   },
+];
+
+const Estate = [
+  "Property for sale in Abuja",
+  "Land for sale in Abuja",
+  "Sell Your Property",
+  "Rent out your property",
+  "Join our investment club",
 ];

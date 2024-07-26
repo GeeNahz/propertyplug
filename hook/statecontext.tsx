@@ -1,11 +1,11 @@
 'use client'
-import React from 'react'
+import {createContext, use, useState} from 'react'
 
-const Context = React.createContext<any>(null)
+const Context = createContext<any>(null)
 
 
 export const Statecontext = ({children}:{children:React.ReactNode}) => {
-    const [modal, setModal] = React.useState(false)
+    const [modal, setModal] = useState(false)
   return (
     <Context.Provider value={{modal, setModal}}>
         {children}
@@ -13,4 +13,4 @@ export const Statecontext = ({children}:{children:React.ReactNode}) => {
   )
 }
 
-export const useStateContext = () => React.use(Context) || null
+export const useStateContext = () => use(Context) || null
