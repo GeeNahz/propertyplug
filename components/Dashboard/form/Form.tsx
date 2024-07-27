@@ -1,10 +1,11 @@
 import { ChangeEvent } from "react";
 import ImageUpload from "./ImageUpload";
-import { TBlog } from "@/lib/zod";
 import NovelEditor from "@/components/editor/novel-editor";
+import { TBlogPost } from "@/components/common/type";
+import { JSONContent } from "@tiptap/core";
 
 type Props = {
-  formData: TBlog;
+  formData: Partial<TBlogPost>;
   setFormData: React.Dispatch<React.SetStateAction<Props['formData']>>;
   action?: (formData: FormData) => void;
   children?: React.ReactNode;
@@ -73,7 +74,7 @@ export default function Form({ formData, setFormData, action, children }: Props)
         <Label value="content" id="blogContent" isRequired />
 
         <div className="border border-ui-dark rounded-lg min-h-44">
-          <NovelEditor setContent={setContent} />
+          <NovelEditor content={([formData.blogContent] as unknown) as JSONContent[]} setContent={setContent} />
         </div>
 
         <input

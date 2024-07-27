@@ -1,15 +1,13 @@
 'use client'
 
 import { useActionState, useEffect, useState } from "react";
-import { TFormDataBlog } from "@/components/common/type";
+import { TBlogPost } from "@/components/common/type";
 import { BlogHeader } from "../blog/header";
 import Rightbar from "../rightbar/Rightbar";
 import Form from "./Form";
 import Button from "./Button";
 
-import { useStateContext } from "@/hook/statecontext";
 import { notification } from "antd";
-import { TBlog } from "@/lib/zod";
 import { createBlog } from "@/lib/actions";
 import ContentParser from "@/components/editor/content-parser";
 import Image from "next/image";
@@ -17,7 +15,7 @@ import Image from "next/image";
 
 type NotificationType = 'success' | 'info' | 'warning' | 'error';
 
-const initialData: TBlog = {
+const initialData: Partial<TBlogPost> = {
   title: '',
   blogContent: '',
   backgroundImage: new File([new Blob], ''),
@@ -30,14 +28,14 @@ type Props = {
 }
 
 export default function CreateForm({ user }: Props) {
-  const [formData, setFormData] = useState<TBlog>({ ...initialData, createdBy: user as string })
+  const [formData, setFormData] = useState<Partial<TBlogPost>>({ ...initialData, createdBy: user as string })
   const [imagePreview, setImagePreview] = useState<string | null>(null)
 
   useEffect(() => {
-    if (formData.backgroundImage && formData.backgroundImage?.size > 0) {
+    if (formData.backgroundImage && (formData.backgroundImage as File)?.size > 0) {
       // Preview url from FileReader
       const reader = new FileReader()
-      reader.readAsDataURL(formData.backgroundImage)
+      reader.readAsDataURL(formData.backgroundImage as File)
       reader.onload = (e) => setImagePreview(e.target?.result as string)
     }
   }, [formData.backgroundImage])
