@@ -44,9 +44,8 @@ const Blog = async () => {
           );
         })}
       </div>
-
-      <div className="my-5 flex justify-center">
-        <Link className="bg-ui-red py-2 px-4 size-fit rounded-full hover:bg-ui-red/70 transition-colors text-white font-semibold text-xs md:text-sm" href={'/blog'}>View more</Link>
+      <div className="flex justify-center w-full mt-4">
+        <Button title="view more" url={`/blog`} bg='#EF4444'/>
       </div>
     </section>
   );
