@@ -52,11 +52,11 @@ const Footer = () => {
                   {v.title}
                 </Link>
               ))}
-            <Link href="/" className="transition-all hover:text-white/100">
-            request <span className="ml-2 md:ml-4">|</span>
-            </Link>
+              <Link href="/" className="transition-all hover:text-white/100">
+                request
+              </Link>
 
-            <Link href="/login" className="transition-all hover:text-white/100">login</Link>
+              <Link href="/login" className="transition-all hover:text-white/100">login</Link>
             </nav>
           </div>
 
@@ -88,9 +88,8 @@ const Footer = () => {
                 "info@propertyplugng.com",
               ].map((v, i) => (
                 <Link
-                  href={`${
-                    v.includes("info") ? "mailto:info@propertyplugng.com" : "#"
-                  }`}
+                  href={`${v.includes("info") ? "mailto:info@propertyplugng.com" : "#"
+                    }`}
                   key={i}
                   className={`transition-all hover:text-white/100 whitespace-nowrap ${v.includes("info") && 'underline font-semibold'}`}
                 >
@@ -134,11 +133,11 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      
+
       {/* newletter */}
       <div className=" w--full flex flex-col-reverse gap-4 text-white/70">
         <h5 className="max-md:text-left text-right text-xs max-sm:text-[11px] font-extralight">
-        <span className="font-semibold">Stay Informed:</span> Subscribe to Our Newsletter for Regular Updates.
+          <span className="font-semibold">Stay Informed:</span> Subscribe to Our Newsletter for Regular Updates.
         </h5>
 
         <div className="h-max w-full md:w-max max-sm:mt-6  relative self-end justify-self-end">
