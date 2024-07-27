@@ -46,7 +46,11 @@ const Footer = () => {
                 {v.title} <span className="ml-2 md:ml-4">|</span>
               </Link>
             ))}
-            <Link href="/" className="transition-all hover:text-white/100">request</Link>
+            <Link href="/" className="transition-all hover:text-white/100">
+            request <span className="ml-2 md:ml-4">|</span>
+            </Link>
+
+            <Link href="/login" className="transition-all hover:text-white/100">login</Link>
           </nav>
         </div>
 

@@ -8,7 +8,7 @@ export const DropList = () => {
   const [drop, setDrop] = useState(false)
   return (
     <div className="flex py-1 pr-1 pl-2 md:px-2 rounded-[25px] md:rounded-[32px] border md:border-[3px] border-white border-solid mt-6 gap-1 md:gap-8 relative">
-      <small className="text-xs md:text-inherit capitalize flex items-center gap-1 md:gap-3 text-zinc-400 cursor-pointer" onClick={() => setDrop(!drop)}>
+      <small className="text-xs capitalize flex items-center gap-1 md:gap-3 text-zinc-400 cursor-pointer" onClick={() => setDrop(!drop)}>
         what are you looking for?{" "}
         <MdArrowDropDown size={20} className={`transition ${drop ? 'rotate-0' : 'rotate-180'}`} />
         {drop && <DropDown />}

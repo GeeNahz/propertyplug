@@ -40,7 +40,7 @@ export async function createBlog(_prevState: unknown, formData: FormData) {
     let fieldErrors = result.error.flatten().fieldErrors
     type TFieldErr = keyof typeof fieldErrors
     let errorKeys = (Object.keys(fieldErrors) as unknown) as TFieldErr[]
-    let errors = errorKeys.map((key: TFieldErr) => ({[key]: fieldErrors[key]?.join(' ')}))
+    let errors = errorKeys.map((key: TFieldErr) => ({ [key]: fieldErrors[key]?.join(' ') }))
 
     return errors;
   }
@@ -62,6 +62,44 @@ export async function createBlog(_prevState: unknown, formData: FormData) {
   // redirect(`/dashboard/blogs/${response.data['id']}`) // redirect to the page showing the just created blog
   redirect('/dashboard/blogs')
 
+}
+
+export async function editBlog(_prevState: unknown, formData: FormData) {
+  const { id, title, blogContent, tags, createdBy, backgroundImage } = Object.fromEntries(formData)
+
+  const result = blogSchema.safeParse({ title, blogContent, tags, createdBy, backgroundImage })
+
+  if (!result.success) {
+    let fieldErrors = result.error.flatten().fieldErrors
+    type TFieldErr = keyof typeof fieldErrors
+    let errorKeys = (Object.keys(fieldErrors) as unknown) as TFieldErr[]
+    let errors = errorKeys.map((key: TFieldErr) => ({ [key]: fieldErrors[key]?.join(' ') }))
+
+    return errors;
+  }
+  let payload = { title, blogContent, tags, createdBy, backgroundImage }
+
+  try {
+    const response = await apiClient.patch(`/blogs/${id}`, payload)
+
+    // return response.data
+  } catch (error: any) {
+    console.log('Update Err: ', error.message)
+    return 'Unable to update blog. Please try again'
+  }
+
+  revalidatePath('/dasboard/blogs')
+  redirect('/dashboard/blogs')
+}
+
+export async function getBlog(id: string) {
+  try {
+    const response = await apiClient.get(`/blogs/${id}`)
+    return response.data
+  } catch(error: any) {
+    console.log('Blog Err: ', error.message)
+    return error.message
+  }
 }
 
 export async function getBlogs() {

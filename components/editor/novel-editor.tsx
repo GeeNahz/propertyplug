@@ -1,10 +1,10 @@
 import { Editor } from "novel";
-import { type Editor as TipTapEditor } from "@tiptap/core";
+import { JSONContent, type Editor as TipTapEditor } from "@tiptap/core";
 
 type NovelEditorProps = {
   setContent: any;
   title?: string;
-  content?: string | undefined;
+  content?: JSONContent[] | undefined;
 };
 
 export default function NovelEditor({
@@ -16,7 +16,7 @@ export default function NovelEditor({
       <Editor
         defaultValue={{
           type: "doc",
-          content: [],
+          content: content ? content : [],
           // content: content as JSONContent[] | undefined,
         }}
         onDebouncedUpdate={(editor?: TipTapEditor) => {

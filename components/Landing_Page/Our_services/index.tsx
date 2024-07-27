@@ -4,10 +4,10 @@ import Image from "next/image";
 
 const OurService = () => {
   return (
-    <section className="w-full mt-20">
+    <section className="container max-w-screen-xl mx-auto w-full mt-20">
       <div className="w-full flex flex-col items-center gap-4">
         <h3 className="text-xl text-black font-semibold">Our Services</h3>
-        <p className="text-zinc-400 text-xs w-6/12 text-center">
+        <p className="text-zinc-400 text-xs w-full md:w-6/12 text-center">
           Property Plug is an urban Contemporary real estate company dedicated
           to the delivery of premium services within the real estate industry.
         </p>

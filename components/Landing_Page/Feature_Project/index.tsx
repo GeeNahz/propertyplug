@@ -5,7 +5,7 @@ import FeatureCard from "./FeatureCard";
 
 const FeatureProject = () => {
   return (
-    <section className="mb-8 mt-20">
+    <section className="container max-w-screen-xl mx-auto mb-8 mt-20">
       <div>
         <Header
           title="Featured Property"

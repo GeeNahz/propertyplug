@@ -16,7 +16,7 @@ const SearchFilters = () => {
         <Search text={searchArg} setText={setSearchArg} />
       </div>
 
-      <div className="tags">
+      <div className="min-w-fit tags">
         <Tags tags={tags} selectedTags={selectedTags} setSelectedTags={setSelectedTags} />
       </div>
     </div>

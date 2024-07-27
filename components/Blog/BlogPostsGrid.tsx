@@ -7,7 +7,7 @@ type Props = {
 
 const BlogPostsGrid = ({ posts }: Props) => {
   return (
-    <div className="px-7 md:px-20 w-full grid_wrapper mt-4 mb-24">
+    <div className="container max-w-screen-xl mx-auto md:px-20 w-full grid_wrapper mt-4 mb-24">
       {posts.map((v, i) => (
         <div
           key={i}

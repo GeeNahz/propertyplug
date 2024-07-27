@@ -4,26 +4,24 @@ import imgs from "./images/pp2.jpg";
 import Image from "next/image";
 import { Button } from "@/components/common/button";
 import { blogGallery } from "@/components/common/data";
-import { getBlogs } from "@/lib/actions";
+import Link from "next/link";
 
 const Blog = async () => {
-  const data = await getBlogs()
-  console.log('RES', data)
   // tall and big for grid structure
 
   return (
-    <section className="">
+    <section className="container max-w-screen-xl mx-auto">
       <Header
         title="Property Plug Blog Posts"
         desc="Explore explicit Content Just for you"
       />
 
       <div className="w-full grid_wrapper mt-4">
-        {blogGallery.map((v, i) => {
+        {blogGallery.slice(0, 4).map((v, i) => {
           return (
             <div
-            key={i}
-              className={`${v.grid} relative rounded-3xl h-full w-full border-white border-solid border-[2px] overflow-x-hidden`}
+              key={i}
+              className={`relative rounded-3xl h-full w-full border-white border-solid border-[2px] overflow-x-hidden`}
             >
               <Image
                 src={v.img}
@@ -40,11 +38,15 @@ const Blog = async () => {
                     {v.title}
                   </h4>
                 </div>
-                <Button title="read more" url={`/blog/${v.title}`}/>
+                <Button title="read more" url={`/blog/${v.title}`} />
               </div>
             </div>
           );
         })}
+      </div>
+
+      <div className="my-5 flex justify-center">
+        <Link className="bg-ui-red py-2 px-4 size-fit rounded-full hover:bg-ui-red/70 transition-colors text-white font-semibold text-xs md:text-sm" href={'/blog'}>View more</Link>
       </div>
     </section>
   );

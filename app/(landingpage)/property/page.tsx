@@ -5,7 +5,7 @@ import FeatureCard from '@/components/Landing_Page/Feature_Project/FeatureCard';
 
 const Page = () => {
   return (
-    <section className="px-7 md:px-20 mt-28 mb-24 md:mb-52">
+    <section className="container max-w-screen-xl mx-auto md:px-20 mt-28 mb-24 md:mb-52">
       <div className="px-0 md:px-32 py-8">
         <Header
           title="Customers Preference"

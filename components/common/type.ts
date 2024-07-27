@@ -79,7 +79,7 @@ export type TChart = {
 export type TBlogPost = {
   id: string;
   title: string;
-  backgroundImage: string;
+  backgroundImage: string | File;
   blogContent: string;
   createdBy: string;
   createdAt: string;
