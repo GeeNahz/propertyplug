@@ -11,7 +11,6 @@ import EditForm from "./form/Edit";
 import ChartWrapper from "./dashboard/ChartWrapper";
 import RightTab from "./dashboard/RightTab";
 import DateConverter from "./dashboard/DateConverter";
-import { ChartDashboard } from "./chart/chart";
 
 
 export {
@@ -28,5 +27,4 @@ export {
   ChartWrapper,
   RightTab,
   DateConverter,
-  ChartDashboard,
 }
