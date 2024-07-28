@@ -29,7 +29,7 @@ const Blog = () => {
                 fill
                 className="hover_img object-cover"
               />
-              <div className="absolute top-0 w-full h-full left-0 transition duration-700 z-0 hover:translate-x-0 -translate-x-[100%]  linear_gradient flex flex-col justify-between p-3">
+              <div className="absolute top-0 w-full h-full left-[100%] transition duration-700 z-0 -translate-x-[100%]  linear_gradient flex flex-col justify-between p-3">
                 <div className="">
                   <small className="text-slate-50 text-xs font-normal">
                     {v.time}
@@ -45,7 +45,7 @@ const Blog = () => {
         })}
       </div>
       <div className="flex justify-center w-full mt-4">
-        <Button title="view more" url={`/blog`} bg='#EF4444'/>
+        <Link href={'/blog'} className="bg-[#ef4444] rounded-full py-2 px-4 font-semibold text-sm capitalize text-white hover:bg-ui-red transition">view more</Link>
       </div>
     </section>
   );

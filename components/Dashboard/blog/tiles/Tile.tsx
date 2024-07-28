@@ -3,6 +3,7 @@ import ContentParser from "@/components/editor/content-parser";
 import Image from "next/image";
 import Link from "next/link";
 import { MdDeleteForever, MdEditSquare } from "react-icons/md";
+import DateConverter from "../../dashboard/DateConverter";
 
 type Props = {
   post: TBlogPost;
@@ -19,7 +20,9 @@ export default function Tile({ post }: Props) {
         <div className="title">
           <p className="font-semibold capitalize text-lg">{post.title}</p>
 
-          <small className="text-xs text-ui-desc">{post.createdAt}</small>
+          <small className="text-xs text-ui-desc">
+            <DateConverter date={post.createdAt} />
+          </small>
         </div>
 
         <div className="w-2/4 border-b border-ui-dark/20"></div>

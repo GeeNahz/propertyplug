@@ -6,7 +6,6 @@ import { auth } from '@/auth'
 import Image from 'next/image'
 
 import profileImg from '@/public/noavatar.jpg'
-import { HiBell } from 'react-icons/hi2'
 
 
 export default async function Navbar() {
@@ -21,10 +20,6 @@ export default async function Navbar() {
           <MdSearch className="text-ui-dark/50" size={20} />
 
           <input type="text" placeholder="Search..." className="input outline-none bg-transparent w-full border-none text-ui-desc" />
-        </div>
-
-        <div className="icons flex gap-5">
-          <HiBell size={20} />
         </div>
 
         <div className="profile-img size-11 rounded-full overflow-hidden border-2 border-ui-dark/50 bg-ui-desc">
