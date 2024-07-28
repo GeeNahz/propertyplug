@@ -6,7 +6,7 @@ import { Button } from "@/components/common/button";
 import { blogGallery } from "@/components/common/data";
 import Link from "next/link";
 
-const Blog = async () => {
+const Blog = () => {
   // tall and big for grid structure
 
   return (

@@ -78,7 +78,7 @@ a:active {
 
 .drop__fade {
   animation-name: fade;
-  animation-duration: 0.5s;
+  animation-duration: 3s;
   animation-timing-function: ease-in-out;
 }
 
