@@ -29,7 +29,7 @@ const Blog = async () => {
                 fill
                 className="hover_img object-cover"
               />
-              <div className="absolute top-0 w-full h-full left-0 transition duration-700 z-0 hover:translate-x-0 -translate-x-[100%]  linear_gradient flex flex-col justify-between p-3">
+              <div className="absolute top-0 w-full h-full left-0 transition translate-x-0 duration-700 z-0 linear_gradient flex flex-col justify-between p-3">
                 <div className="">
                   <small className="text-slate-50 text-xs font-normal">
                     {v.time}
@@ -44,9 +44,11 @@ const Blog = async () => {
           );
         })}
       </div>
-      <div className="flex justify-center w-full mt-4">
-        <Button title="view more" url={`/blog`} bg='#EF4444'/>
-      </div>
+      <Link href="/blog" className="flex justify-center w-full mt-6">
+        <button className="py-2 px-3 md:p-3 rounded-[32px] font-medium text-xs capitalize w-max bg-[#EF4444] text-white">
+          view more
+        </button>
+      </Link>
     </section>
   );
 };
