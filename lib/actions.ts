@@ -1,23 +1,28 @@
 'use server';
 
-import { signIn } from '@/auth';
-import { AuthError } from 'next-auth';
+// import { signIn } from '@/auth';
+// import { AuthError } from 'next-auth';
 
-import apiClient, { BASE_URL } from './apiConfig';
+import  { BASE_URL } from './apiConfig';
 import { blogSchema, TBlog } from './zod';
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
-import { AxiosInstance } from 'axios';
+import axios, { AxiosError, AxiosInstance } from 'axios';
+import { login } from '@/lib';
+import { decrypt } from '@/try';
 
 export async function authenticate(
   _prevState: string | undefined,
   formData: FormData,
 ) {
-  const { email, password } = Object.fromEntries(formData)
   try {
-    await signIn('credentials', { email, password });
+   const token = await login(formData);
+   console.log('took',token)
+  //  const session = await decrypt(token)
+  //  console.log(session)
   } catch (error: any) {
-    if (error instanceof AuthError) {
+    if (error instanceof AxiosError) {
+      // @ts-ignore
       switch (error.type) {
         case 'CredentialsSignin':
           return 'Invalid credentials.'
@@ -27,7 +32,7 @@ export async function authenticate(
           return 'Something went wrong.'
       }
     }
-    throw error
+    return error
   }
 }
 
@@ -48,7 +53,7 @@ export async function createBlog(_prevState: unknown, formData: FormData) {
   let response: AxiosInstance
 
   try {
-    response = await apiClient.post('/blogs', formData, {
+    response = await axios.post(`${BASE_URL}/blogs`, formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       }
@@ -80,7 +85,7 @@ export async function editBlog(_prevState: unknown, formData: FormData) {
   let payload = { title, blogContent, tags, createdBy, backgroundImage }
 
   try {
-    const response = await apiClient.patch(`/blogs/${id}`, payload)
+    const response = await axios.patch(`${BASE_URL}/blogs/${id}`, payload)
 
     // return response.data
   } catch (error: any) {
@@ -94,7 +99,7 @@ export async function editBlog(_prevState: unknown, formData: FormData) {
 
 export async function getBlog(id: string) {
   try {
-    const response = await apiClient.get(`/blogs/${id}`)
+    const response = await axios.get(`${BASE_URL}/blogs/${id}`)
     return response.data
   } catch(error: any) {
     console.log('Blog Err: ', error.message)
@@ -104,7 +109,7 @@ export async function getBlog(id: string) {
 
 export async function getBlogs() {
   try {
-    const response = await apiClient.get(`/blogs`,)
+    const response = await axios.get(`${BASE_URL}/blogs`,)
 
     revalidatePath('/dasboard/blogs')
     return response.data

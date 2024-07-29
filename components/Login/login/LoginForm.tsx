@@ -1,22 +1,66 @@
-'use client'
-
-
-import { MdAddTask, MdError, MdKey, MdLogin } from "react-icons/md"
-import { useActionState } from 'react';
+"use client";
+import { MdAddTask, MdError, MdKey, MdLogin } from "react-icons/md";
+import { useActionState, useState } from "react";
 import { authenticate } from "@/lib/actions";
 import { FaArrowRightToBracket, FaEnvelope, FaKey } from "react-icons/fa6";
+import { useFormStatus } from "react-dom";
+import axios from "axios";
+import { BASE_URL } from "@/lib/apiConfig";
+import { useRouter } from "next/navigation";
+import { createSession } from "@/try";
 
 export default function LoginForm() {
-  const [errorMessage, formAction, isPending] = useActionState(
-    authenticate,
-    undefined,
-  )
+  const router = useRouter();
+  const { pending } = useFormStatus();
+  const [errorMessage, setErrorMessage] = useState("");
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleChage = (e: any) => {
+    const { name, value } = e.target;
+    setFormData((prev: any) => {
+      return {
+        ...prev,
+        [name]: value,
+      };
+    });
+  };
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post(`${BASE_URL}/auth/login`, formData, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const token = response.data.token;
+      setFormData({
+        email: "",
+        password: "",
+      });
+      localStorage.setItem("session", token);
+      router.push(`/dashboard?id=${token}`);
+    } catch (err) {
+      setFormData({
+        email: "",
+        password: "",
+      });
+      // @ts-ignore
+      setErrorMessage(err.message);
+      // @ts-ignore
+      console.log(err.message);
+    }
+  };
+  // const [errorMessage, formAction, isPending] = useActionState(
+  //   authenticate,
+  //   null
+  // )
   return (
-    <form action={formAction} className="space-y-3">
+    <form onSubmit={handleSubmit} className="space-y-3">
       <div className="flex-1 rounded-lg bg-gray-50 px-6 pb-4 pt-8">
-        <h1 className={`mb-5 text-2xl text-center font-semibold`}>
-          Login
-        </h1>
+        <h1 className={`mb-5 text-2xl text-center font-semibold`}>Login</h1>
         <div className="w-full">
           <div>
             <label
@@ -31,6 +75,8 @@ export default function LoginForm() {
                 id="email"
                 type="email"
                 name="email"
+                value={formData.email}
+                onChange={handleChage}
                 placeholder="Enter your email address"
                 required
               />
@@ -50,6 +96,8 @@ export default function LoginForm() {
                 id="password"
                 type="password"
                 name="password"
+                value={formData.password}
+                onChange={handleChage}
                 placeholder="Enter password"
                 required
                 minLength={6}
@@ -60,8 +108,8 @@ export default function LoginForm() {
         </div>
         <button
           className="mt-4 w-full flex items-center justify-center gap-3 bg-ui-dark py-[9px] px-4 rounded-md text-white hover:bg-ui-dark/80 active:bg-ui-dark/80 focus:bg-ui-dark/80 disabled:bg-ui-dark/50 transition-colors text-sm font-semibold"
-          aria-disabled={isPending}
-          disabled={isPending}
+          aria-disabled={pending}
+          disabled={pending}
         >
           Log in <FaArrowRightToBracket size={18} />
         </button>
@@ -79,5 +127,5 @@ export default function LoginForm() {
         </div>
       </div>
     </form>
-  )
+  );
 }

@@ -1,12 +1,11 @@
-import type { ClassValue } from "clsx"
-import clsx from 'clsx'
+import { type ClassValue, clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
-
 import {jwtDecode} from 'jwt-decode'
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
+
 
 export function decrypt(token: string) {
   return jwtDecode(token)
@@ -26,10 +25,3 @@ export function validateToken(token: string) {
 
   return isValid
 }
-
-// export async function getFileBuffer(file: File) {
-//   const arrayBuffer = await file.arrayBuffer()
-//   const buffer = new Uint8Array(arrayBuffer)
-//
-//   return buffer
-// }
