@@ -31,6 +31,12 @@ export default function AuthWrapper({
       }
     }
   }, [screenSize, router]);
+  if (typeof window !== "undefined") {
+    const session = localStorage.getItem("session");
+    if (!session) {
+      router.push("/login");
+    }
+  }
 
   return <>{children}</>;
 }
