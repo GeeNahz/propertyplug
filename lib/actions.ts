@@ -117,8 +117,6 @@ export async function getBlog(id: string) {
 export async function getBlogs() {
   try {
     const response = await axios.get(`${BASE_URL}/blogs`);
-
-    revalidatePath("/dasboard/blogs");
     return response.data;
   } catch (err: any) {
     console.log("Blogs error: ", err.message);
