@@ -51,7 +51,7 @@ export default function EditForm({ post }: { post: TBlogPost }) {
       console.log('Form res: ', state)
       openNotificationWithIcon('error', state)
     } else {
-      state.map((item) => {
+      state.map((item:any) => {
         let key = Object.keys(item)[0]
         openNotificationWithIcon('error', key, item[key])
       })
