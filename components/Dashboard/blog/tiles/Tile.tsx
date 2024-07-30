@@ -9,6 +9,7 @@ type Props = {
 }
 
 export default function Tile({ post }: Props) {
+  const time = new Date(post.createdAt).toLocaleString()
   return (
     <div className="w-full p-4 rounded-[20px] bg-white flex gap-6 items-center">
       <div className="rounded-[20px] overflow-hidden img min-w-[288px] w-[220px] h-[180px]">
@@ -18,8 +19,8 @@ export default function Tile({ post }: Props) {
       <div className="content flex flex-col gap-4 flex-auto">
         <div className="title">
           <p className="font-semibold capitalize text-lg">{post.title}</p>
-
-          <small className="text-xs text-ui-desc">{post.createdAt}</small>
+            {/* @ts-ignore */}
+          <small className="text-xs text-ui-desc">{time}</small>
         </div>
 
         <div className="w-2/4 border-b border-ui-dark/20"></div>

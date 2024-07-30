@@ -1,13 +1,14 @@
-// import { auth } from "@/auth"
-import { CreateForm } from "@/components/Dashboard"
-import { getSession } from "@/lib"
+import { CreateForm } from "@/components/Dashboard";
+import { Suspense } from "react";
+import Loading from "../../loading";
 
 export default async function Page() {
-  const session = await getSession()
-
+  const user = "Admin";
   return (
     <div className="flex flex-col min-h-full">
-      <CreateForm user={session?.user?.name}/>
+      <Suspense fallback={<Loading/>}>
+        <CreateForm user={user} />
+      </Suspense>
     </div>
-  )
+  );
 }

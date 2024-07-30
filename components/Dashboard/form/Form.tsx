@@ -26,7 +26,7 @@ export default function Form({ formData, setFormData, action, children }: Props)
   }
 
   return (
-    <form action={action} className="bg-white rounded-lg p-8 flex flex-col gap-6 h-full">
+    <form action={action} className="bg-white rounded-lg p-8 flex flex-col gap-6 h-full xl:max-w-[700px] 2xl:max-w-[850px] ">
       <div className="double-fields flex gap-5">
         <div className="flex flex-col gap-2" style={{ flex: 3 }}>
           <Label value="blog title" id="title" isRequired />
@@ -73,7 +73,7 @@ export default function Form({ formData, setFormData, action, children }: Props)
       <div className="content flex flex-col gap-2">
         <Label value="content" id="blogContent" isRequired />
 
-        <div className="border border-ui-dark rounded-lg min-h-44">
+        <div className="border border-ui-dark rounded-lg min-h-44 w-full">
           <NovelEditor content={([formData.blogContent] as unknown) as JSONContent[]} setContent={setContent} />
         </div>
 

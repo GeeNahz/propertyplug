@@ -11,9 +11,9 @@ export default function BlogsHeader() {
     navigatorItems,
     setNavigatorItems,
   ] = useState<Partial<BreadcrumbItemType & BreadcrumbSeparatorType>[]>([
-    { title: "All", path: "dashboard/blogs/", },
-    { title: "Published", path: "dashboard/blogs/published", },
-    { title: "Unpublished", path: "dashboard/blogs/unpublished", },
+    { title: "All", path: "/dashboard", },
+    { title: "Published", path: "dashboad/blogs/published", },
+    { title: "Unpublished", path: "dashboad/blogs//unpublished", },
   ]);
 
   return (

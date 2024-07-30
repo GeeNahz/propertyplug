@@ -1,8 +1,10 @@
 import { Navbar, Sidebar } from "@/components/Dashboard";
 import AuthWrapper from "@/components/Dashboard/authWrapper";
+import { Suspense } from "react";
+import Loading from "./loading";
 
 export default function DashboardLayout({
-  children
+  children,
 }: {
   children: React.ReactNode;
 }) {
@@ -16,10 +18,12 @@ export default function DashboardLayout({
           <Sidebar />
         </div>
 
-        <div className="px-5 h-full flex flex-col" style={{ flex: 4 }}>
-          <Navbar />
-          <div className="py-5 h-full overflow-y-scroll">{children}</div>
-        </div>
+        <Suspense fallback={<Loading/>}>
+          <div className="px-5 h-full flex flex-col" style={{ flex: 4 }}>
+            <Navbar />
+            <div className="py-5 h-full overflow-y-scroll">{children}</div>
+          </div>
+        </Suspense>
       </div>
     </AuthWrapper>
   );

@@ -1,17 +1,17 @@
 "use client";
 import { MdAddTask, MdError, MdKey, MdLogin } from "react-icons/md";
 import { useActionState, useState } from "react";
-import { authenticate } from "@/lib/actions";
+// import { authenticate } from "@/lib/actions";
 import { FaArrowRightToBracket, FaEnvelope, FaKey } from "react-icons/fa6";
-import { useFormStatus } from "react-dom";
+// import { useFormStatus } from "react-dom";
 import axios from "axios";
 import { BASE_URL } from "@/lib/apiConfig";
 import { useRouter } from "next/navigation";
-import { createSession } from "@/try";
+// import { createSession } from "@/try";
 
 export default function LoginForm() {
   const router = useRouter();
-  const { pending } = useFormStatus();
+  const [isPending, setIsPending] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [formData, setFormData] = useState({
     email: "",
@@ -29,6 +29,7 @@ export default function LoginForm() {
   };
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsPending(true)
     try {
       const response = await axios.post(`${BASE_URL}/auth/login`, formData, {
         headers: {
@@ -41,7 +42,7 @@ export default function LoginForm() {
         password: "",
       });
       localStorage.setItem("session", token);
-      router.push(`/dashboard?id=${token}`);
+      router.push(`/dashboard`);
     } catch (err) {
       setFormData({
         email: "",
@@ -51,6 +52,8 @@ export default function LoginForm() {
       setErrorMessage(err.message);
       // @ts-ignore
       console.log(err.message);
+    }finally{
+      setIsPending(false)
     }
   };
   // const [errorMessage, formAction, isPending] = useActionState(
@@ -108,8 +111,8 @@ export default function LoginForm() {
         </div>
         <button
           className="mt-4 w-full flex items-center justify-center gap-3 bg-ui-dark py-[9px] px-4 rounded-md text-white hover:bg-ui-dark/80 active:bg-ui-dark/80 focus:bg-ui-dark/80 disabled:bg-ui-dark/50 transition-colors text-sm font-semibold"
-          aria-disabled={pending}
-          disabled={pending}
+          aria-disabled={isPending}
+          disabled={isPending}
         >
           Log in <FaArrowRightToBracket size={18} />
         </button>
