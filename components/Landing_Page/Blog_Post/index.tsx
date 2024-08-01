@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Button } from "@/components/common/button";
 import { blogGallery } from "@/components/common/data";
 import Link from "next/link";
+import { dataUrl } from "@/lib/utils";
 
 const Blog = async () => {
   // tall and big for grid structure
@@ -23,7 +24,8 @@ const Blog = async () => {
               key={i}
               className={`relative rounded-3xl h-full w-full border-white border-solid border-[2px] overflow-x-hidden`}
             >
-              <Image
+              <Image placeholder="blur"
+               blurDataURL={dataUrl}
                 src={v.img}
                 alt="img"
                 fill

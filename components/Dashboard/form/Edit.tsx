@@ -12,6 +12,7 @@ import { notification } from "antd";
 import { editBlog } from "@/lib/actions";
 import ContentParser from "@/components/editor/content-parser";
 import Image from "next/image";
+import { dataUrl } from "@/lib/utils";
 
 
 type NotificationType = 'success' | 'info' | 'warning' | 'error';
@@ -79,7 +80,7 @@ export default function EditForm({ post }: { post: TBlogPost }) {
           <div className="bg-ui-dash-gray h-full w-full overflow-y-scroll">
             <div className="image h-auto bg-ui-red/20 w-full rounded-md overflow-hidden">
               {imagePreview && (
-                <Image src={imagePreview} alt="preview-image" height={100} width={200} className="size-full object-contain object-center" />
+                <Image placeholder="blur"  blurDataURL={dataUrl} src={imagePreview} alt="preview-image" height={100} width={200} className="size-full object-contain object-center" />
               )}
             </div>
 

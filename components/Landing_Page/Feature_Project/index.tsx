@@ -2,6 +2,7 @@ import Header from "@/components/common/header";
 import React from "react";
 import { Features } from "@/components/common/data";
 import FeatureCard from "./FeatureCard";
+import Link from "next/link";
 
 const FeatureProject = () => {
   return (
@@ -25,6 +26,11 @@ const FeatureProject = () => {
           );
         })}
       </div>
+      <Link href="#" className="flex justify-center w-full mt-6">
+        <button className="py-2 px-3 md:p-3 rounded-[32px] font-medium text-xs capitalize w-max bg-[#EF4444] text-white">
+          view more
+        </button>
+      </Link>
     </section>
   );
 };

@@ -8,6 +8,7 @@ import { BlogHeader, BlogContent, FeaturedArticles } from '@/components/Blog/Blo
 import { useState } from "react";
 import { Navigator } from "@/components/Blog";
 import { BreadcrumbItemType, BreadcrumbSeparatorType } from "antd/es/breadcrumb/Breadcrumb";
+import { dataUrl } from '@/lib/utils';
 
 export default function Page({ params }: { params: { id: string } }) {
   const [
@@ -43,7 +44,7 @@ export default function Page({ params }: { params: { id: string } }) {
 
       <div className="px-20 py-20 bg-gradient-to-b from-white from-15% to-gray-50">
         <div className="h-[450px] w-full overflow-hidden rounded-[30px]">
-          <Image width={1240} height={450} src={imgs5} alt={params.id} className="size-full object-cover bg-no-repeat bg-cover" />
+          <Image placeholder='blur' blurDataURL={dataUrl} width={1240} height={450} src={imgs5} alt={params.id} className="size-full object-cover bg-no-repeat bg-cover" />
         </div>
 
         <div className="body w-11/12 mx-auto p-[90px] rounded-[30px] bg-white -translate-y-24 space-y-14 divide-gray-500">

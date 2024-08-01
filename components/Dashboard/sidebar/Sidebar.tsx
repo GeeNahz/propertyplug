@@ -17,6 +17,7 @@ import MenuLink from './MenuLink'
 import Image from 'next/image'
 import logo from '@/public/PropertPlugLogo.svg'
 import { logout } from '@/lib'
+import { dataUrl } from '@/lib/utils'
 
 
 const menuItems = [
@@ -47,7 +48,7 @@ export default function Sidebar() {
     <div className="sticky top-10 min-h-full flex flex-col h-full rounded-2xl bg-ui-dash-dark p-3">
       <div className="flex items-center gap-5 mb-5 text-white justify-center py-5">
         <div className="size-14">
-          <Image src={logo} alt="logo" width={50} height={50} className="object-contain size-full" />
+          <Image placeholder="blur" blurDataURL={dataUrl} src={logo} alt="logo" width={50} height={50} className="object-contain size-full" />
         </div>
 
         <div className='userDetails flex flex-col'>

@@ -1,5 +1,6 @@
 import { TBlogPost } from "@/components/common/type";
 import ContentParser from "@/components/editor/content-parser";
+import { dataUrl } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import { MdDeleteForever, MdEditSquare } from "react-icons/md";
@@ -13,7 +14,7 @@ export default function Tile({ post }: Props) {
   return (
     <div className="w-full p-4 rounded-[20px] bg-white flex gap-6 items-center">
       <div className="rounded-[20px] overflow-hidden img min-w-[288px] w-[220px] h-[180px]">
-        <Image src={post.backgroundImage as string} alt="" width={200} height={200} className="size-full object-cover object-center" />
+        <Image placeholder="blur" blurDataURL={dataUrl} src={post.backgroundImage as string} alt="" width={200} height={200} className="size-full object-cover object-center" />
       </div>
 
       <div className="content flex flex-col gap-4 flex-auto">

@@ -1,5 +1,6 @@
 'use client'
 
+import { dataUrl } from "@/lib/utils";
 import Image from "next/image";
 import { ChangeEvent, useEffect, useState } from "react";
 import { MdImage } from "react-icons/md";
@@ -55,7 +56,7 @@ export default function ImageUpload({ value, handleFormChange }: Props) {
         required
       />
 
-      {previewUrl && (<Image
+      {previewUrl && (<Image placeholder="blur" blurDataURL={dataUrl}
         src={previewUrl}
         alt="preview"
         width={50}

@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import img from './noavatar.jpg'
 import { useSearchParams } from "next/navigation";
 import { dasboardPass } from "@/lib";
+import { dataUrl } from "@/lib/utils";
 
 export default function NavSide() {
   // const [user, setUser] = useState<any>(null);
@@ -26,6 +27,8 @@ export default function NavSide() {
   return (
     <div className="profile-img size-11 rounded-full overflow-hidden border-2 border-ui-dark/50 bg-ui-desc">
         <Image
+         placeholder="blur"
+         blurDataURL={dataUrl}
           src={img} // Provide a default image path
           alt="profile"
           width={56}

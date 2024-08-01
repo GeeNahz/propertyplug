@@ -3,6 +3,7 @@ import React from "react";
 import imgs from "./ppt1.jpg";
 import { IoChatboxEllipsesOutline } from "react-icons/io5";
 import { Rate } from "antd";
+import { dataUrl } from "@/lib/utils";
 
 export const Card = ({title, img, testimony}:{
     title:string,
@@ -11,7 +12,8 @@ export const Card = ({title, img, testimony}:{
 }) => {
   return (
     <div className="relative overflow-x-hidden p-0 md:p-4 h-[300px] rounded-[32px] w-[280px] md:w-[350px] bg-black">
-      <Image
+      <Image placeholder="blur"
+       blurDataURL={dataUrl}
         src={img}
         alt="testomnial"
         fill

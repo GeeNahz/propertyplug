@@ -16,8 +16,8 @@ const Form = ({ formData, tab, onChange, handleSubmit }: Props) => {
   return (
     <form onSubmit={(e) => handleSubmit(e)}>
       <div className="flex flex-col md:flex-row justify-between text-ui-dark mb-5 md:mb-10">
-        <div className="left-fields space-y-5 md:space-y-10 mb-10 md:mb-0">
-          <p className="text-lg md:text-2xl font-medium">What are you looking to {tab}?</p>
+        <div className="left-fields space-y-5 mb-10 md:mb-0">
+          <p className="text-sm md:text-lg font-medium">What are you looking to {tab}?</p>
 
           <Input
             inputType="select"
@@ -80,8 +80,8 @@ const Form = ({ formData, tab, onChange, handleSubmit }: Props) => {
         {/* <Divider type="vertical" className="h-full" /> */}
         <div className="hidden md:block min-h-full w-0 border-r border-ui-desc"></div>
 
-        <div className="right-fields space-y-5 md:space-y-10">
-          <p className="text-lg md:text-2xl font-medium">We&apos;d like to get to know you better</p>
+        <div className="right-fields space-y-5">
+          <p className="text-sm md:text-lg font-medium">We&apos;d like to get to know you better</p>
 
           <Input
             inputType="text"
@@ -116,16 +116,16 @@ const Form = ({ formData, tab, onChange, handleSubmit }: Props) => {
             onChange={onChange}
           />
 
-          <p className="text-lg md:text-2xl font-medium mt-10 md:mt-16">What&apos;s your budget?</p>
-          <div className="flex items-center gap-7 max-w-[490px]">
-            <div>
+          <p className="mt-10 md:mt-12 text-sm md:text-lg font-medium">What&apos;s your budget?</p>
+          <div className="flex items-center gap-7 w-full">
+            <div className="w-1/2">
               <label
                 htmlFor="min"
-                className="text-ui-desc text-sm md:text-base capitalize font-medium flex items-center gap-1 md:gap-2 mb-2 md:mb-4"
+                className="text-ui-desc text-sm capitalize font-medium flex items-center gap-1 md:gap-2 mb-2"
               >Minimum</label>
               <div className="border border-ui-dark rounded-xl md:rounded-[18px] bg-white overflow-hidden">
                 <input
-                  className="bg-transparent text-sm md:text-base py-3 md:py-5 px-4 md:px-[30px] size-full"
+                  className="bg-transparent text-sm  py-3 px-2 md:px-[15px] size-full"
                   type="number"
                   id="min"
                   name="min"
@@ -136,14 +136,14 @@ const Form = ({ formData, tab, onChange, handleSubmit }: Props) => {
               </div>
             </div>
 
-            <div>
+            <div className="w-1/2">
               <label
                 htmlFor="max"
-                className="text-ui-desc text-sm md:text-base capitalize font-medium flex items-center gap-1 md:gap-2 mb-2 md:mb-4"
+                className="text-ui-desc text-sm capitalize font-medium flex items-center gap-1 md:gap-2 mb-2"
               >Maximum</label>
               <div className="border border-ui-dark rounded-xl md:rounded-[18px] bg-white overflow-hidden">
                 <input
-                  className="bg-transparent text-sm md:text-base py-3 md:py-5 px-4 md:px-[30px] size-full"
+                  className="bg-transparent text-sm  py-3 px-2 md:px-[15px] size-full"
                   type="number"
                   id="max"
                   name="max"
@@ -157,7 +157,7 @@ const Form = ({ formData, tab, onChange, handleSubmit }: Props) => {
         </div>
       </div>
 
-      <button className="bg-ui-dark py-3 md:py-6 px-4 md:px-[32px] text-center font-medium rounded-xl md:rounded-[20px] text-white w-full md:w-[490px] text-sm md:text-base" type="submit">Confirm/Proceed</button>
+      <button className="bg-ui-dark py-3 px-4 md:px-[20px] text-center font-medium rounded-xl md:rounded-[20px] text-white w-full md:w-[490px] text-sm md:text-base hover:opacity-95" type="submit">Confirm/Proceed</button>
     </form>
   )
 }
@@ -194,7 +194,7 @@ const Input = ({
       <div>
         <label
           htmlFor={inputId ? inputId : inputName}
-          className="text-ui-desc text-sm md:text-base capitalize font-medium flex items-center gap-1 md:gap-2 mb-2 md:mb-4"
+          className="text-ui-desc text-sm capitalize font-medium flex items-center gap-1 md:gap-2 mb-2"
         >
           {inputLabel} {inputRequired && <span className="text-ui-red">*</span>}
         </label>
@@ -206,7 +206,7 @@ const Input = ({
             required={inputRequired}
             value={inputValue}
             onChange={(e) => onChange(e)}
-            className="bg-transparent py-3 md:py-5 px-4 md:px-[30px] size-full placeholder:text-ui-desc text-sm md:text-base"
+            className="bg-transparent py-3 px-2 md:px-[15px] size-full placeholder:text-ui-desc text-sm md:text-base"
           >
             <option className="text-ui-desc">Search...</option>
             {options?.map((option, index) => (
@@ -220,7 +220,7 @@ const Input = ({
       <div>
         <label
           htmlFor={inputId ? inputId : inputName}
-          className="text-ui-desc text-sm md:text-base capitalize font-medium flex items-center gap-1 md:gap-2 mb-2 md:mb-4"
+          className="text-ui-desc text-sm capitalize font-medium flex items-center gap-1 md:gap-2 mb-2"
         >
           {inputLabel} {inputRequired && <span className="text-ui-red">*</span>}
         </label>
@@ -234,7 +234,7 @@ const Input = ({
             required={inputRequired}
             value={inputValue}
             onChange={(e) => onChange(e)}
-            className="bg-transparent py-3 md:py-5 px-4 md:px-[30px] size-full"
+            className="bg-transparent py-3 px-2 md:px-[15px] size-full"
           />
         </div>
       </div>

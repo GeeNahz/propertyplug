@@ -1,4 +1,5 @@
 import { Button } from "@/components/common/button";
+import { dataUrl } from "@/lib/utils";
 import Image, { StaticImageData } from "next/image";
 
 type Props = {
@@ -12,6 +13,8 @@ const BlogPosts = ({ post }: { post: Props }) => {
   return (
     <>
       <Image
+        placeholder="blur"
+        blurDataURL={dataUrl}
         src={post.img}
         alt="img"
         fill
@@ -26,7 +29,10 @@ const BlogPosts = ({ post }: { post: Props }) => {
             {post.title}
           </h4>
         </div>
-        <Button title="read more" url={`/blog/${post.title.replaceAll(" ", "-")}`} />
+        <Button
+          title="read more"
+          url={`/blog/${post.title.replaceAll(" ", "-")}`}
+        />
       </div>
     </>
   );

@@ -4,6 +4,7 @@ import { GrLocation } from "react-icons/gr";
 import { IoIosBed } from "react-icons/io";
 import Image from "next/image";
 import { Divider } from "antd";
+import { dataUrl } from "@/lib/utils";
 
 type Props = {
   bed: number,
@@ -18,7 +19,7 @@ type Props = {
 const HomepageCard = ({ feature }: { feature: Props }) => {
   return (
     <>
-      <Image src={imgs} alt="" className="rounded-[32px]" />
+      <Image placeholder="blur"  blurDataURL={dataUrl} src={imgs} alt="" className="rounded-[32px]" />
       <div className="flex flex-col gap-4 ">
         <div className="flex items-center justify-between">
           <small className="flex text-[11px] gap-1 font-medium items-center">
@@ -65,7 +66,7 @@ const HomepageCard = ({ feature }: { feature: Props }) => {
 const PropertyPageCard = ({ feature }: { feature: Props }) => {
   return (
     <>
-      <Image src={imgs} alt="" className="rounded-[24px] md:rounded-[32px]" />
+      <Image placeholder="blur"  blurDataURL={dataUrl} src={imgs} alt="" className="rounded-[24px] md:rounded-[32px]" />
 
       <div className="text-ui-dark font-light">
         <div className="grid grid-cols-2 gap-y-2 md:gap-y-[23px]">

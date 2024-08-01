@@ -11,6 +11,7 @@ import clsx from "clsx";
 import { Dropdown, MenuProps, Popover } from "antd";
 import { useState } from "react";
 import { FaBars } from "react-icons/fa6";
+import { dataUrl } from "@/lib/utils";
 
 const Navbar = () => {
   const path = usePathname();
@@ -42,8 +43,8 @@ const Navbar = () => {
       <div className="md:w-4/12">
         <Link href="/">
           {path === "/"
-            ? <Image src={logo} alt="logo" className="w-[40px]" />
-            : <Image src={logoAlt} alt="logo" className="w-[40px]" />
+            ? <Image placeholder="blur" blurDataURL={dataUrl} src={logo} alt="logo" className="w-[40px]" />
+            : <Image placeholder="blur" blurDataURL={dataUrl} src={logoAlt} alt="logo" className="w-[40px]" />
           }
         </Link>
       </div>

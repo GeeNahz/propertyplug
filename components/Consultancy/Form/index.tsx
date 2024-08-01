@@ -35,10 +35,10 @@ const FormPage = ({ tab }: Props) => {
   }
 
   return (
-    <div className="mb-32 md:mb-60">
+    <div className="mb-32">
 
       <section className="container max-w-screen-xl mx-auto md:px-20">
-        <p className="my-10 md:my-[72px] text-2xl md:text-[40px] font-bold text-ui-dark capitalize text-start">{tab}</p>
+        <p className="my-10 md:my-[32px] text-xl md:text-[28px] font-bold text-ui-dark capitalize text-start">{tab}</p>
 
         <Form tab={tab} formData={formData} onChange={handleChange} handleSubmit={handleSubmit} />
       </section>

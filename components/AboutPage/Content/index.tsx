@@ -2,6 +2,7 @@ import Image from 'next/image'
 import { RxArrowBottomRight } from "react-icons/rx"
 
 import imgBuilding from '@/components/AboutPage/resources/about-us-building.jpg'
+import { dataUrl } from '@/lib/utils'
 
 const Content = () => {
   return (
@@ -13,7 +14,7 @@ const Content = () => {
 
       <div className="section-body block md:flex gap-0 md:gap-10 items-center justify-between h-max">
         <div className="h-[500px] w-[401px] rounded-[20px] overflow-hidden hidden md:block">
-          <Image src={imgBuilding} alt="building" width={400} height={560} className="size-full object-center object-cover" />
+          <Image placeholder="blur" blurDataURL={dataUrl} src={imgBuilding} alt="building" width={400} height={560} className="size-full object-center object-cover" />
         </div>
 
         <div className="space-y-8 md:space-y-[65px] text-start h-full w-full md:w-[700px] text-ui-desc">

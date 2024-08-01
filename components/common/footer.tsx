@@ -11,16 +11,17 @@ import {
   FaLinkedinIn,
   FaFacebookF,
 } from "react-icons/fa6";
+import { dataUrl } from "@/lib/utils";
 
 const Footer = () => {
   return (
     <footer className="bg-[#0B2831] py-8 px-7 md:px-20 self-end w-full">
       <Link href="/" className="w-[80px] max-w-max md:hidden">
-        <Image src={Logo} alt="logo" className="" />
+        <Image placeholder="blur" blurDataURL={dataUrl} src={Logo} alt="logo" className="" />
       </Link>
       <div className="flex gap-4 md:gap-12  items-start md:items-center">
         <Link href="/" className="w-[100px] max-md:hidden">
-          <Image src={Logo} alt="logo" className="" />
+          <Image placeholder="blur" blurDataURL={dataUrl} src={Logo} alt="logo" className="" />
         </Link>
         {/* <div className="flex flex-col gap-4 text-white/70">
           <h5 className=" text-right">Stay Informed:</h5>
