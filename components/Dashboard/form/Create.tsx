@@ -72,8 +72,8 @@ export default function CreateForm({ user }: Props) {
         <BlogHeader />
       </div>
 
-      <div className="main h-full flex-auto flex gap-5 lg:gap-8">
-        <div className="form" style={{ flex: 3 }}>
+      <div className="main h-full flex gap-5">
+        <div className="form w-7/12">
           <Form action={dispatch} formData={formData} setFormData={setFormData}>
             {/* <Button disabled={isPending} name="post" classes="bg-white border border-ui-dark !text-ui-dark" /> */}
 

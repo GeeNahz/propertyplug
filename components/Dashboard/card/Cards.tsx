@@ -20,7 +20,7 @@ export default function Cards() {
           <HiPencilSquare size={20} />
         </div>
       </Card>
-      <Card title="audience reached"></Card>
+      <Card title="yearly reads" subTitle="300" />
     </div>
   )
 }

@@ -18,7 +18,7 @@ import Image from 'next/image'
 import logo from '@/public/PropertPlugLogo.svg'
 import { logout } from '@/lib'
 import { dataUrl } from '@/lib/utils'
-
+import { Building2 } from 'lucide-react'
 
 const menuItems = [
   {
@@ -33,6 +33,12 @@ const menuItems = [
         title: 'Blog Management',
         path: '/dashboard/blogs',
         icon: <MdArticle size={20} />,
+      },
+      {
+        title: 'Lease Property',
+        path: '/dashboard/lease',
+        icon: <Building2 size={20} />,
+
       },
       {
         title: 'Settings',

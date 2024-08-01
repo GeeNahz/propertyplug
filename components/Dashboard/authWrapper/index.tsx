@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
 export default function AuthWrapper({
@@ -20,7 +20,7 @@ export default function AuthWrapper({
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (screenSize !== null) {
       console.log(screenSize);
       if (screenSize <= 1200) {

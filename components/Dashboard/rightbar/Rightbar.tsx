@@ -1,8 +1,12 @@
+'use client'
+import { usePathname } from "next/navigation"
 export default function Rightbar({
   children
 }: { children: React.ReactNode }) {
+  const path = usePathname()
+
   return (
-    <div style={{ flex: 1 }} className="relative p-5 rounded-2xl bg-white min-h-full max-h-full overflow-y-scroll">
+    <div className={`${path ==='/dashboard'? 'flex-1':'w-5/12'} relative p-5 rounded-2xl bg-white min-h-full max-h-full overflow-y-scroll`}>
       {children}
     </div>
   )
