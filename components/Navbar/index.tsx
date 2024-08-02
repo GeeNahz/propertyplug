@@ -21,31 +21,41 @@ const Navbar = () => {
     {
       "bg-ui-dark": path === "/",
       "bg-white": path !== "/",
-    },
+    }
   );
 
-  const linkClass = clsx(
-    "text-xs flex justify-between flex-col items-center",
-    {
-      "text-white": (path === "/"),
-      "text-ui-dark": (path !== "/"),
-    },
-  );
+  const linkClass = clsx("text-xs flex justify-between flex-col items-center", {
+    "text-white": path === "/",
+    "text-ui-dark": path !== "/",
+  });
 
-  const [openPopMenu, setOpenPopMenu] = useState(false)
+  const [openPopMenu, setOpenPopMenu] = useState(false);
 
   function handleOpenChange(value: boolean) {
-    setOpenPopMenu(value)
+    setOpenPopMenu(value);
   }
 
   return (
     <div className={navbarClass}>
       <div className="md:w-4/12">
         <Link href="/">
-          {path === "/"
-            ? <Image placeholder="blur" blurDataURL={dataUrl} src={logo} alt="logo" className="w-[40px]" />
-            : <Image placeholder="blur" blurDataURL={dataUrl} src={logoAlt} alt="logo" className="w-[40px]" />
-          }
+          {path === "/" ? (
+            <Image
+              placeholder="blur"
+              blurDataURL={dataUrl}
+              src={logo}
+              alt="logo"
+              className="w-[40px]"
+            />
+          ) : (
+            <Image
+              placeholder="blur"
+              blurDataURL={dataUrl}
+              src={logoAlt}
+              alt="logo"
+              className="w-[40px]"
+            />
+          )}
         </Link>
       </div>
 
@@ -56,7 +66,10 @@ const Navbar = () => {
               href={v.path}
               prefetch
               key={i}
-              className={linkClass + `${path === v.path ? " font-semibold" : " font-extralight"}`}
+              className={
+                linkClass +
+                `${path === v.path ? " font-semibold" : " font-extralight"}`
+              }
             >
               {v.title}
               {path === v.path && <GoDotFill size={10} />}
@@ -65,46 +78,56 @@ const Navbar = () => {
         })}
       </div>
 
+      {/* Mobile Navigation  container*/}
+      {openPopMenu && <div className={`absolute top-14 translate-y-1 bg-white w-full left-0 py-4`}>
+        <ul className="space-y-3">
+          {Nav.map((v, i) => (
+            <li key={i}>
+              <Link
+                href={v.path}
+                onClick={() => handleOpenChange(false)}
+                prefetch
+                className={`min-w-56 text-sm flex justify-between flex-col items-center py-4 px-4 rounded-md transition-all hover:bg-ui-desc/15 text-ui-dark hover:text-ui-dark capitalize ${
+                  path === v.path
+                    ? " bg-ui-desc/70 font-semibold"
+                    : " bg-ui-desc/15 font-extralight"
+                }`}
+              >
+                {v.title}
+              </Link>
+            </li>
+          ))}
+          <li>
+            <Link
+              href={"/consultancy"}
+              onClick={() => handleOpenChange(false)}
+              prefetch
+              className={`min-w-56 text-sm flex justify-between flex-col items-center py-4 px-4 rounded-md transition-all hover:bg-ui-desc/15 text-ui-dark hover:text-ui-dark capitalize ${
+                path.startsWith("/consultancy")
+                  ? " bg-ui-desc/70 font-semibold"
+                  : " bg-ui-desc/15 font-extralight"
+              }`}
+            >
+              book consultancy
+            </Link>
+          </li>
+        </ul>
+      </div>}
+
       <div className="hidden w-4/12 md:flex justify-end">
         <Button title="book consultancy" />
       </div>
 
-      <div className="md:hidden">
-        <Popover
-          content={
-            <ul className="space-y-3">
-              {Nav.map((v, i) => (
-                <li key={i}>
-                  <Link
-                    href={v.path}
-                    onClick={() => handleOpenChange(false)}
-                    prefetch
-                    className={`min-w-56 text-sm flex justify-between flex-col items-center py-4 px-4 rounded-md transition-all hover:bg-ui-desc/15 text-ui-dark hover:text-ui-dark capitalize ${path === v.path ? " bg-ui-desc/25 font-semibold" : " bg-ui-desc/5 font-extralight"}`}
-                  >
-                    {v.title}
-                  </Link>
-                </li>
-              ))}
-              <li>
-                <Link
-                  href={'/consultancy'}
-                  onClick={() => handleOpenChange(false)}
-                  prefetch
-                  className={`min-w-56 text-sm flex justify-between flex-col items-center py-4 px-4 rounded-md transition-all hover:bg-ui-desc/15 text-ui-dark hover:text-ui-dark capitalize ${path.startsWith('/consultancy') ? " bg-ui-desc/25 font-semibold" : " bg-ui-desc/5 font-extralight"}`}
-                >
-                  book consultancy
-                </Link>
-              </li>
-            </ul>
-          }
-          trigger={'click'}
-          open={openPopMenu}
-          onOpenChange={handleOpenChange}
-        >
-          <button className="size-6">
-            <FaBars className={`${path === '/' ? 'text-white' : 'text-ui-dark'} size-full`} />
-          </button>
-        </Popover>
+      {/* Mobile Navigation icon */}
+
+      <div className="md:hidden w-max cursor-pointer" onClick={() => handleOpenChange(!openPopMenu)}>
+        <button className="size-6">
+          <FaBars
+            className={`${
+              path === "/" ? "text-white" : "text-ui-dark"
+            } size-full`}
+          />
+        </button>
       </div>
     </div>
   );
