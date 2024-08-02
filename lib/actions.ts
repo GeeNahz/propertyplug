@@ -106,7 +106,7 @@ export async function editBlog(_prevState: unknown, formData: FormData) {
 
 export async function getBlog(id: string) {
   try {
-    const response = await axios.get(`${BASE_URL}/blogs/${id}`);
+    const response = await axios.get(`${BASE_URL}/blogs?id=${id}`);
     return response.data;
   } catch (error: any) {
     console.log("Blog Err: ", error.message);
