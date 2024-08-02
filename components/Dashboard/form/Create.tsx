@@ -19,6 +19,7 @@ type NotificationType = 'success' | 'info' | 'warning' | 'error';
 const initialData: Partial<TBlogPost> = {
   title: '',
   blogContent: '',
+  adsContents:'',
   backgroundImage: new File([new Blob], ''),
   tags: '',
   createdBy: '',
@@ -85,7 +86,7 @@ export default function CreateForm({ user }: Props) {
           <div className="bg-ui-dash-gray h-full w-full overflow-y-scroll">
             <div className="image h-auto bg-ui-red/20 w-full rounded-md overflow-hidden">
               {imagePreview && (
-                <Image placeholder="blur"  blurDataURL={dataUrl} src={imagePreview} alt="preview-image" height={100} width={200} className="size-full object-contain object-center" />
+                <Image placeholder="blur" blurDataURL={dataUrl} src={imagePreview} alt="preview-image" height={100} width={200} className="size-full object-contain object-center" />
               )}
             </div>
 
@@ -96,8 +97,11 @@ export default function CreateForm({ user }: Props) {
               </div>
 
               <div className="!text-sm article">
-                <ContentParser codeString={formData.blogContent} />
+                <ContentParser codeString={formData.blogContent} ads={formData.adsContents} />
               </div>
+              {/* <div className="!text-sm article">
+                <ContentParser codeStringB={formData.adsContents} />
+              </div> */}
             </div>
           </div>
         </Rightbar>

@@ -203,7 +203,7 @@ a:active {
   @apply bg-gray-100 p-4 rounded overflow-x-auto font-mono;
 }
  
-.parsed-html a {
+.parsed-html a, .advert a {
   @apply text-blue-600 no-underline hover:underline;
 }
  

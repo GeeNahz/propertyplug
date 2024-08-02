@@ -22,11 +22,11 @@ export default function AuthWrapper({
 
   useLayoutEffect(() => {
     if (screenSize !== null) {
-      console.log(screenSize);
       if (screenSize <= 1200) {
         alert(
           "Admin Dashboard not suitable for mobile. Please use Desktop💻🖥️"
         );
+        localStorage.removeItem('session')
         router.push("/login");
       }
     }
