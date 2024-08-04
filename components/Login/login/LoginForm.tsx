@@ -1,67 +1,49 @@
-"use client";
-import { MdAddTask, MdError, MdKey, MdLogin } from "react-icons/md";
-import { useActionState, useState } from "react";
-// import { authenticate } from "@/lib/actions";
+import { MdError } from "react-icons/md";
 import { FaArrowRightToBracket, FaEnvelope, FaKey } from "react-icons/fa6";
-// import { useFormStatus } from "react-dom";
-import axios from "axios";
-import { BASE_URL } from "@/lib/apiConfig";
-import { useRouter } from "next/navigation";
-// import { createSession } from "@/try";
+import { AxiosError } from "axios";
+import { redirect } from "next/navigation";
+import Cookies from "js-cookie";
+import { login } from "@/lib/lib";
 
-export default function LoginForm() {
-  const router = useRouter();
-  const [isPending, setIsPending] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-  });
+export default async function LoginForm() {
+  let isPending: boolean = false;
+  let err: any = null;
 
-  const handleChage = (e: any) => {
-    const { name, value } = e.target;
-    setFormData((prev: any) => {
-      return {
-        ...prev,
-        [name]: value,
-      };
-    });
-  };
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsPending(true)
+  async function authenticate(formData: FormData) {
+    isPending = true;
+
     try {
-      const response = await axios.post(`${BASE_URL}/auth/login`, formData, {
-        headers: {
-          "Content-Type": "application/json",
-        },
+      const token = await login(formData);
+
+      if (!token) return;
+
+      Cookies.set("session", token, {
+        expires: new Date(new Date().getTime() + 10 * 60 * 1000),
       });
-      const token = response.data.token;
-      setFormData({
-        email: "",
-        password: "",
-      });
-      localStorage.setItem("session", token);
-      router.push(`/dashboard`);
-    } catch (err) {
-      setFormData({
-        email: "",
-        password: "",
-      });
-      // @ts-ignore
-      setErrorMessage(err.message);
-      // @ts-ignore
-      console.log(err.message);
-    }finally{
-      setIsPending(false)
+      isPending = false;
+    } catch (error: any) {
+      console.log("Error:", error);
+      err = error;
+      isPending = false;
+    } finally {
+      if (err instanceof AxiosError) {
+        switch (err.response?.data.type) {
+          case "CredentialsSignin":
+            return "Invalid credentials.";
+          case "CallbackRouteError":
+            return "Email or password is incorrect";
+          default:
+            return "Something went wrong.";
+        }
+      } else {
+        err = "unable to login you at the moment";
+      }
     }
-  };
-  // const [errorMessage, formAction, isPending] = useActionState(
-  //   authenticate,
-  //   null
-  // )
+
+    redirect("/dashboard"); // Redirecting to the dashboard
+  }
   return (
-    <form onSubmit={handleSubmit} className="space-y-3">
+    <form action={authenticate} className="space-y-3">
       <div className="flex-1 rounded-lg bg-gray-50 px-6 pb-4 pt-8">
         <h1 className={`mb-5 text-2xl text-center font-semibold`}>Login</h1>
         <div className="w-full">
@@ -78,8 +60,8 @@ export default function LoginForm() {
                 id="email"
                 type="email"
                 name="email"
-                value={formData.email}
-                onChange={handleChage}
+                // value={formData.email}
+                // onChange={handleChage}
                 placeholder="Enter your email address"
                 required
               />
@@ -99,8 +81,8 @@ export default function LoginForm() {
                 id="password"
                 type="password"
                 name="password"
-                value={formData.password}
-                onChange={handleChage}
+                // value={formData.password}
+                // onChange={handleChage}
                 placeholder="Enter password"
                 required
                 minLength={6}
@@ -121,10 +103,10 @@ export default function LoginForm() {
           aria-live="polite"
           aria-atomic="true"
         >
-          {errorMessage && (
+          {err && (
             <>
               <MdError className="size-4 text-red-500" />
-              <p className="text-red-500">{errorMessage}</p>
+              <p className="text-red-500">{err}</p>
             </>
           )}
         </div>

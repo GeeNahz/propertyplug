@@ -16,7 +16,7 @@ import {
 import MenuLink from './MenuLink'
 import Image from 'next/image'
 import logo from '@/public/PropertPlugLogo.svg'
-import { logout } from '@/lib'
+import { logout } from '@/lib/lib'
 import { dataUrl } from '@/lib/utils'
 import { Building2 } from 'lucide-react'
 

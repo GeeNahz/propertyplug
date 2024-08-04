@@ -1,18 +1,15 @@
 "use client";
-
-import { GalleryWithID } from "@/components/common/type";
 import { Pagination, PaginationProps, ConfigProvider } from "antd";
 import { useEffect, useState } from "react";
-import imgs3 from "@/components/Landing_Page/Blog_Post/images/ppt3.jpg";
 import Header from "@/components/common/header";
-import BlogPosts from "../BlogPosts";
 import BlogPostsGrid from "../BlogPostsGrid";
 import {getBlogs } from "@/lib/actions";
 
 
 const FeaturedArticles = ({id}:{id:string}) => {
-  const [current, setCurrent] = useState<number>();
+  const [current, setCurrent] = useState<number>(1);
   const [blog, setBlog] = useState([])
+
   useEffect(() => {
     const blogs = async ()=> {
       const res = await getBlogs()
@@ -26,6 +23,10 @@ const FeaturedArticles = ({id}:{id:string}) => {
   const onChange: PaginationProps['onChange'] = (page) => {
     setCurrent(page);
   };
+
+const nextPage = 2 * current;
+const prevPage = current === 1 ? 0 : (current - 1) * 2;
+const newBlog = blog.slice(prevPage, nextPage);
 
   return (
     <section>
@@ -42,11 +43,11 @@ const FeaturedArticles = ({id}:{id:string}) => {
             }
           }}
         >
-          <Pagination current={current} onChange={onChange} total={16} pageSize={4} />
+          <Pagination current={current} onChange={onChange} total={blog.length + 1} pageSize={2} />
         </ConfigProvider>
       </div>
 
-      <BlogPostsGrid posts={blog} />
+      <BlogPostsGrid posts={newBlog} />
     </section>
   );
 };

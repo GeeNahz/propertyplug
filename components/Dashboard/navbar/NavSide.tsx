@@ -3,7 +3,7 @@ import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import img from './noavatar.jpg'
 import { useSearchParams } from "next/navigation";
-import { dasboardPass } from "@/lib";
+import { dasboardPass } from "@/lib/lib";
 import { dataUrl } from "@/lib/utils";
 
 export default function NavSide() {

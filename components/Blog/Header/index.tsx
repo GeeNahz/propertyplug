@@ -18,7 +18,7 @@ const Header = () => {
   ]);
   return (
     <>
-      <div className="sticky z-50 top-[63px]">
+      <div className="sticky z-50 top-[60px]">
         <Navigator title="Blogs" items={navigatorItems} /> {/* brought this here to make this the client component */}
       </div>
 

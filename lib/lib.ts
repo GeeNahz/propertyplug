@@ -1,12 +1,12 @@
-'use client'
-import { BASE_URL } from "./lib/apiConfig";
+'use server'
+import { BASE_URL } from "./api_url";
 import axios from "axios";
 import { SignJWT, jwtVerify } from "jose";
-// 
-
-import { decrypt } from "./lib/utils";
-import { createSession } from "./try";
+import { decrypt } from "./utils";
+import { createSession } from "../try";
 import { redirect } from "next/navigation";
+import Cookies from "js-cookie";
+import { NextRequest, NextResponse } from "next/server";
 
 const secretKey = "secret";
 const key = new TextEncoder().encode(secretKey);
@@ -75,25 +75,36 @@ export async function logout() {
   // cookies().set("session", "", { expires: new Date(0) });
 }
 
-// export async function getSession() {
-//   const session = cookies().get("session")?.value;
-//   if (!session) return null;
-//   return await decrypt(session);
-// }
+export async function getSession() {
+  try {
+    const session = Cookies.get();
+    console.log('getSession - Retrieved session:', session);
 
-// export async function updateSession(request: NextRequest) {
-//   const session = request.cookies.get("session")?.value;
-//   if (!session) return;
+    if (!session) {
+      console.log('getSession - Session not found');
+      return null;
+    }
+    return session;
+  } catch (error) {
+    console.error('getSession - Error retrieving session:', error);
+    return null;
+  }
+}
 
-//   // Refresh the session so it doesn't expire
-//   const parsed = await decrypt(session);
-//   parsed.expires = new Date(Date.now() + 10 * 1000);
-//   const res = NextResponse.next();
-//   res.cookies.set({
-//     name: "session",
-//     value: await encrypt(parsed),
-//     httpOnly: true,
-//     expires: parsed.expires,
-//   });
-//   return res;
-// }
+export async function updateSession(request: NextRequest) {
+  const session = request.cookies.get("session")?.value;
+  if (!session) return;
+
+  // Refresh the session so it doesn't expire
+
+const expires = new Date(Date.now() + 10 * 1000);
+console.log('mid',expires)
+  const res = NextResponse.next();
+  res.cookies.set({
+    name: "session",
+    value: session,
+    httpOnly: true,
+    expires: expires,
+  });
+  return res;
+}

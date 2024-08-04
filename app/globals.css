@@ -223,4 +223,6 @@ a:active {
 /* .novel-list-disc {
   list-style: circle;
 } */
-
+.advert{
+  @apply bg-[#1E1E1E] rounded-lg text-white my-3 md:my-5 px-3 py-2
+}

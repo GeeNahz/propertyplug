@@ -11,7 +11,6 @@ import { notification } from "antd";
 import { createBlog } from "@/lib/actions";
 import ContentParser from "@/components/editor/content-parser";
 import Image from "next/image";
-import { dataUrl } from "@/lib/utils";
 
 
 type NotificationType = 'success' | 'info' | 'warning' | 'error';
@@ -19,7 +18,7 @@ type NotificationType = 'success' | 'info' | 'warning' | 'error';
 const initialData: Partial<TBlogPost> = {
   title: '',
   blogContent: '',
-  adsContents:'',
+  addContents:'',
   backgroundImage: new File([new Blob], ''),
   tags: '',
   createdBy: '',
@@ -73,8 +72,8 @@ export default function CreateForm({ user }: Props) {
         <BlogHeader />
       </div>
 
-      <div className="main h-full flex gap-5">
-        <div className="form w-7/12">
+      <div className="main h-full flex-auto flex gap-5 lg:gap-8">
+        <div className="form" style={{ flex: 3 }}>
           <Form action={dispatch} formData={formData} setFormData={setFormData}>
             {/* <Button disabled={isPending} name="post" classes="bg-white border border-ui-dark !text-ui-dark" /> */}
 
@@ -86,7 +85,7 @@ export default function CreateForm({ user }: Props) {
           <div className="bg-ui-dash-gray h-full w-full overflow-y-scroll">
             <div className="image h-auto bg-ui-red/20 w-full rounded-md overflow-hidden">
               {imagePreview && (
-                <Image placeholder="blur" blurDataURL={dataUrl} src={imagePreview} alt="preview-image" height={100} width={200} className="size-full object-contain object-center" />
+                <Image src={imagePreview} alt="preview-image" height={100} width={200} className="size-full object-contain object-center" />
               )}
             </div>
 
@@ -97,11 +96,8 @@ export default function CreateForm({ user }: Props) {
               </div>
 
               <div className="!text-sm article">
-                <ContentParser codeString={formData.blogContent} ads={formData.adsContents} />
+                <ContentParser codeString={formData.blogContent} ads={formData.addContents} />
               </div>
-              {/* <div className="!text-sm article">
-                <ContentParser codeStringB={formData.adsContents} />
-              </div> */}
             </div>
           </div>
         </Rightbar>

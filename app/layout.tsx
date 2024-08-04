@@ -16,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className="relative overflow-x-hidden w-full min-h-screen flex flex-col justify-between">
+      <body className="relative overflow-x-hidden w-full min-h-screen flex flex-col">
         <Providers>
           {children}
         </Providers>

@@ -8,13 +8,13 @@ export default function LandingPageLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <>
+    <main className="flex flex-col relative">
       <nav className="z-50 relative">
         <Navbar />
       </nav>
-      <div>{children}</div>
+      <main>{children}</main>
       <Footer />
       <Moda />
-    </>
+    </main>
   )
 }

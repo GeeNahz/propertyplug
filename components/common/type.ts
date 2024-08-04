@@ -81,7 +81,7 @@ export type TBlogPost = {
   title: string;
   backgroundImage: string | File;
   blogContent: string;
-  adsContents?:string;
+  addContents?:string;
   createdBy: string;
   createdAt: string;
   tags: string;

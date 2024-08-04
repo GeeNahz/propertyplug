@@ -17,25 +17,25 @@ import { dataUrl } from "@/lib/utils";
 import { getBlog } from "@/lib/actions";
 import { ImageIcon } from "lucide-react";
 import Loading from "@/components/common/loader";
+import { usePathname } from "next/navigation";
 
-export default function Page({ params }: { params: {slug: string } }) {
+export default function Page({ params }: { params: { slug: string } }) {
   const [blog, setBlog] = useState<any>([]);
   useEffect(() => {
     const fetchBlog = async () => {
       const response = await getBlog(params.slug);
-      setBlog(response.result[0]);
+      setBlog(response);
     };
     fetchBlog();
   }, [params.slug]);
-const title = blog.title
+  const title = params.slug!;
   const [navigatorItems, setNavigatorItems] = useState<
     Partial<BreadcrumbItemType & BreadcrumbSeparatorType>[]
   >([
     { title: "Home", path: "/" },
     { title: "Blogs", path: "/blog" },
-    { title: params.slug, path: `blog/${params.slug}` },
+    { title: title, path: `blog/${params.slug}` },
   ]);
-  console.log(navigatorItems)
   return (
     <Suspense fallback={<Loading />}>
       <div className="mt-28 mb-14">
@@ -44,7 +44,11 @@ const title = blog.title
         </div>
 
         <div className="px-20 py-20 bg-gradient-to-b from-white from-15% to-gray-50">
-          <div className={`h-[450px] ${!blog.backgroundImage && 'flex'} w-full overflow-hidden rounded-[30px] justify-center items-center`}>
+          <div
+            className={`h-[450px] ${
+              !blog.backgroundImage && "flex"
+            } w-full overflow-hidden rounded-[30px] justify-center items-center`}
+          >
             {blog.backgroundImage ? (
               <Image
                 width={1240}
@@ -54,7 +58,7 @@ const title = blog.title
                 className="size-full object-cover bg-no-repeat bg-cover"
               />
             ) : (
-              <ImageIcon size={30}/>
+              <ImageIcon size={30} />
             )}
           </div>
 
@@ -63,7 +67,7 @@ const title = blog.title
 
             <Divider dashed={true} />
 
-            <BlogContent body={blog?.blogContent} />
+            <BlogContent body={blog?.blogContent} ads={blog?.addContent} />
           </div>
         </div>
         <Suspense fallback={<Loading />}>

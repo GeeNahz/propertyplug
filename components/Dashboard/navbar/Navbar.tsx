@@ -3,7 +3,7 @@ import PageTitle from "./PageTitle";
 import Image from "next/image";
 import { HiBell } from "react-icons/hi2";
 import { getSession } from "@/try";
-import { BASE_URL } from "@/lib/apiConfig";
+import { BASE_URL } from "@/lib/api_url";
 import axios from "axios";
 import { decrypt } from "@/lib/utils";
 import NavSide from "./NavSide";

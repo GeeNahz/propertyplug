@@ -15,30 +15,26 @@ import { dataUrl } from "@/lib/utils";
 
 const Footer = () => {
   return (
-    <footer className="bg-[#0B2831] py-8 px-7 md:px-20 self-end w-full">
+    <footer className="bg-[#0B2831] py-8 px-7 md:px-20 w-full">
       <Link href="/" className="w-[80px] max-w-max md:hidden">
-        <Image placeholder="blur" blurDataURL={dataUrl} src={Logo} alt="logo" className="" />
+        <Image
+          placeholder="blur"
+          blurDataURL={dataUrl}
+          src={Logo}
+          alt="logo"
+          className=""
+        />
       </Link>
       <div className="flex gap-4 md:gap-12  items-start md:items-center">
         <Link href="/" className="w-[100px] max-md:hidden">
-          <Image placeholder="blur" blurDataURL={dataUrl} src={Logo} alt="logo" className="" />
+          <Image
+            placeholder="blur"
+            blurDataURL={dataUrl}
+            src={Logo}
+            alt="logo"
+            className=""
+          />
         </Link>
-        {/* <div className="flex flex-col gap-4 text-white/70">
-          <h5 className=" text-right">Stay Informed:</h5>
-
-          <h5 className="text-right text-sm md:text-base">
-            Subscribe to Our Newsletter for Regular Updates.
-          </h5>
-
-          <div className="h-max w-full relative">
-            <input
-              placeholder="input your email address here"
-              className="rounded-[20px] border w-full md:w-[500px] px-4 py-3 bg-transparent placeholder:text-xs placeholder:font-extralight"
-            />
-
-            <LuSendHorizonal className="absolute top-4 right-5" />
-          </div>
-        </div> */}
         <div className="w-full flex flex-col md:flex-row mt-12">
           <div className="flex-1 flex flex-col gap-4 max-md:gap-1 w-full md:w-max mb-6 md:mb-0">
             <h6 className="text-white font-semibold text-sm">Pages</h6>
@@ -57,7 +53,12 @@ const Footer = () => {
                 request
               </Link>
 
-              <Link href="/login" className="transition-all hover:text-white/100">login</Link>
+              <Link
+                href="/login"
+                className="transition-all hover:text-white/100"
+              >
+                login
+              </Link>
             </nav>
           </div>
 
@@ -89,10 +90,13 @@ const Footer = () => {
                 "info@propertyplugng.com",
               ].map((v, i) => (
                 <Link
-                  href={`${v.includes("info") ? "mailto:info@propertyplugng.com" : "#"
-                    }`}
+                  href={`${
+                    v.includes("info") ? "mailto:info@propertyplugng.com" : "#"
+                  }`}
                   key={i}
-                  className={`transition-all hover:text-white/100 whitespace-nowrap ${v.includes("info") && 'underline font-semibold'}`}
+                  className={`transition-all hover:text-white/100 whitespace-nowrap ${
+                    v.includes("info") && "underline font-semibold"
+                  }`}
                 >
                   {v}
                 </Link>
@@ -138,7 +142,8 @@ const Footer = () => {
       {/* newletter */}
       <div className=" w--full flex flex-col-reverse gap-4 text-white/70">
         <h5 className="max-md:text-left text-right text-xs max-sm:text-[11px] font-extralight">
-          <span className="font-semibold">Stay Informed:</span> Subscribe to Our Newsletter for Regular Updates.
+          <span className="font-semibold">Stay Informed:</span> Subscribe to Our
+          Newsletter for Regular Updates.
         </h5>
 
         <div className="h-max w-full md:w-max max-sm:mt-6  relative self-end justify-self-end">
@@ -167,7 +172,6 @@ const Footer = () => {
           </small>
         </div>
       </div>
-
     </footer>
   );
 };

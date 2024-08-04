@@ -1,17 +1,17 @@
 import parse from 'html-react-parser'
 
-export default function ContentParser({
+export default async function ContentParser({
   codeString,
   ads
 }: {
   codeString?: string | null | undefined;
-  ads?: any;
+  ads?: string;
 }) 
 {
- const adv =  `<div className="bg-[#1E1E1E] rounded-lg text-white advert my-3 md:my-5 px-3 py-2">${ads}</div>`
-let blog = codeString
+ const adv =  `<div class='advert'>${ads}</div>`
+let blog = codeString as string
 if(codeString?.includes("@ads")){
  blog = codeString.replaceAll('@ads', adv)
 }
-  return <article className="parsed-html break-all !text-inherit">{parse(`${blog}`)}</article>
+  return <article className="parsed-html break-all !text-inherit" dangerouslySetInnerHTML={{__html:blog}}/>
 }

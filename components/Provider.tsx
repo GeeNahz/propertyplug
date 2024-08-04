@@ -6,7 +6,7 @@ export function Providers({ children }: {children:React.ReactNode}) {
   return (
     <AntdRegistry>
     <Statecontext>
-      <div className="z-0 min-h-full">{children}</div>
+      <main className="z-0 min-h-full">{children}</main>
     </Statecontext>
   </AntdRegistry>
   );

@@ -34,11 +34,13 @@ export default function Form({
   }
 
   function setAdsContent(htmlContent: string) {
-    setFormData((prev) => ({ ...prev, adsContents: htmlContent }));
+    setFormData((prev) => ({ ...prev, addContents: htmlContent }));
   }
+
 
   return (
     <form
+   
       action={action}
       className="bg-white rounded-lg p-8 flex flex-col gap-6 h-full xl:max-w-[700px] 2xl:max-w-[850px]"
     >
@@ -102,19 +104,19 @@ export default function Form({
 
       {/* Ads */}
       <div className="content flex flex-col gap-2">
-        <Label value="adverts (please use the key word @ads to insert this advert in your content)" id="adverts" />
+        <Label value="adverts (please use the key word @ads to insert this advert in your content)" id="addContents" />
         <div className="border border-ui-dark rounded-lg min-h-44 w-full">
           <NovelEditor
-            content={[formData.adsContents] as unknown as JSONContent[]}
+            content={[formData.addContents] as unknown as JSONContent[]}
             setContent={setAdsContent}
           />
         </div>
         <input
           className="body h-44 w-full text-xs border-2 border-ui-dark rounded-lg py-4 px-6"
           type="hidden"
-          name="adsContents"
-          id="adsContents"
-          value={formData.adsContents || ""}
+          name="addContents"
+          id="addContents"
+          value={formData.addContents || ""}
           onChange={handleFormChange}
         />
       </div>
@@ -131,7 +133,7 @@ export default function Form({
   );
 }
 
-function Label({
+export function Label({
   id,
   value,
   isRequired,

@@ -12,10 +12,15 @@ function checkFileType(file: File | undefined) {
 }
 
 export const blogSchema = z.object({
-  title: z.string().min(3).trim(),
-  blogContent: z.string().min(5).trim().refine(
-    (content) => content && content !== '<p></p>', 'Content must be provided'
-  ),
+  title: z.string().min(3, "Title must be at least 3 characters long").trim(),
+  addContents: z.string().min(5, "Ads contents must be at least 5 characters long").trim(),
+  blogContent: z
+    .string()
+    .min(5, "Blog content must be at least 5 characters long")
+    .trim()
+    .refine(
+      (content) => content && content !== '<div></div>',
+      "Content must be provided and cannot be empty"),
   createdBy: z.string(),
   tags: z.string().refine(
     (tag) => tag && tag !== '', 'Tags must be provided'
