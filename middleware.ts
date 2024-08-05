@@ -12,8 +12,6 @@ export async function middleware(request: NextRequest) {
 
   const expires = new Date(new Date().getTime() + 10 * 60 * 1000);
 
-  // refreshes user time on the web
-
   response.cookies.set({
     name: "session",
     value: `${token.value}`,
