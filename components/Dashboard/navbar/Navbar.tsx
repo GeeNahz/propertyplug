@@ -1,21 +1,9 @@
 import { MdSearch } from "react-icons/md";
 import PageTitle from "./PageTitle";
-import Image from "next/image";
 import { HiBell } from "react-icons/hi2";
-import { getSession } from "@/try";
-import { BASE_URL } from "@/lib/api_url";
-import axios from "axios";
-import { decrypt } from "@/lib/utils";
 import NavSide from "./NavSide";
 
 export default async function Navbar() {
-
-  // const userData = await axios.get(`${BASE_URL}/users/${user_id}`, {
-  //   headers: {
-  //     Authorization: `${toke}`,
-  //     "Content-Type": "application/json",
-  //   },
-  // });
 
   return (
     <nav className="flex justify-between items-center bg-white py-2 px-5 rounded-2xl">

@@ -3,7 +3,7 @@ import { DropList } from "@/components/Landing_Page/Hero_Section/heroDropDown";
 const HeroSection = () => {
   return (
     <section className="h-screen bg-[url('/bg.png')] bg-no-repeat bg-cover bg-center flex items-center px-7 md:px-0">
-      <div className="h-full bg-transparent w-full flex flex-col justify-center items-center py-3 backdrop-blur-sm">
+      <div className="h-full bg-transparent w-full flex flex-col justify-center items-center py-3 sm:backdrop-blur-sm">
         <small className="text-zinc-400 text-xs md:text-sm">
           Excellence from Abuja Nigeria
         </small>
