@@ -31,10 +31,10 @@ export default async function Navbar() {
             className="input outline-none bg-transparent w-full border-none text-ui-desc"
           />
         </div>
-
+{/* 
         <div className="icons flex gap-5">
           <HiBell size={20} />
-        </div>
+        </div> */}
 
         <NavSide/>
       </div>
