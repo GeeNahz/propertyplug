@@ -18,7 +18,7 @@ export default async function DashboardLayout({
     <main>
       {/* mobile behaviour */}
       <div className="xl:hidden flex justify-center items-center h-screen">
-        <p className="font-medium text-lg">
+        <p className="font-medium text-sm px-4 text-center text-balance">
           Admin Dashboard not suitable for mobile. Please use Desktop💻🖥️
         </p>
       </div>
