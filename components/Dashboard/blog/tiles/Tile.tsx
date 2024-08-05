@@ -56,7 +56,7 @@ export default async function Tile({ post }: Props) {
         <div className="title">
           <p className="font-semibold capitalize text-lg">{post.title}</p>
           {/* @ts-ignore */}
-          <small className="text-xs text-ui-desc">{time}</small>
+          {time && <small className="text-xs text-ui-desc">{time}</small>}
         </div>
 
         <div className="w-2/4 border-b border-ui-dark/20"></div>

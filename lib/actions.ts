@@ -69,13 +69,15 @@ export async function createBlog(_prevState: unknown, formData: FormData) {
 }
 
 export async function editBlog(_prevState: unknown, formData: FormData) {
-  const { id, title, blogContent, tags, createdBy, backgroundImage } =
+  const { id, title, blogContent, tags, createdBy, backgroundImage, addContent, slug } =
     Object.fromEntries(formData);
 
   const result = blogSchema.safeParse({
     title,
     blogContent,
+    addContent,
     tags,
+    slug,
     createdBy,
     backgroundImage,
   });
@@ -90,10 +92,10 @@ export async function editBlog(_prevState: unknown, formData: FormData) {
 
     return errors;
   }
-  let payload = { title, blogContent, tags, createdBy};
+  let payload = { title, blogContent, tags, createdBy, slug, addContent};
 
   try {
-    const response = await axios.patch(`${BASE_URL}/blogs/${id}`, payload);
+    const response = await axios.patch(`${BASE_URL}/blogs/${slug}`, payload);
 
     revalidatePath("/dasboard/blogs");
     return response.data;

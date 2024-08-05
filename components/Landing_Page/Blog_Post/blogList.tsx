@@ -9,7 +9,7 @@ export default async function BlogList() {
   return (
     <div className="w-full grid_wrapper mt-4">
       {blogs.slice(0, 4).map((v: any, i: number) => {
-        const time = new Date(v.createdAt).toLocaleDateString() || "";
+        const time = new Date(v.createdAt).toLocaleDateString();
         return (
           <div
             key={i}
@@ -23,9 +23,9 @@ export default async function BlogList() {
             />
             <div className="absolute top-0 w-full h-full left-0 transition translate-x-0 duration-700 z-0 linear_gradient flex flex-col justify-between p-3">
               <div className="">
-                <small className="text-slate-50 text-xs font-normal">
+                {time && <small className="text-slate-50 text-xs font-normal">
                   {time}
-                </small>
+                </small>}
                 <h4 className="text-white text-xl capitalize font-semibold">
                   {v.title}
                 </h4>

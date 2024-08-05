@@ -11,13 +11,13 @@ type Props = {
 };
 
 const BlogMetaData = ({ owner, createdAt, category, like }: Props) => {
-  const time = new Date(createdAt || "").toLocaleString() 
+  const time = new Date(createdAt).toLocaleString() 
   return (
     <div className="sub-title text-gray-500 flex justify-between items-center">
       <div className="meta-data flex gap-5 items-center text-sm font-light divide-gray-400">
         <p className="author">Written by {owner}</p>
         <Divider type="vertical" />
-        <p className="date">{time}</p>
+        {time &&<p className="date">{time}</p>}
         <Divider type="vertical" />
         <p className="category">{category}</p>
       </div>

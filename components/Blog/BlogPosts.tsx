@@ -12,7 +12,7 @@ type Props = {
 
 const BlogPosts = ({ post }: any) => {
   // console.log(post)
-  const time = new Date(post.createdAt || null).toLocaleString();
+  const time = new Date(post.createdAt).toLocaleString();
   return (
     <>
       {post?.backgroundImage ? (
@@ -43,7 +43,7 @@ const BlogPosts = ({ post }: any) => {
       )}
       {post?.backgroundImage && <div className={`absolute top-0 w-full h-full left-0 linear_gradient transition duration-700 z-0  flex flex-col justify-between p-3`}>
         <div className="">
-          <small className="text-slate-50 text-xs font-normal">{time}</small>
+         {time && <small className="text-slate-50 text-xs font-normal">{time}</small>}
           <h4 className="text-white text-xl capitalize font-semibold">
             {post.title}
           </h4>
