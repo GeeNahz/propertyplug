@@ -34,7 +34,7 @@ export default function Form({
   }
 
   function setAdsContent(htmlContent: string) {
-    setFormData((prev) => ({ ...prev, addContents: htmlContent }));
+    setFormData((prev) => ({ ...prev, addContent: htmlContent }));
   }
 
 
@@ -104,19 +104,19 @@ export default function Form({
 
       {/* Ads */}
       <div className="content flex flex-col gap-2">
-        <Label value="adverts (please use the key word @ads to insert this advert in your content)" id="addContents" />
+        <Label value="adverts (please use the key word @ads to insert this advert in your content)" id="addContent" />
         <div className="border border-ui-dark rounded-lg min-h-44 w-full">
           <NovelEditor
-            content={[formData.addContents] as unknown as JSONContent[]}
+            content={[formData.addContent] as unknown as JSONContent[]}
             setContent={setAdsContent}
           />
         </div>
         <input
           className="body h-44 w-full text-xs border-2 border-ui-dark rounded-lg py-4 px-6"
           type="hidden"
-          name="addContents"
-          id="addContents"
-          value={formData.addContents || ""}
+          name="addContent"
+          id="addContent"
+          value={formData.addContent || ""}
           onChange={handleFormChange}
         />
       </div>

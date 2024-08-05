@@ -13,7 +13,7 @@ function checkFileType(file: File | undefined) {
 
 export const blogSchema = z.object({
   title: z.string().min(3, "Title must be at least 3 characters long").trim(),
-  addContents: z.string().min(5, "Ads contents must be at least 5 characters long").trim(),
+  addContent: z.string().min(5, "Ads contents must be at least 5 characters long").trim(),
   blogContent: z
     .string()
     .min(5, "Blog content must be at least 5 characters long")

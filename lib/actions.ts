@@ -36,9 +36,9 @@ export async function authenticate(formData: FormData) {
 }
 
 export async function createBlog(_prevState: unknown, formData: FormData) {
-  const { title, blogContent, addContents, tags, createdBy, backgroundImage } = Object.fromEntries(formData) as TBlog
+  const { title, blogContent, addContent, tags, createdBy, backgroundImage } = Object.fromEntries(formData) as TBlog
 
-  const result = blogSchema.safeParse({ title, blogContent, tags, createdBy, backgroundImage, addContents }) || null
+  const result = blogSchema.safeParse({ title, blogContent, tags, createdBy, backgroundImage, addContent }) || null
 
   if (!result.success) {
     let fieldErrors = result.error.flatten().fieldErrors
