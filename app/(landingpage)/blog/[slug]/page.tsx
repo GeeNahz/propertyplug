@@ -1,6 +1,5 @@
 "use client";
 import Image from "next/image";
-import imgs5 from "@/components/Landing_Page/Blog_Post/images/ppt5.jpg";
 import { Divider } from "antd";
 import {
   BlogHeader,
@@ -13,14 +12,12 @@ import {
   BreadcrumbItemType,
   BreadcrumbSeparatorType,
 } from "antd/es/breadcrumb/Breadcrumb";
-import { dataUrl } from "@/lib/utils";
-import { getBlog } from "@/lib/actions";
-import { ImageIcon } from "lucide-react";
+import { getBlog, getBlogs } from "@/lib/actions";
 import Loading from "@/components/common/loader";
-import { usePathname } from "next/navigation";
 
 export default function Page({ params }: { params: { slug: string } }) {
   const [blog, setBlog] = useState<any>([]);
+  const [blogs, setBlogs] = useState([])
   useEffect(() => {
     const fetchBlog = async () => {
       const response = await getBlog(params.slug);
@@ -28,6 +25,22 @@ export default function Page({ params }: { params: { slug: string } }) {
     };
     fetchBlog();
   }, [params.slug]);
+
+
+//  fetch all blogs
+useEffect(() => {
+  const fetchBlogs = async () => {
+    try {
+      const res = await getBlogs();
+      setBlogs(res.result);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  fetchBlogs();
+}, [params.slug]);
+console.log(blogs)
   const title = params.slug!;
   const [navigatorItems, setNavigatorItems] = useState<
     Partial<BreadcrumbItemType & BreadcrumbSeparatorType>[]
@@ -45,20 +58,36 @@ export default function Page({ params }: { params: { slug: string } }) {
 
         <div className="px-20 py-20 bg-gradient-to-b from-white from-15% to-gray-50">
           <div
-            className={`h-[450px] ${
+            className={`h-[450px] relative aspect-auto ${
               !blog.backgroundImage && "flex"
             } w-full overflow-hidden rounded-[30px] justify-center items-center`}
           >
             {blog.backgroundImage ? (
               <Image
-                width={1240}
-                height={450}
+                fill
                 src={blog?.backgroundImage || ""}
                 alt={params.slug}
-                className="size-full object-cover bg-no-repeat bg-cover"
+                className="object-cover"
               />
             ) : (
-              <ImageIcon size={30} />
+              (
+                <div
+                  role="status"
+                  className="space-y-8 animate-pulse md:space-y-0 md:space-x-8 rtl:space-x-reverse md:flex md:items-center"
+                >
+                  <div className="flex items-center justify-center w-full sm:h-[450px] rounded sm:w-[1240px] bg-gray-700">
+                    <svg
+                      className="w-10 h-10 text-gray-600"
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="currentColor"
+                      viewBox="0 0 20 18"
+                    >
+                      <path d="M18 0H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm4.376 10.481A1 1 0 0 1 16 15H4a1 1 0 0 1-.895-1.447l3.5-7A1 1 0 0 1 7.468 6a.965.965 0 0 1 .9.5l2.775 4.757 1.546-1.887a1 1 0 0 1 1.618.1l2.541 4a1 1 0 0 1 .028 1.011Z" />
+                    </svg>
+                  </div>
+                </div>
+              )
             )}
           </div>
 
@@ -71,7 +100,7 @@ export default function Page({ params }: { params: { slug: string } }) {
           </div>
         </div>
         <Suspense fallback={<Loading />}>
-          <FeaturedArticles id={blog?.id} />
+          <FeaturedArticles id={blog?.id} blogs={blogs} />
         </Suspense>
       </div>
     </Suspense>

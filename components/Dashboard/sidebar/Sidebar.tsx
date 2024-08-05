@@ -2,15 +2,7 @@
 import {
   MdDashboard,
   MdArticle,
-  MdSupervisedUserCircle,
-  MdShoppingBag,
-  MdAttachMoney,
-  MdWork,
-  MdAnalytics,
-  MdPeople,
-  MdOutlineSettings,
   MdSettings,
-  MdHelpCenter,
   MdLogout,
 } from 'react-icons/md'
 import MenuLink from './MenuLink'
@@ -74,7 +66,7 @@ export default function Sidebar() {
         ))}
       </ul>
 
-      <form onSubmit={ async () => await logout()} className="mt-auto">
+      <form action={ async () => await logout()} className="mt-auto">
         <button className="logout p-5 my-[5px] flex items-center gap-2 cursor-pointer rounded-[10px] bg-ui-dash-gray border-none w-full text-xs text-ui-dark font-semibold hover:bg-ui-dash-gray/80 transition-all">
           <div className="size-12 flex items-center justify-center rounded-full bg-ui-red/10 text-ui-red">
             <MdLogout size={20} />

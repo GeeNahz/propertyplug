@@ -7,6 +7,7 @@ import { createSession } from "../try";
 import { redirect } from "next/navigation";
 import Cookies from "js-cookie";
 import { NextRequest, NextResponse } from "next/server";
+import { cookies } from "next/headers";
 
 const secretKey = "secret";
 const key = new TextEncoder().encode(secretKey);
@@ -69,10 +70,9 @@ export async function dasboardPass(toke:any){
 }
 
 export async function logout() {
-  localStorage.removeItem('session')
-  redirect('/dashboard')
   // Destroy the session
-  // cookies().set("session", "", { expires: new Date(0) });
+  cookies().set("session", "", { expires: new Date(0) });
+  redirect('/login')
 }
 
 export async function getSession() {

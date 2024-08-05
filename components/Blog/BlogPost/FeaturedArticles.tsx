@@ -1,32 +1,29 @@
-"use client";
 import { Pagination, PaginationProps, ConfigProvider } from "antd";
-import { useEffect, useState } from "react";
+import { useState, useMemo, useCallback } from "react";
 import Header from "@/components/common/header";
 import BlogPostsGrid from "../BlogPostsGrid";
-import {getBlogs } from "@/lib/actions";
 
+const shuffleArray = (array:string[]) => {
+  let shuffledArray = array.slice();
+  for (let i = shuffledArray.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
+  }
+  return shuffledArray;
+};
 
-const FeaturedArticles = ({id}:{id:string}) => {
+const FeaturedArticles = ({ id, blogs }: { id: string, blogs: any[] }) => {
   const [current, setCurrent] = useState<number>(1);
-  const [blog, setBlog] = useState([])
 
-  useEffect(() => {
-    const blogs = async ()=> {
-      const res = await getBlogs()
-      const response = res.result.filter((val:any) => val.id !== id)
-      setBlog(response)
-    }
-    blogs()
-  }, [])
+  const filteredBlogs = useMemo(() => shuffleArray(blogs.filter((val: any) => val.id !== id)), [blogs, id]);
 
- 
-  const onChange: PaginationProps['onChange'] = (page) => {
+  const onChange: PaginationProps["onChange"] = useCallback((page: number) => {
     setCurrent(page);
-  };
+  }, []);
 
-const nextPage = 2 * current;
-const prevPage = current === 1 ? 0 : (current - 1) * 2;
-const newBlog = blog.slice(prevPage, nextPage);
+  const nextPage = 2 * current;
+  const prevPage = current === 1 ? 0 : (current - 1) * 2;
+  const newBlog = useMemo(() => filteredBlogs.slice(prevPage, nextPage), [filteredBlogs, prevPage, nextPage]);
 
   return (
     <section>
@@ -35,18 +32,21 @@ const newBlog = blog.slice(prevPage, nextPage);
           title="Featured Articles"
           desc="Explore explicit Content Just for you"
         />
-
         <ConfigProvider
           theme={{
             token: {
               colorPrimary: "#0B2831",
-            }
+            },
           }}
         >
-          <Pagination current={current} onChange={onChange} total={blog.length + 1} pageSize={2} />
+          <Pagination
+            current={current}
+            onChange={onChange}
+            total={filteredBlogs.length}
+            pageSize={2}
+          />
         </ConfigProvider>
       </div>
-
       <BlogPostsGrid posts={newBlog} />
     </section>
   );

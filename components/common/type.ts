@@ -81,10 +81,11 @@ export type TBlogPost = {
   title: string;
   backgroundImage: string | File;
   blogContent: string;
-  addContents?:string;
+  addContent?:string;
   createdBy: string;
   createdAt: string;
   tags: string;
+  slug:string,
   publish: boolean;
   thumbnail: string;
 }

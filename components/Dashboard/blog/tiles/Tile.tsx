@@ -15,12 +15,11 @@ type Props = {
 
 export default async function Tile({ post }: Props) {
   const time = new Date(post.createdAt).toLocaleString();
-  console.log(post);
 
   async function deleteBlog() {
     "use server";
     try {
-    await axios.delete(`${BASE_URL}/blogs/${post.id}`, {
+    await axios.delete(`${BASE_URL}/blogs/${post.slug}`, {
         headers: {
           Authorization: cookies().get("session")?.value,
           "Content-Type": "Application/json",
@@ -64,8 +63,8 @@ export default async function Tile({ post }: Props) {
 
         <div className="article body !text-xs text-ui-desc text-start w-full">
           <ContentParser
-            codeString={`${post.blogContent.substring(0, 250)}...`}
-            ads={post.addContents}
+            codeString={`${post?.blogContent!.length>200? `${post?.blogContent?.trim().substring(0,200)}...` : post?.blogContent}`}
+            ads={`${post?.addContent!.length>200? `${post?.addContent?.trim().substring(0,200)}...` : post?.addContent}`}
           />
 
           {/* <p>{post.blogContent.substring(0, 400)}...</p> */}
