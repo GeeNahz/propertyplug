@@ -14,7 +14,7 @@ type Props = {
 const BlogHeader = ({ post }: { post: Props }) => {
   return (
     <div className="blog-title">
-      <p className="title capitalize font-bold text-4xl text-ui-dark mb-4">{post.title || ''}</p>
+      <p className="title capitalize font-bold text-2xl lg:text-4xl text-ui-dark mb-4">{post.title || ''}</p>
 
       <BlogMetaData
         title={post.title || ''}

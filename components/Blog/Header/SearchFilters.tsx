@@ -11,12 +11,12 @@ const SearchFilters = () => {
   const selectedTag = searchParams.get("tag") || "all";
 
   return (
-    <div className="flex flex-col md:flex-row gap-4 md:gap-0 justify-between items-center">
+    <div className="flex flex-col xl:flex-row gap-4 xl:gap-0 xl:justify-between justify-center items-center">
       <div className="search w-full">
         <Search />
       </div>
 
-      <div className="min-w-fit tags space-x-1">
+      <div className="w-full md:w-max h-10 md:h-auto max-sm:overflow-x-scroll tags space-x-1">
         {tags.map((v: string, i: number) => {
           return (
             <Link

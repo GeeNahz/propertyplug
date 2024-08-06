@@ -28,10 +28,11 @@ const BreadCrumbs = ({ title, items }: Props) => {
   }
 
   return (
-    <section className="flex justify-between items-center py-4 px-20 bg-[#FCFCFC] backdrop-blur-sm">
+    <section className="flex justify-between items-center py-4 px-2 md:px-20 bg-[#FCFCFC] backdrop-blur-sm">
       {title && (<p className="font-semibold text-sm text-opacity-60 text-gray-500">{title}</p>)}
 
       <Breadcrumb
+      className="hidden md:block"
         itemRender={itemRender}
         items={items}
       />

@@ -27,7 +27,7 @@ const FeaturedArticles = ({ id, blogs }: { id: string, blogs: any[] }) => {
 
   return (
     <section>
-      <div className="header flex items-center justify-between px-32 py-8">
+      <div className="header flex max-md:flex-col w-full items-center justify-between px-32 max-md:px-4 max-md:items-start max-md:gap-4 py-8">
         <Header
           title="Featured Articles"
           desc="Explore explicit Content Just for you"
@@ -40,6 +40,7 @@ const FeaturedArticles = ({ id, blogs }: { id: string, blogs: any[] }) => {
           }}
         >
           <Pagination
+          className="self-center"
             current={current}
             onChange={onChange}
             total={filteredBlogs.length}

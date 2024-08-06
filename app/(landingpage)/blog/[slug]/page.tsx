@@ -50,17 +50,17 @@ console.log(blogs)
     { title: title, path: `blog/${params.slug}` },
   ]);
   return (
-    <Suspense fallback={<Loading />}>
-      <div className="mt-28 mb-14">
-        <div className="top-[63px] w-full fixed bg-white z-10">
-          <Navigator title="Blogs" items={navigatorItems} />
+    <>
+      <div className="mt-16 md:mt-28 mb-14">
+        <div className="top-[63px] fixed bg-white z-10 w-full">
+          <Navigator title={params.slug} items={navigatorItems} />
         </div>
 
-        <div className="px-20 py-20 bg-gradient-to-b from-white from-15% to-gray-50">
+        <div className="px-20 max-sm:px-4 py-20 bg-gradient-to-b from-white from-15% to-gray-50">
           <div
             className={`h-[450px] relative aspect-auto ${
               !blog.backgroundImage && "flex"
-            } w-full overflow-hidden rounded-[30px] justify-center items-center`}
+            } w-full overflow-hidden rounded-[30px] max-sm:rounded-sm justify-center items-center`}
           >
             {blog.backgroundImage ? (
               <Image
@@ -75,7 +75,7 @@ console.log(blogs)
                   role="status"
                   className="space-y-8 animate-pulse md:space-y-0 md:space-x-8 rtl:space-x-reverse md:flex md:items-center"
                 >
-                  <div className="flex items-center justify-center w-full sm:h-[450px] rounded sm:w-[1240px] bg-gray-700">
+                  <div className="flex items-center justify-center w-[300px] h-[200px] sm:h-[450px] rounded sm:w-[1240px] bg-gray-700">
                     <svg
                       className="w-10 h-10 text-gray-600"
                       aria-hidden="true"
@@ -91,7 +91,7 @@ console.log(blogs)
             )}
           </div>
 
-          <div className="body w-11/12 mx-auto p-[90px] rounded-[30px] bg-white -translate-y-24 space-y-14 divide-gray-500">
+          <div className="body w-11/12 max-sm:w-full mx-auto p-[90px] max-sm:p-4 rounded-[30px] max-sm:rounded-sm bg-white -translate-y-24 space-y-14 max-sm:space-y-8 divide-gray-500">
             <BlogHeader post={blog} />
 
             <Divider dashed={true} />
@@ -103,6 +103,6 @@ console.log(blogs)
           <FeaturedArticles id={blog?.id} blogs={blogs} />
         </Suspense>
       </div>
-    </Suspense>
+    </>
   );
 }
