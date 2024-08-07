@@ -202,8 +202,8 @@ const SocialLinks: Social = [
 ];
 
 const Estate = [
-  "Property for sale in Abuja",
-  "Land for sale in Abuja",
+  "Property for sale",
+  "Land for sale",
   "Sell Your Property",
   "Rent out your property",
   "Join our investment club",
