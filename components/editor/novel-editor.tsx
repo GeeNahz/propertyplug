@@ -19,6 +19,7 @@ export default function NovelEditor({
           content: content ? content : [],
           // content: content as JSONContent[] | undefined,
         }}
+        // immediatelyRender={false}
         onDebouncedUpdate={(editor?: TipTapEditor) => {
           setContent(editor?.getHTML());
         }}

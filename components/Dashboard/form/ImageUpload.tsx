@@ -2,6 +2,7 @@
 
 import { dataUrl } from "@/lib/utils";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { ChangeEvent, useEffect, useState } from "react";
 import { MdImage } from "react-icons/md";
 
@@ -13,6 +14,7 @@ type Props = {
 export default function ImageUpload({ value, handleFormChange }: Props) {
   // const [selectedImage, setSelectedImage] = useState<File | null>(null)
   const [previewUrl, setPreviewUrl] = useState<string | null>(null)
+  const path = usePathname();
 
   useEffect(() => {
     setPreviewUrl(value as string)
@@ -51,8 +53,9 @@ export default function ImageUpload({ value, handleFormChange }: Props) {
         name="backgroundImage"
         accept="image/*"
         type="file"
+        disabled={path.includes('edit')}
         onChange={handleImageChange}
-        className="size-full opacity-0 absolute top-0 left-0 right-0 bottom-0"
+        className="size-full opacity-0 absolute top-0 left-0 right-0 bottom-0 disabled:cursor-not-allowed"
         required
       />
 

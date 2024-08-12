@@ -70,7 +70,7 @@ export default async function Tile({ post }: Props) {
 
         <div className="btns flex flex-col gap-2">
           <Link
-            href={`/dashboard/blogs/${post.id}/edit`}
+            href={`/dashboard/blogs/${post.slug}/edit`}
             className="edit rounded-xl p-4 bg-ui-dark/5 text-ui-dark"
           >
             <MdEditSquare size={20} />

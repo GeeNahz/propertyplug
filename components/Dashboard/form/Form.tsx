@@ -36,7 +36,7 @@ export default function Form({
   function setAdsContent(htmlContent: string) {
     setFormData((prev) => ({ ...prev, addContent: htmlContent }));
   }
-
+console.log(formData.blogContent)
 
   return (
     <form
@@ -96,7 +96,7 @@ export default function Form({
           type="hidden"
           name="blogContent"
           id="blogContent"
-          value={formData.blogContent || ""}
+          value={formData?.blogContent || ""}
           onChange={handleFormChange}
           required
         />
@@ -116,7 +116,7 @@ export default function Form({
           type="hidden"
           name="addContent"
           id="addContent"
-          value={formData.addContent || ""}
+          value={formData?.addContent || ""}
           onChange={handleFormChange}
         />
       </div>

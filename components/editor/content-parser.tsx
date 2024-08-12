@@ -1,6 +1,4 @@
-import parse from 'html-react-parser'
-
-export default async function ContentParser({
+export default function ContentParser({
   codeString,
   ads
 }: {

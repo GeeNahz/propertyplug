@@ -66,15 +66,30 @@ const Footer = () => {
             <h6 className="text-white font-semibold text-sm">Real Estate</h6>
 
             <nav className="flex flex-col flex-wrap md:flex-nowrap text-white/70 capitalize text-xs gap-2 md:gap-4">
-              {Estate.map((v, i) => (
-                <Link
-                  key={i}
-                  href="#"
-                  className="transition-all hover:text-white/100"
-                >
-                  {v}
-                </Link>
-              ))}
+              {Estate.map((item, index) => {
+                let linkHref
+
+                if (item.toLowerCase().includes("sale")) {
+                  linkHref = "/consultancy?tab=buy";
+                } else if (item.toLowerCase().includes("rent")) {
+                  linkHref = "/consultancy?tab=rent";
+                } else if (item.toLowerCase().includes("sell")) {
+                  linkHref = "/consultancy?tab=lease";
+                }
+                else{
+                  linkHref = "#"
+                }
+
+                return (
+                  <Link
+                    key={index}
+                    href={linkHref}
+                    className="transition-all hover:text-white/100"
+                  >
+                    {item}
+                  </Link>
+                );
+              })}
             </nav>
           </div>
 

@@ -1,7 +1,7 @@
 'use client'
 import {createContext, use, useState} from 'react'
 
-const Context = createContext<any>(null)
+const Context = createContext<any>([])
 
 
 export const Statecontext = ({children}:{children:React.ReactNode}) => {
@@ -13,4 +13,4 @@ export const Statecontext = ({children}:{children:React.ReactNode}) => {
   )
 }
 
-export const useStateContext = () => use(Context) || null
+export const useStateContext = () => use(Context)
