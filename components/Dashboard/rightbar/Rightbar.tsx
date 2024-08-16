@@ -6,7 +6,7 @@ export default function Rightbar({
   const path = usePathname()
 
   return (
-    <div className={`${path ==='/dashboard'? 'flex-1':'w-5/12'} relative p-5 rounded-2xl bg-white min-h-full max-h-full overflow-y-scroll`}>
+    <div className={`${path ==='/dashboard'? 'flex-1':'w-5/12'} relative p-5 rounded-2xl bg-white min-h-full h-screen overflow-y-scroll`}>
       {children}
     </div>
   )

@@ -45,7 +45,7 @@ export default function EditForm({ post }: { post: TBlogPost }) {
   }, [formData.backgroundImage])
 
 
-  const [state, dispatch, isPending] = useActionState(editBlog, undefined)
+  const [state, dispatch, isPending] = useActionState(editBlog, null)
 
   if (state) {
     if (typeof state === 'string') {
@@ -91,7 +91,7 @@ export default function EditForm({ post }: { post: TBlogPost }) {
               </div>
 
               <div className="!text-sm article">
-                <ContentParser codeString={formData.blogContent} />
+                <ContentParser codeString={formData.blogContent} ads={formData.addContent}/>
               </div>
             </div>
           </div>

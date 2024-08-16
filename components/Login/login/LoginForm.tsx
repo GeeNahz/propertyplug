@@ -5,9 +5,9 @@ import { redirect } from "next/navigation";
 import Cookies from "js-cookie";
 import { login } from "@/lib/lib";
 
+let isPending: boolean = false;
+let err: any = null;
 export default async function LoginForm() {
-  let isPending: boolean = false;
-  let err: any = null;
 
   async function authenticate(formData: FormData) {
     isPending = true;

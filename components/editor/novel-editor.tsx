@@ -14,15 +14,16 @@ export default function NovelEditor({
   return (
     <div className="prose !min-w-full">
       <Editor
+      onUpdate={(editor) => setContent(editor?.getHTML())}
         defaultValue={{
           type: "doc",
           content: content ? content : [],
           // content: content as JSONContent[] | undefined,
         }}
         // immediatelyRender={false}
-        onDebouncedUpdate={(editor?: TipTapEditor) => {
-          setContent(editor?.getHTML());
-        }}
+        // onDebouncedUpdate={(editor?: TipTapEditor) => {
+        //   setContent(editor?.getHTML());
+        // }}
         disableLocalStorage={true}
         className="rounded-md shadow-none !text-xs"
       />

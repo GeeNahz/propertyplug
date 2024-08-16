@@ -6,7 +6,6 @@ import { BlogHeader } from "../blog/header";
 import Rightbar from "../rightbar/Rightbar";
 import Form from "./Form";
 import Button from "./Button";
-
 import { notification } from "antd";
 import { createBlog } from "@/lib/actions";
 import ContentParser from "@/components/editor/content-parser";
@@ -63,7 +62,7 @@ export default function CreateForm({ user }: Props) {
       })
     }
   }
-
+console.log(formData)
   return (
     <>
       {contextHolder}

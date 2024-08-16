@@ -1,8 +1,7 @@
 import { ChangeEvent } from "react";
 import ImageUpload from "./ImageUpload";
-import NovelEditor from "@/components/editor/novel-editor";
 import { TBlogPost } from "@/components/common/type";
-import { JSONContent } from "@tiptap/core";
+import Tiptap from "./tap";
 
 type Props = {
   formData: Partial<TBlogPost>;
@@ -28,7 +27,7 @@ export default function Form({
       [name]: files?.[0] ? files[0] : value,
     }));
   }
-
+ 
   function setBlogContent(htmlContent: string) {
     setFormData((prev) => ({ ...prev, blogContent: htmlContent }));
   }
@@ -36,7 +35,6 @@ export default function Form({
   function setAdsContent(htmlContent: string) {
     setFormData((prev) => ({ ...prev, addContent: htmlContent }));
   }
-console.log(formData.blogContent)
 
   return (
     <form
@@ -86,10 +84,12 @@ console.log(formData.blogContent)
       <div className="content flex flex-col gap-2">
         <Label value="content" id="blogContent" isRequired />
         <div className="border border-ui-dark rounded-lg min-h-44 w-full">
-          <NovelEditor
+          {/* <NovelEditor
             content={[formData.blogContent] as unknown as JSONContent[]}
             setContent={setBlogContent}
-          />
+          /> */}
+
+          <Tiptap contents={formData.blogContent} setContent={setBlogContent}/>
         </div>
         <input
           className="body h-44 w-full text-xs border-2 border-ui-dark rounded-lg py-4 px-6"
@@ -106,13 +106,14 @@ console.log(formData.blogContent)
       <div className="content flex flex-col gap-2">
         <Label value="adverts (please use the key word @ads to insert this advert in your content)" id="addContent" />
         <div className="border border-ui-dark rounded-lg min-h-44 w-full">
-          <NovelEditor
+          {/* <NovelEditor
             content={[formData.addContent] as unknown as JSONContent[]}
             setContent={setAdsContent}
-          />
+          /> */}
+          <Tiptap contents={formData.addContent} setContent={setAdsContent} />
         </div>
         <input
-          className="body h-44 w-full text-xs border-2 border-ui-dark rounded-lg py-4 px-6"
+          className="body h-44 w-full text-xs border-2 border-ui-dark rounded-lg py-4 px-6 focus:hidden"
           type="hidden"
           name="addContent"
           id="addContent"
