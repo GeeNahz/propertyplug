@@ -4,7 +4,7 @@ import BlogPosts from "./BlogPosts";
 
 
 
-const BlogPostsGrid = async ({ posts }: any) => {
+const BlogPostsGrid = ({ posts }: any) => {
   return (
     <div className="container max-w-screen-xl mx-auto md:px-20 w-full grid_wrapper mt-4 mb-24">
       {posts.map((v:any, i:number) => (

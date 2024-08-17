@@ -1,6 +1,4 @@
 import { Button } from "@/components/common/button";
-import { dataUrl } from "@/lib/utils";
-import { ImageIcon } from "lucide-react";
 import Image, { StaticImageData } from "next/image";
 
 type Props = {
@@ -11,10 +9,9 @@ type Props = {
 };
 
 const BlogPosts = ({ post }: any) => {
-  // console.log(post)
   const time = new Date(post.createdAt).toLocaleString();
   return (
-    <>
+    <> 
       {post?.backgroundImage ? (
         <Image
           width={1240}

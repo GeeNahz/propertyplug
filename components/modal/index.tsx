@@ -53,9 +53,6 @@ export const Moda = () => {
         </div>
         <div className="flex flex-col mt-12 gap-3">
           {[
-            "use calendly",
-            "schedule office meetup",
-            "setup a zoom meeting",
             "reach out on whatsApp",
             "send us a mail",
             "call us",

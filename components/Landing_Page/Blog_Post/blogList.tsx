@@ -27,7 +27,7 @@ export default async function BlogList() {
                   {time}
                 </small>}
                 <h4 className="text-white text-xl capitalize font-semibold">
-                  {v.title}
+                {v.title.length > 30 ? `${v.title.slice(0, 30).trim()}...` : v.title}
                 </h4>
               </div>
               <Button title="read more" url={`/blog/${v.slug}`} />

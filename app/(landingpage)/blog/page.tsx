@@ -1,69 +1,97 @@
-'use client'
-import { Header } from "@/components/Blog"
-import BlogPostsGrid from "@/components/Blog/BlogPostsGrid";
+"use client";
+import { lazy, Suspense, useEffect, useState } from "react";
 import axios from "axios";
 import { BASE_URL } from "@/lib/api_url";
-import { useToast } from "@/components/ui/use-toast"
+import { useToast } from "@/components/ui/use-toast";
 import { ToastAction } from "@/components/ui/toast";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
+import Loading from "./loading";
 
+// Lazy load components
+const Header = lazy(() => import("@/components/Blog/Header"));
+const BlogPostsGrid = lazy(() => import("@/components/Blog/BlogPostsGrid"));
 
+const Page = () => {
+  const { toast } = useToast();
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const tag = searchParams.get("tag");
+  const title = searchParams.get("title");
 
-const Page = async ({searchParams}:{searchParams:any}) => {
-  const { toast } = useToast()
-  const router = useRouter()
-    let result = []; 
-  
-    try {
-      const { tags, title } = searchParams;
-      let queryString = '';
-  
-      if (tags) {
-        queryString += `?tags=${tags}`;
-      }
-      if (title) {
-        queryString += tags ? `&title=${title}` : `?title=${title}`;
-      }
-  
-      const response = await axios.get(`${BASE_URL}/blogs${queryString}`);
-      result = response.data.result;
-  
-    } catch (error:any) {
-      console.error("An error occurred while fetching blogs:", error);
-  
-      // Handle the error appropriately
-      if (error.response && error.response.data && error.response.data.message) {
-        toast({
-          variant: "destructive",
-          description: error.response.data.message,
-          action: <ToastAction altText="Try again">Try again</ToastAction>
-        });
-      } else if (error.message) {
-        toast({
-          variant: "destructive",
-          title: "Uh oh! Something went wrong.",
-          description: error.message,
-          action: <ToastAction altText="Try again">Try again</ToastAction>
-        });
-      } else {
-        toast({
-          variant: "destructive",
-          description: "An unknown error occurred",
-          action: <ToastAction altText="Try again" onClick={() => router.refresh()}>Try again</ToastAction>
-        });
+  const [result, setResult] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function handleResult() {
+      try {
+        const tags = searchParams.get("tag");
+        const title = searchParams.get("title");
+        let queryString = "";
+
+        if (tags) {
+          queryString += `?tags=${tags}`;
+        }
+        if (title) {
+          queryString += tags ? `&title=${title}` : `?title=${title}`;
+        }
+
+        const response = await axios.get(`${BASE_URL}/blogs${queryString}`);
+        setResult(response.data.result);
+      } catch (error: any) {
+        console.error("An error occurred while fetching blogs:", error);
+
+        if (
+          error.response &&
+          error.response.data &&
+          error.response.data.message
+        ) {
+          toast({
+            variant: "destructive",
+            description: error.response.data.message,
+            action: <ToastAction altText="Try again">Try again</ToastAction>,
+          });
+        } else if (error.message) {
+          toast({
+            variant: "destructive",
+            title: "Uh oh! Something went wrong.",
+            description: error.message,
+            action: <ToastAction altText="Try again">Try again</ToastAction>,
+          });
+        } else {
+          toast({
+            variant: "destructive",
+            description: "An unknown error occurred",
+            action: (
+              <ToastAction altText="Try again" onClick={() => router.refresh()}>
+                Try again
+              </ToastAction>
+            ),
+          });
+        }
+      } finally {
+        setLoading(false); // Stop loading when the request is done
       }
     }
-  
-    return (
-      <section className="relative mt-[63px]">
-        <div className="-top-48 md:-top-32 w-full sticky bg-white z-10">
-          <Header />
-        </div>
-  
-        <BlogPostsGrid posts={result} />
-      </section>
-    );
-  }
-  
+    handleResult();
+  }, [tag, title, router, searchParams, toast]);
 
-export default Page
+  return (
+    <section className="relative mt-[63px]">
+      <div className="-top-48 md:-top-32 w-full sticky bg-white z-10">
+        <Suspense fallback={<><Loading/> <span>Loading header...</span></>}>
+          <Header />
+        </Suspense>
+      </div>
+
+      {loading ? (
+        <><Loading/> <span>Loading posts...</span></>
+      ) : (
+        <Suspense fallback={<><Loading/> <span>Loading posts...</span></>}>
+          {result.length > 0 ? <BlogPostsGrid posts={result} /> : <p className="text-center my-4">No blog available</p>}
+        </Suspense>
+      )}
+    </section>
+  );
+};
+
+export default Page;
