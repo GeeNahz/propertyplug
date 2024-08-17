@@ -3,9 +3,11 @@ import { TBlogPost } from "@/components/common/type";
 import ContentParser from "@/components/editor/content-parser";
 import { deleteBlog, editPublish } from "@/lib/actions";
 import { dataUrl } from "@/lib/utils";
+import { Tooltip } from "antd";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { GoEye } from "react-icons/go";
 import { MdDeleteForever, MdEditSquare } from "react-icons/md";
 
 type Props = {
@@ -18,7 +20,8 @@ export default async function Tile({ post }: Props) {
   const deleteBlogs = deleteBlog.bind(null, post.slug);
   const publishEdit = editPublish.bind(null, post);
   return (
-    <div className="w-full p-4 rounded-[20px] bg-white flex gap-6 items-center">
+    <div
+      className="w-full p-4 rounded-[20px] bg-white flex gap-6 items-center">
       <div className="rounded-[20px] overflow-hidden img min-w-[288px] w-[220px] h-[180px]">
         <Image
           placeholder="blur"
@@ -51,12 +54,12 @@ export default async function Tile({ post }: Props) {
           <ContentParser
             codeString={`${
               post?.blogContent!.length > 200
-                ? `${post?.blogContent?.trim().substring(0, 200)}...`
+                ? `${post?.blogContent?.substring(0, 200)}...`
                 : post?.blogContent
             }`}
             ads={`${
               post?.addContent!.length > 200
-                ? `${post?.addContent?.trim().substring(0, 200)}...`
+                ? `${post?.addContent?.substring(0, 200)}...`
                 : post?.addContent
             }`}
           />
@@ -69,20 +72,33 @@ export default async function Tile({ post }: Props) {
         <div className="min-h-full border-l border-ui-dark/20"></div>
 
         <div className="btns flex flex-col gap-2">
-          <Link
-            href={`/dashboard/blogs/${post.slug}/edit`}
-            className="edit rounded-xl p-4 bg-ui-dark/5 text-ui-dark"
-          >
-            <MdEditSquare size={20} />
-          </Link>
-          <form
-            action={deleteBlogs}
-            className="delete rounded-xl p-4 bg-ui-red/5 text-ui-red"
-          >
-            <button type="submit">
-              <MdDeleteForever size={20} />
-            </button>
-          </form>
+          <Tooltip title="Preview" trigger="hover">
+            <Link
+              href={`/blog/${post.slug}`}
+              target="_blank"
+              className="edit rounded-xl p-4 bg-green-400/25 text-ui-dark"
+            >
+              <GoEye size={20} />
+            </Link>
+          </Tooltip>
+          <Tooltip title="Edit" trigger="hover">
+            <Link
+              href={`/dashboard/blogs/${post.slug}/edit`}
+              className="edit rounded-xl p-4 bg-ui-dark/5 text-ui-dark"
+            >
+              <MdEditSquare size={20} />
+            </Link>
+          </Tooltip>
+          <Tooltip title="Delete" trigger="hover">
+            <form
+              action={deleteBlogs}
+              className="delete rounded-xl p-4 bg-ui-red/5 text-ui-red"
+            >
+              <button type="submit">
+                <MdDeleteForever size={20} />
+              </button>
+            </form>
+          </Tooltip>
         </div>
       </div>
     </div>
