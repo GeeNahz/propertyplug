@@ -1,4 +1,4 @@
-'use server'
+"use server";
 import { BASE_URL } from "./api_url";
 import axios from "axios";
 import { SignJWT, jwtVerify } from "jose";
@@ -27,21 +27,34 @@ export async function encrypt(payload: any) {
 // }
 
 export async function login(formData: FormData) {
-  // Verify credentials && get the user
   try {
     const response = await axios.post(`${BASE_URL}/auth/login`, formData, {
       headers: {
         "Content-Type": "application/json",
       },
     });
-    return response.data.token
+
+    const token = response.data.token;
+
+    if (!token) return;
+
+    // Set the session cookie to expire in 10 minutes
+    cookies().set({
+      name: "session",
+      value: token,
+      httpOnly: true,
+      expires: new Date(new Date().getTime() + 10 * 60 * 1000),
+    });
+
+    // Redirect to the dashboard
+    redirect("/dashboard");
   } catch (err) {
-    // @ts-ignore
-    console.log(err.message);
+    // Re-throw the error to be handled by the caller
+    throw err;
   }
 }
 
-export async function dasboardPass(toke:any){
+export async function dasboardPass(toke: any) {
   let user: any = {};
   try {
     const token = decrypt(toke);
@@ -61,32 +74,32 @@ export async function dasboardPass(toke:any){
     user["image"] = "";
     user["token"] = toke;
 
-        // for some reason, user session only picks up the returned
+    // for some reason, user session only picks up the returned
     // user data if it is returned in a user object.
     return user;
   } catch (err: any) {
     throw new Error(err.message);
-  } 
+  }
 }
 
 export async function logout() {
   // Destroy the session
   cookies().set("session", "", { expires: new Date(0) });
-  redirect('/login')
+  redirect("/login");
 }
 
 export async function getSession() {
   try {
     const session = Cookies.get();
-    console.log('getSession - Retrieved session:', session);
+    console.log("getSession - Retrieved session:", session);
 
     if (!session) {
-      console.log('getSession - Session not found');
+      console.log("getSession - Session not found");
       return null;
     }
     return session;
   } catch (error) {
-    console.error('getSession - Error retrieving session:', error);
+    console.error("getSession - Error retrieving session:", error);
     return null;
   }
 }
@@ -97,8 +110,8 @@ export async function updateSession(request: NextRequest) {
 
   // Refresh the session so it doesn't expire
 
-const expires = new Date(Date.now() + 10 * 1000);
-console.log('mid',expires)
+  const expires = new Date(Date.now() + 10 * 1000);
+  console.log("mid", expires);
   const res = NextResponse.next();
   res.cookies.set({
     name: "session",

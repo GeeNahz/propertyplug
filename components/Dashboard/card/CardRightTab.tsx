@@ -10,7 +10,7 @@ export default function CardRightTab({ title, date }: Props) {
           <DateConverter date={date} />
         </p>
 
-        <p className="title text-ui-dark text-sm font-medium">{title}</p>
+        <p className="title text-ui-dark text-sm font-medium">{title.length > 30 ? `${title.slice(0, 30)}...` : title}</p>
       </div>
     </div>
   )

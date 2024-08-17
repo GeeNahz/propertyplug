@@ -1,46 +1,52 @@
+"use client";
 import { MdError } from "react-icons/md";
 import { FaArrowRightToBracket, FaEnvelope, FaKey } from "react-icons/fa6";
 import { AxiosError } from "axios";
-import { redirect } from "next/navigation";
-import Cookies from "js-cookie";
 import { login } from "@/lib/lib";
+import { useToast } from "@/components/ui/use-toast";
+import { useState, useTransition } from "react";
+import { EyeIcon, EyeOffIcon } from "lucide-react";
 
-let isPending: boolean = false;
-let err: any = null;
-export default async function LoginForm() {
+export default function LoginForm() {
+  const { toast } = useToast();
+  const [see, setSee] = useState(false);
+  const [isPending, startTransition] = useTransition();
 
   async function authenticate(formData: FormData) {
-    isPending = true;
-
     try {
-      const token = await login(formData);
-
-      if (!token) return;
-
-      Cookies.set("session", token, {
-        expires: new Date(new Date().getTime() + 10 * 60 * 1000),
+      startTransition(async () => {
+        await login(formData);
       });
-      isPending = false;
     } catch (error: any) {
-      console.log("Error:", error);
-      err = error;
-      isPending = false;
-    } finally {
-      if (err instanceof AxiosError) {
-        switch (err.response?.data.type) {
+      console.error("Error:", error);
+  
+      if (error instanceof AxiosError) {
+        const errorMessage = error.response?.data?.type;
+  
+        switch (errorMessage) {
           case "CredentialsSignin":
-            return "Invalid credentials.";
+            return toast({
+              variant: "destructive",
+              description: "Invalid credentials.",
+            });
           case "CallbackRouteError":
-            return "Email or password is incorrect";
+            return toast({
+              variant: "destructive",
+              description: "Email or password is incorrect.",
+            });
           default:
-            return "Something went wrong.";
+            return toast({
+              variant: "destructive",
+              description: "Something went wrong.",
+            });
         }
       } else {
-        err = "unable to login you at the moment";
+        toast({
+          variant: "destructive",
+          description: "Unable to log you in at the moment.",
+        });
       }
     }
-
-    redirect("/dashboard"); // Redirecting to the dashboard
   }
   return (
     <form action={authenticate} className="space-y-3">
@@ -79,7 +85,7 @@ export default async function LoginForm() {
               <input
                 className="peer block w-full rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
                 id="password"
-                type="password"
+                type={see ? "text" : "password"}
                 name="password"
                 // value={formData.password}
                 // onChange={handleChage}
@@ -88,17 +94,28 @@ export default async function LoginForm() {
                 minLength={6}
               />
               <FaKey className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
+              {see ? (
+          <EyeIcon
+            className="absolute top-2 right-3 cursor-pointer"
+            onClick={() => setSee(!see)}
+          />
+        ) : (
+          <EyeOffIcon
+            className="absolute top-2 right-3 cursor-pointer"
+            onClick={() => setSee(!see)}
+          />
+        )}
             </div>
           </div>
         </div>
         <button
-          className="mt-4 w-full flex items-center justify-center gap-3 bg-ui-dark py-[9px] px-4 rounded-md text-white hover:bg-ui-dark/80 active:bg-ui-dark/80 focus:bg-ui-dark/80 disabled:bg-ui-dark/50 transition-colors text-sm font-semibold"
+          className="mt-4 w-full flex items-center justify-center gap-3 bg-ui-dark py-[9px] px-4 rounded-md text-white hover:bg-ui-dark/80 active:bg-ui-dark/80 focus:bg-ui-dark/80 disabled:bg-ui-dark/50 disabled:cursor-not-allowed transition-colors text-sm font-semibold"
           aria-disabled={isPending}
           disabled={isPending}
         >
           Log in <FaArrowRightToBracket size={18} />
         </button>
-        <div
+        {/* <div
           className="flex items-center justify-center gap-1 w-full h-8 space-x-1 text-xs"
           aria-live="polite"
           aria-atomic="true"
@@ -109,7 +126,7 @@ export default async function LoginForm() {
               <p className="text-red-500">{err}</p>
             </>
           )}
-        </div>
+        </div> */}
       </div>
     </form>
   );

@@ -7,6 +7,8 @@ import { Navigator } from "@/components/Blog";
 import { BreadcrumbItemType, BreadcrumbSeparatorType } from "antd/es/breadcrumb/Breadcrumb";
 import { getBlog, getBlogs } from "@/lib/actions";
 import Loading from "@/components/common/loader";
+import axios from "axios";
+import { BASE_URL } from "@/lib/api_url";
 
 // Lazy load components
 const BlogHeader = lazy(() => import("@/components/Blog/BlogPost/BlogHeader"));
@@ -21,6 +23,7 @@ export default function Page({ params }: { params: { slug: string } }) {
   useEffect(() => {
     const fetchBlog = async () => {
       try {
+        await axios.get(`${BASE_URL}/blogs/readcount/${params.slug}`)
         const response = await getBlog(params.slug);
         setBlog(response);
       } catch (error) {
