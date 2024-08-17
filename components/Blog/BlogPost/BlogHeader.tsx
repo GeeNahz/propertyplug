@@ -8,7 +8,7 @@ type Props = {
   createdBy: string;
   createdAt: string;
   tags: string;
-  like?: boolean;
+  likes?: boolean;
 };
 
 const BlogHeader = ({ post }: { post: Props }) => {
@@ -21,7 +21,7 @@ const BlogHeader = ({ post }: { post: Props }) => {
         owner={post?.createdBy || ''}
         createdAt={post?.createdAt || ''}
         category={post?.tags || ''}
-        // like=''
+        like={post.likes}
       />
     </div>
   );

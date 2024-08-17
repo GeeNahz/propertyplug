@@ -7,10 +7,10 @@ type Props = {
   createdAt: string;
   category: string;
   title: string;
-  like?: boolean;
+  like?: any;
 };
 
-const BlogMetaData = ({ owner, createdAt, category, like }: Props) => {
+const BlogMetaData = ({ owner, createdAt, category, like}: Props) => {
   return (
     <div className="sub-title text-gray-500 flex justify-between items-center">
       <div className="meta-data flex max-sm:w-full max-sm:justify-between gap-5 items-center text-sm font-light divide-gray-400">
@@ -21,7 +21,7 @@ const BlogMetaData = ({ owner, createdAt, category, like }: Props) => {
         <p className="category">{category}</p>
       </div>
 
-      {/* <BlogHeaderActionBtns like={like} /> */}
+      <BlogHeaderActionBtns like={like} />
     </div>
   );
 };

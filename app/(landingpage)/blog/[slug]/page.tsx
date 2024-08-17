@@ -1,53 +1,62 @@
 "use client";
+
 import Image from "next/image";
 import { Divider } from "antd";
-import {
-  BlogHeader,
-  BlogContent,
-  FeaturedArticles,
-} from "@/components/Blog/BlogPost";
-import { Suspense, useEffect, useState } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import { Navigator } from "@/components/Blog";
-import {
-  BreadcrumbItemType,
-  BreadcrumbSeparatorType,
-} from "antd/es/breadcrumb/Breadcrumb";
+import { BreadcrumbItemType, BreadcrumbSeparatorType } from "antd/es/breadcrumb/Breadcrumb";
 import { getBlog, getBlogs } from "@/lib/actions";
 import Loading from "@/components/common/loader";
 
+// Lazy load components
+const BlogHeader = lazy(() => import("@/components/Blog/BlogPost/BlogHeader"));
+const BlogContent = lazy(() => import("@/components/Blog/BlogPost/BlogContent"));
+const FeaturedArticles = lazy(() => import("@/components/Blog/BlogPost/FeaturedArticles"));
+
 export default function Page({ params }: { params: { slug: string } }) {
-  const [blog, setBlog] = useState<any>([]);
+  const [blog, setBlog] = useState<any>(null);
   const [blogs, setBlogs] = useState([]);
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     const fetchBlog = async () => {
-      const response = await getBlog(params.slug);
-      setBlog(response);
+      try {
+        const response = await getBlog(params.slug);
+        setBlog(response);
+      } catch (error) {
+        console.error("Error fetching blog:", error);
+      } finally {
+        setLoading(false);
+      }
     };
+
     fetchBlog();
   }, [params.slug]);
 
-  //  fetch all blogs
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
         const res = await getBlogs();
         setBlogs(res.result);
-      } catch (err) {
-        console.log(err);
+      } catch (error) {
+        console.error("Error fetching blogs:", error);
       }
     };
 
     fetchBlogs();
   }, [params.slug]);
 
-  const title = params.slug!;
-  const [navigatorItems, setNavigatorItems] = useState<
-    Partial<BreadcrumbItemType & BreadcrumbSeparatorType>[]
-  >([
+  const title = params.slug;
+  const [navigatorItems] = useState<Partial<BreadcrumbItemType & BreadcrumbSeparatorType>[]>([
     { title: "Home", path: "/" },
     { title: "Blogs", path: "/blog" },
     { title: title, path: `blog/${params.slug}` },
   ]);
+
+  if (loading) {
+    return <Loading />;
+  }
+
   return (
     <>
       <meta name="description" content={params.slug} />
@@ -59,13 +68,13 @@ export default function Page({ params }: { params: { slug: string } }) {
         <div className="px-20 max-sm:px-4 py-20 bg-gradient-to-b from-white from-15% to-gray-50">
           <div
             className={`h-[450px] relative aspect-auto ${
-              !blog.backgroundImage && "flex"
+              !blog?.backgroundImage && "flex"
             } w-full overflow-hidden rounded-[30px] max-sm:rounded-sm justify-center items-center`}
           >
-            {blog.backgroundImage ? (
+            {blog?.backgroundImage ? (
               <Image
                 fill
-                src={blog?.backgroundImage || ""}
+                src={blog?.backgroundImage}
                 alt={params.slug}
                 className="object-cover"
               />
@@ -90,13 +99,18 @@ export default function Page({ params }: { params: { slug: string } }) {
           </div>
 
           <div className="body w-11/12 max-sm:w-full mx-auto p-[90px] max-sm:p-4 rounded-[30px] max-sm:rounded-sm bg-white -translate-y-24 space-y-14 max-sm:space-y-8 divide-gray-500">
-            <BlogHeader post={blog} />
+            <Suspense fallback={<Loading />}>
+              <BlogHeader post={blog} />
+            </Suspense>
 
             <Divider dashed={true} />
 
-            <BlogContent body={blog?.blogContent} ads={blog?.addContent} />
+            <Suspense fallback={<Loading />}>
+              <BlogContent body={blog?.blogContent} ads={blog?.addContent} />
+            </Suspense>
           </div>
         </div>
+
         <Suspense fallback={<Loading />}>
           <FeaturedArticles id={blog?.id} blogs={blogs} />
         </Suspense>

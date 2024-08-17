@@ -42,7 +42,7 @@ const BlogPosts = ({ post }: any) => {
         <div className="">
          {time && <small className="text-slate-50 text-xs font-normal">{time}</small>}
           <h4 className="text-white text-xl capitalize font-semibold">
-            {post.title}
+          {post.title.length > 50 ? `${post.title.slice(0, 50).trim()}...` : post.title}
           </h4>
         </div>
         <Button title="read more" url={`/blog/${post?.slug}`} />

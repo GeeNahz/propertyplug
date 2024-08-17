@@ -98,7 +98,7 @@ const Footer = () => {
               Contact Us
             </h6>
 
-            <nav className="flex flex-col flex-wrap md:flex-nowrap text-white/70 capitalize text-xs gap-2 md:gap-4 self-start">
+            <nav className="flex flex-col flex-wrap md:flex-nowrap text-white/70 text-xs gap-2 md:gap-4 self-start">
               {[
                 "+234 912 460 4075",
                 "+234 903 081 0919",
