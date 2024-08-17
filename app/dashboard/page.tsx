@@ -7,7 +7,7 @@ import {
 import { Suspense } from "react";
 import Loading from "./loading";
 
-const Page = () => {
+const Page = async () => {
   return (
     <>
       <main className="h-full flex-auto flex gap-5 lg:gap-8 max-xl:hidden">
