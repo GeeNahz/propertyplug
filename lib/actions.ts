@@ -9,32 +9,32 @@ import Cookies from "js-cookie";
 import { BASE_URL } from "./api_url";
 import { cookies } from "next/headers";
 
-export async function authenticate(formData: FormData) {
-  try {
-    const token = await login(formData);
-    console.log("took", token);
-    Cookies.set("session", token, {
-      expires: new Date(new Date().getTime() + 10 + 60 * 1000),
-    });
+// export async function authenticate(formData: FormData) {
+//   try {
+//     const token = await login(formData);
+//     console.log("took", token);
+//     Cookies.set("session", token, {
+//       expires: new Date(new Date().getTime() + 10 + 60 * 1000),
+//     });
 
-    redirect("/dashboard");
-  } catch (error: any) {
-    console.log(error);
-  }
-  //   if (error instanceof AxiosError) {
-  //     // @ts-ignore
-  //     switch (error.type) {
-  //       case 'CredentialsSignin':
-  //         return 'Invalid credentials.'
-  //       case 'CallbackRouteError':
-  //         return 'Email of password is incorrect'
-  //       default:
-  //         return 'Something went wrong.'
-  //     }
-  //   }
-  //   return error
-  // }
-}
+//     redirect("/dashboard");
+//   } catch (error: any) {
+//     console.log(error);
+//   }
+//   //   if (error instanceof AxiosError) {
+//   //     // @ts-ignore
+//   //     switch (error.type) {
+//   //       case 'CredentialsSignin':
+//   //         return 'Invalid credentials.'
+//   //       case 'CallbackRouteError':
+//   //         return 'Email of password is incorrect'
+//   //       default:
+//   //         return 'Something went wrong.'
+//   //     }
+//   //   }
+//   //   return error
+//   // }
+// }
 
 export async function createBlog(_prevState: unknown, formData: FormData) {
   const { title, blogContent, addContent, tags, createdBy, backgroundImage } =
