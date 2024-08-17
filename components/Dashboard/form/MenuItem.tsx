@@ -1,5 +1,4 @@
 import "./MenuItem.css";
-
 import remixiconUrl from "remixicon/fonts/remixicon.symbol.svg";
 
 export default function MenuItem({
@@ -8,11 +7,12 @@ export default function MenuItem({
   action,
   isActive = null,
 }: {
-  icon?: string;
+  icon?: any;
   title?: string;
   action?: () => void;
   isActive?: (() => boolean) | null;
 }) {
+  const UseIcon = icon
   return (
     <div
     //   type="button"
@@ -20,9 +20,10 @@ export default function MenuItem({
       onClick={action}
       title={title}
     >
-      <svg className="remix">
-        <use xlinkHref={`${remixiconUrl}#ri-${icon}`} />
-      </svg>
+      {/* <svg className="remix">
+        <use xlinkHref={`${remixiconUrl as any}#ri-${icon}`} />
+      </svg> */}
+      <UseIcon className='remix'/>
     </div>
   );
 }

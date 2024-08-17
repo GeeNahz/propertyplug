@@ -7,7 +7,7 @@ import {
   Testimonial,
 } from "@/components/Landing_Page";
 
-export default function Home() {
+export default async function Home() {
   return (
     <main className="w-full">
       <HeroSection />
