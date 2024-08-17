@@ -11,14 +11,16 @@ const Page = async () => {
   return (
     <>
       <main className="h-full flex-auto flex gap-5 lg:gap-8 max-xl:hidden">
-        <Suspense fallback={<Loading />}>
-          <div className="flex flex-col gap-5 lg:gap-8" style={{ flex: 3 }}>
+        <div className="flex flex-col gap-5 lg:gap-8" style={{ flex: 3 }}>
+          <Suspense fallback={<div className="h-36 w-full flex items-center justify-center"><Loading /></div>}>
             <Cards />
-            <div className="flex-auto w-full h-fit bg-white rounded-2xl">
+          </Suspense>
+          <div className="flex-auto w-full h-fit bg-white rounded-2xl">
+            <Suspense fallback={<div className="h-full w-full flex items-center justify-center"><Loading /></div>}>
               <ChartWrapper />
-            </div>
+            </Suspense>
           </div>
-        </Suspense>
+        </div>
 
         <Rightbar>
           <Suspense fallback={<Loading />}>

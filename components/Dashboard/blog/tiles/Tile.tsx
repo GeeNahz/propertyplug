@@ -1,4 +1,3 @@
-"use client";
 import { TBlogPost } from "@/components/common/type";
 import ContentParser from "@/components/editor/content-parser";
 import { deleteBlog, editPublish } from "@/lib/actions";
@@ -6,19 +5,26 @@ import { dataUrl } from "@/lib/utils";
 import { Tooltip } from "antd";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { GoEye } from "react-icons/go";
 import { MdDeleteForever, MdEditSquare } from "react-icons/md";
+import DateConverter from "../../dashboard/DateConverter";
+import clsx from "clsx";
 
 type Props = {
   post: TBlogPost;
 };
 
 export default async function Tile({ post }: Props) {
-  const path = usePathname();
-  const time = new Date(post.createdAt).toLocaleString();
   const deleteBlogs = deleteBlog.bind(null, post.slug);
   const publishEdit = editPublish.bind(null, post);
+
+  const publishBtnClass = clsx(
+    'px-4 py-2 rounded-lg text-white font-semibold',
+    {
+      'bg-ui-red/70': post.publish,
+      'bg-green-500': !post.publish,
+    }
+  )
   return (
     <div
       className="w-full p-4 rounded-[20px] bg-white flex gap-6 items-center">
@@ -38,30 +44,26 @@ export default async function Tile({ post }: Props) {
         <div className="flex justify-between items-center">
           <div className="title">
             <p className="font-semibold capitalize text-lg">{post.title}</p>
-            {time && <small className="text-xs text-ui-desc">{time}</small>}
+            {post.createdAt && <small className="text-xs text-ui-desc"><DateConverter date={post.createdAt} /></small>}
           </div>
-          {path.includes("unpublished") && path.includes("published") && (
-            <form action={publishEdit} className="w-max">
-              <button className="px-4 py-2 rounded-lg text-white font-semibold bg-green-500">
-                {path.includes("published") ? "Publish" : "Unpublish"}
-              </button>
-            </form>
-          )}
+          <form action={publishEdit} className="w-max">
+            <button className={publishBtnClass}>
+              {post.publish ? "Unpublish" : "Publish"}
+            </button>
+          </form>
         </div>
         <div className="w-2/4 border-b border-ui-dark/20"></div>
 
         <div className="article body !text-xs text-ui-desc text-start w-full">
           <ContentParser
-            codeString={`${
-              post?.blogContent!.length > 200
-                ? `${post?.blogContent?.substring(0, 200)}...`
+            codeString={`${post?.blogContent!.length > 100
+                ? `${post?.blogContent?.substring(0, 100)}...`
                 : post?.blogContent
-            }`}
-            ads={`${
-              post?.addContent!.length > 200
-                ? `${post?.addContent?.substring(0, 200)}...`
+              }`}
+            ads={`${post?.addContent!.length > 100
+                ? `${post?.addContent?.substring(0, 100)}...`
                 : post?.addContent
-            }`}
+              }`}
           />
 
           {/* <p>{post.blogContent.substring(0, 400)}...</p> */}

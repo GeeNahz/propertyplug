@@ -184,3 +184,15 @@ export async function getBlogs() {
     return err.message;
   }
 }
+
+export async function getBlogsWithQueryParams(url?: string) {
+  let urlPath = url ? url : `${BASE_URL}/blogs`
+
+  try {
+    const response = await axios.get(urlPath);
+    return response.data;
+  } catch (err: any) {
+    console.log("Blogs error: ", err.message);
+    return err.message;
+  }
+}

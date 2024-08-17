@@ -3,11 +3,13 @@ import { Tiles } from "@/components/Dashboard";
 import { BlogsHeader } from "@/components/Dashboard/blog/header";
 import React, { Suspense } from "react";
 import Loading from "../loading";
-import { getBlogs } from "@/lib/actions";
+import { getBlogsWithQueryParams } from "@/lib/actions";
+import { BASE_URL } from "@/lib/api_url";
 
 export default async function published() {
-  const blogs = await getBlogs();
-  const published = blogs.result.filter((val:any) => val.publish) 
+  const url = `${BASE_URL}/blogs?publish=${true}`
+  const blogs = await getBlogsWithQueryParams(url);
+  const published = blogs.result as TBlogPost[]
   return (
     <Suspense fallback={<Loading />}>
       <div className="flex flex-col">
@@ -16,7 +18,7 @@ export default async function published() {
         </div>
 
         <div className="main">
-          <Tiles posts={published as TBlogPost[]} />
+          <Tiles posts={published} />
         </div>
       </div>
     </Suspense>

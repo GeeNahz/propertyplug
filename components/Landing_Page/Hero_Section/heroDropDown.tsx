@@ -21,7 +21,7 @@ export const DropList = () => {
 const DropDown = () => {
   return (
     <div className="drop__fade absolute top-16 left-0 right-0 p-3 w-64 border md:border-[2px] border-white border-solid rounded-2xl bg-gray-600/15 flex flex-col gap-3" onClick={(e) => e.stopPropagation()}>
-      {[{ title: "buy property", path: '/consultancy?tab=buy' }, { title: "lease property", path: '/consultancy?tab=lease' }, { title: "rent property", path: '/consultancy?tab=rent' },].map((v, index) => {
+      {[{ title: "buy property", path: '/consultancy?tab=buy' }, { title: "list property", path: '/consultancy?tab=list' }, { title: "rent property", path: '/consultancy?tab=rent' },].map((v, index) => {
         return (
           <Link href={v.path} key={index} className="text-white font-medium text-sm md:text-lg capitalize py-2 text-center bg-gray-500/15 border-transparent border border-solid hover:border-white transition-all rounded-3xl">
             {v.title}

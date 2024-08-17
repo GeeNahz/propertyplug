@@ -20,9 +20,7 @@ export default function BlogsHeader({ publish }: { publish: string }) {
         <Breadcrumb>
           <BreadcrumbList>
             <BreadcrumbItem>
-              <BreadcrumbLink>
-                <Link href="/dashboard/blogs/unpublished">Unpublished</Link>
-              </BreadcrumbLink>
+              <BreadcrumbPage>All</BreadcrumbPage>
             </BreadcrumbItem>
             <BreadcrumbItem>
               <BreadcrumbLink>
@@ -30,7 +28,9 @@ export default function BlogsHeader({ publish }: { publish: string }) {
               </BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbItem>
-              <BreadcrumbPage>All</BreadcrumbPage>
+              <BreadcrumbLink>
+                <Link href="/dashboard/blogs/unpublished">Unpublished</Link>
+              </BreadcrumbLink>
             </BreadcrumbItem>
           </BreadcrumbList>
         </Breadcrumb>
@@ -40,7 +40,7 @@ export default function BlogsHeader({ publish }: { publish: string }) {
           <BreadcrumbList>
             <BreadcrumbItem>
               <BreadcrumbLink>
-                <Link href="/dashboard/blogs/unpublished">Unpublished</Link>
+                <Link href="/dashboard/blogs">All</Link>
               </BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbItem>
@@ -48,7 +48,7 @@ export default function BlogsHeader({ publish }: { publish: string }) {
             </BreadcrumbItem>
             <BreadcrumbItem>
               <BreadcrumbLink>
-                <Link href="/dashboard/blogs">All</Link>
+                <Link href="/dashboard/blogs/unpublished">Unpublished</Link>
               </BreadcrumbLink>
             </BreadcrumbItem>
           </BreadcrumbList>
@@ -58,7 +58,9 @@ export default function BlogsHeader({ publish }: { publish: string }) {
         <Breadcrumb>
           <BreadcrumbList>
             <BreadcrumbItem>
-              <BreadcrumbPage>Unpublished</BreadcrumbPage>
+              <BreadcrumbLink>
+                <Link href="/dashboard/blogs">All</Link>
+              </BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbItem>
               <BreadcrumbLink>
@@ -66,9 +68,7 @@ export default function BlogsHeader({ publish }: { publish: string }) {
               </BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbItem>
-              <BreadcrumbLink>
-                <Link href="/dashboard/blogs">All</Link>
-              </BreadcrumbLink>
+              <BreadcrumbPage>Unpublished</BreadcrumbPage>
             </BreadcrumbItem>
           </BreadcrumbList>
         </Breadcrumb>

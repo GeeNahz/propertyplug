@@ -45,7 +45,7 @@ export type Social = {
 
 export type BreadCrumbType = React.ReactNode | string;
 
-export type TTab = 'buy' | 'lease' | 'rent';
+export type TTab = 'buy' | 'list' | 'rent';
 
 export type TConsultancyForm = {
   state: string;
@@ -88,6 +88,8 @@ export type TBlogPost = {
   slug:string,
   publish: boolean;
   thumbnail: string;
+  readCount?: number;
+  likes?: number;
 }
 
 export interface User {

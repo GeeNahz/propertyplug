@@ -11,6 +11,7 @@ import logo from '@/public/PropertPlugLogo.svg'
 import { logout } from '@/lib/lib'
 import { dataUrl } from '@/lib/utils'
 import { Building2 } from 'lucide-react'
+import Link from 'next/link'
 
 const menuItems = [
   {
@@ -27,8 +28,8 @@ const menuItems = [
         icon: <MdArticle size={20} />,
       },
       {
-        title: 'Lease Property',
-        path: '/dashboard/lease',
+        title: 'List Property',
+        path: '/dashboard/list',
         icon: <Building2 size={20} />,
 
       },
@@ -44,7 +45,7 @@ const menuItems = [
 export default function Sidebar() {
   return (
     <div className="sticky top-10 min-h-full flex flex-col h-full rounded-2xl bg-ui-dash-dark p-3">
-      <div className="flex items-center gap-5 mb-5 text-white justify-center py-5">
+      <Link href={'/'} className="flex items-center gap-5 mb-5 text-white justify-center py-5">
         <div className="size-14">
           <Image placeholder="blur" blurDataURL={dataUrl} src={logo} alt="logo" width={50} height={50} className="object-contain size-full" />
         </div>
@@ -53,7 +54,7 @@ export default function Sidebar() {
           {/* <span className='userName font-semibold'>John Doe</span> */}
           <span className='userTitle text-sm text-ui-secondary-soft'>Property Plug</span>
         </div>
-      </div>
+      </Link>
 
       <ul className="">
         {menuItems.map((cat) => (
