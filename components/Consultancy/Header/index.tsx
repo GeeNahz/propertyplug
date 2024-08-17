@@ -10,7 +10,7 @@ type Prop = {
 const Header = ({ tab }: Prop) => {
   const tabs: { id: number; name: TTab; link: string; }[] = [
     { id: 1, name: 'buy', link: '/consultancy?tab=buy', },
-    { id: 2, name: 'lease', link: '/consultancy?tab=lease', },
+    { id: 2, name: 'list', link: '/consultancy?tab=list', },
     { id: 3, name: 'rent', link: '/consultancy?tab=rent', },
   ]
 
