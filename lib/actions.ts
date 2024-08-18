@@ -155,7 +155,9 @@ export async function deleteBlog(slug: string) {
   }
 }
 
-export async function editPublish(datas: any) {
+export async function editPublish(datas: any, formData: FormData) {
+  let publishAction = formData.get('action')
+  console.log('PUBLISH ACTION: ', publishAction)
   try {
     await axios.get(`${BASE_URL}/blogs/publish/${datas.slug}`, {
       headers: {
