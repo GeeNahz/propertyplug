@@ -35,7 +35,7 @@ export default async function DashboardLayout({
         <Suspense fallback={<Loading />}>
           <div className="px-5 h-full flex flex-col" style={{ flex: 4 }}>
             <Navbar />
-            <div className="py-5 h-full overflow-y-scroll">{children}</div>
+            <div className="py-5 h-full overflow-y-scroll  no-scrollbar">{children}</div>
           </div>
         </Suspense>
       </div>
