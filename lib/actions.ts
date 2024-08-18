@@ -157,9 +157,22 @@ export async function deleteBlog(slug: string) {
 
 export async function editPublish(datas: any, formData: FormData) {
   let publishAction = formData.get('action')
-  console.log('PUBLISH ACTION: ', publishAction)
+
+  let publishUrl: string
+
+  if (publishAction === 'yes') {
+    publishUrl = `${BASE_URL}/blogs/publish/${datas.slug}`
+  } else if (publishAction === 'no') {
+    publishUrl = `${BASE_URL}/blogs/unpublish/${datas.slug}`
+  } else {
+    return {
+      success: false,
+      message: "Invalid publish action provided.",
+    };
+  }
+
   try {
-    await axios.get(`${BASE_URL}/blogs/publish/${datas.slug}`, {
+    await axios.get(publishUrl, {
       headers: {
         Authorization: cookies().get("session")?.value,
         "Content-Type": "application/json",
