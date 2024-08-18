@@ -23,13 +23,13 @@ export default function BlogsHeader({ publish }: { publish: string }) {
               <BreadcrumbPage>All</BreadcrumbPage>
             </BreadcrumbItem>
             <BreadcrumbItem>
-              <BreadcrumbLink>
-                <Link href="/dashboard/blogs/published">Published</Link>
+              <BreadcrumbLink href="/dashboard/blogs/published">
+                Published
               </BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbItem>
-              <BreadcrumbLink>
-                <Link href="/dashboard/blogs/unpublished">Unpublished</Link>
+              <BreadcrumbLink href="/dashboard/blogs/unpublished">
+                Unpublished
               </BreadcrumbLink>
             </BreadcrumbItem>
           </BreadcrumbList>
@@ -39,16 +39,16 @@ export default function BlogsHeader({ publish }: { publish: string }) {
         <Breadcrumb>
           <BreadcrumbList>
             <BreadcrumbItem>
-              <BreadcrumbLink>
-                <Link href="/dashboard/blogs">All</Link>
+              <BreadcrumbLink href="/dashboard/blogs">
+                All
               </BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbItem>
               <BreadcrumbPage>Published</BreadcrumbPage>
             </BreadcrumbItem>
             <BreadcrumbItem>
-              <BreadcrumbLink>
-                <Link href="/dashboard/blogs/unpublished">Unpublished</Link>
+              <BreadcrumbLink href="/dashboard/blogs/unpublished">
+                Unpublished
               </BreadcrumbLink>
             </BreadcrumbItem>
           </BreadcrumbList>
@@ -58,13 +58,13 @@ export default function BlogsHeader({ publish }: { publish: string }) {
         <Breadcrumb>
           <BreadcrumbList>
             <BreadcrumbItem>
-              <BreadcrumbLink>
-                <Link href="/dashboard/blogs">All</Link>
+              <BreadcrumbLink href="/dashboard/blogs">
+                All
               </BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbItem>
-              <BreadcrumbLink>
-                <Link href="/dashboard/blogs/published">Published</Link>
+              <BreadcrumbLink href="/dashboard/blogs/published">
+                Published
               </BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbItem>
