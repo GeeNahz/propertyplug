@@ -18,7 +18,7 @@ type Props = {
   post: TBlogPost;
 };
 
-export default async function Tile({ post }: Props) {
+export default function Tile({ post }: Props) {
   // const deleteBlogs = deleteBlog.bind(null, post.slug);
   const publishEdit = editPublish.bind(null, post);
 
@@ -101,26 +101,26 @@ export default async function Tile({ post }: Props) {
             <Link
               href={`/blog/${post.slug}`}
               target="_blank"
-              className="edit rounded-xl p-4 bg-green-400/25 text-ui-dark"
+              className="edit rounded-xl p-3 bg-green-400/25 text-ui-dark"
             >
-              <GoEye size={20} />
+              <GoEye size={18} />
             </Link>
           </Tooltip>
           <Tooltip title="Edit" trigger="hover">
             <Link
               href={`/dashboard/blogs/${post.slug}/edit`}
-              className="edit rounded-xl p-4 bg-ui-dark/5 text-ui-dark"
+              className="edit rounded-xl p-3 bg-ui-dark/5 text-ui-dark"
             >
-              <MdEditSquare size={20} />
+              <MdEditSquare size={18} />
             </Link>
           </Tooltip>
           <Tooltip title="Delete" trigger="hover">
             <form
               action={deleteBlogs}
-              className="delete rounded-xl p-4 bg-ui-red/5 text-ui-red"
+              className="delete flex items-center justify-center rounded-xl p-3 bg-ui-red/5 text-ui-red"
             >
               <button type="submit">
-                <MdDeleteForever size={20} />
+                <MdDeleteForever size={18} />
               </button>
             </form>
           </Tooltip>
