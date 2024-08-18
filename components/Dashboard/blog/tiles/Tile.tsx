@@ -1,3 +1,6 @@
+'use client'
+
+
 import { TBlogPost } from "@/components/common/type";
 import ContentParser from "@/components/editor/content-parser";
 import { deleteBlog, editPublish } from "@/lib/actions";
@@ -9,17 +12,36 @@ import { GoEye } from "react-icons/go";
 import { MdDeleteForever, MdEditSquare } from "react-icons/md";
 import DateConverter from "../../dashboard/DateConverter";
 import clsx from "clsx";
+import { useToast } from "@/components/ui/use-toast";
 
 type Props = {
   post: TBlogPost;
 };
 
 export default async function Tile({ post }: Props) {
-  const deleteBlogs = deleteBlog.bind(null, post.slug);
+  // const deleteBlogs = deleteBlog.bind(null, post.slug);
   const publishEdit = editPublish.bind(null, post);
 
+  const { toast } = useToast()
+  const deleteBlogs = async () => {
+    try {
+      const deletePost = deleteBlog.bind(null, post.slug);
+      await deletePost()
+      toast({
+        title: 'Operation success!',
+        description: 'Successfully deleted the blog',
+      })
+    } catch (err) {
+      toast({
+        title: 'Operation failed!',
+        description: 'Unable to delete blog',
+        variant: 'destructive',
+      })
+    }
+  }
+
   const publishBtnClass = clsx(
-    'px-4 py-2 rounded-lg text-white font-semibold',
+    'text-xs px-3 py-1 rounded-lg text-white font-semibold',
     {
       'bg-ui-red/70': post.publish,
       'bg-green-500': !post.publish,
@@ -50,6 +72,7 @@ export default async function Tile({ post }: Props) {
             <button className={publishBtnClass}>
               {post.publish ? "Unpublish" : "Publish"}
             </button>
+            <input type="hidden" value={post.publish ? 'no' : 'yes'} name="action" />
           </form>
         </div>
         <div className="w-2/4 border-b border-ui-dark/20"></div>
