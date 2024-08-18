@@ -1,9 +1,10 @@
 'use client'
 import { TBlogPost } from "@/components/common/type";
 import CardRightTab from "../card/CardRightTab";
-import { getBlogs } from "@/lib/actions";
+import { getBlogs, getBlogsWithQueryParams } from "@/lib/actions";
 import { useEffect, useState } from "react";
 import Loading from "@/app/dashboard/loading";
+import { BASE_URL } from "@/lib/api_url";
 
 export default function RightTab() {
   const [posts, setPosts] = useState<TBlogPost[]>([]);
@@ -14,7 +15,9 @@ export default function RightTab() {
     const fetchBlogs = async () => {
       setIsLoading(true)
       try {
-        const response = await getBlogs();
+        const url = `${BASE_URL}/blogs?publish=${true}`
+        const response = await getBlogsWithQueryParams(url);
+
         if (response?.result) {
           setPosts(response.result.slice(0, 7) as TBlogPost[]);
         } else {
