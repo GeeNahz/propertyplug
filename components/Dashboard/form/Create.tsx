@@ -62,7 +62,7 @@ export default function CreateForm({ user }: Props) {
       })
     }
   }
-console.log(formData)
+
   return (
     <>
       {contextHolder}
