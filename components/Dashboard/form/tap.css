@@ -83,7 +83,7 @@
 
 .editor {
   background-color: #fff;
-  border: 3px solid #0d0d0d;
+  border: 0.5px solid #0d0d0d;
   border-radius: 0.75rem;
   color: #0d0d0d;
   display: flex;
@@ -93,8 +93,9 @@
 
 .editor__header {
   align-items: center !important;
-  background: #0d0d0d !important;
-  border-bottom: 3px solid #0d0d0d !important;
+  /* background: #0d0d0d !important; */
+  background: #808080 !important;
+  border-bottom: 0.5px solid #0d0d0d !important;
   border-top-left-radius: 0.25rem !important;
   border-top-right-radius: 0.25rem !important;
   display: flex !important;
@@ -150,10 +151,10 @@
   background: #b9f18d;
 }
 .ProseMirror {
-  @apply !border !border-ui-dark !rounded-lg !h-44 overflow-y-auto !w-full !p-1.5;
+  @apply !border !border-ui-dark !rounded-b-lg !h-44 overflow-y-auto !w-full !p-1.5;
 }
 .ProseMirror p {
-  height: 100% !important;
+  height: max-content !important;
 }
 .ProseMirror-focused {
   border: none !important;
