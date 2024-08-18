@@ -1,12 +1,9 @@
 // import { useState } from "react";
 // import { Navigator } from "@/components/Blog";
-import Breadcrumb, {
-  BreadcrumbItemType,
-  BreadcrumbSeparatorType,
-} from "antd/es/breadcrumb/Breadcrumb";
 import Link from "next/link";
 import Header from "../../header";
 import {
+  Breadcrumb,
   BreadcrumbLink,
   BreadcrumbList,
   BreadcrumbPage,
