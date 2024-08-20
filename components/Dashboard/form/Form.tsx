@@ -83,7 +83,7 @@ export default function Form({
       {/* Blogs */}
       <div className="content flex flex-col gap-2">
         <Label value="content" id="blogContent" isRequired />
-        <div className="border border-ui-dark rounded-lg min-h-44 w-full">
+        <div className="border border-gray-300 rounded-lg min-h-44 w-full">
           {/* <NovelEditor
             content={[formData.blogContent] as unknown as JSONContent[]}
             setContent={setBlogContent}
@@ -105,7 +105,7 @@ export default function Form({
       {/* Ads */}
       <div className="content flex flex-col gap-2">
         <Label value="adverts (please use the key word @ads to insert this advert in your content)" id="addContent" />
-        <div className="border border-ui-dark rounded-lg min-h-44 w-full">
+        <div className="border border-gray-300 rounded-lg min-h-44 w-full">
           {/* <NovelEditor
             content={[formData.addContent] as unknown as JSONContent[]}
             setContent={setAdsContent}

@@ -83,7 +83,7 @@
 
 .editor {
   background-color: #fff;
-  border: 0.5px solid #0d0d0d;
+  border: 0.5px solid #dedede;
   border-radius: 0.75rem;
   color: #0d0d0d;
   display: flex;
@@ -94,10 +94,12 @@
 .editor__header {
   align-items: center !important;
   /* background: #0d0d0d !important; */
-  background: #808080 !important;
-  border-bottom: 0.5px solid #0d0d0d !important;
-  border-top-left-radius: 0.25rem !important;
-  border-top-right-radius: 0.25rem !important;
+  /* background: #6b6b6b -> text !important; */
+  /* background: #efefef -> bg !important; */
+  background: #efefef !important;
+  border-bottom: 0.5px solid #dedede !important;
+  border-top-left-radius: 0.5rem !important;
+  border-top-right-radius: 0.5rem !important;
   display: flex !important;
   flex: 0 0 auto !important;
   flex-wrap: wrap !important;
@@ -114,7 +116,7 @@
 
 .editor__footer {
   align-items: center;
-  border-top: 3px solid #0d0d0d;
+  border-top: 0.5px solid #dedede;
   color: #0d0d0d;
   display: flex;
   flex: 0 0 auto;
@@ -151,7 +153,7 @@
   background: #b9f18d;
 }
 .ProseMirror {
-  @apply !border !border-ui-dark !rounded-b-lg !h-44 overflow-y-auto !w-full !p-1.5;
+  @apply !border-none !rounded-b-lg !h-44 overflow-y-auto !w-full !p-1.5;
 }
 .ProseMirror p {
   height: max-content !important;
@@ -159,6 +161,19 @@
 .ProseMirror-focused {
   border: none !important;
 }
+
+.menu-item {
+  @apply text-gray-500 size-6;
+}
+
+.menu-item.is-active {
+  @apply !bg-gray-300;
+}
+
+.menu-item:hover {
+  @apply !bg-gray-300;
+}
+
 .editor__name button {
   background: none;
   border: none;

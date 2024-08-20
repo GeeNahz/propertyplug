@@ -6,7 +6,6 @@ import MenuItem from './MenuItem'
 import Bold from './RemixIcon_SVG_2408162103/bold'
 import Italic from './RemixIcon_SVG_2408162103/italic'
 import Strikethrough from './RemixIcon_SVG_2408162103/strikethrough'
-import CodeView from './RemixIcon_SVG_2408162103/code-view'
 import MarkPenLine from './RemixIcon_SVG_2408162103/mark-pen-line'
 import H1 from './RemixIcon_SVG_2408162103/h-1'
 import H2 from './RemixIcon_SVG_2408162103/h-2'
@@ -14,13 +13,14 @@ import Paragraph from './RemixIcon_SVG_2408162103/paragraph'
 import ListUnordered from './RemixIcon_SVG_2408162103/list-unordered'
 import ListOrdered from './RemixIcon_SVG_2408162103/list-ordered'
 import ListCheck2 from './RemixIcon_SVG_2408162103/list-check-2'
-import CodeBoxLine from './RemixIcon_SVG_2408162103/code-box-line'
-import DoubleQuote from './RemixIcon_SVG_2408162103/double-quotes-l'
 import Separator from './RemixIcon_SVG_2408162103/separator'
 import ArrowGoBackFill from './RemixIcon_SVG_2408162103/arrow-go-back-fill'
 import ArrowGoForwardFill from './RemixIcon_SVG_2408162103/arrow-go-forward-fill'
-import Text from './RemixIcon_SVG_2408162103/text'
 import FormatClear from './RemixIcon_SVG_2408162103/format-clear'
+import Text from './RemixIcon_SVG_2408162103/text'
+import CodeView from './RemixIcon_SVG_2408162103/code-view'
+import CodeBoxLine from './RemixIcon_SVG_2408162103/code-box-line'
+import DoubleQuote from './RemixIcon_SVG_2408162103/double-quotes-l'
 
 export default function MenuBar ({ editor }: { editor: Editor}) {
   const items = [
@@ -45,13 +45,13 @@ export default function MenuBar ({ editor }: { editor: Editor}) {
       action: () => editor.chain().focus().toggleStrike().run(),
       isActive: () => editor.isActive('strike'),
     },
-    {
-      icon: CodeView,
-      title: 'Code',
-    //   @ts-ignore
-      action: () => editor.chain().focus().toggleCode().run(),
-      isActive: () => editor.isActive('code'),
-    },
+    // {
+    //   icon: CodeView,
+    //   title: 'Code',
+    // //   @ts-ignore
+    //   action: () => editor.chain().focus().toggleCode().run(),
+    //   isActive: () => editor.isActive('code'),
+    // },
     {
       icon: MarkPenLine,
       title: 'Highlight',
@@ -102,38 +102,38 @@ export default function MenuBar ({ editor }: { editor: Editor}) {
       action: () => editor.chain().focus().toggleTaskList().run(),
       isActive: () => editor.isActive('taskList'),
     },
-    {
-      icon: CodeBoxLine,
-      title: 'Code Block',
-    //   @ts-ignore
-      action: () => editor.chain().focus().toggleCodeBlock().run(),
-      isActive: () => editor.isActive('codeBlock'),
-    },
+    // {
+    //   icon: CodeBoxLine,
+    //   title: 'Code Block',
+    // //   @ts-ignore
+    //   action: () => editor.chain().focus().toggleCodeBlock().run(),
+    //   isActive: () => editor.isActive('codeBlock'),
+    // },
     {
       type: 'divider',
     },
-    {
-      icon: DoubleQuote,
-      title: 'Blockquote',
-    //   @ts-ignore
-      action: () => editor.chain().focus().toggleBlockquote().run(),
-      isActive: () => editor.isActive('blockquote'),
-    },
+    // {
+    //   icon: DoubleQuote,
+    //   title: 'Blockquote',
+    // //   @ts-ignore
+    //   action: () => editor.chain().focus().toggleBlockquote().run(),
+    //   isActive: () => editor.isActive('blockquote'),
+    // },
     {
       icon: Separator,
       title: 'Horizontal Rule',
     //   @ts-ignore
       action: () => editor.chain().focus().setHorizontalRule().run(),
     },
-    {
-      type: 'divider',
-    },
-    {
-      icon: Text,
-      title: 'Hard Break',
-    //   @ts-ignore
-      action: () => editor.chain().focus().setHardBreak().run(),
-    },
+    // {
+    //   type: 'divider',
+    // },
+    // {
+    //   icon: Text,
+    //   title: 'Hard Break',
+    // //   @ts-ignore
+    //   action: () => editor.chain().focus().setHardBreak().run(),
+    // },
     {
       icon: FormatClear,
       title: 'Clear Format',
@@ -161,7 +161,7 @@ export default function MenuBar ({ editor }: { editor: Editor}) {
     <div className="editor__header">
       {items.map((item, index) => (
         <Fragment key={index}>
-          {item.type === 'divider' ? <div className="bg-white/25 h-[1.25rem] w-[1px] ml-[0.5rem] mr-[0.75rem]" /> : <MenuItem {...item} />}
+          {item.type === 'divider' ? <div className="bg-gray-400 h-[1.25rem] w-[1px] ml-[0.5rem] mr-[0.75rem]" /> : <MenuItem {...item} />}
         </Fragment>
       ))}
     </div>

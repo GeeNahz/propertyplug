@@ -12,7 +12,15 @@ const Tiptap = ({ contents, setContent }: any) => {
   const editor = useEditor({
     extensions: [
       // @ts-ignore
-      StarterKit.configure(),
+      StarterKit.configure({
+        heading: {
+          levels: [1, 2, 3],
+        },
+        code: false,
+        codeBlock: false,
+        blockquote: false,
+        hardBreak: false,
+      }),
       Highlight,
       TaskList,
       TaskItem,
@@ -24,7 +32,7 @@ const Tiptap = ({ contents, setContent }: any) => {
     onUpdate: ({ editor }) => {
       setContent(editor?.getHTML());
     },
-    immediatelyRender:false,
+    immediatelyRender: false,
     autofocus: false,
     content: `<div>${contents}</div>`,
   });
