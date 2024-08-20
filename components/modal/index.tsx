@@ -6,6 +6,12 @@ import { useStateContext } from "@/hook/statecontext";
 import { useRouter } from "next/navigation";
 import { dataUrl } from "@/lib/utils";
 
+const OPTIONS = [
+  "Reach us on WhatsApp",
+  "Send us a mail",
+  "Call us",
+]
+
 export const Moda = () => {
   const { modal, setModal } = useStateContext();
   const router = useRouter();
@@ -21,15 +27,15 @@ export const Moda = () => {
     setModal(false);
   };
 
-  
+
   const handleRoute = (v: string) => {
-    if (v.includes("call us")) {
-      router.push("tel:+2348104268727");
+    if (v.includes(OPTIONS[2])) {
+      router.push("tel:+2349030810919");
     }
-    if (v.includes("send us a mail")) {
-      router.push("mailto:bemshima@gmail.com");
+    if (v.includes(OPTIONS[1])) {
+      router.push("mailto:info@propertyplugng.com");
     }
-    if (v.includes("reach out on whatsApp")) {
+    if (v.includes(OPTIONS[0])) {
       router.push(
         "https://api.whatsapp.com/send?phone=2348104268727&text=Hi,+you+have+reached+property+plug,+how+may+we+help+you"
       );
@@ -52,16 +58,12 @@ export const Moda = () => {
           |<h4 className="font-semibold">Book Consultancy</h4>
         </div>
         <div className="flex flex-col mt-12 gap-3">
-          {[
-            "reach out on whatsApp",
-            "send us a mail",
-            "call us",
-          ].map((v, i) => {
+          {OPTIONS.map((v, i) => {
             return (
               <button
                 key={i}
                 onClick={() => handleRoute(v)}
-                className="bg-[#FCFCFC] text-[#0B2831] py-3 rounded-2xl border border-transparent hover:border-black capitalize font-medium"
+                className="bg-[#FCFCFC] text-[#0B2831] py-3 rounded-2xl border border-transparent hover:border-black font-medium"
               >
                 {v}
               </button>
