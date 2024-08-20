@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Providers } from "@/components/Provider";
 import { Toaster } from "@/components/ui/toaster";
+import NextTopLoader from 'nextjs-toploader'
 
 export const metadata: Metadata = {
   title: "Property Plug",
@@ -19,7 +20,13 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth">
       <body className="relative overflow-x-hidden w-full min-h-screen flex flex-col">
         <Providers>
+          <NextTopLoader
+            color="#FF1F1E"
+            initialPosition={0.08}
+          />
+
           {children}
+
           <Toaster />
         </Providers>
       </body>
