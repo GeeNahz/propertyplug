@@ -5,15 +5,11 @@ import { useEffect, useState } from "react";
 
 const Search = () => {
   const searchParams = useSearchParams();
-  const initialTag = searchParams.get("tag");
+  const initialTag = searchParams.get("search");
   const [text, setText] = useState<string>("");
 
   useEffect(() => {
-    const queryString = initialTag
-      ? `?tag=${initialTag}${text ? `&title=${text}` : ""}`
-      : text
-      ? `?title=${text}`
-      : "";
+    const queryString = text ? `?search=${text}` : "";
     window.history.pushState(null, "", queryString);
   }, [text, initialTag]);
 

@@ -17,7 +17,7 @@ const Page = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const tag = searchParams.get("search");
-  const title = searchParams.get("title");
+  const title = searchParams.get("search");
 
   const [result, setResult] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
@@ -26,14 +26,14 @@ const Page = () => {
     async function handleResult() {
       try {
         const tags = searchParams.get("search");
-        const title = searchParams.get("title");
+        const title = searchParams.get("search");
         let queryString = "";
 
         if (tags) {
           queryString += `?search=${tags}`;
         }
         if (title) {
-          queryString += tags ? `&title=${title}` : `?title=${title}`;
+          queryString += tags ? `&search=${title}` : `?search=${title}`;
         }
 
         const response = await axios.get(`${BASE_URL}/blogs${queryString}`);
