@@ -41,7 +41,7 @@ export default function Tile({ post }: Props) {
   }
 
   const publishBtnClass = clsx(
-    'text-xs px-3 py-1 rounded-lg text-white font-semibold',
+    'text-xs px-3 py-2 rounded-lg text-white font-semibold',
     {
       'bg-ui-red/70': post.publish,
       'bg-green-500': !post.publish,
