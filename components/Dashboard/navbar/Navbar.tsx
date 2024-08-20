@@ -1,7 +1,9 @@
-import { MdSearch } from "react-icons/md";
 import PageTitle from "./PageTitle";
 import { HiBell } from "react-icons/hi2";
 import NavSide from "./NavSide";
+import NavbarSearch from "./NavbarSearch";
+import { Suspense } from "react";
+import Loading from "@/app/dashboard/loading";
 
 export default async function Navbar() {
 
@@ -10,21 +12,16 @@ export default async function Navbar() {
       <PageTitle />
 
       <div className="menu flex items-center gap-5">
-        <div className="search flex items-center gap-2 bg-ui-dash-gray p-2 rounded-full w-[212px] py-2 px-4 text-xs has-[:focus]:outline-ui-dark">
-          <MdSearch className="text-ui-dark/50" size={20} />
+        <Suspense fallback={<Loading />}>
+          <NavbarSearch />
+        </Suspense>
 
-          <input
-            type="text"
-            placeholder="Search..."
-            className="input outline-none bg-transparent w-full border-none text-ui-desc"
-          />
-        </div>
-{/* 
+        {/* 
         <div className="icons flex gap-5">
           <HiBell size={20} />
         </div> */}
 
-        <NavSide/>
+        <NavSide />
       </div>
     </nav>
   );
