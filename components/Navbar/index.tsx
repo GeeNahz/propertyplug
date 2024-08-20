@@ -87,29 +87,19 @@ const Navbar = () => {
                 href={v.path}
                 onClick={() => handleOpenChange(false)}
                 prefetch
-                className={`min-w-56 flex justify-between flex-col items-center py-4 px-4 rounded-md transition-all  text-ui-dark capitalize ${
-                  path === v.path
+                className={`min-w-56 flex justify-between flex-col items-center py-4 px-4 rounded-md transition-all  text-ui-dark capitalize ${path === v.path
                     ? "font-bold text-base"
                     : "font-normal text-sm "
-                }`}
+                  }`}
               >
                 {v.title}
               </Link>
             </li>
           ))}
-          <li>
-            <Link
-              href={"/consultancy"}
-              onClick={() => handleOpenChange(false)}
-              prefetch
-              className={`min-w-56 flex justify-between flex-col items-center py-4 px-4 rounded-md transition-all text-ui-dark  capitalize ${
-                path.startsWith("/consultancy")
-                  ? "font-bold text-base"
-                  : "font-normal text-sm "
-              }`}
-            >
-              book consultancy
-            </Link>
+          <li
+            className={`min-w-56 flex justify-between flex-col items-center py-4 px-4 rounded-md transition-all text-ui-dark  capitalize`}
+          >
+            <Button title="book consultancy" />
           </li>
         </ul>
       </div>}
@@ -123,9 +113,8 @@ const Navbar = () => {
       <div className="md:hidden w-max cursor-pointer" onClick={() => handleOpenChange(!openPopMenu)}>
         <button className="size-6">
           <FaBars
-            className={`${
-              path === "/" ? "text-white" : "text-ui-dark"
-            } size-full`}
+            className={`${path === "/" ? "text-white" : "text-ui-dark"
+              } size-full`}
           />
         </button>
       </div>
