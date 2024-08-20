@@ -7,7 +7,7 @@ const tags = ["all", "construction", "housing", "consulting", "rentals"];
 
 const SearchFilters = () => {
   const searchParams = useSearchParams();
-  const selectedTag = searchParams.get("tag") || "all";
+  const selectedTag = searchParams.get("search") || "all";
 
   return (
     <div className="flex flex-col xl:flex-row gap-4 xl:gap-0 xl:justify-between justify-center items-center">
@@ -19,7 +19,7 @@ const SearchFilters = () => {
         {tags.map((v: string, i: number) => {
           return (
             <Link
-              href={`${v === "all" ? `/blog` : `?tag=${v}`}`}
+              href={`${v === "all" ? `/blog` : `?search=${v}`}`}
               key={i}
               className={`capitalize !rounded-full text-xs md:text-sm !px-3 !py-1 !mb-4 md:!mb-0 border border-solid ${
                 selectedTag === v ? "border-[#FF1f1E] text-[#FF1F1E]" : null

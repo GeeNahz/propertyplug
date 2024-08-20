@@ -6,6 +6,7 @@ import { useToast } from "@/components/ui/use-toast";
 import { ToastAction } from "@/components/ui/toast";
 import { useRouter, useSearchParams } from "next/navigation";
 import Loading from "./loading";
+import { TBlogPost } from "@/components/common/type";
 
 // Lazy load components
 const Header = lazy(() => import("@/components/Blog/Header"));
@@ -15,7 +16,7 @@ const Page = () => {
   const { toast } = useToast();
   const router = useRouter();
   const searchParams = useSearchParams();
-  const tag = searchParams.get("tag");
+  const tag = searchParams.get("search");
   const title = searchParams.get("title");
 
   const [result, setResult] = useState<any[]>([]);
@@ -24,19 +25,19 @@ const Page = () => {
   useEffect(() => {
     async function handleResult() {
       try {
-        const tags = searchParams.get("tag");
+        const tags = searchParams.get("search");
         const title = searchParams.get("title");
         let queryString = "";
 
         if (tags) {
-          queryString += `?tags=${tags}`;
+          queryString += `?search=${tags}`;
         }
         if (title) {
           queryString += tags ? `&title=${title}` : `?title=${title}`;
         }
 
         const response = await axios.get(`${BASE_URL}/blogs${queryString}`);
-        setResult(response.data.result);
+        setResult(response.data.result.filter((blog: TBlogPost) => blog.publish === true));
       } catch (error: any) {
         console.error("An error occurred while fetching blogs:", error);
 

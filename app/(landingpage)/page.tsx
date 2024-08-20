@@ -16,9 +16,8 @@ export default function Home() {
         <HeroSection />
       </Suspense>
       <div className="w-full md:px-20 mt-8">
-        <Suspense fallback={<Loading />}>
-          <Blog />
-        </Suspense>
+        <Blog />
+
         <Suspense fallback={<Loading />}>
           <OurService />
         </Suspense>
