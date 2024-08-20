@@ -40,7 +40,7 @@ export default function Form({
     <form
    
       action={action}
-      className="bg-white rounded-lg p-8 flex flex-col gap-6 h-full xl:max-w-[700px] 2xl:max-w-[850px]"
+      className="bg-white rounded-lg p-8 flex flex-col gap-6 h-fit xl:max-w-[700px] 2xl:max-w-[850px]"
     >
       <div className="double-fields flex gap-5">
         <div className="flex flex-col gap-2" style={{ flex: 3 }}>

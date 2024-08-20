@@ -17,7 +17,7 @@ type NotificationType = 'success' | 'info' | 'warning' | 'error';
 const initialData: Partial<TBlogPost> = {
   title: '',
   blogContent: '',
-  addContent:'',
+  addContent: '',
   backgroundImage: new File([new Blob], ''),
   tags: '',
   createdBy: '',
@@ -71,12 +71,11 @@ export default function CreateForm({ user }: Props) {
         <BlogHeader />
       </div>
 
-      <div className="main h-full flex-auto flex gap-5 lg:gap-8">
-        <div className="form" style={{ flex: 3 }}>
+      <div className="main max-h-full overflow-y-hidden flex-auto flex gap-5 lg:gap-8">
+        <div className="form no-scrollbar overflow-y-scroll" style={{ flex: 3 }}>
           <Form action={dispatch} formData={formData} setFormData={setFormData}>
-            {/* <Button disabled={isPending} name="post" classes="bg-white border border-ui-dark !text-ui-dark" /> */}
 
-            <Button disabled={isPending} name="save" classes="!bg-ui-dark" />
+            <Button disabled={isPending} submittingText="saving" name="save" classes="!bg-ui-dark" />
           </Form>
         </div>
 

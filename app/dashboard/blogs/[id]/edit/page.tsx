@@ -8,7 +8,7 @@ export default async function Page({ params }: { params: { id: string } }) {
 
   return (
     <Suspense fallback={<Loading/>}>
-      <div className="flex flex-col min-h-full">
+      <div className="flex flex-col min-h-full max-h-full">
         <EditForm post={post} />
       </div>
     </Suspense>
