@@ -18,7 +18,7 @@ export default function LoginForm() {
         await login(formData);
       });
     } catch (error: any) {
-      console.error("Error:", error);
+      console.log("Error:", error);
   
       if (error instanceof AxiosError) {
         const errorMessage = error.response?.data?.type;
@@ -113,7 +113,7 @@ export default function LoginForm() {
           aria-disabled={isPending}
           disabled={isPending}
         >
-          Log in <FaArrowRightToBracket size={18} />
+        {isPending ? 'Logging in...' : 'Log in'} <FaArrowRightToBracket size={18} />
         </button>
         {/* <div
           className="flex items-center justify-center gap-1 w-full h-8 space-x-1 text-xs"
