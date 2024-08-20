@@ -5,10 +5,11 @@ import { Divider } from "antd";
 import { lazy, Suspense, useEffect, useState } from "react";
 import { Navigator } from "@/components/Blog";
 import { BreadcrumbItemType, BreadcrumbSeparatorType } from "antd/es/breadcrumb/Breadcrumb";
-import { getBlog, getBlogs } from "@/lib/actions";
+import { getBlog, getBlogsWithQueryParams } from "@/lib/actions";
 import Loading from "@/components/common/loader";
 import axios from "axios";
 import { BASE_URL } from "@/lib/api_url";
+import { TBlogPost } from "@/components/common/type";
 
 // Lazy load components
 const BlogHeader = lazy(() => import("@/components/Blog/BlogPost/BlogHeader"));
@@ -17,13 +18,12 @@ const FeaturedArticles = lazy(() => import("@/components/Blog/BlogPost/FeaturedA
 
 export default function Page({ params }: { params: { slug: string } }) {
   const [blog, setBlog] = useState<any>(null);
-  const [blogs, setBlogs] = useState([]);
+  const [blogs, setBlogs] = useState<TBlogPost[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchBlog = async () => {
       try {
-        await axios.get(`${BASE_URL}/blogs/readcount/${params.slug}`)
         const response = await getBlog(params.slug);
         setBlog(response);
       } catch (error) {
@@ -34,13 +34,24 @@ export default function Page({ params }: { params: { slug: string } }) {
     };
 
     fetchBlog();
+
+    setTimeout(async () => {
+      try {
+        await axios.get(`${BASE_URL}/blogs/readcount/${params.slug}`)
+      } catch (err) {
+        console.log('Unable to update read count')
+      }
+    }, 60000)
   }, [params.slug]);
 
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const res = await getBlogs();
-        setBlogs(res.result);
+        const url = `${BASE_URL}/blogs?publish=${true}`
+        const blogs = await getBlogsWithQueryParams(url);
+        const published = blogs.result as TBlogPost[]
+
+        setBlogs(published);
       } catch (error) {
         console.error("Error fetching blogs:", error);
       }
@@ -65,14 +76,13 @@ export default function Page({ params }: { params: { slug: string } }) {
       <meta name="description" content={params.slug} />
       <div className="mt-16 md:mt-28 mb-14">
         <div className="top-[63px] fixed bg-white z-10 w-full">
-          <Navigator title={params.slug} items={navigatorItems} />
+          <Navigator title={params.slug.replaceAll('-', ' ')} items={navigatorItems} />
         </div>
 
         <div className="px-20 max-sm:px-4 py-20 bg-gradient-to-b from-white from-15% to-gray-50">
           <div
-            className={`h-[450px] relative aspect-auto ${
-              !blog?.backgroundImage && "flex"
-            } w-full overflow-hidden rounded-[30px] max-sm:rounded-sm justify-center items-center`}
+            className={`h-[450px] relative aspect-auto ${!blog?.backgroundImage && "flex"
+              } w-full overflow-hidden rounded-[30px] max-sm:rounded-sm justify-center items-center`}
           >
             {blog?.backgroundImage ? (
               <Image

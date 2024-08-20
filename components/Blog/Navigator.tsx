@@ -15,7 +15,11 @@ const BreadCrumbs = ({ title, items }: Props) => {
     const isFirst = currentRoute?.path === items[0]?.path;
 
     return isLast ? (
-      <span className="text-sm text-gray-600 font-light capitalize">{currentRoute.title}</span>
+      <span className="text-sm text-gray-600 font-light capitalize">
+        {currentRoute.title.length > 50
+          ? `${currentRoute.title.replaceAll('-', ' ').slice(0, 50)}...`
+          : currentRoute.title.replaceAll('-', ' ')}
+      </span>
     ) : isFirst ? (
       <Link href={`/`}>
         {currentRoute.title}
@@ -29,10 +33,10 @@ const BreadCrumbs = ({ title, items }: Props) => {
 
   return (
     <section className="flex justify-between items-center py-4 px-2 md:px-20 bg-[#FCFCFC] backdrop-blur-sm">
-      {title && (<p className="font-semibold text-sm text-opacity-60 text-gray-500">{title}</p>)}
+      {title && (<p className="font-semibold text-sm text-opacity-60 text-gray-500 capitalize">{title}</p>)}
 
       <Breadcrumb
-      className="hidden md:block"
+        className="hidden md:block"
         itemRender={itemRender}
         items={items}
       />
