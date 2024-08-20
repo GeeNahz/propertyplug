@@ -13,8 +13,6 @@ export default async function Page({
   const url = `${BASE_URL}/blogs${searchParams.search ? `?search=${searchParams.search}` : ''}`
   const blogs = await getBlogsWithQueryParams(url)
   
-  console.log('SAERCH URL: ', url)
-
   return (
     <div className="flex flex-col">
       <div className="header">
