@@ -64,13 +64,11 @@ export async function createBlog(_prevState: unknown, formData: FormData) {
   let response: AxiosInstance;
 
   try {
-    console.log(formData);
     response = await apiClient.post("/blogs", formData, {
       headers: {
         "Content-Type": "multipart/form-data",
       },
     });
-    console.log(response);
   } catch (err: any) {
     console.log("Err: ", err.message);
     return "Unable to complete request. Please try again";
