@@ -4,53 +4,57 @@ import { FaArrowRightToBracket, FaEnvelope, FaKey } from "react-icons/fa6";
 import { AxiosError } from "axios";
 import { login } from "@/lib/lib";
 import { useToast } from "@/components/ui/use-toast";
-import { useState, useTransition } from "react";
+import { useState, useTransition, useActionState } from "react";
 import { EyeIcon, EyeOffIcon } from "lucide-react";
 
 export default function LoginForm() {
   const { toast } = useToast();
   const [see, setSee] = useState(false);
-  const [isPending, startTransition] = useTransition();
+  // const [isPending, startTransition] = useTransition();
 
-  async function authenticate(formData: FormData) {
-    try {
-      startTransition(async () => {
-        await login(formData);
-      });
-    } catch (error: any) {
-      console.log("Error:", error);
-  
-      if (error instanceof AxiosError) {
-        const errorMessage = error.response?.data?.type;
-  
-        switch (errorMessage) {
-          case "CredentialsSignin":
-            return toast({
-              variant: "destructive",
-              description: "Invalid credentials.",
-            });
-          case "CallbackRouteError":
-            return toast({
-              variant: "destructive",
-              description: "Email or password is incorrect.",
-            });
-          default:
-            return toast({
-              variant: "destructive",
-              description: "Something went wrong.",
-            });
-        }
-      } else {
-        toast({
-          variant: "destructive",
-          description: "Unable to log you in at the moment.",
-        });
-      }
-    }
-  }
+  const [state, dispatch, isPending] = useActionState(login, undefined)
+
+  // async function authenticate(formData: FormData) {
+  //   try {
+  //     startTransition(async () => {
+  //       await login(formData);
+  //     });
+  //   } catch (error: any) {
+  //     console.log("Error:", error);
+  //
+  //     if (error instanceof AxiosError) {
+  //       const errorMessage = error.response?.data?.type;
+  //
+  //       switch (errorMessage) {
+  //         case "CredentialsSignin":
+  //           return toast({
+  //             variant: "destructive",
+  //             description: "Invalid credentials.",
+  //           });
+  //         case "CallbackRouteError":
+  //           return toast({
+  //             variant: "destructive",
+  //             description: "Email or password is incorrect.",
+  //           });
+  //         default:
+  //           return toast({
+  //             variant: "destructive",
+  //             description: "Something went wrong.",
+  //           });
+  //       }
+  //     } else {
+  //       toast({
+  //         variant: "destructive",
+  //         description: "Unable to log you in at the moment.",
+  //       });
+  //     }
+  //   }
+  // }
+
+
   return (
-    <form action={authenticate} className="space-y-3">
-      <div className="flex-1 rounded-lg bg-gray-50 px-6 pb-4 pt-8">
+    <form action={dispatch} className="space-y-3">
+      <div className="flex-1 rounded-lg bg-gray-50 px-6 pb-4 pt-8 space-y-3">
         <h1 className={`mb-5 text-2xl text-center font-semibold`}>Login</h1>
         <div className="w-full">
           <div>
@@ -95,25 +99,32 @@ export default function LoginForm() {
               />
               <FaKey className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
               {see ? (
-          <EyeIcon
-            className="absolute top-2 right-3 cursor-pointer"
-            onClick={() => setSee(!see)}
-          />
-        ) : (
-          <EyeOffIcon
-            className="absolute top-2 right-3 cursor-pointer"
-            onClick={() => setSee(!see)}
-          />
-        )}
+                <EyeIcon
+                  className="absolute top-2 right-3 cursor-pointer"
+                  onClick={() => setSee(!see)}
+                />
+              ) : (
+                <EyeOffIcon
+                  className="absolute top-2 right-3 cursor-pointer"
+                  onClick={() => setSee(!see)}
+                />
+              )}
             </div>
           </div>
         </div>
+
+        <div className="text-ui-red text-xs text-center capitalize h-2">
+        {
+          state && <span>{state.message.toLowerCase() === 'record not found' ? 'invalid email or password' : state.message}</span>
+        }
+        </div>
+
         <button
-          className="mt-4 w-full flex items-center justify-center gap-3 bg-ui-dark py-[9px] px-4 rounded-md text-white hover:bg-ui-dark/80 active:bg-ui-dark/80 focus:bg-ui-dark/80 disabled:bg-ui-dark/50 disabled:cursor-not-allowed transition-colors text-sm font-semibold"
+          className="w-full flex items-center justify-center gap-3 bg-ui-dark py-[9px] px-4 rounded-md text-white hover:bg-ui-dark/80 active:bg-ui-dark/80 focus:bg-ui-dark/80 disabled:bg-ui-dark/50 disabled:cursor-not-allowed transition-colors text-sm font-semibold"
           aria-disabled={isPending}
           disabled={isPending}
         >
-        {isPending ? 'Logging in...' : 'Log in'} <FaArrowRightToBracket size={18} />
+          {isPending ? 'Logging in...' : 'Log in'} <FaArrowRightToBracket size={18} />
         </button>
         {/* <div
           className="flex items-center justify-center gap-1 w-full h-8 space-x-1 text-xs"

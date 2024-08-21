@@ -26,7 +26,7 @@ export async function encrypt(payload: any) {
 //   return payload;
 // }
 
-export async function login(formData: FormData) {
+export async function login(_prevState: unknown, formData: FormData) {
   try {
     const response = await axios.post(`${BASE_URL}/auth/login`, formData, {
       headers: {
@@ -46,12 +46,18 @@ export async function login(formData: FormData) {
       expires: new Date(new Date().getTime() + 10 * 60 * 1000),
     });
 
-    // Redirect to the dashboard
-    redirect("/dashboard");
-  } catch (err) {
+  } catch (err: any) {
     // Re-throw the error to be handled by the caller
-    throw err;
+    type TErrorReturn = { state: number; message: string; }
+
+    if (err?.response) {
+      return err?.response?.data as TErrorReturn
+    }
+    return { status: 400, message: 'Something went wrong. Please try again.' }
   }
+
+  // Redirect to the dashboard
+  redirect("/dashboard");
 }
 
 export async function dasboardPass(toke: any) {
