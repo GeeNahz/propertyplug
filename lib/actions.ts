@@ -159,9 +159,9 @@ export async function editPublish(datas: any, formData: FormData) {
   let publishUrl: string
 
   if (publishAction === 'yes') {
-    publishUrl = `${BASE_URL}/blogs/publish/${datas.slug}`
+    publishUrl = `${BASE_URL}/blogs/publish/${datas.slug}?publish=${true}`
   } else if (publishAction === 'no') {
-    publishUrl = `${BASE_URL}/blogs/unpublish/${datas.slug}`
+    publishUrl = `${BASE_URL}/blogs/publish/${datas.slug}?publish=${false}`
   } else {
     return {
       success: false,
