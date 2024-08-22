@@ -13,9 +13,13 @@ function checkFileType(file: File | undefined) {
 
 export const blogSchema = z.object({
   title: z.string().min(3, "Title must be at least 3 characters long").trim(),
-  addContent: z.string().min(5, "Ads contents must be at least 5 characters long").trim(),
-  blogContent: z
-    .string()
+  addContents: z.string()
+    .trim()
+    .optional(),
+    // .refine(
+    //   (ad) => ad && ad !== '' && ad.length < 5,
+    //   "Ads contents must be at least 5 characters long"),
+  blogContent: z.string()
     .min(5, "Blog content must be at least 5 characters long")
     .trim()
     .refine(
@@ -25,11 +29,14 @@ export const blogSchema = z.object({
   tags: z.string().refine(
     (tag) => tag && tag !== '', 'Tags must be provided'
   ),
-  backgroundImage: z.instanceof(File).refine(
-    (file) => file && file?.size < MAX_FILE_SIZE, `File size must be less to ${MAX_FILE_SIZE / (1024 * 1024)}.`
-  ).refine(
-    (file) => checkFileType(file), `Only ${SUPPORTED_FILE_TYPE.join(', ')} formats are supported.`
-  ),
+  backgroundImage: z.instanceof(File)
+    .refine(
+      (file) => file && file?.size < MAX_FILE_SIZE, `File size must be less to ${MAX_FILE_SIZE / (1024 * 1024)}.`
+    )
+    .refine(
+      (file) => checkFileType(file), `Only ${SUPPORTED_FILE_TYPE.join(', ')} formats are supported.`
+    )
+    .optional(),
 })
 
 export type TBlog = z.infer<typeof blogSchema>

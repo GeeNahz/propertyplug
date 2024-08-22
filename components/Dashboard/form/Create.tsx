@@ -17,7 +17,7 @@ type NotificationType = 'success' | 'info' | 'warning' | 'error';
 const initialData: Partial<TBlogPost> = {
   title: '',
   blogContent: '',
-  addContent: '',
+  addContents: '',
   backgroundImage: new File([new Blob], ''),
   tags: '',
   createdBy: '',
@@ -94,7 +94,7 @@ export default function CreateForm({ user }: Props) {
               </div>
 
               <div className="!text-sm article">
-                <ContentParser codeString={formData.blogContent} ads={formData.addContent} />
+                <ContentParser codeString={formData.blogContent} ads={formData.addContents} />
               </div>
             </div>
           </div>

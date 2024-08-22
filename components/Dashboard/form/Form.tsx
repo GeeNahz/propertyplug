@@ -33,7 +33,7 @@ export default function Form({
   }
 
   function setAdsContent(htmlContent: string) {
-    setFormData((prev) => ({ ...prev, addContent: htmlContent }));
+    setFormData((prev) => ({ ...prev, addContents: htmlContent }));
   }
 
   return (
@@ -104,20 +104,20 @@ export default function Form({
 
       {/* Ads */}
       <div className="content flex flex-col gap-2">
-        <Label value="adverts (please use the key word @ads to insert this advert in your content)" id="addContent" />
+        <Label value="adverts (please use the key word @ads to insert this advert in your content)" id="addContents" />
         <div className="border border-gray-300 rounded-lg min-h-44 w-full">
           {/* <NovelEditor
-            content={[formData.addContent] as unknown as JSONContent[]}
+            content={[formData.addContents] as unknown as JSONContent[]}
             setContent={setAdsContent}
           /> */}
-          <Tiptap contents={formData.addContent} setContent={setAdsContent} />
+          <Tiptap contents={formData.addContents} setContent={setAdsContent} />
         </div>
         <input
           className="body h-44 w-full text-xs border-2 border-ui-dark rounded-lg py-4 px-6 focus:hidden"
           type="hidden"
-          name="addContent"
-          id="addContent"
-          value={formData?.addContent || ""}
+          name="addContents"
+          id="addContents"
+          value={formData?.addContents || ""}
           onChange={handleFormChange}
         />
       </div>

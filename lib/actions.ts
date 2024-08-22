@@ -37,7 +37,7 @@ import { cookies } from "next/headers";
 // }
 
 export async function createBlog(_prevState: unknown, formData: FormData) {
-  const { title, blogContent, addContent, tags, createdBy, backgroundImage } =
+  const { title, blogContent, addContents, tags, createdBy, backgroundImage } =
     Object.fromEntries(formData) as TBlog;
 
   const result =
@@ -47,7 +47,7 @@ export async function createBlog(_prevState: unknown, formData: FormData) {
       tags,
       createdBy,
       backgroundImage,
-      addContent,
+      addContents,
     }) || null;
 
   if (!result.success) {
@@ -78,26 +78,20 @@ export async function createBlog(_prevState: unknown, formData: FormData) {
 }
 
 export async function editBlog(_prevState: unknown, formData: FormData) {
-  const {
-    id,
-    title,
-    blogContent,
-    tags,
-    createdBy,
-    backgroundImage,
-    addContent,
-    slug,
-  } = Object.fromEntries(formData);
+  // const { id, title, blogContent, tags, createdBy, backgroundImage, addContents, slug, } = Object.fromEntries(formData);
+  // const result = blogSchema.safeParse({ title, blogContent, addContents, tags, slug, createdBy, backgroundImage, });
+  // let payload = { title, blogContent, tags, createdBy, slug, addContents };
 
-  const result = blogSchema.safeParse({
-    title,
-    blogContent,
-    addContent,
-    tags,
-    slug,
-    createdBy,
-    backgroundImage,
-  });
+  const updateData = Object.fromEntries(formData);
+  if (updateData.backgroundImage === '' || (updateData.backgroundImage as File).size < 1) {
+    delete updateData['backgroundImage']
+  }
+
+  const result = blogSchema.partial({
+    addContents: true,
+    backgroundImage: true,
+  }).passthrough().safeParse(updateData)
+
 
   if (!result.success) {
     let fieldErrors = result.error.flatten().fieldErrors;
@@ -109,10 +103,20 @@ export async function editBlog(_prevState: unknown, formData: FormData) {
 
     return errors;
   }
-  let payload = { title, blogContent, tags, createdBy, slug, addContent };
+
+  let payload = { ...result.data }
 
   try {
-    const response = await axios.patch(`${BASE_URL}/blogs/${slug}`, payload);
+    // const response = await axios.patch(`${BASE_URL}/blogs/${updateData.slug}`, payload);
+    const response = await axios.patch(
+      `${BASE_URL}/blogs/update/${payload.title.replaceAll(' ', '-')}`,
+      payload,
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        }
+      }
+    );
 
     revalidatePath("/dasboard/blogs");
     return response.data;

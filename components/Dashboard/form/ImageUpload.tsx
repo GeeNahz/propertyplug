@@ -53,10 +53,9 @@ export default function ImageUpload({ value, handleFormChange }: Props) {
         name="backgroundImage"
         accept="image/*"
         type="file"
-        disabled={path.includes('edit')}
         onChange={handleImageChange}
         className="size-full opacity-0 absolute top-0 left-0 right-0 bottom-0 disabled:cursor-not-allowed"
-        required
+        required={path.includes('edit') ? false : true}
       />
 
       {previewUrl && (<Image placeholder="blur" blurDataURL={dataUrl}

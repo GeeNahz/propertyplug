@@ -83,9 +83,9 @@ export default function Tile({ post }: Props) {
                 ? `${post?.blogContent?.substring(0, 100)}...`
                 : post?.blogContent
               }`}
-            ads={`${post?.addContent!.length > 100
-                ? `${post?.addContent?.substring(0, 100)}...`
-                : post?.addContent
+            ads={`${post?.addContents!.length > 100
+                ? `${post?.addContents?.substring(0, 100)}...`
+                : post?.addContents
               }`}
           />
 

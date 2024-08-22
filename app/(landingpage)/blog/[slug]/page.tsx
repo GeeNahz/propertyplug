@@ -119,7 +119,7 @@ export default function Page({ params }: { params: { slug: string } }) {
             <Divider dashed={true} />
 
             <Suspense fallback={<Loading />}>
-              <BlogContent body={blog?.blogContent} ads={blog?.addContent} />
+              <BlogContent body={blog?.blogContent} ads={blog?.addContents} />
             </Suspense>
           </div>
         </div>

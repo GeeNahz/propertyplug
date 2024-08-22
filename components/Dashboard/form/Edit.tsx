@@ -42,6 +42,7 @@ export default function EditForm({ post }: { post: TBlogPost }) {
         setImagePreview(formData.backgroundImage)
       }
     }
+    // setFormData((prev) => ({ ...prev, backgroundImage: formData.backgroundImage }))
   }, [formData.backgroundImage])
 
 
@@ -52,7 +53,7 @@ export default function EditForm({ post }: { post: TBlogPost }) {
       console.log('Form res: ', state)
       openNotificationWithIcon('error', state)
     } else {
-      state.map((item:any) => {
+      state.map((item: any) => {
         let key = Object.keys(item)[0]
         openNotificationWithIcon('error', key, item[key])
       })
@@ -71,6 +72,7 @@ export default function EditForm({ post }: { post: TBlogPost }) {
         <div className="form no-scrollbar overflow-y-scroll" style={{ flex: 3 }}>
           <Form action={dispatch} formData={formData} setFormData={setFormData}>
             {/* <Button disabled={isPending} name="post" classes="bg-white border border-ui-dark !text-ui-dark" /> */}
+            <input type="hidden" name="slug" value={formData.slug} />
 
             <Button disabled={isPending} submittingText="updating" name="update" classes="!bg-ui-dark" />
           </Form>
@@ -80,7 +82,7 @@ export default function EditForm({ post }: { post: TBlogPost }) {
           <div className="bg-ui-dash-gray h-full w-full overflow-y-scroll">
             <div className="image h-auto bg-ui-red/20 w-full rounded-md overflow-hidden">
               {imagePreview && (
-                <Image placeholder="blur"  blurDataURL={dataUrl} src={imagePreview} alt="preview-image" height={100} width={200} className="size-full object-contain object-center" />
+                <Image placeholder="blur" blurDataURL={dataUrl} src={imagePreview} alt="preview-image" height={100} width={200} className="size-full object-contain object-center" />
               )}
             </div>
 
@@ -91,7 +93,7 @@ export default function EditForm({ post }: { post: TBlogPost }) {
               </div>
 
               <div className="!text-sm article">
-                <ContentParser codeString={formData.blogContent} ads={formData.addContent}/>
+                <ContentParser codeString={formData.blogContent} ads={formData.addContents} />
               </div>
             </div>
           </div>
