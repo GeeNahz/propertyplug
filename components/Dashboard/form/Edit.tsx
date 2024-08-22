@@ -49,10 +49,10 @@ export default function EditForm({ post }: { post: TBlogPost }) {
   const [state, dispatch, isPending] = useActionState(editBlog, null)
 
   if (state) {
-    if (typeof state === 'string') {
-      console.log('Form res: ', state)
-      openNotificationWithIcon('error', state)
-    } else {
+    if ((state as { status: number; message: string }).message) {
+      openNotificationWithIcon('error', (state as { status: number; message: string }).message)
+    } 
+    if (state instanceof Array) {
       state.map((item: any) => {
         let key = Object.keys(item)[0]
         openNotificationWithIcon('error', key, item[key])

@@ -108,23 +108,25 @@ export async function editBlog(_prevState: unknown, formData: FormData) {
   let payload = { ...result.data }
 
   try {
-    // const response = await axios.patch(`${BASE_URL}/blogs/${updateData.slug}`, payload);
-    const response = await axios.patch(
-      `${BASE_URL}/blogs/update/${payload.title.replaceAll(' ', '-')}`,
+    await axios.patch(
+      `${BASE_URL}/blogs/update/${payload.slug}`,
       payload,
       {
         headers: {
+          Authorization: cookies().get("session")?.value,
           "Content-Type": "multipart/form-data",
         }
       }
     );
 
     revalidatePath("/dasboard/blogs");
-    return response.data;
   } catch (error: any) {
-    console.log("Update Err: ", error.message);
-    return "Unable to update blog. Please try again";
+    if (error?.response) {
+      return error?.response?.data as { status: number; message: string; }
+    }
+    return { status: 500, message: "Unable to update blog. Please try again" }
   }
+  redirect("/dashboard/blogs");
 }
 
 export async function getBlog(id: string) {
