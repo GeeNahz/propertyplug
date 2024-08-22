@@ -70,6 +70,7 @@ export default function LoginForm() {
                 id="email"
                 type="email"
                 name="email"
+                autoFocus
                 // value={formData.email}
                 // onChange={handleChage}
                 placeholder="Enter your email address"
