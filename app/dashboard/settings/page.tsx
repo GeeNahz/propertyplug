@@ -1,10 +1,10 @@
 'use client'
 
 
+import { changePassword } from "@/lib/actions";
 import { EyeIcon, EyeOffIcon } from "lucide-react";
-import { useState } from "react";
+import { useState, useActionState } from "react";
 import { FaKey } from "react-icons/fa";
-import { FaArrowRightToBracket } from "react-icons/fa6";
 
 function PasswordInput(
   {
@@ -31,7 +31,6 @@ function PasswordInput(
           name={name}
           placeholder={placeholder}
           required
-          minLength={6}
         />
         <FaKey className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
         {see ? (
@@ -51,14 +50,14 @@ function PasswordInput(
 }
 
 export default function Page() {
-  const [isPending, setIsPending] = useState(true); // just to disable this for now
+  const [state, dispatch, isPending] = useActionState(changePassword, undefined)
 
   return (
     <main className="flex flex-col gap-4 w-full justify-center items-center">
       <h2 className="text-2xl font-semibold mb-3 ">Change Password</h2>
 
-      <form className="space-y-3 w-full max-w-lg">
-        <div className="flex-1 rounded-lg bg-gray-50 px-6 py-4">
+      <form action={dispatch} className="space-y-3 w-full max-w-lg">
+        <div className="flex-1 rounded-lg bg-gray-50 px-6 py-4 space-y-8">
           <div className="w-full">
 
             <PasswordInput
@@ -68,12 +67,15 @@ export default function Page() {
               label="Current password"
             />
 
+            <p className="text-ui-red text-xs h-1">{state && <span>{state.errors.current_password && state.errors.current_password}</span>}</p>
+
             <PasswordInput
               name="new_password"
               id="new_password"
               placeholder="Enter new password"
               label="New password"
             />
+            <p className="text-ui-red text-xs h-1">{state && <span>{state.errors.new_password && state.errors.new_password}</span>}</p>
 
             <PasswordInput
               name="confirm_password"
@@ -81,8 +83,10 @@ export default function Page() {
               placeholder="Confirm password"
               label="Confirm password"
             />
+            <p className="text-ui-red text-xs h-1">{state && <span>{state.errors.confirm_password && state.errors.confirm_password}</span>}</p>
 
           </div>
+
           <button
             className="mt-4 w-full flex items-center justify-center gap-3 bg-ui-dark py-[9px] px-4 rounded-md text-white hover:bg-ui-dark/80 active:bg-ui-dark/80 focus:bg-ui-dark/80 disabled:bg-ui-dark/50 disabled:cursor-not-allowed transition-colors text-sm font-semibold"
             aria-disabled={isPending}
@@ -92,25 +96,6 @@ export default function Page() {
           </button>
         </div>
       </form>
-
-
-      {/* <form className="flex flex-col gap-3 w-6/12">
-        <div className="flex flex-col items-start">
-          <label htmlFor="current">Current Password:</label>
-          <input id="current" type="text" placeholder="current password" className="indent-2 rounded-xl py-3 bg-transparent w-[550px] border border-solid border-black" />
-        </div>
-        <div className="flex flex-col items-start">
-          <label htmlFor="new">New Password:</label>
-          <input id="new" type="text" placeholder="new password" className="indent-2 rounded-xl py-3 bg-transparent w-[550px] border border-solid border-black" />
-        </div>
-        <div className="flex flex-col items-start">
-          <label htmlFor="confirm">Confirm Password:</label>
-          <input id="confirm" type="text" placeholder="confirm password" className="indent-2 rounded-xl py-3 bg-transparent w-[550px] border border-solid border-black" />
-        </div>
-        <div className="flex !w-full justify-center">
-          <button className="mt-5 px-6 py-3 text-white font-medium text-sm bg-black/70 hover:bg-black/60 w-full rounded-md">Submit</button>
-        </div>
-      </form> */}
     </main>
   );
 }

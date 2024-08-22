@@ -17,7 +17,7 @@ export const blogSchema = z.object({
     .trim()
     .optional(),
     // .refine(
-    //   (ad) => ad && ad !== '' && ad.length < 5,
+    //   (ad) => ad && ad === '' && ad.length >= 5,
     //   "Ads contents must be at least 5 characters long"),
   blogContent: z.string()
     .min(5, "Blog content must be at least 5 characters long")
@@ -45,3 +45,19 @@ export type TBlog = z.infer<typeof blogSchema>
 //   .refine((file: File) => file?.length !== 0, 'File is required')
 //   .refine((file) => file.size < MAX_FILE_SIZE, `File size must be less or equal to ${MAX_FILE_SIZE / (1024 * 1024)}.`)
 //   .refine((file) => checkFileType(file), `Only ${SUPPORTED_FILE_TYPE.join(', ')} formats are supported.`),
+
+export const passwordChangeSchema = z.object({
+  current_password: z.string()
+    .min(5, 'Password must be at least 6 characters')
+    .trim(),
+  new_password: z.string()
+    .min(5, 'Password must be at least 6 characters')
+    .trim(),
+  confirm_password: z.string()
+    .min(5, 'Password must be at least 6 characters')
+    .trim(),
+})
+  .refine((values) => values.new_password === values.confirm_password, {
+    message: 'Passwords do not match',
+    path: ['confirm_password'],
+  })

@@ -1,6 +1,6 @@
 "use server";
 import apiClient from "./apiConfig";
-import { blogSchema, TBlog } from "./zod";
+import { blogSchema, passwordChangeSchema, TBlog } from "./zod";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import axios, { AxiosError, AxiosInstance } from "axios";
@@ -8,6 +8,7 @@ import { login } from "./lib";
 import Cookies from "js-cookie";
 import { BASE_URL } from "./api_url";
 import { cookies } from "next/headers";
+import { decrypt } from "./utils";
 
 // export async function authenticate(formData: FormData) {
 //   try {
@@ -207,6 +208,39 @@ export async function getBlogsWithQueryParams(url?: string) {
 
   try {
     const response = await axios.get(urlPath);
+    return response.data;
+  } catch (err: any) {
+    console.log("Blogs error: ", err.message);
+    return err.message;
+  }
+}
+
+export async function changePassword(_prevStete: unknown, formData: FormData) {
+  let url = `${BASE_URL}/users/change_password`
+  const passwordData = Object.fromEntries(formData)
+  const result = passwordChangeSchema.safeParse(passwordData)
+
+  if (!result.success) {
+    return { errors: result.error.flatten().fieldErrors, message: 'Failed' }
+  }
+
+  let session = cookies().get('session')?.value
+  const token = decrypt(session as string);
+  let id = (token as any)["ID"].split('"')[1];
+
+  let payload = {
+    id,
+    oldPassword: result.data.current_password,
+    newPassword: result.data.new_password,
+  }
+
+  try {
+    const response = await axios.post(url, payload, {
+      headers: {
+        Authorization: session,
+        "Content-Type": "application/json",
+      },
+    });
     return response.data;
   } catch (err: any) {
     console.log("Blogs error: ", err.message);
