@@ -30,14 +30,14 @@ export const Moda = () => {
 
   const handleRoute = (v: string) => {
     if (v.includes(OPTIONS[2])) {
-      router.push("tel:+2349030810919");
+      router.push("tel:+2349124604075");
     }
     if (v.includes(OPTIONS[1])) {
       router.push("mailto:info@propertyplugng.com");
     }
     if (v.includes(OPTIONS[0])) {
       router.push(
-        "https://api.whatsapp.com/send?phone=2348104268727&text=Hi,+you+have+reached+property+plug,+how+may+we+help+you"
+        "https://api.whatsapp.com/send?phone=2349124604075&text=Hi,+you+have+reached+property+plug,+how+may+we+help+you"
       );
     }
     return;
