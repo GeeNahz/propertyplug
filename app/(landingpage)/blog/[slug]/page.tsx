@@ -35,13 +35,17 @@ export default function Page({ params }: { params: { slug: string } }) {
 
     fetchBlog();
 
-    setTimeout(async () => {
+    const readcountTimeout = setTimeout(async () => {
       try {
         await axios.get(`${BASE_URL}/blogs/readcount/${params.slug}`)
       } catch (err) {
         console.log('Unable to update read count')
       }
     }, 60000)
+
+    return () => {
+      clearTimeout(readcountTimeout)
+    }
   }, [params.slug]);
 
   useEffect(() => {
