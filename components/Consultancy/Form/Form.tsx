@@ -42,7 +42,7 @@ const Form = ({ formData, tab, onChange, handleSubmit, formAction }: Props) => {
 
   return (
     <form action={dispatch}>
-      <div className="flex flex-col md:flex-row justify-between text-ui-dark mb-5 md:mb-10">
+      <div className="flex flex-col lg:flex-row justify-between gap-10 text-ui-dark mb-5 md:mb-10">
         <div className="left-fields space-y-5 mb-10 md:mb-0">
           <p className="text-sm md:text-lg font-medium">What are you looking to {tab}?</p>
 
@@ -314,7 +314,7 @@ const Input = ({
           {inputLabel} {inputRequired && <span className="text-ui-red">*</span>}
         </label>
 
-        <div className="border border-ui-dark rounded-xl md:rounded-[18px] bg-white overflow-hidden md:min-w-[490px] w-full md:w-[490px]">
+        <div className="border border-ui-dark rounded-xl md:rounded-[18px] bg-white overflow-hidden md:min-w-[490px] w-full lg:w-[490px]">
           <select
             name={inputName}
             id={inputId ? inputId : inputName}
@@ -341,7 +341,7 @@ const Input = ({
             {inputLabel} {inputRequired && <span className="text-ui-red">*</span>}
           </label>
 
-          <div className="border border-ui-dark rounded-xl md:rounded-[18px] bg-white overflow-hidden md:min-w-[490px] w-full md:w-[490px] text-sm md:text-base">
+          <div className="border border-ui-dark rounded-xl md:rounded-[18px] bg-white overflow-hidden md:min-w-[490px] w-full lg:w-[490px] text-sm md:text-base">
             <textarea
               name={inputName}
               id={inputId ? inputId : inputName}
@@ -349,7 +349,7 @@ const Input = ({
               required={inputRequired}
               value={inputValue}
               onChange={(e) => onChange(e)}
-              className="bg-transparent py-3 px-2 md:px-[15px] size-full h-56"
+              className="bg-transparent py-3 px-2 md:px-[15px] w-full h-56"
             ></textarea>
           </div>
         </div>
@@ -376,7 +376,7 @@ const Input = ({
               {inputLabel} {inputRequired && <span className="text-ui-red">*</span>}
             </label>
 
-            <div className="border border-ui-dark rounded-xl md:rounded-[18px] bg-white overflow-hidden md:min-w-[490px] w-full md:w-[490px] text-sm md:text-base">
+            <div className="border border-ui-dark rounded-xl md:rounded-[18px] bg-white overflow-hidden md:min-w-[490px] w-full lg:w-[490px] text-sm md:text-base">
               <input
                 type={inputType}
                 name={inputName}
