@@ -249,3 +249,11 @@ export async function changePassword(_prevStete: unknown, formData: FormData) {
     return err.message;
   }
 }
+
+
+export async function listProperty(_prevState: unknown, formData: FormData) {
+  return { message: 'success', data: 'none' }
+}
+export async function sellBuyProperty(_prevState: unknown, formData: FormData) {
+  return { message: 'success', data: 'none' }
+}

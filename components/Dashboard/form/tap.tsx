@@ -1,11 +1,14 @@
 "use client";
+
+
 import CharacterCount from "@tiptap/extension-character-count";
 import Highlight from "@tiptap/extension-highlight";
+import Link from "@tiptap/extension-link";
 import TaskItem from "@tiptap/extension-task-item";
 import TaskList from "@tiptap/extension-task-list";
 import { useEditor, EditorContent } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
-import MenuBar from "./MenuBar";
+import Toolbar from "@/components/Dashboard/form/toolbar";
 import './tap.css'
 
 const Tiptap = ({ contents, setContent }: any) => {
@@ -24,6 +27,20 @@ const Tiptap = ({ contents, setContent }: any) => {
       Highlight,
       TaskList,
       TaskItem,
+      Link.configure({
+        openOnClick: false,
+        defaultProtocol: 'https',
+        protocols: [
+          'ftp', 'mailto',
+          {
+            scheme: 'tel',
+            optionalSlashes: true,
+          },
+        ],
+        HTMLAttributes: {
+          rel: 'noopener noreferrer',
+        },
+      }),
       CharacterCount.configure({
         limit: 10000,
       }),
@@ -39,7 +56,7 @@ const Tiptap = ({ contents, setContent }: any) => {
 
   return (
     <>
-      {editor && <MenuBar editor={editor} />}
+      {editor && <Toolbar editor={editor} />}
       <EditorContent
         editor={editor}
         //   onChange={setContent(editor.getHTML())}

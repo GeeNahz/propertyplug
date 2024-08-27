@@ -165,6 +165,10 @@ a:active {
 
 
 /* Novel styles */
+.parsed-html {
+  @apply whitespace-pre-wrap;
+}
+
 .parsed-html h1 {
   @apply text-2xl font-bold my-4;
 }
@@ -219,7 +223,7 @@ a:active {
 
 .parsed-html a,
 .advert a {
-  @apply text-blue-600 no-underline hover:underline;
+  @apply text-inherit text-blue-600 no-underline hover:underline;
 }
 
 .parsed-html table {
@@ -239,5 +243,5 @@ a:active {
   list-style: circle;
 } */
 .advert {
-  @apply bg-[#1E1E1E] rounded-lg text-white my-3 md:my-5 px-3 py-2
+  @apply border border-[#1e1e1e] rounded-lg !text-inherit my-3 md:my-5 px-3 py-2
 }

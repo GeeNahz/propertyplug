@@ -104,7 +104,7 @@ export default function Form({
 
       {/* Ads */}
       <div className="content flex flex-col gap-2">
-        <Label value="adverts (please use the key word @ads to insert this advert in your content)" id="addContents" />
+        <Label value="Adverts (please use the keyword '@ads' to insert this advert in your content)" className="normal-case" id="addContents" />
         <div className="border border-gray-300 rounded-lg min-h-44 w-full">
           {/* <NovelEditor
             content={[formData.addContents] as unknown as JSONContent[]}
@@ -138,15 +138,17 @@ export function Label({
   id,
   value,
   isRequired,
+  className,
 }: {
   id: string;
   value: string;
   isRequired?: boolean;
+  className?: string;
 }) {
   return (
     <label
       htmlFor={id}
-      className="capitalize text-[13px] text-ui-dark font-semibold mr-1"
+      className={`capitalize text-[13px] text-ui-dark font-semibold mr-1 ${className && className}`}
     >
       {value} {isRequired && <span className="text-ui-red">*</span>}
     </label>

@@ -11,5 +11,5 @@ let blog = codeString as string
 if(codeString?.includes("@ads")){
  blog = codeString.replaceAll('@ads', adv)
 }
-  return <article className="parsed-html break-all !text-inherit" dangerouslySetInnerHTML={{__html:blog}}/>
+  return <article className="parsed-html !break-all !text-inherit" dangerouslySetInnerHTML={{__html:blog}}/>
 }

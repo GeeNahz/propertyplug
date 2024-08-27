@@ -8,7 +8,7 @@ import { usePathname } from "next/navigation";
 
 const BlogHeaderActionBtns = ({ like }: { like: boolean }) => {
   const path = usePathname() as string
-  const [likeState, setLikeState] = useState<boolean>(like);
+  const [likeState, setLikeState] = useState<boolean>(false);
  async function toggleLike(action: "like" | "dislike") {
     // perform an api request to toggle the like state
     // but for now, I'll just toggle the local state

@@ -1,4 +1,4 @@
-import type { Editor } from '@tiptap/react'
+import { type Editor } from '@tiptap/react'
 
 import { Fragment } from 'react'
 
@@ -17,31 +17,33 @@ import Separator from './RemixIcon_SVG_2408162103/separator'
 import ArrowGoBackFill from './RemixIcon_SVG_2408162103/arrow-go-back-fill'
 import ArrowGoForwardFill from './RemixIcon_SVG_2408162103/arrow-go-forward-fill'
 import FormatClear from './RemixIcon_SVG_2408162103/format-clear'
-import Text from './RemixIcon_SVG_2408162103/text'
-import CodeView from './RemixIcon_SVG_2408162103/code-view'
-import CodeBoxLine from './RemixIcon_SVG_2408162103/code-box-line'
-import DoubleQuote from './RemixIcon_SVG_2408162103/double-quotes-l'
+import { RxLink2 } from 'react-icons/rx'
 
-export default function MenuBar ({ editor }: { editor: Editor}) {
+// import Text from './RemixIcon_SVG_2408162103/text'
+// import CodeView from './RemixIcon_SVG_2408162103/code-view'
+// import CodeBoxLine from './RemixIcon_SVG_2408162103/code-box-line'
+// import DoubleQuote from './RemixIcon_SVG_2408162103/double-quotes-l'
+
+export default function MenuBar({ editor }: { editor: Editor }) {
   const items = [
     {
       icon: Bold,
       title: 'Bold',
-    //   @ts-ignore
+      //   @ts-ignore
       action: () => editor.chain().focus().toggleBold().run(),
       isActive: () => editor.isActive('bold'),
     },
     {
       icon: Italic,
       title: 'Italic',
-    //   @ts-ignore
+      //   @ts-ignore
       action: () => editor.chain().focus().toggleItalic().run(),
       isActive: () => editor.isActive('italic'),
     },
     {
       icon: Strikethrough,
       title: 'Strike',
-    //   @ts-ignore
+      //   @ts-ignore
       action: () => editor.chain().focus().toggleStrike().run(),
       isActive: () => editor.isActive('strike'),
     },
@@ -64,35 +66,35 @@ export default function MenuBar ({ editor }: { editor: Editor}) {
     {
       icon: H1,
       title: 'Heading 1',
-    //   @ts-ignore
+      //   @ts-ignore
       action: () => editor.chain().focus().toggleHeading({ level: 1 }).run(),
       isActive: () => editor.isActive('heading', { level: 1 }),
     },
     {
       icon: H2,
       title: 'Heading 2',
-    //   @ts-ignore
+      //   @ts-ignore
       action: () => editor.chain().focus().toggleHeading({ level: 2 }).run(),
       isActive: () => editor.isActive('heading', { level: 2 }),
     },
     {
       icon: Paragraph,
       title: 'Paragraph',
-    //   @ts-ignore
+      //   @ts-ignore
       action: () => editor.chain().focus().setParagraph().run(),
       isActive: () => editor.isActive('paragraph'),
     },
     {
       icon: ListUnordered,
       title: 'Bullet List',
-    //   @ts-ignore
+      //   @ts-ignore
       action: () => editor.chain().focus().toggleBulletList().run(),
       isActive: () => editor.isActive('bulletList'),
     },
     {
       icon: ListOrdered,
       title: 'Ordered List',
-    //   @ts-ignore
+      //   @ts-ignore
       action: () => editor.chain().focus().toggleOrderedList().run(),
       isActive: () => editor.isActive('orderedList'),
     },
@@ -119,10 +121,83 @@ export default function MenuBar ({ editor }: { editor: Editor}) {
     //   action: () => editor.chain().focus().toggleBlockquote().run(),
     //   isActive: () => editor.isActive('blockquote'),
     // },
+    // {
+      //   icon: <Toggle
+      //     className='hover:bg-inherit hover:text-inherit focus-visible:bg-inherit focus-visible:ring-inherit p-0 h-full w-full text-inherit transition-none'
+      //     pressed={editor.isActive('link')}
+      //     onPressedChange={() => {
+      //       const previousUrl = editor.getAttributes('link').href
+      //
+      //       if (previousUrl !== undefined) {
+      //         editor.chain().focus().extendMarkRange('link').unsetLink()
+      //           .run()
+      //
+      //         return
+      //       }
+      //
+      //       const url = window.prompt('URL', previousUrl)
+      //
+      //       // cancelled
+      //       if (url === null) {
+      //         return
+      //       }
+      //
+      //       // empty
+      //       if (url === '') {
+      //         editor.chain().focus().extendMarkRange('link').unsetLink()
+      //           .run()
+      //
+      //         return
+      //       }
+      //
+      //       // update link
+      //       editor.chain().focus().extendMarkRange('link').setLink({ href: url })
+      //         .run()
+      //     }}
+      //   >
+      //     <RxLink2 />
+      //   </Toggle>,
+      //   title: 'Add/Remove Link',
+      //   isActive: () => editor.isActive('link'),
+      // },
+    {
+      icon: RxLink2,
+      title: 'Add Link',
+      action: () => {
+        const previousUrl = editor.getAttributes('link').href
+
+        if (previousUrl !== undefined) {
+          editor.chain().focus().extendMarkRange('link').unsetLink()
+            .run()
+
+          return
+        }
+
+        const url = window.prompt('URL', previousUrl)
+
+        // cancelled
+        if (url === null) {
+          return
+        }
+
+        // empty
+        if (url === '') {
+          editor.chain().focus().extendMarkRange('link').unsetLink()
+            .run()
+
+          return
+        }
+
+        // update link
+        editor.chain().focus().extendMarkRange('link').setLink({ href: url })
+          .run()
+      },
+      isActive: () => editor.isActive('link'),
+    },
     {
       icon: Separator,
       title: 'Horizontal Rule',
-    //   @ts-ignore
+      //   @ts-ignore
       action: () => editor.chain().focus().setHorizontalRule().run(),
     },
     // {
@@ -146,13 +221,13 @@ export default function MenuBar ({ editor }: { editor: Editor}) {
     {
       icon: ArrowGoBackFill,
       title: 'Undo',
-    //   @ts-ignore
+      //   @ts-ignore
       action: () => editor.chain().focus().undo().run(),
     },
     {
       icon: ArrowGoForwardFill,
       title: 'Redo',
-    //   @ts-ignore
+      //   @ts-ignore
       action: () => editor.chain().focus().redo().run(),
     },
   ]

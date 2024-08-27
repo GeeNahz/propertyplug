@@ -12,8 +12,8 @@ const BlogContent = ({ body, ads }: Props) => {
     content = body;
   }
   return (
-    <div
-      className="content text-lg text-justify text-gray-500 leading-normal"
+    <article
+      className="content article whitespace-pre-line text-justify text-gray-500 leading-normal"
       dangerouslySetInnerHTML={{ __html: content }}
     />
   );

@@ -99,7 +99,7 @@ export default function Tile({ post }: Props) {
         <div className="btns flex flex-col gap-2">
           <Tooltip title="Preview" trigger="hover">
             <Link
-              href={`/blog/${post.slug}`}
+              href={`/blog/${post.slug}?preview=${true}`}
               target="_blank"
               className="edit rounded-xl p-3 bg-green-400/25 text-ui-dark"
             >

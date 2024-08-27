@@ -16,7 +16,15 @@ const BlogHeader = lazy(() => import("@/components/Blog/BlogPost/BlogHeader"));
 const BlogContent = lazy(() => import("@/components/Blog/BlogPost/BlogContent"));
 const FeaturedArticles = lazy(() => import("@/components/Blog/BlogPost/FeaturedArticles"));
 
-export default function Page({ params }: { params: { slug: string } }) {
+export default function Page(
+  {
+    params, searchParams,
+  }: {
+    params: { slug: string },
+    searchParams: {
+      preview: boolean;
+    }
+  }) {
   const [blog, setBlog] = useState<any>(null);
   const [blogs, setBlogs] = useState<TBlogPost[]>([]);
   const [loading, setLoading] = useState(true);
@@ -35,16 +43,18 @@ export default function Page({ params }: { params: { slug: string } }) {
 
     fetchBlog();
 
-    const readcountTimeout = setTimeout(async () => {
-      try {
-        await axios.get(`${BASE_URL}/blogs/readcount/${params.slug}`)
-      } catch (err) {
-        console.log('Unable to update read count')
-      }
-    }, 60000)
+    if (!searchParams.preview) {
+      const readcountTimeout = setTimeout(async () => {
+        try {
+          await axios.get(`${BASE_URL}/blogs/readcount/${params.slug}`)
+        } catch (err) {
+          console.log('Unable to update read count')
+        }
+      }, 60000)
 
-    return () => {
-      clearTimeout(readcountTimeout)
+      return () => {
+        clearTimeout(readcountTimeout)
+      }
     }
   }, [params.slug]);
 
