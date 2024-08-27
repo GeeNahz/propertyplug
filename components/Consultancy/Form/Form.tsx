@@ -1,14 +1,16 @@
-import { useActionState } from 'react'
+import { useActionState, useEffect } from 'react'
 
-import { TConsultancyForm, TConsultancyList, TConsultancyRentSell, TTab } from "@/components/common/type"
+import { TConsultancyList, TConsultancyRentrent } from '@/lib/zod'
+import { TConsultancyForm, TTab } from "@/components/common/type"
 import { Locations, LocationOption, PropertType, RoomSize, RealEstateType } from '@/components/common/data'
 
-import { sellBuyProperty, listProperty } from '@/lib/actions'
+import { rentBuyProperty, listProperty } from '@/lib/actions'
+import { useToast } from '@/components/ui/use-toast'
 
 type Props = {
   tab: TTab;
   formData2?: TConsultancyForm;
-  formData: TConsultancyRentSell | TConsultancyList;
+  formData: TConsultancyRentrent | TConsultancyList;
   onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => void;
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
   formAction?: (formData: FormData) => void;
@@ -16,12 +18,30 @@ type Props = {
 
 const Form = ({ formData, tab, onChange, handleSubmit, formAction }: Props) => {
 
-  const action = tab === 'list' ? listProperty : sellBuyProperty
+  const action = tab === 'list' ? listProperty : rentBuyProperty
   const [state, dispatch, isPending] = useActionState(action, undefined)
+
+  const { toast } = useToast()
+
+  useEffect(() => {
+    if (state?.message === 'success') {
+      toast({
+        title: 'Request Successful!',
+        description: 'Your request has been made successfully',
+      })
+    }
+    
+    if (state?.message === 'error') {
+      toast({
+        title: 'Request Failed!',
+        description: 'The request failed. Please try again',
+        variant: 'destructive',
+      })
+    }
+  }, [state?.message, toast])
 
   return (
     <form action={dispatch}>
-    {state && state.message}
       <div className="flex flex-col md:flex-row justify-between text-ui-dark mb-5 md:mb-10">
         <div className="left-fields space-y-5 mb-10 md:mb-0">
           <p className="text-sm md:text-lg font-medium">What are you looking to {tab}?</p>
@@ -57,7 +77,7 @@ const Form = ({ formData, tab, onChange, handleSubmit, formAction }: Props) => {
             inputRequired
             inputPlaceholder="Search..."
             inputId="request_type"
-            inputValue={tab.toUpperCase()}
+            inputValue={tab}
             onChange={onChange}
           />
 
@@ -71,7 +91,19 @@ const Form = ({ formData, tab, onChange, handleSubmit, formAction }: Props) => {
                 inputPlaceholder="Search..."
                 inputId="realEstateType"
                 inputValue={(formData as TConsultancyList).real_estate_type}
-                options={PropertType}
+                options={[{ value: 'Property', label: 'Property', name: 'estate_type' }, { value: 'Land', label: 'Land', name: 'estate_type' }, { value: 'Both', label: 'Both', name: 'estate_type' }]}
+                onChange={onChange}
+              />
+
+              <Input
+                inputType="select"
+                inputName="option"
+                inputLabel="Do you want to sell or rent"
+                inputRequired
+                inputPlaceholder="Search..."
+                inputId="option"
+                inputValue={(formData as TConsultancyList).option}
+                options={[{ value: 'Sell', label: 'Sell', name: 'option' }, { value: 'Rent', label: 'Rent', name: 'option' }]}
                 onChange={onChange}
               />
 
@@ -94,7 +126,7 @@ const Form = ({ formData, tab, onChange, handleSubmit, formAction }: Props) => {
                 inputRequired
                 inputPlaceholder="Search..."
                 inputId="property_type"
-                inputValue={(formData as TConsultancyRentSell).Property_type}
+                inputValue={(formData as TConsultancyRentrent).Property_type}
                 options={PropertType}
                 onChange={onChange}
               />
@@ -104,8 +136,9 @@ const Form = ({ formData, tab, onChange, handleSubmit, formAction }: Props) => {
                 inputName="rooms"
                 inputLabel="number of rooms"
                 inputPlaceholder="Search..."
+                inputRequired
                 inputId="rooms"
-                inputValue={(formData as TConsultancyRentSell).rooms}
+                inputValue={(formData as TConsultancyRentrent).rooms}
                 options={RoomSize}
                 onChange={onChange}
               />
@@ -115,8 +148,9 @@ const Form = ({ formData, tab, onChange, handleSubmit, formAction }: Props) => {
                 inputName="property_size"
                 inputLabel="property size(sqm)"
                 inputPlaceholder="3000sqm"
+                inputRequired
                 inputId="property_size"
-                inputValue={(formData as TConsultancyRentSell).property_size}
+                inputValue={(formData as TConsultancyRentrent).property_size}
                 onChange={onChange}
               />
             </>)
@@ -168,7 +202,7 @@ const Form = ({ formData, tab, onChange, handleSubmit, formAction }: Props) => {
             <label
               htmlFor="price"
               className="text-ui-desc text-sm capitalize font-medium flex items-center gap-1 md:gap-2 mb-2"
-            >Price</label>
+            >Price <span className="text-ui-red">*</span></label>
             <div className="border border-ui-dark rounded-xl md:rounded-[18px] bg-white overflow-hidden">
               <input
                 className="bg-transparent text-sm  py-3 px-2 md:px-[15px] size-full"
@@ -178,6 +212,7 @@ const Form = ({ formData, tab, onChange, handleSubmit, formAction }: Props) => {
                 placeholder="200,000"
                 value={formData.price}
                 onChange={(e) => onChange(e)}
+                required
               />
             </div>
           </div>
@@ -188,7 +223,7 @@ const Form = ({ formData, tab, onChange, handleSubmit, formAction }: Props) => {
                 <label
                   htmlFor="min_price"
                   className="text-ui-desc text-sm capitalize font-medium flex items-center gap-1 md:gap-2 mb-2"
-                >Minimum</label>
+                >Minimum <span className="text-ui-red">*</span></label>
                 <div className="border border-ui-dark rounded-xl md:rounded-[18px] bg-white overflow-hidden">
                   <input
                     className="bg-transparent text-sm  py-3 px-2 md:px-[15px] size-full"
@@ -196,8 +231,9 @@ const Form = ({ formData, tab, onChange, handleSubmit, formAction }: Props) => {
                     id="min_price"
                     name="min_price"
                     placeholder="200,000"
-                    value={(formData as TConsultancyRentSell).min_price}
+                    value={(formData as TConsultancyRentrent).min_price}
                     onChange={(e) => onChange(e)}
+                    required
                   />
                 </div>
               </div>
@@ -206,7 +242,7 @@ const Form = ({ formData, tab, onChange, handleSubmit, formAction }: Props) => {
                 <label
                   htmlFor="max_price"
                   className="text-ui-desc text-sm capitalize font-medium flex items-center gap-1 md:gap-2 mb-2"
-                >Maximum</label>
+                >Maximum <span className="text-ui-red">*</span></label>
                 <div className="border border-ui-dark rounded-xl md:rounded-[18px] bg-white overflow-hidden">
                   <input
                     className="bg-transparent text-sm  py-3 px-2 md:px-[15px] size-full"
@@ -214,8 +250,9 @@ const Form = ({ formData, tab, onChange, handleSubmit, formAction }: Props) => {
                     id="max_price"
                     name="max_price"
                     placeholder="23,000,000"
-                    value={(formData as TConsultancyRentSell).max_price}
+                    value={(formData as TConsultancyRentrent).max_price}
                     onChange={(e) => onChange(e)}
+                    required
                   />
                 </div>
               </div>

@@ -25,7 +25,7 @@ const BlogPosts = ({ post }: any) => {
           role="status"
           className="space-y-8 animate-pulse md:space-y-0 md:space-x-8 rtl:space-x-reverse md:flex md:items-center"
         >
-          <div className="flex items-center justify-center w-full h-48 rounded sm:w-96 bg-gray-700">
+          <div className="flex items-center justify-center w-full h-20 md:h-48 rounded sm:w-96 bg-gray-700">
             <svg
               className="w-10 h-10 text-gray-600"
               aria-hidden="true"
@@ -41,7 +41,7 @@ const BlogPosts = ({ post }: any) => {
       {post?.backgroundImage && <div className={`absolute top-0 w-full h-full left-0 linear_gradient transition duration-700 z-0  flex flex-col justify-between p-3`}>
         <div className="">
          {time && <small className="text-slate-50 text-xs font-normal">{time}</small>}
-          <h4 className="text-white text-xl capitalize font-semibold">
+          <h4 className="text-white text-sm md:text-xl capitalize font-semibold">
           {post.title.length > 50 ? `${post.title.slice(0, 50).trim()}...` : post.title}
           </h4>
         </div>

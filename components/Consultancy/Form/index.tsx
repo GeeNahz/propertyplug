@@ -3,7 +3,7 @@
 
 import { useState } from "react"
 import Form from "./Form"
-import { TConsultancyList, TConsultancyRentSell, TTab } from "@/components/common/type"
+import { TConsultancyList, TConsultancyRentrent, TTab } from "@/components/common/type"
 
 type Props = { tab: TTab }
 
@@ -21,7 +21,7 @@ const FormPage = ({ tab }: Props) => {
     max: 100,
   }
 
-  const initialValue: TConsultancyList | TConsultancyRentSell = {
+  const initialValue: TConsultancyList | TConsultancyRentrent = {
     state: '',
     location: '',
     Property_type: '',

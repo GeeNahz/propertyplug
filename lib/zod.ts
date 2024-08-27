@@ -16,9 +16,9 @@ export const blogSchema = z.object({
   addContents: z.string()
     .trim()
     .optional(),
-    // .refine(
-    //   (ad) => ad && ad === '' && ad.length >= 5,
-    //   "Ads contents must be at least 5 characters long"),
+  // .refine(
+  //   (ad) => ad && ad === '' && ad.length >= 5,
+  //   "Ads contents must be at least 5 characters long"),
   blogContent: z.string()
     .min(5, "Blog content must be at least 5 characters long")
     .trim()
@@ -60,4 +60,36 @@ export const passwordChangeSchema = z.object({
   .refine((values) => values.new_password === values.confirm_password, {
     message: 'Passwords do not match',
     path: ['confirm_password'],
-  })
+  });
+
+
+export const ConsultancyrentBuySchema = z.object({
+  request_type: z.enum(['rent', 'buy']),
+  state: z.string().trim(),
+  location: z.string().trim(),
+  Property_type: z.string().trim(),
+  property_size: z.string().trim(),
+  rooms: z.string().trim(),
+  name: z.string().trim(),
+  number: z.string().trim(),
+  email: z.string().email().trim(),
+  price: z.string().trim(),
+  max_price: z.string().trim(),
+  min_price: z.string().trim(),
+})
+
+export const ConsultancyListSchema = z.object({
+  request_type: z.enum(['list']),
+  state: z.string().trim(),
+  location: z.string().trim(),
+  real_estate_type: z.string().trim(),
+  option: z.string().trim(),
+  description: z.string().trim(),
+  name: z.string().trim(),
+  email: z.string().email().trim(),
+  number: z.string().trim(),
+  price: z.string().trim(),
+})
+
+export type TConsultancyRentrent = z.infer<typeof ConsultancyrentBuySchema>
+export type TConsultancyList = z.infer<typeof ConsultancyListSchema>

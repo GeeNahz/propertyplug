@@ -95,7 +95,7 @@ export default function Page(
 
         <div className="px-20 max-sm:px-4 py-20 bg-gradient-to-b from-white from-15% to-gray-50">
           <div
-            className={`h-[450px] relative aspect-auto ${!blog?.backgroundImage && "flex"
+            className={`h-56 md:h-[450px] relative aspect-auto ${!blog?.backgroundImage && "flex"
               } w-full overflow-hidden rounded-[30px] max-sm:rounded-sm justify-center items-center`}
           >
             {blog?.backgroundImage ? (
@@ -103,7 +103,7 @@ export default function Page(
                 fill
                 src={blog?.backgroundImage}
                 alt={params.slug}
-                className="object-cover"
+                className="object-cover object-center"
               />
             ) : (
               <div

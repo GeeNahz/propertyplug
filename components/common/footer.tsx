@@ -73,7 +73,7 @@ const Footer = () => {
                   linkHref = "/consultancy?tab=buy";
                 } else if (item.toLowerCase().includes("rent")) {
                   linkHref = "/consultancy?tab=rent";
-                } else if (item.toLowerCase().includes("sell")) {
+                } else if (item.toLowerCase().includes("rent")) {
                   linkHref = "/consultancy?tab=lease";
                 }
                 else{

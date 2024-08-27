@@ -1,6 +1,6 @@
 "use server";
 import apiClient from "./apiConfig";
-import { blogSchema, passwordChangeSchema, TBlog } from "./zod";
+import { blogSchema, ConsultancyListSchema, ConsultancyrentBuySchema, passwordChangeSchema, TBlog } from "./zod";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import axios, { AxiosError, AxiosInstance } from "axios";
@@ -252,8 +252,43 @@ export async function changePassword(_prevStete: unknown, formData: FormData) {
 
 
 export async function listProperty(_prevState: unknown, formData: FormData) {
-  return { message: 'success', data: 'none' }
+  const data = Object.fromEntries(formData)
+  const result = ConsultancyListSchema.safeParse(data)
+
+  if (!result.success) {
+    console.log(JSON.stringify(result.error.flatten().fieldErrors))
+    return { message: 'error', errors: result.error.flatten().fieldErrors }
+  }
+
+  try {
+    await axios.post(`${BASE_URL}/make-request/${result.data.request_type}`, result.data)
+    return { message: 'success', data: 'none' }
+  } catch (err: any) {
+    if (err?.response) {
+      console.log('ERR, LIST: ', err?.response)
+      return { message: 'error', errors: err.response.data }
+    }
+    console.log('ERR msg LIST: ', err?.message)
+    return { message: 'error', errors: err.message }
+  }
 }
-export async function sellBuyProperty(_prevState: unknown, formData: FormData) {
-  return { message: 'success', data: 'none' }
+
+export async function rentBuyProperty(_prevState: unknown, formData: FormData) {
+  const data = Object.fromEntries(formData)
+  const result = ConsultancyrentBuySchema.safeParse(data)
+
+  if (!result.success) {
+    return { message: 'error', errors: result.error.flatten().fieldErrors }
+  }
+
+  try {
+    await axios.post(`${BASE_URL}/make-request/${result.data.request_type}`, result.data)
+    return { message: 'success', data: 'none' }
+  } catch (err: any) {
+    if (err?.response) {
+      return { message: 'error', errors: err.response.data }
+    }
+
+    return { message: 'error', errors: err.message }
+  }
 }

@@ -23,7 +23,7 @@ const BlogHeaderActionBtns = ({ like }: { like: boolean }) => {
     }
   }
   return (
-    <div className="actions font-normal text-xl flex gap-4">
+    <div className="actions font-normal text-sm md:text-xl flex gap-4">
       {/* Make these icons btns with respective actions */}
       {likeState
         ? <button onClick={() => toggleLike("dislike")}><AiFillHeart fill='red' /></button>

@@ -45,7 +45,7 @@ export type Social = {
 
 export type BreadCrumbType = React.ReactNode | string;
 
-export type TTab = 'buy' | 'list' | 'sell';
+export type TTab = 'buy' | 'list' | 'rent';
 
 export type TConsultancyForm = {
   state: string;
@@ -60,8 +60,8 @@ export type TConsultancyForm = {
   max: number;
 }
 
-export type TConsultancyRentSell = {
-  request_type: 'buy' | 'sell';
+export type TConsultancyRentrent = {
+  request_type: 'buy' | 'rent';
   state: string;
   location: string;
   Property_type: string;
