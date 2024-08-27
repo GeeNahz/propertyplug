@@ -56,7 +56,7 @@ export default function Page(
         clearTimeout(readcountTimeout)
       }
     }
-  }, [params.slug]);
+  }, [params.slug, searchParams.preview]);
 
   useEffect(() => {
     const fetchBlogs = async () => {
