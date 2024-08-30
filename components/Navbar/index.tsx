@@ -105,7 +105,7 @@ const Navbar = () => {
       </div>}
 
       <div className="hidden w-4/12 md:flex justify-end">
-        <Button url="/consultancy" title="book consultancy" />
+        <Button title="book consultancy" />
       </div>
 
       {/* Mobile Navigation icon */}

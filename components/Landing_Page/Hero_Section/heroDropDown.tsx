@@ -13,7 +13,7 @@ export const DropList = () => {
         <MdArrowDropDown size={20} className={`transition ${drop ? 'rotate-0' : 'rotate-180'}`} />
         {drop && <DropDown />}
       </small>
-      <Button url="/consultancy" title="book consultancy" />
+      <Button title="book consultancy" />
     </div>
   );
 };
