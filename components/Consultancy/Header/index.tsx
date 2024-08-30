@@ -10,7 +10,7 @@ type Prop = {
 const Header = ({ tab }: Prop) => {
   const tabs: { id: number; name: TTab; link: string; }[] = [
     { id: 1, name: 'buy', link: '/consultancy?tab=buy', },
-    { id: 2, name: 'sell', link: '/consultancy?tab=sell', },
+    { id: 2, name: 'list', link: '/consultancy?tab=list', },
     { id: 3, name: 'rent', link: '/consultancy?tab=rent', },
   ]
 
@@ -21,7 +21,7 @@ const Header = ({ tab }: Prop) => {
     )
   }
   return (
-    <header className="sticky top-[63px] w-full py-3 bg-[#fcfcfc] flex items-center justify-center gap-4 text-sm">
+    <header className="sticky top-[60px] w-full py-3 bg-[#fcfcfc] flex items-center justify-center gap-4 text-sm">
       {
         tabs.map((tab) => (
           <Link key={tab.id} href={tab.link} className={linkClass(tab.name)}>{tab.name}</Link>

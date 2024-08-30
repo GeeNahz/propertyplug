@@ -1,58 +1,70 @@
 import { ChangeEvent } from "react";
 import ImageUpload from "./ImageUpload";
-import NovelEditor from "@/components/editor/novel-editor";
 import { TBlogPost } from "@/components/common/type";
-import { JSONContent } from "@tiptap/core";
+import Tiptap from "./tap";
 
 type Props = {
   formData: Partial<TBlogPost>;
-  setFormData: React.Dispatch<React.SetStateAction<Props['formData']>>;
+  setFormData: React.Dispatch<React.SetStateAction<Props["formData"]>>;
   action?: (formData: FormData) => void;
   children?: React.ReactNode;
-}
+};
 
-export default function Form({ formData, setFormData, action, children }: Props) {
-  function handleFormChange(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
-    e.preventDefault()
+export default function Form({
+  formData,
+  setFormData,
+  action,
+  children,
+}: Props) {
+  function handleFormChange(
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) {
+    e.preventDefault();
+    const { name, value, files } = e.target as HTMLInputElement;
 
     setFormData((prev) => ({
       ...prev,
-      [e.target.name]: (e.target as HTMLInputElement).files?.[0] ? (e.target as HTMLInputElement).files?.[0] : e.target.value
-    }))
+      [name]: files?.[0] ? files[0] : value,
+    }));
+  }
+ 
+  function setBlogContent(htmlContent: string) {
+    setFormData((prev) => ({ ...prev, blogContent: htmlContent }));
   }
 
-  function setContent(htmlContent: string | any) {
-    setFormData(prev => ({ ...prev, blogContent: htmlContent }))
+  function setAdsContent(htmlContent: string) {
+    setFormData((prev) => ({ ...prev, addContents: htmlContent }));
   }
 
   return (
-    <form action={action} className="bg-white rounded-lg p-8 flex flex-col gap-6 h-full">
+    <form
+   
+      action={action}
+      className="bg-white rounded-lg p-8 flex flex-col gap-6 h-fit xl:max-w-[700px] 2xl:max-w-[850px]"
+    >
       <div className="double-fields flex gap-5">
         <div className="flex flex-col gap-2" style={{ flex: 3 }}>
           <Label value="blog title" id="title" isRequired />
-
           <input
             type="text"
             placeholder="Input the title here"
             name="title"
             id="title"
-            value={formData.title}
+            value={formData.title || ""}
             onChange={handleFormChange}
             className="w-full text-xs border-2 border-ui-dark rounded-lg py-4 px-6"
             required
           />
         </div>
-
         <div className="tags flex flex-col gap-2" style={{ flex: 1 }}>
           <Label isRequired value="tags" id="tags" />
-
           <input
             type="text"
             placeholder="e.g: #housing #construction"
             id="tags"
-            onChange={handleFormChange}
-            value={formData.tags}
             name="tags"
+            value={formData.tags || ""}
+            onChange={handleFormChange}
             className="w-full text-xs border-2 border-ui-dark rounded-lg py-4 px-6"
           />
         </div>
@@ -61,45 +73,84 @@ export default function Form({ formData, setFormData, action, children }: Props)
       <div className="image flex flex-col gap-4">
         <div className="label flex flex-col">
           <Label isRequired value="Banner image" id="backgroundImage" />
-
           <small className="text-ui-desc text-xs font-light">
-            Click on the icon below to upload your image. File types supported: JPG, PNG, SVG. (30MB)
+            Click on the icon below to upload your image. File types supported:
+            JPG, PNG, SVG. (30MB)
           </small>
         </div>
-
         <ImageUpload handleFormChange={handleFormChange} />
       </div>
-
+      {/* Blogs */}
       <div className="content flex flex-col gap-2">
         <Label value="content" id="blogContent" isRequired />
+        <div className="border border-gray-300 rounded-lg min-h-44 w-full">
+          {/* <NovelEditor
+            content={[formData.blogContent] as unknown as JSONContent[]}
+            setContent={setBlogContent}
+          /> */}
 
-        <div className="border border-ui-dark rounded-lg min-h-44">
-          <NovelEditor content={([formData.blogContent] as unknown) as JSONContent[]} setContent={setContent} />
+          <Tiptap contents={formData.blogContent} setContent={setBlogContent}/>
         </div>
-
         <input
           className="body h-44 w-full text-xs border-2 border-ui-dark rounded-lg py-4 px-6"
           type="hidden"
           name="blogContent"
           id="blogContent"
-          value={formData.blogContent}
+          value={formData?.blogContent || ""}
           onChange={handleFormChange}
           required
         />
       </div>
 
-      {/* user */}
-      <input type="hidden" value={formData.createdBy} name="createdBy" required />
-
-      <div className="actions flex gap-4 items-center">
-        {children}
+      {/* Ads */}
+      <div className="content flex flex-col gap-2">
+        <Label value="Adverts (please use the keyword '@ads' to insert this advert in your content)" className="normal-case" id="addContents" />
+        <div className="border border-gray-300 rounded-lg min-h-44 w-full">
+          {/* <NovelEditor
+            content={[formData.addContents] as unknown as JSONContent[]}
+            setContent={setAdsContent}
+          /> */}
+          <Tiptap contents={formData.addContents} setContent={setAdsContent} />
+        </div>
+        <input
+          className="body h-44 w-full text-xs border-2 border-ui-dark rounded-lg py-4 px-6 focus:hidden"
+          type="hidden"
+          name="addContents"
+          id="addContents"
+          value={formData?.addContents || ""}
+          onChange={handleFormChange}
+        />
       </div>
+
+      <input
+        type="hidden"
+        value={formData.createdBy || ""}
+        name="createdBy"
+        required
+      />
+
+      <div className="actions flex gap-4 items-center">{children}</div>
     </form>
-  )
+  );
 }
 
-function Label({ id, value, isRequired }: { id: string; value: string; isRequired?: boolean }) {
+export function Label({
+  id,
+  value,
+  isRequired,
+  className,
+}: {
+  id: string;
+  value: string;
+  isRequired?: boolean;
+  className?: string;
+}) {
   return (
-    <label htmlFor={id} className="capitalize text-[13px] text-ui-dark font-semibold mr-1">{value} {isRequired && <span className="text-ui-red">*</span>}</label>
-  )
+    <label
+      htmlFor={id}
+      className={`capitalize text-[13px] text-ui-dark font-semibold mr-1 ${className && className}`}
+    >
+      {value} {isRequired && <span className="text-ui-red">*</span>}
+    </label>
+  );
 }

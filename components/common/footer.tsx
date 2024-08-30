@@ -11,33 +11,30 @@ import {
   FaLinkedinIn,
   FaFacebookF,
 } from "react-icons/fa6";
+import { dataUrl } from "@/lib/utils";
 
 const Footer = () => {
   return (
-    <footer className="bg-[#0B2831] py-8 px-7 md:px-20 self-end w-full">
+    <footer className="bg-[#0B2831] py-8 px-7 md:px-20 w-full">
       <Link href="/" className="w-[80px] max-w-max md:hidden">
-        <Image src={Logo} alt="logo" className="" />
+        <Image
+          placeholder="blur"
+          blurDataURL={dataUrl}
+          src={Logo}
+          alt="logo"
+          className=""
+        />
       </Link>
       <div className="flex gap-4 md:gap-12  items-start md:items-center">
         <Link href="/" className="w-[100px] max-md:hidden">
-          <Image src={Logo} alt="logo" className="" />
+          <Image
+            placeholder="blur"
+            blurDataURL={dataUrl}
+            src={Logo}
+            alt="logo"
+            className=""
+          />
         </Link>
-        {/* <div className="flex flex-col gap-4 text-white/70">
-          <h5 className=" text-right">Stay Informed:</h5>
-
-          <h5 className="text-right text-sm md:text-base">
-            Subscribe to Our Newsletter for Regular Updates.
-          </h5>
-
-          <div className="h-max w-full relative">
-            <input
-              placeholder="input your email address here"
-              className="rounded-[20px] border w-full md:w-[500px] px-4 py-3 bg-transparent placeholder:text-xs placeholder:font-extralight"
-            />
-
-            <LuSendHorizonal className="absolute top-4 right-5" />
-          </div>
-        </div> */}
         <div className="w-full flex flex-col md:flex-row mt-12">
           <div className="flex-1 flex flex-col gap-4 max-md:gap-1 w-full md:w-max mb-6 md:mb-0">
             <h6 className="text-white font-semibold text-sm">Pages</h6>
@@ -56,7 +53,12 @@ const Footer = () => {
                 request
               </Link>
 
-              <Link href="/login" className="transition-all hover:text-white/100">login</Link>
+              <Link
+                href="/login"
+                className="transition-all hover:text-white/100"
+              >
+                login
+              </Link>
             </nav>
           </div>
 
@@ -64,15 +66,30 @@ const Footer = () => {
             <h6 className="text-white font-semibold text-sm">Real Estate</h6>
 
             <nav className="flex flex-col flex-wrap md:flex-nowrap text-white/70 capitalize text-xs gap-2 md:gap-4">
-              {Estate.map((v, i) => (
-                <Link
-                  key={i}
-                  href="#"
-                  className="transition-all hover:text-white/100"
-                >
-                  {v}
-                </Link>
-              ))}
+              {Estate.map((item, index) => {
+                let linkHref
+
+                if (item.toLowerCase().includes("sale")) {
+                  linkHref = "/consultancy?tab=buy";
+                } else if (item.toLowerCase().includes("rent")) {
+                  linkHref = "/consultancy?tab=rent";
+                } else if (item.toLowerCase().includes("rent")) {
+                  linkHref = "/consultancy?tab=lease";
+                }
+                else{
+                  linkHref = "#"
+                }
+
+                return (
+                  <Link
+                    key={index}
+                    href={linkHref}
+                    className="transition-all hover:text-white/100"
+                  >
+                    {item}
+                  </Link>
+                );
+              })}
             </nav>
           </div>
 
@@ -81,17 +98,20 @@ const Footer = () => {
               Contact Us
             </h6>
 
-            <nav className="flex flex-col flex-wrap md:flex-nowrap text-white/70 capitalize text-xs gap-2 md:gap-4 self-start">
+            <nav className="flex flex-col flex-wrap md:flex-nowrap text-white/70 text-xs gap-2 md:gap-4 self-start">
               {[
                 "+234 912 460 4075",
                 "+234 903 081 0919",
                 "info@propertyplugng.com",
               ].map((v, i) => (
                 <Link
-                  href={`${v.includes("info") ? "mailto:info@propertyplugng.com" : "#"
-                    }`}
+                  href={`${
+                    v.includes("info") ? "mailto:info@propertyplugng.com" : "#"
+                  }`}
                   key={i}
-                  className={`transition-all hover:text-white/100 whitespace-nowrap ${v.includes("info") && 'underline font-semibold'}`}
+                  className={`transition-all hover:text-white/100 whitespace-nowrap ${
+                    v.includes("info") && "underline font-semibold"
+                  }`}
                 >
                   {v}
                 </Link>
@@ -123,6 +143,7 @@ const Footer = () => {
               return (
                 <Link
                   href={v.url}
+                  target="_blank"
                   key={i}
                   className="bg-white h-8 w-8 p-2 rounded-full"
                 >
@@ -137,7 +158,8 @@ const Footer = () => {
       {/* newletter */}
       <div className=" w--full flex flex-col-reverse gap-4 text-white/70">
         <h5 className="max-md:text-left text-right text-xs max-sm:text-[11px] font-extralight">
-          <span className="font-semibold">Stay Informed:</span> Subscribe to Our Newsletter for Regular Updates.
+          <span className="font-semibold">Stay Informed:</span> Subscribe to Our
+          Newsletter for Regular Updates.
         </h5>
 
         <div className="h-max w-full md:w-max max-sm:mt-6  relative self-end justify-self-end">
@@ -166,7 +188,6 @@ const Footer = () => {
           </small>
         </div>
       </div>
-
     </footer>
   );
 };
@@ -177,7 +198,7 @@ const SocialLinks: Social = [
   {
     title: "linkedin",
     icon: <FaLinkedinIn />,
-    url: "#",
+    url: "https://www.linkedin.com/company/propertyplug",
   },
   {
     title: "x",
@@ -187,18 +208,18 @@ const SocialLinks: Social = [
   {
     title: "instagram",
     icon: <FaInstagram />,
-    url: "#",
+    url: "https://www.instagram.com/propertyplugglobal",
   },
   {
     title: "facebook",
     icon: <FaFacebookF />,
-    url: "#",
+    url: "https://www.facebook.com/profile.php?id=100095368216603&mibextid=kFxxJD",
   },
 ];
 
 const Estate = [
-  "Property for sale in Abuja",
-  "Land for sale in Abuja",
+  "Property for sale",
+  "Land for sale",
   "Sell Your Property",
   "Rent out your property",
   "Join our investment club",

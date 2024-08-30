@@ -45,7 +45,7 @@ export type Social = {
 
 export type BreadCrumbType = React.ReactNode | string;
 
-export type TTab = 'buy' | 'sell' | 'rent';
+export type TTab = 'buy' | 'list' | 'rent';
 
 export type TConsultancyForm = {
   state: string;
@@ -58,6 +58,34 @@ export type TConsultancyForm = {
   email: string;
   min: number;
   max: number;
+}
+
+export type TConsultancyRentrent = {
+  request_type: 'buy' | 'rent';
+  state: string;
+  location: string;
+  Property_type: string;
+  property_size: string;
+  rooms: string;
+  name: string;
+  number: string;
+  email: string;
+  price: string;
+  max_price: string;
+  min_price: string;
+}
+
+export type TConsultancyList = {
+  request_type: 'list';
+  state: string;
+  location: string;
+  real_estate_type: string;
+  option: string;
+  description: string;
+  name: string;
+  email: string;
+  number: string;
+  price: string;
 }
 
 export type TFormDataBlog = {
@@ -81,9 +109,23 @@ export type TBlogPost = {
   title: string;
   backgroundImage: string | File;
   blogContent: string;
+  addContents?: string;
   createdBy: string;
   createdAt: string;
   tags: string;
+  slug: string,
   publish: boolean;
   thumbnail: string;
+  readCount?: number;
+  likes?: number;
 }
+
+export interface User {
+  id: string;
+  email: string;
+  firstName: string;
+  lastName: string;
+  image: string;
+  token: string;
+}
+

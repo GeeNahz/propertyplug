@@ -1,23 +1,24 @@
 import { Divider } from "antd";
-import { AiFillHeart, AiOutlineHeart, AiOutlineShareAlt } from "react-icons/ai";
 import BlogHeaderActionBtns from "./BlogHeaderActionBtns";
 
 type Props = {
   owner: string;
-  created_at: string;
+  createdAt: string;
   category: string;
   title: string;
-  like: boolean;
+  like?: any;
 };
 
-const BlogMetaData = ({ owner, created_at, category, like }: Props) => {
+const BlogMetaData = ({ owner, createdAt, category, like }: Props) => {
   return (
     <div className="sub-title text-gray-500 flex justify-between items-center">
-      <div className="meta-data flex gap-5 items-center text-sm font-light divide-gray-400">
-        <p className="author">Written by {owner}</p>
+      <div className="meta-data flex max-sm:w-full gap-1 md:gap-5 items-center text-xs md:text-sm font-light divide-gray-400">
+        <p className="author">Written by <br className="md:hidden" />{owner}</p>
         <Divider type="vertical" />
-        <p className="date">{created_at}</p>
-        <Divider type="vertical" />
+        <p className="date hidden md:flex">
+          {new Date(createdAt).toDateString()}
+        </p>
+        <Divider type="vertical" className="!hidden md:!flex" />
         <p className="category">{category}</p>
       </div>
 

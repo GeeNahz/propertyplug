@@ -12,6 +12,7 @@ import { notification } from "antd";
 import { editBlog } from "@/lib/actions";
 import ContentParser from "@/components/editor/content-parser";
 import Image from "next/image";
+import { dataUrl } from "@/lib/utils";
 
 
 type NotificationType = 'success' | 'info' | 'warning' | 'error';
@@ -41,17 +42,18 @@ export default function EditForm({ post }: { post: TBlogPost }) {
         setImagePreview(formData.backgroundImage)
       }
     }
+    // setFormData((prev) => ({ ...prev, backgroundImage: formData.backgroundImage }))
   }, [formData.backgroundImage])
 
 
-  const [state, dispatch, isPending] = useActionState(editBlog, undefined)
+  const [state, dispatch, isPending] = useActionState(editBlog, null)
 
   if (state) {
-    if (typeof state === 'string') {
-      console.log('Form res: ', state)
-      openNotificationWithIcon('error', state)
-    } else {
-      state.map((item) => {
+    if ((state as { status: number; message: string }).message) {
+      openNotificationWithIcon('error', (state as { status: number; message: string }).message)
+    } 
+    if (state instanceof Array) {
+      state.map((item: any) => {
         let key = Object.keys(item)[0]
         openNotificationWithIcon('error', key, item[key])
       })
@@ -66,12 +68,13 @@ export default function EditForm({ post }: { post: TBlogPost }) {
         <BlogHeader />
       </div>
 
-      <div className="main h-full flex-auto flex gap-5 lg:gap-8">
-        <div className="form" style={{ flex: 3 }}>
+      <div className="main max-h-full overflow-y-hidden flex-auto flex gap-5 lg:gap-8">
+        <div className="form no-scrollbar overflow-y-scroll" style={{ flex: 3 }}>
           <Form action={dispatch} formData={formData} setFormData={setFormData}>
             {/* <Button disabled={isPending} name="post" classes="bg-white border border-ui-dark !text-ui-dark" /> */}
+            <input type="hidden" name="slug" value={formData.slug} />
 
-            <Button disabled={isPending} name="update" classes="!bg-ui-dark" />
+            <Button disabled={isPending} submittingText="updating" name="update" classes="!bg-ui-dark" />
           </Form>
         </div>
 
@@ -79,7 +82,7 @@ export default function EditForm({ post }: { post: TBlogPost }) {
           <div className="bg-ui-dash-gray h-full w-full overflow-y-scroll">
             <div className="image h-auto bg-ui-red/20 w-full rounded-md overflow-hidden">
               {imagePreview && (
-                <Image src={imagePreview} alt="preview-image" height={100} width={200} className="size-full object-contain object-center" />
+                <Image placeholder="blur" blurDataURL={dataUrl} src={imagePreview} alt="preview-image" height={100} width={200} className="size-full object-contain object-center" />
               )}
             </div>
 
@@ -90,7 +93,7 @@ export default function EditForm({ post }: { post: TBlogPost }) {
               </div>
 
               <div className="!text-sm article">
-                <ContentParser codeString={formData.blogContent} />
+                <ContentParser codeString={formData.blogContent} ads={formData.addContents} />
               </div>
             </div>
           </div>

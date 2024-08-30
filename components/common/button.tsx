@@ -23,7 +23,7 @@ export const Button = ({ title, url, bg}: ButtonProp) => {
   const path = usePathname();
 
   const btnClass = clsx(
-    `py-2 px-3 md:p-3 rounded-[32px] font-medium text-xs capitalize w-max bg-${bg}`,
+    `py-2 px-3 md:p-3 rounded-[32px] font-medium text-xs capitalize w-max`,
     {
       "bg-white text-ui-dark": (path === "/" && isConsultancy),
       "bg-ui-dark text-white": ((path !== "/") && isConsultancy),

@@ -1,72 +1,54 @@
-"use client";
-
-import { GalleryWithID } from "@/components/common/type";
 import { Pagination, PaginationProps, ConfigProvider } from "antd";
-import { useState } from "react";
-import imgs3 from "@/components/Landing_Page/Blog_Post/images/ppt3.jpg";
+import { useState, useMemo, useCallback } from "react";
 import Header from "@/components/common/header";
-import BlogPosts from "../BlogPosts";
 import BlogPostsGrid from "../BlogPostsGrid";
 
+const shuffleArray = (array:string[]) => {
+  let shuffledArray = array.slice();
+  for (let i = shuffledArray.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
+  }
+  return shuffledArray;
+};
 
-const FeaturedArticles = () => {
-  const [current, setCurrent] = useState<number>();
+const FeaturedArticles = ({ id, blogs }: { id: string, blogs: any[] }) => {
+  const [current, setCurrent] = useState<number>(1);
 
-  const posts: GalleryWithID[] = [
-    {
-      id: 1,
-      time: "Monday, 7:45pm",
-      title: "what makes this house special?",
-      img: imgs3,
-      grid: 'big'
-    },
-    {
-      id: 2,
-      time: "Monday, 7:45pm",
-      title: "what makes this house special?",
-      img: imgs3,
-      grid: 'big'
-    },
-    {
-      id: 3,
-      time: "Monday, 7:45pm",
-      title: "what makes this house special?",
-      img: imgs3,
-      grid: 'big'
-    },
-    {
-      id: 4,
-      time: "Monday, 7:45pm",
-      title: "what makes this house special?",
-      img: imgs3,
-      grid: 'big'
-    },
-  ]
+  const filteredBlogs = useMemo(() => shuffleArray(blogs.filter((val: any) => val.id !== id)), [blogs, id]);
 
-  const onChange: PaginationProps['onChange'] = (page) => {
+  const onChange: PaginationProps["onChange"] = useCallback((page: number) => {
     setCurrent(page);
-  };
+  }, []);
+
+  const nextPage = 2 * current;
+  const prevPage = current === 1 ? 0 : (current - 1) * 2;
+  const newBlog = useMemo(() => filteredBlogs.slice(prevPage, nextPage), [filteredBlogs, prevPage, nextPage]);
 
   return (
     <section>
-      <div className="header flex items-center justify-between px-32 py-8">
+      <div className="header flex max-md:flex-col w-full items-center justify-between px-32 max-md:px-4 max-md:items-start max-md:gap-4 py-8">
         <Header
           title="Featured Articles"
           desc="Explore explicit Content Just for you"
         />
-
         <ConfigProvider
           theme={{
             token: {
               colorPrimary: "#0B2831",
-            }
+            },
           }}
         >
-          <Pagination current={current} onChange={onChange} total={16} pageSize={4} />
+          <Pagination
+          className="self-center"
+            current={current}
+            onChange={onChange}
+            total={filteredBlogs.length}
+            pageSize={2}
+          />
         </ConfigProvider>
       </div>
-
-      <BlogPostsGrid posts={posts} />
+      <BlogPostsGrid posts={newBlog} />
     </section>
   );
 };

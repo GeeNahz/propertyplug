@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import React from 'react'
 import img from './images/special.svg'
+import { dataUrl } from '@/lib/utils'
 
 const MakeUsSpecial = () => {
   return (
@@ -10,7 +11,7 @@ const MakeUsSpecial = () => {
       <h3 className='text-xl text-black font-semibold'>What Makes Us Special</h3>
       </div>
       <div className='mx-auto w-max my-20'>
-        <Image src={img} alt='special' />
+        <Image placeholder="blur" blurDataURL={dataUrl} src={img} alt='special' />
       </div>
     </div>
   )

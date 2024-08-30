@@ -1,23 +1,50 @@
-import { TConsultancyForm } from "@/components/common/type"
+import { useActionState, useEffect } from 'react'
 
+import { TConsultancyList, TConsultancyRentrent } from '@/lib/zod'
+import { TConsultancyForm, TTab } from "@/components/common/type"
+import { Locations, LocationOption, PropertType, RoomSize, RealEstateType } from '@/components/common/data'
+
+import { rentBuyProperty, listProperty } from '@/lib/actions'
+import { useToast } from '@/components/ui/use-toast'
 
 type Props = {
-  tab: string;
-  formData: TConsultancyForm;
-  onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
+  tab: TTab;
+  formData2?: TConsultancyForm;
+  formData: TConsultancyRentrent | TConsultancyList;
+  onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => void;
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+  formAction?: (formData: FormData) => void;
 }
 
-const Form = ({ formData, tab, onChange, handleSubmit }: Props) => {
+const Form = ({ formData, tab, onChange, handleSubmit, formAction }: Props) => {
 
+  const action = tab === 'list' ? listProperty : rentBuyProperty
+  const [state, dispatch, isPending] = useActionState(action, undefined)
 
-  const stateOptions = ['Abia', 'Adamawa', 'Akwa Ibom', 'Anambara', 'Bauchi', 'Bayelsa',]
+  const { toast } = useToast()
+
+  useEffect(() => {
+    if (state?.message === 'success') {
+      toast({
+        title: 'Request Successful!',
+        description: 'Your request has been made successfully',
+      })
+    }
+    
+    if (state?.message === 'error') {
+      toast({
+        title: 'Request Failed!',
+        description: 'The request failed. Please try again',
+        variant: 'destructive',
+      })
+    }
+  }, [state?.message, toast])
 
   return (
-    <form onSubmit={(e) => handleSubmit(e)}>
-      <div className="flex flex-col md:flex-row justify-between text-ui-dark mb-5 md:mb-10">
-        <div className="left-fields space-y-5 md:space-y-10 mb-10 md:mb-0">
-          <p className="text-lg md:text-2xl font-medium">What are you looking to {tab}?</p>
+    <form action={dispatch}>
+      <div className="flex flex-col lg:flex-row justify-between gap-10 text-ui-dark mb-5 md:mb-10">
+        <div className="left-fields space-y-5 mb-10 md:mb-0">
+          <p className="text-sm md:text-lg font-medium">What are you looking to {tab}?</p>
 
           <Input
             inputType="select"
@@ -27,7 +54,7 @@ const Form = ({ formData, tab, onChange, handleSubmit }: Props) => {
             inputPlaceholder="Search..."
             inputId="state"
             inputValue={formData.state}
-            options={stateOptions}
+            options={Locations}
             onChange={onChange}
           />
 
@@ -39,58 +66,111 @@ const Form = ({ formData, tab, onChange, handleSubmit }: Props) => {
             inputPlaceholder="Search..."
             inputId="location"
             inputValue={formData.location}
-            options={stateOptions}
+            options={LocationOption[formData.state as keyof typeof LocationOption]}
             onChange={onChange}
           />
 
           <Input
-            inputType="select"
-            inputName="propertyType"
-            inputLabel="property type"
+            inputType="hidden"
+            inputName="request_type"
+            inputLabel="request type"
             inputRequired
             inputPlaceholder="Search..."
-            inputId="propertyType"
-            inputValue={formData.propertyType}
-            options={stateOptions}
+            inputId="request_type"
+            inputValue={tab}
             onChange={onChange}
           />
 
-          <Input
-            inputType="select"
-            inputName="numberOfRooms"
-            inputLabel="number of rooms"
-            inputPlaceholder="Search..."
-            inputId="numberOfRooms"
-            inputValue={formData.numberOfRooms}
-            options={stateOptions}
-            onChange={onChange}
-          />
+          {tab === 'list'
+            ? (<>
+              <Input
+                inputType="select"
+                inputName="real_estate_type"
+                inputLabel="real estate type"
+                inputRequired
+                inputPlaceholder="Search..."
+                inputId="realEstateType"
+                inputValue={(formData as TConsultancyList).real_estate_type}
+                options={[{ value: 'Property', label: 'Property', name: 'estate_type' }, { value: 'Land', label: 'Land', name: 'estate_type' }, { value: 'Both', label: 'Both', name: 'estate_type' }]}
+                onChange={onChange}
+              />
 
-          <Input
-            inputType="number"
-            inputName="propertySize"
-            inputLabel="property size(sqm)"
-            inputPlaceholder="3000sqm"
-            inputId="propertySize"
-            inputValue={formData.propertySize}
-            onChange={onChange}
-          />
+              <Input
+                inputType="select"
+                inputName="option"
+                inputLabel="Do you want to sell or rent"
+                inputRequired
+                inputPlaceholder="Search..."
+                inputId="option"
+                inputValue={(formData as TConsultancyList).option}
+                options={[{ value: 'Sell', label: 'Sell', name: 'option' }, { value: 'Rent', label: 'Rent', name: 'option' }]}
+                onChange={onChange}
+              />
+
+              <Input
+                inputType="textarea"
+                inputName="description"
+                inputLabel="description"
+                inputRequired
+                inputPlaceholder="Description"
+                inputId="description"
+                inputValue={(formData as TConsultancyList).description}
+                onChange={onChange}
+              />
+            </>)
+            : (<>
+              <Input
+                inputType="select"
+                inputName="Property_type"
+                inputLabel="property type"
+                inputRequired
+                inputPlaceholder="Search..."
+                inputId="property_type"
+                inputValue={(formData as TConsultancyRentrent).Property_type}
+                options={PropertType}
+                onChange={onChange}
+              />
+
+              <Input
+                inputType="select"
+                inputName="rooms"
+                inputLabel="number of rooms"
+                inputPlaceholder="Search..."
+                inputRequired
+                inputId="rooms"
+                inputValue={(formData as TConsultancyRentrent).rooms}
+                options={RoomSize}
+                onChange={onChange}
+              />
+
+              <Input
+                inputType="text"
+                inputName="property_size"
+                inputLabel="property size(sqm)"
+                inputPlaceholder="3000sqm"
+                inputRequired
+                inputId="property_size"
+                inputValue={(formData as TConsultancyRentrent).property_size}
+                onChange={onChange}
+              />
+            </>)
+          }
         </div>
 
         {/* <Divider type="vertical" className="h-full" /> */}
         <div className="hidden md:block min-h-full w-0 border-r border-ui-desc"></div>
 
-        <div className="right-fields space-y-5 md:space-y-10">
-          <p className="text-lg md:text-2xl font-medium">We&apos;d like to get to know you better</p>
+        <div className="right-fields space-y-5">
+          <p className="text-sm md:text-lg font-medium">We&apos;d like to get to know you better</p>
 
           <Input
             inputType="text"
-            inputName="fullName"
+            inputName="name"
             inputLabel="Full Name"
             inputRequired
             inputPlaceholder="Mark Victor O"
-            inputId="fullName"
-            inputValue={formData.fullName}
+            inputId="name"
+            inputValue={formData.name}
             onChange={onChange}
           />
 
@@ -116,48 +196,79 @@ const Form = ({ formData, tab, onChange, handleSubmit }: Props) => {
             onChange={onChange}
           />
 
-          <p className="text-lg md:text-2xl font-medium mt-10 md:mt-16">What&apos;s your budget?</p>
-          <div className="flex items-center gap-7 max-w-[490px]">
-            <div>
-              <label
-                htmlFor="min"
-                className="text-ui-desc text-sm md:text-base capitalize font-medium flex items-center gap-1 md:gap-2 mb-2 md:mb-4"
-              >Minimum</label>
-              <div className="border border-ui-dark rounded-xl md:rounded-[18px] bg-white overflow-hidden">
-                <input
-                  className="bg-transparent text-sm md:text-base py-3 md:py-5 px-4 md:px-[30px] size-full"
-                  type="number"
-                  id="min"
-                  name="min"
-                  placeholder="200,000"
-                  value={formData.min}
-                  onChange={(e) => onChange(e)}
-                />
-              </div>
-            </div>
+          <p className="mt-10 md:mt-12 text-sm md:text-lg font-medium">What&apos;s your budget?</p>
 
-            <div>
-              <label
-                htmlFor="max"
-                className="text-ui-desc text-sm md:text-base capitalize font-medium flex items-center gap-1 md:gap-2 mb-2 md:mb-4"
-              >Maximum</label>
-              <div className="border border-ui-dark rounded-xl md:rounded-[18px] bg-white overflow-hidden">
-                <input
-                  className="bg-transparent text-sm md:text-base py-3 md:py-5 px-4 md:px-[30px] size-full"
-                  type="number"
-                  id="max"
-                  name="max"
-                  placeholder="23,000,000"
-                  value={formData.max}
-                  onChange={(e) => onChange(e)}
-                />
-              </div>
+          <div className="w-full">
+            <label
+              htmlFor="price"
+              className="text-ui-desc text-sm capitalize font-medium flex items-center gap-1 md:gap-2 mb-2"
+            >Price <span className="text-ui-red">*</span></label>
+            <div className="border border-ui-dark rounded-xl md:rounded-[18px] bg-white overflow-hidden">
+              <input
+                className="bg-transparent text-sm  py-3 px-2 md:px-[15px] size-full"
+                type="text"
+                id="price"
+                name="price"
+                placeholder="200,000"
+                value={formData.price}
+                onChange={(e) => onChange(e)}
+                required
+              />
             </div>
           </div>
+
+          {
+            tab !== 'list' && (<div className="flex items-center gap-7 w-full">
+              <div className="w-1/2">
+                <label
+                  htmlFor="min_price"
+                  className="text-ui-desc text-sm capitalize font-medium flex items-center gap-1 md:gap-2 mb-2"
+                >Minimum <span className="text-ui-red">*</span></label>
+                <div className="border border-ui-dark rounded-xl md:rounded-[18px] bg-white overflow-hidden">
+                  <input
+                    className="bg-transparent text-sm  py-3 px-2 md:px-[15px] size-full"
+                    type="text"
+                    id="min_price"
+                    name="min_price"
+                    placeholder="200,000"
+                    value={(formData as TConsultancyRentrent).min_price}
+                    onChange={(e) => onChange(e)}
+                    required
+                  />
+                </div>
+              </div>
+
+              <div className="w-1/2">
+                <label
+                  htmlFor="max_price"
+                  className="text-ui-desc text-sm capitalize font-medium flex items-center gap-1 md:gap-2 mb-2"
+                >Maximum <span className="text-ui-red">*</span></label>
+                <div className="border border-ui-dark rounded-xl md:rounded-[18px] bg-white overflow-hidden">
+                  <input
+                    className="bg-transparent text-sm  py-3 px-2 md:px-[15px] size-full"
+                    type="text"
+                    id="max_price"
+                    name="max_price"
+                    placeholder="23,000,000"
+                    value={(formData as TConsultancyRentrent).max_price}
+                    onChange={(e) => onChange(e)}
+                    required
+                  />
+                </div>
+              </div>
+            </div>)
+          }
         </div>
       </div>
 
-      <button className="bg-ui-dark py-3 md:py-6 px-4 md:px-[32px] text-center font-medium rounded-xl md:rounded-[20px] text-white w-full md:w-[490px] text-sm md:text-base" type="submit">Confirm/Proceed</button>
+      <button
+        aria-disabled={isPending}
+        disabled={isPending}
+        className="bg-ui-dark py-3 px-4 md:px-[20px] text-center font-medium rounded-xl md:rounded-[20px] text-white w-full md:w-[490px] text-sm md:text-base hover:opacity-95"
+        type="submit"
+      >
+        Confirm/Proceed
+      </button>
     </form>
   )
 }
@@ -174,8 +285,12 @@ type InputProps = {
   inputType: string;
   inputPlaceholder?: string;
   inputValue: string | number | undefined;
-  onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => any;
-  options?: any[];
+  onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => any;
+  options?: {
+    value: string;
+    label: string;
+    name: string;
+  }[];
 }
 
 const Input = ({
@@ -194,38 +309,53 @@ const Input = ({
       <div>
         <label
           htmlFor={inputId ? inputId : inputName}
-          className="text-ui-desc text-sm md:text-base capitalize font-medium flex items-center gap-1 md:gap-2 mb-2 md:mb-4"
+          className="text-ui-desc text-sm capitalize font-medium flex items-center gap-1 md:gap-2 mb-2"
         >
           {inputLabel} {inputRequired && <span className="text-ui-red">*</span>}
         </label>
 
-        <div className="border border-ui-dark rounded-xl md:rounded-[18px] bg-white overflow-hidden md:min-w-[490px] w-full md:w-[490px]">
+        <div className="border border-ui-dark rounded-xl md:rounded-[18px] bg-white overflow-hidden md:min-w-[490px] w-full lg:w-[490px]">
           <select
             name={inputName}
             id={inputId ? inputId : inputName}
             required={inputRequired}
             value={inputValue}
             onChange={(e) => onChange(e)}
-            className="bg-transparent py-3 md:py-5 px-4 md:px-[30px] size-full placeholder:text-ui-desc text-sm md:text-base"
+            className="bg-transparent py-3 px-2 md:px-[15px] size-full placeholder:text-ui-desc text-sm md:text-base"
           >
             <option className="text-ui-desc">Search...</option>
             {options?.map((option, index) => (
-              <option key={index} value={option}>{option}</option>
+              <option key={index} value={option.value}>{option.label}</option>
             ))}
           </select>
         </div>
       </div>
     )
-    : (
-      <div>
-        <label
-          htmlFor={inputId ? inputId : inputName}
-          className="text-ui-desc text-sm md:text-base capitalize font-medium flex items-center gap-1 md:gap-2 mb-2 md:mb-4"
-        >
-          {inputLabel} {inputRequired && <span className="text-ui-red">*</span>}
-        </label>
+    : inputType === 'textarea'
+      ? (
+        <div>
+          <label
+            htmlFor={inputId ? inputId : inputName}
+            className="text-ui-desc text-sm capitalize font-medium flex items-center gap-1 md:gap-2 mb-2"
+          >
+            {inputLabel} {inputRequired && <span className="text-ui-red">*</span>}
+          </label>
 
-        <div className="border border-ui-dark rounded-xl md:rounded-[18px] bg-white overflow-hidden md:min-w-[490px] w-full md:w-[490px] text-sm md:text-base">
+          <div className="border border-ui-dark rounded-xl md:rounded-[18px] bg-white overflow-hidden md:min-w-[490px] w-full lg:w-[490px] text-sm md:text-base">
+            <textarea
+              name={inputName}
+              id={inputId ? inputId : inputName}
+              placeholder={inputPlaceholder}
+              required={inputRequired}
+              value={inputValue}
+              onChange={(e) => onChange(e)}
+              className="bg-transparent py-3 px-2 md:px-[15px] w-full h-56"
+            ></textarea>
+          </div>
+        </div>
+      )
+      : inputType === 'hidden'
+        ? (
           <input
             type={inputType}
             name={inputName}
@@ -234,9 +364,30 @@ const Input = ({
             required={inputRequired}
             value={inputValue}
             onChange={(e) => onChange(e)}
-            className="bg-transparent py-3 md:py-5 px-4 md:px-[30px] size-full"
+            className="bg-transparent py-3 px-2 md:px-[15px] size-full"
           />
-        </div>
-      </div>
-    )
+        )
+        : (
+          <div>
+            <label
+              htmlFor={inputId ? inputId : inputName}
+              className="text-ui-desc text-sm capitalize font-medium flex items-center gap-1 md:gap-2 mb-2"
+            >
+              {inputLabel} {inputRequired && <span className="text-ui-red">*</span>}
+            </label>
+
+            <div className="border border-ui-dark rounded-xl md:rounded-[18px] bg-white overflow-hidden md:min-w-[490px] w-full lg:w-[490px] text-sm md:text-base">
+              <input
+                type={inputType}
+                name={inputName}
+                id={inputId ? inputId : inputName}
+                placeholder={inputPlaceholder}
+                required={inputRequired}
+                value={inputValue}
+                onChange={(e) => onChange(e)}
+                className="bg-transparent py-3 px-2 md:px-[15px] size-full"
+              />
+            </div>
+          </div>
+        )
 }

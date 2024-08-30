@@ -1,4 +1,6 @@
 'use client'
+
+
 import { Testimon } from '@/components/common/data'
 import React from 'react'
 import { Card } from './card'
@@ -17,8 +19,8 @@ export const ScrollTestimony = () => {
     }
   return (
     <div className=" w-full overflow-x-scroll scroll-smooth flex gap-2 md:gap-5 mt-12 testimony__container" ref={scrollRef}>
-    {Testimon.map((v, i) => (
-      <div key={i} className="w-full px-6 md:px-12">
+    {Testimon.slice(0,3).map((v, i) => (
+      <div key={i} className="w-full px-3 md:px-6">
         <Card img={v.img} testimony={v.testimony} title={v.title} />
       </div>
     ))}
