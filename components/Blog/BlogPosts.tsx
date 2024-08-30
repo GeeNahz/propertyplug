@@ -45,7 +45,7 @@ const BlogPosts = ({ post }: any) => {
           {post.title.length > 50 ? `${post.title.slice(0, 50).trim()}...` : post.title}
           </h4>
         </div>
-        <Button title="read more" url={`/blog/${post?.slug}`} />
+        <Button title="read" url={`/blog/${post?.slug}`} />
       </div>}
     </>
   );
