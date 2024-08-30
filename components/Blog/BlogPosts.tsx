@@ -9,7 +9,7 @@ type Props = {
 };
 
 const BlogPosts = ({ post }: any) => {
-  const time = new Date(post.createdAt).toLocaleString();
+  const time = new Date(post.createdAt).toDateString();
   return (
     <> 
       {post?.backgroundImage ? (
