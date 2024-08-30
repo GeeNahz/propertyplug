@@ -143,6 +143,7 @@ const Footer = () => {
               return (
                 <Link
                   href={v.url}
+                  target="_blank"
                   key={i}
                   className="bg-white h-8 w-8 p-2 rounded-full"
                 >
@@ -197,7 +198,7 @@ const SocialLinks: Social = [
   {
     title: "linkedin",
     icon: <FaLinkedinIn />,
-    url: "#",
+    url: "https://www.linkedin.com/company/propertyplug",
   },
   {
     title: "x",
@@ -207,12 +208,12 @@ const SocialLinks: Social = [
   {
     title: "instagram",
     icon: <FaInstagram />,
-    url: "#",
+    url: "https://www.instagram.com/propertyplugglobal",
   },
   {
     title: "facebook",
     icon: <FaFacebookF />,
-    url: "#",
+    url: "https://www.facebook.com/profile.php?id=100095368216603&mibextid=kFxxJD",
   },
 ];
 
