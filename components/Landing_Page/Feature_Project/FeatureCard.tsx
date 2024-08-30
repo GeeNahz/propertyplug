@@ -87,7 +87,7 @@ const HomepageCard = ({ feature }: { feature: Props }) => {
 const PropertyPageCard = ({ feature }: { feature: Props }) => {
   return (
     <>
-      <div className="h-56 md:h-72 w-full rounded-[24px] md:rounded-[32px] overflow-hidden">
+      <div className="h-56 lg:h-72 w-full rounded-[24px] md:rounded-[32px] overflow-hidden">
         <Image
           placeholder="blur"
           blurDataURL={feature?.otherImage![0].src}
@@ -95,7 +95,7 @@ const PropertyPageCard = ({ feature }: { feature: Props }) => {
           width={feature?.otherImage![0].width}
           height={feature?.otherImage![0].height}
           alt={feature.title as string}
-          className="object-cover aspect-square object-center"
+          className="object-cover size-full aspect-auto lg:aspect-square object-center"
         />
       </div>
 
@@ -124,8 +124,8 @@ const PropertyPageCard = ({ feature }: { feature: Props }) => {
               </p>
             </div>
 
-            <h4 className="font-semibold text-sm md:text-base">
-              <span className="flex items-center">
+            <h4 className="font-semibold text-xs md:text-sm lg:text-base">
+              <span className="flex items-center whitespace-nowrap">
                 <FaNairaSign size={14} /> {feature.price}
               </span>
             </h4>
