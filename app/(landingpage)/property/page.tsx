@@ -1,6 +1,6 @@
 import React from 'react'
 import Header from "@/components/common/header";
-import { Features, PropertyList } from "@/components/common/data";
+import { PropertyList } from "@/components/common/data";
 import FeatureCard from '@/components/Landing_Page/Feature_Project/FeatureCard';
 
 const Page = () => {
