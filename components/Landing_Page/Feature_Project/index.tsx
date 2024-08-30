@@ -26,7 +26,7 @@ const FeatureProject = () => {
           );
         })}
       </div>
-      <Link href="#" className="flex justify-center w-full mt-6">
+      <Link href="/property" className="flex justify-center w-full mt-6">
         <button className="py-2 px-3 md:p-3 rounded-[32px] font-medium text-xs capitalize w-max bg-[#EF4444] text-white">
           view more
         </button>
