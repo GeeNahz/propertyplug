@@ -203,7 +203,7 @@ const SocialLinks: Social = [
   {
     title: "x",
     icon: <FaXTwitter />,
-    url: "#",
+    url: "https://x.com/propertyplugngr?s=21&t=MSYMhx7Evn6oXwhwVmOj6A",
   },
   {
     title: "instagram",

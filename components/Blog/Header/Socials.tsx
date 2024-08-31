@@ -1,6 +1,6 @@
 import { FaInstagram } from "react-icons/fa6"
 import { LiaFacebookSquare } from "react-icons/lia";
-import { PiXLogo, PiYoutubeLogo } from "react-icons/pi";
+import { PiXLogo, PiLinkedinLogo } from "react-icons/pi";
 import Link from "next/link";
 
 
@@ -16,11 +16,11 @@ const Socials = () => {
         <LiaFacebookSquare className="size-6 text-white" />
       </Link>
 
-      <Link href="#" target="_blank" className="p-2 rounded-full bg-ui-dark">
-        <PiYoutubeLogo className="size-6 text-white" />
+      <Link href="https://www.linkedin.com/company/propertyplug" target="_blank" className="p-2 rounded-full bg-ui-dark">
+        <PiLinkedinLogo className="size-6 text-white" />
       </Link>
 
-      <Link href="#" target="_blank" className="p-2 rounded-full bg-ui-dark">
+      <Link href="https://x.com/propertyplugngr?s=21&t=MSYMhx7Evn6oXwhwVmOj6A" target="_blank" className="p-2 rounded-full bg-ui-dark">
         <PiXLogo className="size-6 text-white" />
       </Link>
     </div>
