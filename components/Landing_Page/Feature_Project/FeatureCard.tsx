@@ -5,6 +5,7 @@ import { IoIosBed } from "react-icons/io";
 import Image from "next/image";
 import { Divider } from "antd";
 import { dataUrl } from "@/lib/utils";
+import Link from "next/link";
 
 type Props = {
   bed?: number,
@@ -76,9 +77,9 @@ const HomepageCard = ({ feature }: { feature: Props }) => {
             <span className="font-light text-[10px]">Price</span>
           </h4>
         </div>
-        <button className="py-2 px-4 rounded-full text-white text-xs bg-red-500 hover:bg-red-500/95 w-max mx-auto">
+        <Link href={`/property/${feature.title?.replaceAll(' ', '-')}`} className="py-2 px-4 rounded-full text-white text-xs bg-red-500 hover:bg-red-500/95 w-max mx-auto">
           view
-        </button>
+        </Link>
       </div>
     </>
   )
@@ -133,9 +134,9 @@ const PropertyPageCard = ({ feature }: { feature: Props }) => {
           <Divider className="!border-gray-400 !mt-1 md:!mt-3" />
         </div>
 
-        <button className="py-2 md:py-3 px-6 rounded-full text-white font-medium capitalize text-xs bg-red-500 hover:bg-red-500/95 w-max mx-auto">
+        <Link href={`/property/${feature.title?.replaceAll(' ', '-')}`} className="py-2 md:py-3 px-6 rounded-full text-white font-medium capitalize text-xs bg-red-500 hover:bg-red-500/95 w-max mx-auto">
           view
-        </button>
+        </Link>
       </div>
     </>
   );

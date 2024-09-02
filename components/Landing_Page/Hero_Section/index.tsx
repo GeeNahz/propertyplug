@@ -11,10 +11,10 @@ const HeroSection = () => {
           The <span className="text-[#FF4A55]">Ultimate</span> Real Estate{" "}
           <br /> Experience
         </h1>
-        <small className="text-white md:text-zinc-400 text-sm md:text-base font-medium text-center mt-2">
+        {/* <small className="text-white md:text-zinc-400 text-sm md:text-base font-medium text-center mt-2">
           We prioritize our clients&apos; needs and are committed to <br />{" "}
           delivering tangible results.
-        </small>
+        </small> */}
         <DropList />
       </div>
     </section>
