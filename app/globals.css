@@ -243,5 +243,5 @@ a:active {
   list-style: circle;
 } */
 .advert {
-  @apply border-2 border-[#1e1e1e] rounded-lg !text-inherit my-3 md:my-5 px-3 py-2
+  @apply border-2 border-sky-600 bg-sky-50 rounded-lg !text-inherit my-8 md:my-10 px-3 py-2
 }
