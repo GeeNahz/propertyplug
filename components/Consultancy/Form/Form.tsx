@@ -196,7 +196,7 @@ const Form = ({ formData, tab, onChange, handleSubmit, formAction }: Props) => {
             onChange={onChange}
           />
 
-          <p className="mt-10 md:mt-12 text-sm md:text-lg font-medium">What&apos;s your budget?</p>
+          {tab !== 'list' && (<p className="mt-10 md:mt-12 text-sm md:text-lg font-medium">What&apos;s your budget?</p>)}
 
           <div className="w-full">
             <label
