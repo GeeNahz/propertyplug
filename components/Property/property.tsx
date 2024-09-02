@@ -1,11 +1,11 @@
-import { PropertyList } from "@/components/common/data"
+import { ListOfProperties } from "@/components/common/data"
 import { PropertyCarousel } from "@/components/Property/property-carousel"
 
 type Props = { slug: string }
 
 const Property = (props: Props) => {
   function getProperty(title: string) {
-    let property = PropertyList.find((item) => item.title === title)
+    let property = ListOfProperties.find((item) => item.title === title)
     return property
   }
   const property = getProperty(props.slug?.replaceAll('-', ' ')/* convert the slug back to normal title*/)
@@ -27,9 +27,10 @@ const Property = (props: Props) => {
         <div className="details space-y-2 text-ui-dark">
           <p className="font-semibold capitalize">details</p>
 
-          <div className="pl-2 text-xs lg:text-sm space-y-2">
-            <p><span className="font-semibold">House type:</span> {property?.houseType}</p>
-            <p><span className="font-semibold">Bed space:</span> {property?.bedSpace}</p>
+          <div className="pl-2 text-xs lg:text-sm space-y-2 capitalize">
+            <p><span className="font-semibold">Type:</span> {property?.type}</p>
+            <p><span className="font-semibold">Purpose:</span> {property?.purpose || 'NA'}</p>
+            <p><span className="font-semibold">Bed space:</span> {property?.bedSpace || 'NA'}</p>
             <p><span className="font-semibold">Location:</span> {property?.location}</p>
             <p><span className="font-semibold">Price:</span> {property?.price}</p>
           </div>

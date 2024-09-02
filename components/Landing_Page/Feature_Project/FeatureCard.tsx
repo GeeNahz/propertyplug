@@ -17,9 +17,10 @@ type Props = {
 
   id?: number;
   title?: string;
-  houseType?: string;
+  type?: string;
   bedSpace?: string;
   location?: string;
+  purpose: string;
   price: string;
   description?: string;
   facilities?: string[];
@@ -48,14 +49,14 @@ const HomepageCard = ({ feature }: { feature: Props }) => {
       <div className="flex flex-col gap-4 px-2">
         <div className="flex items-center justify-between">
           <small className="flex text-[11px] gap-1 font-medium items-center">
-            <IoIosBed /> <span className="text-red-500">{feature.bedSpace}</span>
+            <FaHouseMedical /> <span className="text-red-500">{feature.type || 'NA'}</span>
           </small>
             <small className="flex text-[11px] gap-1 font-medium items-center">
-              <FaHouseMedical /> {feature.facilities![0]}
+              <FaHouseMedical /> {feature.purpose || 'NA'}
             </small>
           {feature.pool && (
             <small className="flex text-[11px] gap-1 font-medium items-center">
-              <FaHouseMedical /> {feature.facilities![1]}
+              <FaHouseMedical /> {feature.facilities![1] || 'NA'}
             </small>
           )}
         </div>
@@ -65,7 +66,7 @@ const HomepageCard = ({ feature }: { feature: Props }) => {
             <h4 className="flex flex-col font-semibold text-xs capitalize">
               {feature.location}{" "}
               <span className="text-[10px] font-light">
-                {feature.houseType}
+                {feature.title}
               </span>
             </h4>
           </div>
@@ -101,18 +102,18 @@ const PropertyPageCard = ({ feature }: { feature: Props }) => {
       </div>
 
       <div className="text-ui-dark font-light">
-        <div className="grid grid-cols-2 gap-y-2 md:gap-y-[16px]">
+        <div className="capitalize grid grid-cols-2 gap-y-2 md:gap-y-[16px]">
           <small className="flex text-[11px] gap-1 items-center">
-            <IoIosBed size={13} /> <span className="text-red-500">{feature.bedSpace}</span>
+            <FaHouseMedical size={13} /> <span className="text-red-500">{feature.type || 'NA'}</span>
           </small>
           <small className="flex text-[11px] gap-1 items-center">
-            <FaHouseMedical size={13} /> {feature?.facilities![4]}
+            <FaHouseMedical size={13} /> {feature?.purpose || 'NA'}
           </small>
           <small className="flex text-[11px] gap-1 items-center">
-            <FaHouseMedical size={13} /> {feature?.facilities![1]}
+            <FaHouseMedical size={13} /> {feature?.facilities![1] || 'NA'}
           </small>
           <small className="flex text-[11px] gap-1 items-center">
-            <GrLocation size={13} /> <span>{feature.location}</span>
+            <GrLocation size={13} /> <span>{feature.location || 'NA'}</span>
           </small>
         </div>
 
@@ -121,7 +122,7 @@ const PropertyPageCard = ({ feature }: { feature: Props }) => {
           <div className="flex justify-between px-1">
             <div className="flex justify-between items-center gap-2">
               <p className="flex flex-col font-light text-xs capitalize">
-                {feature.houseType}
+                {feature.title}
               </p>
             </div>
 

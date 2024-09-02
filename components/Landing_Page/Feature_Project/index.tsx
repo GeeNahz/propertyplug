@@ -1,6 +1,6 @@
 import Header from "@/components/common/header";
 import React from "react";
-import { Features, PropertyList } from "@/components/common/data";
+import { ListOfProperties } from "@/components/common/data";
 import FeatureCard from "./FeatureCard";
 import Link from "next/link";
 
@@ -15,7 +15,7 @@ const FeatureProject = () => {
       </div>
 
       <div className="mt-5 flex flex-col md:flex-row justify-between items-center w-full gap-5 md:gap-10">
-        {PropertyList.slice(0, 3).map((v, i) => {
+        {ListOfProperties.slice(0, 3).map((v, i) => {
           return (
             <div
               className="bg-[#FAFAFF] rounded-[36px] p-2 flex flex-col gap-4 w-full md:w-4/12"
