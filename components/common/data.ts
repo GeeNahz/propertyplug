@@ -267,204 +267,54 @@ export const ListOfProperties = [
     type: "property",
     size: "",
     purpose: "Residential",
-    title: "Studio Flat",
-    houseType: "",
-    bedSpace: "",
-    location: "The Node, Mabushi",
-    price: "43 Million",
-    description: `The Node is a thoughtfully designed mix of apartments and workspaces on five floors. With 32 residential units designed for the upwardly mobile jet setter.
-The Node offers an optimal mix of live, work and play facilities including an indoor pool, spa and gym.`,
-    facilities: [
-      'swimming', 'pool', 'spa', 'gym', 'balcony', 'solar',
-    ],
-    otherImage: [
-      {
-        src: "https://ik.imagekit.io/nwqo5veum/propertyplug/svgs/propertyies/property%201/20230722_095000_Vvlcdyw79.jpg?updatedAt=1690378219117",
-        width: 1080, height: 923
-      },
-      {
-        src: "https://ik.imagekit.io/nwqo5veum/propertyplug/svgs/propertyies/property%201/20230722_094926_DboDidUCf.jpg?updatedAt=1690378219455",
-        width: 1080, height: 1218
-      },
-      {
-        src: "https://ik.imagekit.io/nwqo5veum/propertyplug/svgs/propertyies/property%201/20230722_094907_pfaca0HN8.jpg?updatedAt=1690378219089",
-        width: 1080, height: 1204
-      },
-    ],
-    otherProperties: [],
-  },
-  {
-    id: 2,
-    type: "land",
-    size: "1280 sqm",
-    purpose: "Residential",
-    title: "R of O",
-    houseType: "",
-    bedSpace: "",
-    location: "Idu",
-    price: "85 Million",
-    description: `This lovely duplex is located at lekki county home, ikota.
-    It's in a lovely and serene environment, which is guaranteed of security.
-    All the rooms are ensuite and very spacious.`,
-    facilities: [],
-    otherImage: [
-      {
-        src: "https://ik.imagekit.io/nwqo5veum/propertyplug/svgs/propertyies/property4/20230722_071239_nfjR59XW9.jpg?updatedAt=1690378470511",
-        width: 1024, height: 1280
-      },
-      {
-        src: "https://ik.imagekit.io/nwqo5veum/propertyplug/svgs/propertyies/property4/20230722_071305_XWFrldZED.jpg?updatedAt=1690378457242",
-        width: 1024, height: 1280
-      },
-      {
-        src: "https://ik.imagekit.io/nwqo5veum/propertyplug/svgs/propertyies/property4/20230722_071242_lRRph2EC2.jpg?updatedAt=1690378543367",
-        width: 1024, height: 1280
-      },
-      {
-        src: "https://ik.imagekit.io/nwqo5veum/propertyplug/svgs/propertyies/property4/20230722_071303_G9cMvnpnr.jpg?updatedAt=1690378880587",
-        width: 1024, height: 1280
-      },
-      {
-        src: "https://ik.imagekit.io/nwqo5veum/propertyplug/svgs/propertyies/property4/20230722_071301_tpYLyu1Z6.jpg?updatedAt=1690378880716",
-        width: 1024, height: 1280
-      },
-      {
-        src: "https://ik.imagekit.io/nwqo5veum/propertyplug/svgs/propertyies/property4/20230722_071236_EfindU6HY.jpg?updatedAt=1690378543479",
-        width: 960, height: 1280
-      },
-      {
-        src: "https://ik.imagekit.io/nwqo5veum/propertyplug/svgs/propertyies/property4/20230722_071239_nfjR59XW9.jpg?updatedAt=1690378470511",
-        width: 1024, height: 1280
-      },
-    ],
-    otherProperties: [],
-  },
-  {
-    id: 3,
-    type: "property",
-    size: "",
-    purpose: "Residential",
     title: "One bed apartment for sale",
     houseType: "",
     bedSpace: "",
     location: "The Node, Mabushi",
     price: "60 Million",
     description: `Located in the heart of Mabushi, The Node is a thoughtfully designed mix of apartments and workspaces on five floors. With 32 residential units designed for the upwardly mobile jet setter.
-The Node offers an optimal mix of live, work and play facilities including an indoor pool, spa and gym.`,
+    The Node offers an optimal mix of live, work and play facilities including an indoor pool, spa and gym.`,
     facilities: [
       'swimming', 'pool', 'spa', 'gym', 'balcony', 'solar',
     ],
     otherImage: [
       {
-        src: "https://ik.imagekit.io/nwqo5veum/propertyplug/svgs/propertyies/property2/20230722_052022_3joZ6Fz5Y.jpg?updatedAt=1690378279663",
-        width: 1536, height: 1610
+        src: "https://ik.imagekit.io/propertyplugng/properties/one-bed-apartment/studio.jpg?updatedAt=1725401455070",
+        width: 3024, height: 4032
       },
       {
-        src: "https://ik.imagekit.io/nwqo5veum/propertyplug/svgs/propertyies/property2/20230722_051900_pVaTnyyUg.jpg?updatedAt=1690378279876",
-        width: 1536, height: 1681
+        src: "https://ik.imagekit.io/propertyplugng/properties/one-bed-apartment/IMG_8058.jpg?updatedAt=1725401454220",
+        width: 3024, height: 4032
       },
       {
-        src: "https://ik.imagekit.io/nwqo5veum/propertyplug/svgs/propertyies/property2/20230722_051919_QG_mUBPdx.jpg?updatedAt=1690378279792",
-        width: 1536, height: 1660
+        src: "https://ik.imagekit.io/propertyplugng/properties/one-bed-apartment/IMG_8059.jpg?updatedAt=1725401453454",
+        width: 3024, height: 4032
       },
       {
-        src: "https://ik.imagekit.io/nwqo5veum/propertyplug/svgs/propertyies/property2/20230722_051941_x5Z76X6A2.jpg?updatedAt=1690378278458",
-        width: 1536, height: 1653
+        src: "https://ik.imagekit.io/propertyplugng/properties/one-bed-apartment/IMG_8063.jpg?updatedAt=1725401450223",
+        width: 3024, height: 4032
       },
       {
-        src: "https://ik.imagekit.io/nwqo5veum/propertyplug/svgs/propertyies/property2/20230722_052036_vmiHgHheU.jpg?updatedAt=1690378271797",
-        width: 1536, height: 1728
+        src: "https://ik.imagekit.io/propertyplugng/properties/one-bed-apartment/IMG_8044.jpg?updatedAt=1725401438273",
+        width: 3024, height: 4032
       },
       {
-        src: "https://ik.imagekit.io/nwqo5veum/propertyplug/svgs/propertyies/property2/20230721_232645_7NEk53zDT.jpg?updatedAt=1690378276856",
-        width: 1536, height: 1649
+        src: "https://ik.imagekit.io/propertyplugng/properties/one-bed-apartment/IMG_8055%20(1).jpg?updatedAt=1725401425554",
+        width: 3024, height: 4032
       },
       {
-        src: "https://ik.imagekit.io/nwqo5veum/propertyplug/svgs/propertyies/property2/20230722_052102_ESXDCWRuk.jpg?updatedAt=1690378271680",
-        width: 1536, height: 1597
+        src: "https://ik.imagekit.io/propertyplugng/properties/one-bed-apartment/IMG_8056%20(1).jpg?updatedAt=1725401425089",
+        width: 3024, height: 4032
+      },
+      {
+        src: "https://ik.imagekit.io/propertyplugng/properties/one-bed-apartment/IMG_8052.jpg?updatedAt=1725401424833",
+        width: 3024, height: 4032
       },
     ],
     otherProperties: []
   },
   {
-    id: 4,
-    type: "land",
-    size: "2087.05 sqm",
-    purpose: "Residential",
-    title: "C of O",
-    houseType: "",
-    bedSpace: "",
-    location: "Mabushi",
-    price: "350 Million",
-    description: `Experience premium living in This detached duplex in Katampe Extension, within an estate. The home  presents an exotic living experience in a secure and prestigious environment. 
-      With its elegant design, spacious layout, and desirable location it provides an exceptional residential haven for those seeking comfort, luxury, and a sense of community.`,
-    facilities: [],
-    otherImage: [
-      {
-        src: "https://ik.imagekit.io/nwqo5veum/propertyplug/svgs/propertyies/property3/20230722_052349_MgsjWmh0D.jpg?updatedAt=1690378371034",
-        width: 768, height: 817
-      },
-      {
-        src: "https://ik.imagekit.io/nwqo5veum/propertyplug/svgs/propertyies/property3/20230722_052320_8mqop__A6.jpg?updatedAt=1690378372523",
-        width: 828, height: 804
-      },
-      {
-        src: "https://ik.imagekit.io/nwqo5veum/propertyplug/svgs/propertyies/property3/20230722_052406_HdsRu0FxG.jpg?updatedAt=1690378369040",
-        width: 768, height: 855
-      },
-      {
-        src: "https://ik.imagekit.io/nwqo5veum/propertyplug/svgs/propertyies/property3/20230722_052433_eEjfRGkH_.jpg?updatedAt=1690378369486",
-        width: 768, height: 841
-      },
-      {
-        src: "https://ik.imagekit.io/nwqo5veum/propertyplug/svgs/propertyies/property3/20230722_052507_Dosk2SFhNq.jpg?updatedAt=1690378371364",
-        width: 768, height: 815
-      },
-      {
-        src: "https://ik.imagekit.io/nwqo5veum/propertyplug/svgs/propertyies/property3/20230722_052337_ESswDyQiv.jpg?updatedAt=1690378370804",
-        width: 762, height: 788
-      },
-      {
-        src: "https://ik.imagekit.io/nwqo5veum/propertyplug/svgs/propertyies/property3/20230722_052531_V0WoY18rp.jpg?updatedAt=1690378371121",
-        width: 742, height: 649
-      },
-      {
-        src: "https://ik.imagekit.io/nwqo5veum/propertyplug/svgs/propertyies/property3/20230722_052519_Cpzprqb4G.jpg?updatedAt=1690378371317",
-        width: 794, height: 794
-      },
-    ],
-    otherProperties: []
-  },
-  {
-    id: 5,
-    type: "property",
-    size: "",
-    purpose: "Commercial",
-    title: "Premium commercial units for sale",
-    houseType: "",
-    bedSpace: "",
-    location: "The Node, Mabushi",
-    price: "45 Million",
-    description: `Located at the heart of Mabushi, The node is a thoughtfully designed mix of apartments and workspaces on five floors. With 32 residential units designed for the upwardly mobile jet setter. The node offers an optimal mix of live, work and play facilities including an indoor pool, spa and gym.`,
-    facilities: [],
-    otherImage: [
-      {
-        src: "https://ik.imagekit.io/nwqo5veum/propertyplug/svgs/propertyies/property5/20230722_082336_rajwloZy-.jpg?updatedAt=1690379070709",
-        width: 868, height: 1080
-      },
-      {
-        src: "https://ik.imagekit.io/nwqo5veum/propertyplug/svgs/propertyies/property5/20230722_082331_yrMMarXX5.jpg?updatedAt=1690379070697",
-        width: 868, height: 1080
-      },
-      {
-        src: "https://ik.imagekit.io/nwqo5veum/propertyplug/svgs/propertyies/property5/20230722_082354_5YtQDj2iRM.jpg?updatedAt=1690379070822",
-        width: 868, height: 1080
-      },
-    ],
-    otherProperties: []
-  },
-  {
-    id: 6,
+    id: 2,
     type: "property",
     size: "",
     purpose: "Residential",
@@ -483,20 +333,184 @@ The Node offers an optimal mix of live, work and play facilities including an in
     ],
     otherImage: [
       {
-        src: "https://ik.imagekit.io/nwqo5veum/propertyplug/svgs/propertyies/property6/20230722_083733_vISHyAh9M.jpg?updatedAt=1690379112089",
-        width: 864, height: 1080
+        src: "https://ik.imagekit.io/propertyplugng/properties/lifecamp/IMG_8056%20(1).PNG?updatedAt=1725401911917",
+        width: 2048, height: 1536
       },
       {
-        src: "https://ik.imagekit.io/nwqo5veum/propertyplug/svgs/propertyies/property6/20230722_083728_ElkJJExE0.jpg?updatedAt=1690379117987",
-        width: 868, height: 1080
+        src: "https://ik.imagekit.io/propertyplugng/properties/lifecamp/039D505C-7E23-4672-9021-45F066575E69.PNG?updatedAt=1725401911552",
+        width: 2048, height: 1536
       },
       {
-        src: "https://ik.imagekit.io/nwqo5veum/propertyplug/svgs/propertyies/property6/20230722_083718_xOggDDRJD.jpg?updatedAt=1690379118666",
-        width: 810, height: 1080
+        src: "https://ik.imagekit.io/propertyplugng/properties/lifecamp/05AA5AAD-9800-4374-92B9-66CFE4AB74EF.PNG?updatedAt=1725401909486",
+        width: 2048, height: 1536
       },
       {
-        src: "https://ik.imagekit.io/nwqo5veum/propertyplug/svgs/propertyies/property6/20230722_083711_a40jKSpnf.jpg?updatedAt=1690379117981",
-        width: 868, height: 1080
+        src: "https://ik.imagekit.io/propertyplugng/properties/lifecamp/6455236A-14DD-4265-A6C1-828F34D312E1.PNG?updatedAt=1725401911990",
+        // width: 868, height: 1080
+        width: 2048, height: 1536
+      }
+    ],
+    otherProperties: []
+  },
+  {
+    id: 3,
+    type: "land",
+    size: "1280 sqm",
+    purpose: "Residential",
+    title: "R of O",
+    houseType: "",
+    bedSpace: "",
+    location: "Idu",
+    price: "85 Million",
+    description: `This lovely duplex is located at lekki county home, ikota.
+    It's in a lovely and serene environment, which is guaranteed of security.
+    All the rooms are ensuite and very spacious.`,
+    facilities: [],
+    otherImage: [
+      {
+        src: "https://ik.imagekit.io/propertyplugng/properties/Lands/IMG_1471.JPG?updatedAt=1725402135444",
+        width: 3000, height: 3000
+      },
+      // {
+      //   src: "https://ik.imagekit.io/nwqo5veum/propertyplug/svgs/propertyies/property4/20230722_071305_XWFrldZED.jpg?updatedAt=1690378457242",
+      //   width: 1024, height: 1280
+      // },
+      // {
+      //   src: "https://ik.imagekit.io/nwqo5veum/propertyplug/svgs/propertyies/property4/20230722_071242_lRRph2EC2.jpg?updatedAt=1690378543367",
+      //   width: 1024, height: 1280
+      // },
+      // {
+      //   src: "https://ik.imagekit.io/nwqo5veum/propertyplug/svgs/propertyies/property4/20230722_071303_G9cMvnpnr.jpg?updatedAt=1690378880587",
+      //   width: 1024, height: 1280
+      // },
+      // {
+      //   src: "https://ik.imagekit.io/nwqo5veum/propertyplug/svgs/propertyies/property4/20230722_071301_tpYLyu1Z6.jpg?updatedAt=1690378880716",
+      //   width: 1024, height: 1280
+      // },
+      // {
+      //   src: "https://ik.imagekit.io/nwqo5veum/propertyplug/svgs/propertyies/property4/20230722_071236_EfindU6HY.jpg?updatedAt=1690378543479",
+      //   width: 960, height: 1280
+      // },
+      // {
+      //   src: "https://ik.imagekit.io/nwqo5veum/propertyplug/svgs/propertyies/property4/20230722_071239_nfjR59XW9.jpg?updatedAt=1690378470511",
+      //   width: 1024, height: 1280
+      // },
+    ],
+    otherProperties: [],
+  },
+  {
+    id: 4,
+    type: "property",
+    size: "",
+    purpose: "Residential",
+    title: "Studio Flat",
+    houseType: "",
+    bedSpace: "",
+    location: "The Node, Mabushi",
+    price: "43 Million",
+    description: `The Node is a thoughtfully designed mix of apartments and workspaces on five floors. With 32 residential units designed for the upwardly mobile jet setter.
+The Node offers an optimal mix of live, work and play facilities including an indoor pool, spa and gym.`,
+    facilities: [
+      'swimming', 'pool', 'spa', 'gym', 'balcony', 'solar',
+    ],
+    otherImage: [
+      {
+        src: "https://ik.imagekit.io/propertyplugng/properties/studio%20house/IMG_1512.JPG?updatedAt=1725402299613",
+        width: 3024, height: 4032
+      },
+      {
+        src: "https://ik.imagekit.io/propertyplugng/properties/studio%20house/IMG_1518.JPG?updatedAt=1725402300599",
+        width: 3024, height: 4032
+      },
+      {
+        src: "https://ik.imagekit.io/propertyplugng/properties/studio%20house/IMG_1519.JPG?updatedAt=1725402300602",
+        width: 3024, height: 4032
+      },
+
+
+      {
+        src: "https://ik.imagekit.io/propertyplugng/properties/studio%20house/IMG_1514.JPG?updatedAt=1725402297672",
+        width: 3024, height: 4032
+      },
+      {
+        src: "https://ik.imagekit.io/propertyplugng/properties/studio%20house/IMG_1515.JPG?updatedAt=1725402297556",
+        width: 3024, height: 4032
+      },
+      {
+        src: "https://ik.imagekit.io/propertyplugng/properties/studio%20house/IMG_1516.JPG?updatedAt=1725402296522",
+        width: 3024, height: 4032
+      },
+      {
+        src: "https://ik.imagekit.io/propertyplugng/properties/studio%20house/IMG_1517.JPG?updatedAt=1725402295314",
+        width: 3024, height: 4032
+      },
+    ],
+    otherProperties: [],
+  },
+  {
+    id: 5,
+    type: "land",
+    size: "2087.05 sqm",
+    purpose: "Residential",
+    title: "C of O",
+    houseType: "",
+    bedSpace: "",
+    location: "Mabushi",
+    price: "350 Million",
+    description: `Experience premium living in This detached duplex in Katampe Extension, within an estate. The home  presents an exotic living experience in a secure and prestigious environment. 
+      With its elegant design, spacious layout, and desirable location it provides an exceptional residential haven for those seeking comfort, luxury, and a sense of community.`,
+    facilities: [],
+    otherImage: [
+      {
+        src: "https://ik.imagekit.io/propertyplugng/properties/Lands/mabushi%20350-min.jpg?updatedAt=1725402568470",
+        width: 3000, height: 3000
+      },
+    ],
+    otherProperties: []
+  },
+
+
+
+  {
+    id: 6,
+    type: "property",
+    size: "",
+    purpose: "Commercial",
+    title: "Premium commercial units for sale",
+    houseType: "",
+    bedSpace: "",
+    location: "The Node, Mabushi",
+    price: "45 Million",
+    description: `Located at the heart of Mabushi, The node is a thoughtfully designed mix of apartments and workspaces on five floors. With 32 residential units designed for the upwardly mobile jet setter. The node offers an optimal mix of live, work and play facilities including an indoor pool, spa and gym.`,
+    facilities: [],
+    otherImage: [
+      {
+        src: "https://ik.imagekit.io/propertyplugng/properties/commercial/6.jpg?updatedAt=1725402835778",
+        width: 3024, height: 4032
+      },
+      {
+        src: "https://ik.imagekit.io/propertyplugng/properties/commercial/2.jpg?updatedAt=1725402841559",
+        width: 3024, height: 4032
+      },
+      {
+        src: "https://ik.imagekit.io/propertyplugng/properties/commercial/5.jpg?updatedAt=1725402843738",
+        width: 3024, height: 4032
+      },
+      {
+        src: "https://ik.imagekit.io/propertyplugng/properties/commercial/7.jpg?updatedAt=1725402843835",
+        width: 3024, height: 4032
+      },
+      {
+        src: "https://ik.imagekit.io/propertyplugng/properties/commercial/4.jpg?updatedAt=1725402832672",
+        width: 3024, height: 4032
+      },
+      {
+        src: "https://ik.imagekit.io/propertyplugng/properties/commercial/3.jpg?updatedAt=1725402828802",
+        width: 3024, height: 4032
+      },
+      {
+        src: "https://ik.imagekit.io/propertyplugng/properties/commercial/1.jpg?updatedAt=1725402826597",
+        width: 3024, height: 4032
       }
     ],
     otherProperties: []
@@ -525,16 +539,16 @@ The Node offers an optimal mix of live, work and play facilities including an in
     ],
     otherImage: [
       {
-        src: "https://ik.imagekit.io/nwqo5veum/propertyplug/svgs/propertyies/property7/20230722_053137_nTJ9bVZfN.jpg?updatedAt=1690379283715",
-        width: 1742, height: 1566
+        src: "https://ik.imagekit.io/propertyplugng/properties/house4sell/CD1D0FC5-FC31-4280-B6A6-376C5C2EE335.PNG?updatedAt=1725402951790",
+        width: 1536, height: 2048
       },
       {
-        src: "https://ik.imagekit.io/nwqo5veum/propertyplug/svgs/propertyies/property7/20230722_052932_ROAFc4p1mi.jpg?updatedAt=1690379281606",
-        width: 1536, height: 1616
+        src: "https://ik.imagekit.io/propertyplugng/properties/house4sell/3D7430E4-B235-4635-9901-CB6D09E83F2E.PNG?updatedAt=1725402953930",
+        width: 1536, height: 2048
       },
       {
-        src: "https://ik.imagekit.io/nwqo5veum/propertyplug/svgs/propertyies/property7/20230722_052947_BCtVF_ubM.jpg?updatedAt=1690379283037",
-        width: 1536, height: 1726
+        src: "https://ik.imagekit.io/propertyplugng/properties/house4sell/74CA31BE-01EB-40A9-9540-AE9980E8F5E0.PNG?updatedAt=1725402951690",
+        width: 1536, height: 2048
       },
     ],
     otherProperties: []
