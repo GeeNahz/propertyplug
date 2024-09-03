@@ -30,7 +30,8 @@ const OurService = () => {
 
         <div className="rounded-[32px] p-3 bg-[#0B2831] flex flex-col gap-4 col-span-2">
           <div className=" relative h-3/6">
-            <Image placeholder="blur"  blurDataURL={dataUrl} src="https://ik.imagekit.io/nwqo5veum/propertyplug/svgs/services/advisory_wsbhGhPxz.jpeg?updatedAt=1690689320098" height={500} width={500} alt="services image" className="rounded-[32px] object-cover w-full h-full"/> 
+          
+            <Image placeholder="blur"  blurDataURL={dataUrl} src="https://ik.imagekit.io/nwqo5veum/propertyplug/svgs/services/brokerage_aIzZ_fZ8o.jpeg?updatedAt=1690689320589" height={500} width={500} alt="services image" className="rounded-[32px] object-cover w-full h-full"/> 
           </div>
           <div className="flex flex-col gap-2 items-center text-white">
             <h6 className="text-sm font-medium">Investment Advisory</h6>
@@ -40,7 +41,7 @@ const OurService = () => {
 
         <div className="rounded-[32px] p-3 bg-[#0B2831] flex gap-3 col-span-2">
           <div className="w-5/12">
-            <Image placeholder="blur"  blurDataURL={dataUrl} src="https://ik.imagekit.io/nwqo5veum/propertyplug/svgs/services/brokerage_aIzZ_fZ8o.jpeg?updatedAt=1690689320589" height={500} width={500} alt="services image"  className="rounded-[32px] w-full object-cover h-full"/> 
+            <Image placeholder="blur"  blurDataURL={dataUrl} src="https://ik.imagekit.io/nwqo5veum/propertyplug/svgs/services/advisory_wsbhGhPxz.jpeg?updatedAt=1690689320098" height={500} width={500} alt="services image"  className="rounded-[32px] w-full object-cover h-full"/> 
           </div>
           <div className="flex flex-col gap-2 items-center text-white w-6/12 justify-center h-full">
             <h6 className="text-sm font-medium">Real Estate Brokeage</h6>
