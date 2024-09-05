@@ -1,10 +1,8 @@
-import { FaNairaSign, FaPersonSwimming, FaBath, FaPlus, FaHouseMedical } from "react-icons/fa6";
-import imgs from "./images/ppt1.jpg";
+import { FaNairaSign } from "react-icons/fa6";
 import { GrLocation } from "react-icons/gr";
-import { IoIosBed } from "react-icons/io";
+import { MapPinnedIcon, HousePlusIcon, SparklesIcon } from "lucide-react";
 import Image from "next/image";
 import { Divider } from "antd";
-import { dataUrl } from "@/lib/utils";
 import Link from "next/link";
 
 type Props = {
@@ -22,6 +20,7 @@ type Props = {
   location?: string;
   purpose: string;
   price: string;
+  size: string;
   description?: string;
   facilities?: string[];
   otherImage?: {
@@ -49,14 +48,15 @@ const HomepageCard = ({ feature }: { feature: Props }) => {
       <div className="flex flex-col gap-4 px-2">
         <div className="flex items-center justify-between">
           <small className="flex text-[11px] gap-1 font-medium items-center">
-            <FaHouseMedical /> <span className="text-red-500">{feature.type || 'NA'}</span>
+            <HousePlusIcon size={20} /> <span className="capitalize text-red-500">{feature.type || 'NA'}</span>
           </small>
             <small className="flex text-[11px] gap-1 font-medium items-center">
-              <FaHouseMedical /> {feature.purpose || 'NA'}
+              <HousePlusIcon size={20} /> {feature.purpose || 'NA'}
             </small>
           {feature.pool && (
             <small className="flex text-[11px] gap-1 font-medium items-center">
-              <FaHouseMedical /> {feature.facilities![1] || 'NA'}
+            {feature.type === 'property' && (<><SparklesIcon size={10} /> {feature.facilities![1] || 'NA'}</>)}
+            {feature.type === 'land' && (<><MapPinnedIcon size={10} /> {feature.size || 'NA'}</>)}
             </small>
           )}
         </div>
@@ -104,13 +104,14 @@ const PropertyPageCard = ({ feature }: { feature: Props }) => {
       <div className="text-ui-dark font-light">
         <div className="capitalize grid grid-cols-2 gap-y-2 md:gap-y-[16px]">
           <small className="flex text-[11px] gap-1 items-center">
-            <FaHouseMedical size={13} /> <span className="text-red-500">{feature.type || 'NA'}</span>
+            <HousePlusIcon size={13} /> <span className="text-red-500">{feature.type || 'NA'}</span>
           </small>
           <small className="flex text-[11px] gap-1 items-center">
-            <FaHouseMedical size={13} /> {feature?.purpose || 'NA'}
+            <HousePlusIcon size={13} /> {feature?.purpose || 'NA'}
           </small>
           <small className="flex text-[11px] gap-1 items-center">
-            <FaHouseMedical size={13} /> {feature?.facilities![1] || 'NA'}
+          {feature.type === 'land' && (<><MapPinnedIcon size={13} /> {feature?.size || 'NA'}</>)}
+          {feature.type === 'property' && (<><SparklesIcon size={13} /> {feature?.facilities![0] || 'NA'}</>)}
           </small>
           <small className="flex text-[11px] gap-1 items-center">
             <GrLocation size={13} /> <span>{feature.location || 'NA'}</span>
