@@ -1,6 +1,6 @@
 import { z } from 'zod'
 
-const MAX_FILE_SIZE = 1024 * 1024 * 30 // 30MB
+const MAX_FILE_SIZE = 1024 * 1024 * 1.5 // 1.5MB
 const SUPPORTED_FILE_TYPE = ['png', 'jpg', 'jpeg']
 
 function checkFileType(file: File | undefined) {
