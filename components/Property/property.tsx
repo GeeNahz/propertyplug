@@ -30,13 +30,18 @@ const Property = (props: Props) => {
           <div className="pl-2 text-xs lg:text-sm space-y-2 capitalize">
             <p><span className="font-semibold">Type:</span> {property?.type}</p>
             <p><span className="font-semibold">Purpose:</span> {property?.purpose || 'NA'}</p>
-            <p><span className="font-semibold">Bed space:</span> {property?.bedSpace || 'NA'}</p>
+            {
+              property?.type === 'property' && (
+                property?.bedSpace && (<p><span className="font-semibold">Bed space:</span> {property?.bedSpace || 'NA'}</p>)
+              )
+            }
+            {property?.type === 'land' && (<p><span className="font-semibold">Size:</span> {property?.size || 'NA'}</p>)}
             <p><span className="font-semibold">Location:</span> {property?.location}</p>
             <p><span className="font-semibold">Price:</span> {property?.price}</p>
           </div>
         </div>
 
-        <div className="features space-y-2 text-ui-dark">
+        {property?.type === 'property' && (<div className="features space-y-2 text-ui-dark">
           <p className="font-semibold capitalize">features</p>
 
           <ul className="pl-2 text-xs lg:text-sm space-y-2">
@@ -44,7 +49,7 @@ const Property = (props: Props) => {
               <li key={index}>{facility}</li>
             ))}
           </ul>
-        </div>
+        </div>)}
       </div>
     </div>)
 }
