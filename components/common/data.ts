@@ -229,34 +229,46 @@ export const Features: Feature = [
 
 export const Testimon: Testimonial = [
   {
+    id: 1,
     title: 'Aliyu Mohammed',
     testimony: "I'm extremely pleased with Property Plug's services. Their expertise, professionalism, and commitment to finding the perfect property exceeded my expectations. I couldn't be happier with my new investment. Highly recommended!",
-    img: imgs1
+    img: imgs1,
+    rating: 4,
   },
   {
+    id: 2,
     title: 'Eze Victor',
     testimony: 'Choosing Property Plug was the best decision for my property needs. Their professionalism, market knowledge, and top-notch service exceeded my expectations. They made the process easy and efficient. Highly impressed! 🔥',
-    img: imgs
+    img: imgs,
+    rating: 5,
   },
   {
+    id: 3,
     title: 'mr. Bemshima Peter',
     testimony: 'Choosing Property Plug was the best decision for my property needs. Their professionalism, market knowledge, and top-notch service exceeded my expectations. They made the process easy and efficient. Highly impressed! 🔥',
-    img: imgs5
+    img: imgs5,
+    rating: 5,
   },
   {
+    id: 4,
     title: 'mr. ademola johnson',
     testimony: 'This will contain testimonials from user who have tested the product before, during or after launching Slate Publishers',
-    img: imgs
+    img: imgs,
+    rating: 4,
   },
   {
+    id: 5,
     title: 'mr. Benjamin Benjamin',
     testimony: "I'm extremely pleased with Property Plug's services. Their expertise, professionalism, and commitment to finding the perfect property exceeded my expectations. I couldn't be happier with my new investment. Highly recommended!",
-    img: imgs5
+    img: imgs5,
+    rating: 4,
   },
   {
+    id: 6,
     title: 'Godswill Nasara',
     testimony: 'This will contain testimonials from user who have tested the product before, during or after launching Slate Publishers',
-    img: imgs1
+    img: imgs1,
+    rating: 3,
   },
 ]
 

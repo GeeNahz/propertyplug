@@ -27,9 +27,11 @@ export type Feature = {
 }[]
 
 export type Testimonial = {
+  id: string | number,
   title: string,
   testimony: string,
   img: StaticImageData
+  rating: number;
 }[]
 
 export type NavLink = {
