@@ -44,7 +44,7 @@ const OurService = () => {
             <Image placeholder="blur"  blurDataURL={dataUrl} src="https://ik.imagekit.io/nwqo5veum/propertyplug/pp-logo_BdROmV7NQz?updatedAt=1691586443760" height={500} width={500} alt="services image"  className="rounded-[32px] w-full object-cover h-full"/> 
           </div>
           <div className="flex flex-col gap-2 items-center text-white w-6/12 justify-center h-full">
-            <h6 className="text-sm font-medium">Real Estate Brokeage</h6>
+            <h6 className="text-sm font-medium">Real Estate Brokerage</h6>
             <small className="text-center px-2 text-[10px] font-extralight">Unlock your real estate potential with our expert brokerage services, tailored to your unique needs and aspirations.</small>
           </div>
         </div>
