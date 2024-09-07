@@ -426,8 +426,6 @@ The Node offers an optimal mix of live, work and play facilities including an in
         src: "https://ik.imagekit.io/propertyplugng/properties/studio%20house/IMG_1519.JPG?updatedAt=1725402300602",
         width: 3024, height: 4032
       },
-
-
       {
         src: "https://ik.imagekit.io/propertyplugng/properties/studio%20house/IMG_1514.JPG?updatedAt=1725402297672",
         width: 3024, height: 4032
@@ -468,9 +466,6 @@ The Node offers an optimal mix of live, work and play facilities including an in
     ],
     otherProperties: []
   },
-
-
-
   {
     id: 6,
     type: "property",
@@ -482,7 +477,9 @@ The Node offers an optimal mix of live, work and play facilities including an in
     location: "The Node, Mabushi",
     price: "45 Million",
     description: `Located at the heart of Mabushi, The node is a thoughtfully designed mix of apartments and workspaces on five floors. With 32 residential units designed for the upwardly mobile jet setter. The node offers an optimal mix of live, work and play facilities including an indoor pool, spa and gym.`,
-    facilities: [],
+    facilities: [
+      "Spacious living room",
+    ],
     otherImage: [
       {
         src: "https://ik.imagekit.io/propertyplugng/properties/commercial/6.jpg?updatedAt=1725402835778",
@@ -549,6 +546,183 @@ The Node offers an optimal mix of live, work and play facilities including an in
       {
         src: "https://ik.imagekit.io/propertyplugng/properties/house4sell/74CA31BE-01EB-40A9-9540-AE9980E8F5E0.PNG?updatedAt=1725402951690",
         width: 1536, height: 2048
+      },
+    ],
+    otherProperties: []
+  },
+  {
+    id: 8,
+    type: "property",
+    size: "",
+    purpose: "Residential",
+    title: "4 bedroom semi detached duplex for sale",
+    houseType: "4 bedroom semi detached duplex",
+    bedSpace: "4",
+    location: "VGC Ajah, Lekki",
+    price: "110 Million",
+    description: ``,
+    facilities: [
+      "Good Access road",
+      "Secured Estate",
+      "v Spacious and fitted kitchen",
+      "Backyard Potio",
+      "Serene and secure environment",
+      "En-suite bedrooms",
+      "Ample parking space",
+      "Walk in closet",
+    ],
+    otherImage: [
+      {
+        src: "https://ik.imagekit.io/propertyplugng/properties/house4sell/CD1D0FC5-FC31-4280-B6A6-376C5C2EE335.PNG?updatedAt=1725402951790",
+        width: 1536, height: 2048
+      },
+      {
+        src: "https://ik.imagekit.io/propertyplugng/properties/house4sell/3D7430E4-B235-4635-9901-CB6D09E83F2E.PNG?updatedAt=1725402953930",
+        width: 1536, height: 2048
+      },
+      {
+        src: "https://ik.imagekit.io/propertyplugng/properties/house4sell/74CA31BE-01EB-40A9-9540-AE9980E8F5E0.PNG?updatedAt=1725402951690",
+        width: 1536, height: 2048
+      },
+    ],
+    otherProperties: []
+  },
+  {
+    id: 9,
+    type: "property",
+    size: "",
+    purpose: "Residential",
+    title: "urban contemporary 5 bedroom duplex with swimming pool",
+    houseType: "5 bedroom duplex",
+    bedSpace: "5",
+    location: "Ajah",
+    price: "420 Million",
+    description: ``,
+    facilities: [
+      "Brand New",
+      "V Smart Door Lock",
+      "Fully fitted kitchen Swimming Pool",
+      "V Automated LED Lights",
+      "V CCTV Cameras",
+      "V Ample parking space V 24 hours Security",
+      "Walk in shower",
+    ],
+    otherImage: [
+      {
+        src: "https://ik.imagekit.io/propertyplugng/properties/house4sell/CD1D0FC5-FC31-4280-B6A6-376C5C2EE335.PNG?updatedAt=1725402951790",
+        width: 1536, height: 2048
+      },
+      {
+        src: "https://ik.imagekit.io/propertyplugng/properties/house4sell/3D7430E4-B235-4635-9901-CB6D09E83F2E.PNG?updatedAt=1725402953930",
+        width: 1536, height: 2048
+      },
+      {
+        src: "https://ik.imagekit.io/propertyplugng/properties/house4sell/74CA31BE-01EB-40A9-9540-AE9980E8F5E0.PNG?updatedAt=1725402951690",
+        width: 1536, height: 2048
+      },
+    ],
+    otherProperties: []
+  },
+  {
+    id: 10,
+    type: "property",
+    size: "",
+    purpose: "Residential",
+    title: "brand new 5 bedroom detached duplex(smart home) for sale",
+    houseType: "5 bedroom detached duplex",
+    bedSpace: "5",
+    location: "Apo district",
+    price: "500 Million",
+    description: `The road is fully tarred and smooth to drive on. The house is well spaced and properly finished to standard to suit the needs of prospective owners.`,
+    facilities: [
+      "Spacious living room",
+      "Ante room",
+      "Swimming pool",
+      "Green area",
+      "3 living rooms",
+      "Kitchenette",
+      "Walk in Closet",
+      "Ante room",
+      "Pantry",
+      "Gazebo",
+      "Rooftop lounge",
+    ],
+    otherImage: [
+      {
+        src: "https://ik.imagekit.io/propertyplugng/properties/house4sell/CD1D0FC5-FC31-4280-B6A6-376C5C2EE335.PNG?updatedAt=1725402951790",
+        width: 1536, height: 2048
+      },
+      {
+        src: "https://ik.imagekit.io/propertyplugng/properties/house4sell/3D7430E4-B235-4635-9901-CB6D09E83F2E.PNG?updatedAt=1725402953930",
+        width: 1536, height: 2048
+      },
+      {
+        src: "https://ik.imagekit.io/propertyplugng/properties/house4sell/74CA31BE-01EB-40A9-9540-AE9980E8F5E0.PNG?updatedAt=1725402951690",
+        width: 1536, height: 2048
+      },
+    ],
+    otherProperties: []
+  },
+  {
+    id: 11,
+    type: "land",
+    size: "1 Hectare",
+    purpose: "Multi-Purpose",
+    title: "C of O",
+    houseType: "",
+    bedSpace: "",
+    location: "Central Business distrist or CBD, Abuja",
+    price: "5 Billion",
+    description: `The Central Area, also known as Abuja Central Business District (CBD), sits at the heart of the Federal Capital Territory (FCT). This phase 1 district extends from the City Gate in the west to Aso Rock (Presidential Villa) in the east.
+
+It is unique, among its neighbors, in that it is a primarily commercial district with few residential areas. Abuja CBD is the primary business district in the FCT, housing the headquarters of many Nigerian and international organizations.`,
+    facilities: [],
+    otherImage: [
+      {
+        src: "https://ik.imagekit.io/propertyplugng/properties/Lands/mabushi%20350-min.jpg?updatedAt=1725402568470",
+        width: 3000, height: 3000
+      },
+    ],
+    otherProperties: []
+  },
+  {
+    id: 12,
+    type: "land",
+    size: "4108.29 sqm",
+    purpose: "Commercial",
+    title: "C of O",
+    houseType: "",
+    bedSpace: "",
+    location: "Durumi",
+    price: "400 Million",
+    description: `Durumi is conveniently positioned between the inner city and the less developed outer Abuja region. It is directly to the south west of the central business district.
+The area borders Garki, Gudu, Kaura and Kukwaba to the north, east, south and west respectively. The Nnamdi Azikiwe Expressway and Oladipo Diya Street are the main through roads. Airport road is also very close by.
+It takes roughly 10 minutes to drive into the city centre.`,
+    facilities: [],
+    otherImage: [
+      {
+        src: "https://ik.imagekit.io/propertyplugng/properties/Lands/mabushi%20350-min.jpg?updatedAt=1725402568470",
+        width: 3000, height: 3000
+      },
+    ],
+    otherProperties: []
+  },
+  {
+    id: 13,
+    type: "land",
+    size: "3000sqm",
+    purpose: "Commercial",
+    title: "C of O",
+    houseType: "",
+    bedSpace: "",
+    location: "Gudu, Abuja",
+    price: "400 Million",
+    description: `Gudu is An excellent location (away from the hustle and bustle of the inner city) and a high level of development has attracted many people to the area. Residents include civil servants, politicians, traders and other middle class citizens.`,
+    facilities: [],
+    otherImage: [
+      {
+        src: "https://ik.imagekit.io/propertyplugng/properties/Lands/mabushi%20350-min.jpg?updatedAt=1725402568470",
+        width: 3000, height: 3000
       },
     ],
     otherProperties: []
