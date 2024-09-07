@@ -19,9 +19,9 @@ export const ScrollTestimony = () => {
     }
   return (
     <div className=" w-full overflow-x-scroll scroll-smooth flex gap-2 md:gap-5 mt-12 testimony__container" ref={scrollRef}>
-    {Testimon.slice(0,3).map((v, i) => (
-      <div key={i} className="w-full px-3 md:px-6">
-        <Card img={v.img} testimony={v.testimony} title={v.title} />
+    {Testimon.slice(0,3).map((v) => (
+      <div key={v.id} className="w-full px-3 md:px-6">
+        <Card rating={v.rating} img={v.img} testimony={v.testimony} title={v.title} />
       </div>
     ))}
     <div className="w-full flex justify-between items-center absolute top-0 bottom-0">
