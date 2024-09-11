@@ -585,17 +585,47 @@ The Node offers an optimal mix of live, work and play facilities including an in
     ],
     otherImage: [
       {
-        src: "https://ik.imagekit.io/propertyplugng/properties/house4sell/CD1D0FC5-FC31-4280-B6A6-376C5C2EE335.PNG?updatedAt=1725402951790",
-        width: 1536, height: 2048
+        src: "https://ik.imagekit.io/propertyplugng/properties/4%20bed%20contemp/IMG_2995.PNG?updatedAt=1726079806164",
+        width: 1170, height: 1451
       },
       {
-        src: "https://ik.imagekit.io/propertyplugng/properties/house4sell/3D7430E4-B235-4635-9901-CB6D09E83F2E.PNG?updatedAt=1725402953930",
-        width: 1536, height: 2048
+        src: "https://ik.imagekit.io/propertyplugng/properties/4%20bed%20contemp/IMG_3003.PNG?updatedAt=1726079805942",
+        width: 1170, height: 1448
       },
       {
-        src: "https://ik.imagekit.io/propertyplugng/properties/house4sell/74CA31BE-01EB-40A9-9540-AE9980E8F5E0.PNG?updatedAt=1725402951690",
-        width: 1536, height: 2048
+        src: "https://ik.imagekit.io/propertyplugng/properties/4%20bed%20contemp/IMG_3002.PNG?updatedAt=1726079805774",
+        width: 1170, height: 1443
       },
+      {
+        src: "https://ik.imagekit.io/propertyplugng/properties/4%20bed%20contemp/IMG_3001.PNG?updatedAt=1726079805696",
+        width: 1170, height: 1449
+      },
+      {
+        src: "https://ik.imagekit.io/propertyplugng/properties/4%20bed%20contemp/IMG_2996.PNG?updatedAt=1726079805675",
+        width: 1170, height: 1439
+      },
+      {
+        src: "https://ik.imagekit.io/propertyplugng/properties/4%20bed%20contemp/IMG_2999.PNG?updatedAt=1726079805185",
+        width: 1170, height: 1438
+      },
+      {
+        src: "https://ik.imagekit.io/propertyplugng/properties/4%20bed%20contemp/IMG_2997.PNG?updatedAt=1726079804512",
+        width: 1170, height: 1446
+      },
+
+
+      {
+        src: "https://ik.imagekit.io/propertyplugng/properties/4%20bed%20contemp/IMG_3004.PNG?updatedAt=1726079804397",
+        width: 1170, height: 1452
+      },
+      {
+        src: "https://ik.imagekit.io/propertyplugng/properties/4%20bed%20contemp/IMG_3005.PNG?updatedAt=1726079803765",
+        width: 1170, height: 1446
+      },
+      {
+        src: "https://ik.imagekit.io/propertyplugng/properties/4%20bed%20contemp/IMG_2998.PNG?updatedAt=1726079801902",
+        width: 1170, height: 1442
+      }
     ],
     otherProperties: []
   },
@@ -621,16 +651,38 @@ The Node offers an optimal mix of live, work and play facilities including an in
     ],
     otherImage: [
       {
-        src: "https://ik.imagekit.io/propertyplugng/properties/house4sell/CD1D0FC5-FC31-4280-B6A6-376C5C2EE335.PNG?updatedAt=1725402951790",
-        width: 1536, height: 2048
+        src: "https://ik.imagekit.io/propertyplugng/properties/5%20bed%20uburn%20contemp/IMG_3010.PNG?updatedAt=1726079882567",
+        width: 920, height: 1143
       },
       {
-        src: "https://ik.imagekit.io/propertyplugng/properties/house4sell/3D7430E4-B235-4635-9901-CB6D09E83F2E.PNG?updatedAt=1725402953930",
-        width: 1536, height: 2048
+        src: "https://ik.imagekit.io/propertyplugng/properties/5%20bed%20uburn%20contemp/IMG_3011.PNG?updatedAt=1726079884112",
+        width: 920, height: 1131
       },
       {
-        src: "https://ik.imagekit.io/propertyplugng/properties/house4sell/74CA31BE-01EB-40A9-9540-AE9980E8F5E0.PNG?updatedAt=1725402951690",
-        width: 1536, height: 2048
+        src: "https://ik.imagekit.io/propertyplugng/properties/5%20bed%20uburn%20contemp/IMG_3017.PNG?updatedAt=1726079883892",
+        width: 919, height: 1131
+      },
+      {
+        src: "https://ik.imagekit.io/propertyplugng/properties/5%20bed%20uburn%20contemp/IMG_3014.PNG?updatedAt=1726079883498",
+        width: 920, height: 1129
+      },
+      {
+        src: "https://ik.imagekit.io/propertyplugng/properties/5%20bed%20uburn%20contemp/IMG_3018.PNG?updatedAt=1726079882701",
+        width: 919, height: 1132
+      },
+
+
+      {
+        src: "https://ik.imagekit.io/propertyplugng/properties/5%20bed%20uburn%20contemp/IMG_3013.PNG?updatedAt=1726079881328",
+        width: 916, height: 1135
+      },
+      {
+        src: "https://ik.imagekit.io/propertyplugng/properties/5%20bed%20uburn%20contemp/IMG_3016.PNG?updatedAt=1726079881272",
+        width: 920, height: 1139
+      },
+      {
+        src: "https://ik.imagekit.io/propertyplugng/properties/5%20bed%20uburn%20contemp/IMG_3012.PNG?updatedAt=1726079879569",
+        width: 920, height: 1127
       },
     ],
     otherProperties: []
@@ -661,17 +713,40 @@ The Node offers an optimal mix of live, work and play facilities including an in
     ],
     otherImage: [
       {
-        src: "https://ik.imagekit.io/propertyplugng/properties/house4sell/CD1D0FC5-FC31-4280-B6A6-376C5C2EE335.PNG?updatedAt=1725402951790",
-        width: 1536, height: 2048
+        src: "https://ik.imagekit.io/propertyplugng/properties/smart%20home/IMG_2987.JPG?updatedAt=1726081287499",
+        width: 1170, height: 1324
       },
       {
-        src: "https://ik.imagekit.io/propertyplugng/properties/house4sell/3D7430E4-B235-4635-9901-CB6D09E83F2E.PNG?updatedAt=1725402953930",
-        width: 1536, height: 2048
+        src: "https://ik.imagekit.io/propertyplugng/properties/smart%20home/IMG_2992.JPG?updatedAt=1726081285573",
+        width: 1170, height: 1326
       },
       {
-        src: "https://ik.imagekit.io/propertyplugng/properties/house4sell/74CA31BE-01EB-40A9-9540-AE9980E8F5E0.PNG?updatedAt=1725402951690",
-        width: 1536, height: 2048
+        src: "https://ik.imagekit.io/propertyplugng/properties/smart%20home/IMG_2993.JPG?updatedAt=1726081283833",
+        width: 1170, height: 1327
       },
+      {
+        src: "https://ik.imagekit.io/propertyplugng/properties/smart%20home/IMG_2991.JPG?updatedAt=1726081283062",
+        width: 1170, height: 1327
+      },
+      {
+        src: "https://ik.imagekit.io/propertyplugng/properties/smart%20home/IMG_2994.JPG?updatedAt=1726081282584",
+        width: 1169, height: 1317
+      },
+      {
+        src: "https://ik.imagekit.io/propertyplugng/properties/smart%20home/IMG_2988.JPG?updatedAt=1726081282582",
+        width: 1170, height: 1326
+      },
+      {
+        src: "https://ik.imagekit.io/propertyplugng/properties/smart%20home/IMG_2990.JPG?updatedAt=1726081280211",
+        width: 1170, height: 1321
+      },
+      {
+        src: "https://ik.imagekit.io/propertyplugng/properties/smart%20home/IMG_2989.JPG?updatedAt=1726081276984",
+        width: 1170, height: 1334
+      },
+
+
+      
     ],
     otherProperties: []
   },
@@ -691,7 +766,7 @@ It is unique, among its neighbors, in that it is a primarily commercial district
     facilities: [],
     otherImage: [
       {
-        src: "https://ik.imagekit.io/propertyplugng/properties/Lands/mabushi%20350-min.jpg?updatedAt=1725402568470",
+        src: "https://ik.imagekit.io/propertyplugng/properties/Lands/CBD%20DOINGS.jpg?updatedAt=1726082452749",
         width: 3000, height: 3000
       },
     ],
@@ -713,7 +788,7 @@ It takes roughly 10 minutes to drive into the city centre.`,
     facilities: [],
     otherImage: [
       {
-        src: "https://ik.imagekit.io/propertyplugng/properties/Lands/mabushi%20350-min.jpg?updatedAt=1725402568470",
+        src: "https://ik.imagekit.io/propertyplugng/properties/Lands/durums.jpg?updatedAt=1726082455150",
         width: 3000, height: 3000
       },
     ],
@@ -733,7 +808,7 @@ It takes roughly 10 minutes to drive into the city centre.`,
     facilities: [],
     otherImage: [
       {
-        src: "https://ik.imagekit.io/propertyplugng/properties/Lands/mabushi%20350-min.jpg?updatedAt=1725402568470",
+        src: "https://ik.imagekit.io/propertyplugng/properties/Lands/Gudu%20Ps.jpg?updatedAt=1726082449657",
         width: 3000, height: 3000
       },
     ],
