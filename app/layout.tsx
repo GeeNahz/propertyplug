@@ -9,6 +9,9 @@ export const metadata: Metadata = {
   description:
     "Property Plug is an urban contemporary real estate company dedicated to the delivery of premium services within the real estate industry.",
   creator: "Helix Fons",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({
