@@ -2,8 +2,9 @@ import { Pagination, PaginationProps, ConfigProvider } from "antd";
 import { useState, useMemo, useCallback } from "react";
 import Header from "@/components/common/header";
 import BlogPostsGrid from "../BlogPostsGrid";
+import { TBlogPost } from "@/components/common/type";
 
-const shuffleArray = (array:string[]) => {
+const shuffleArray = (array:TBlogPost[]) => {
   let shuffledArray = array.slice();
   for (let i = shuffledArray.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -12,10 +13,10 @@ const shuffleArray = (array:string[]) => {
   return shuffledArray;
 };
 
-const FeaturedArticles = ({ id, blogs }: { id: string, blogs: any[] }) => {
+const FeaturedArticles = ({ id, blogs }: { id: string, blogs: TBlogPost[] }) => {
   const [current, setCurrent] = useState<number>(1);
 
-  const filteredBlogs = useMemo(() => shuffleArray(blogs.filter((val: any) => val.id !== id)), [blogs, id]);
+  const filteredBlogs = useMemo(() => shuffleArray(blogs.filter((val) => val.id !== id)), [blogs, id]);
 
   const onChange: PaginationProps["onChange"] = useCallback((page: number) => {
     setCurrent(page);
