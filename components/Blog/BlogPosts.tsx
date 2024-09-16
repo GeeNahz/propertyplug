@@ -1,5 +1,6 @@
 import { Button } from "@/components/common/button";
 import Image, { StaticImageData } from "next/image";
+import { TBlogPost } from "../common/type";
 
 type Props = {
   time: string;
@@ -8,7 +9,7 @@ type Props = {
   grid: string;
 };
 
-const BlogPosts = ({ post }: any) => {
+const BlogPosts = ({ post }: { post: TBlogPost}) => {
   const time = new Date(post.createdAt).toDateString();
   return (
     <> 
@@ -16,7 +17,7 @@ const BlogPosts = ({ post }: any) => {
         <Image
           width={1240}
           height={450}
-          src={post?.thumbnail || post?.backgroundImage}
+          src={post?.thumbnail || post?.backgroundImage as string}
           alt={post?.title}
           className="size-full object-cover bg-no-repeat bg-cover"
         />
@@ -41,7 +42,7 @@ const BlogPosts = ({ post }: any) => {
       {post?.backgroundImage && <div className={`absolute top-0 w-full h-full left-0 linear_gradient transition duration-700 z-0  flex flex-col justify-between p-3`}>
         <div className="">
          {time && <small className="text-slate-50 text-xs font-normal">{time}</small>}
-          <h4 className="text-white text-sm md:text-xl capitalize font-semibold">
+          <h4 className="text-white text-sm md:text-base xl:text-lg capitalize font-semibold">
           {post.title.length > 50 ? `${post.title.slice(0, 50).trim()}...` : post.title}
           </h4>
         </div>

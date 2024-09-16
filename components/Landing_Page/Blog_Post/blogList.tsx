@@ -1,3 +1,4 @@
+import BlogPostsGrid from "@/components/Blog/BlogPostsGrid";
 import { Button } from "@/components/common/button";
 import { TBlogPost } from "@/components/common/type";
 import { DateConverter } from "@/components/Dashboard";
@@ -14,7 +15,9 @@ export default async function BlogList() {
 
   return (
     <div className="w-full grid_wrapper mt-4">
-      {blogs.slice(0, 4).map((v: TBlogPost, i: number) => {
+      <BlogPostsGrid posts={blogs.slice(0, 4)} />
+
+      {/* blogs.slice(0, 4).map((v: TBlogPost, i: number) => {
         return (
           <div
             key={i}
@@ -39,7 +42,7 @@ export default async function BlogList() {
             </div>
           </div>
         );
-      })}
+      }) */}
     </div>
   );
 }
