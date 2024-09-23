@@ -17,7 +17,7 @@ export async function middleware(request: NextRequest) {
     value: `${token.value}`,
     expires: expires,
     httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
+    secure: process.env.APP_ENV === "production",
     sameSite: "lax",
   });
 
